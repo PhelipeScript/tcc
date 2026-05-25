@@ -5,3 +5,5 @@
 *.idx
 *.log
 *.toc
+*.lof
+*.lot
