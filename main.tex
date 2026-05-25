@@ -129,16 +129,36 @@
 % ---------------------------------------------------------------
 % LISTA DE ILUSTRAÇÕES
 % ---------------------------------------------------------------
-% \pdfbookmark[0]{\listfigurename}{lof}
-% \listoffigures*
-% \cleardoublepage
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
 
 % ---------------------------------------------------------------
 % LISTA DE TABELAS
 % ---------------------------------------------------------------
-% \pdfbookmark[0]{\listtablename}{lot}
-% \listoftables*
-% \cleardoublepage
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+% ---------------------------------------------------------------
+% LISTA DE ABREVIATURAS E SIGLAS
+% ---------------------------------------------------------------
+\begin{siglas}
+  \item[ASR] \textit{Automatic Speech Recognition} (Reconhecimento Automático de Fala)
+  \item[DDSD] \textit{Device-Directed Speech Detection} (Detecção de Fala Direcionada ao Dispositivo)
+  \item[EER] \textit{Equal Error Rate} (Taxa de Erro Igual)
+  \item[LLM] \textit{Large Language Model} (Modelo de Linguagem de Grande Porte)
+  \item[LR] \textit{Logistic Regression} (Regressão Logística)
+  \item[ML] \textit{Machine Learning} (Aprendizado de Máquina)
+  \item[NLP] \textit{Natural Language Processing} (Processamento de Linguagem Natural)
+  \item[NLU] \textit{Natural Language Understanding} (Compreensão de Linguagem Natural)
+  \item[SVM] \textit{Support Vector Machines} (Máquinas de Vetores de Suporte)
+  \item[TF-IDF] \textit{Term Frequency-Inverse Document Frequency} (Frequência do Termo - Inverso da Frequência nos Documentos)
+  \item[TTS] \textit{Text-to-Speech} (Síntese de Fala)
+  \item[VAD] \textit{Voice Activity Detection} (Detecção de Atividade de Voz)
+  \item[WER] \textit{Word Error Rate} (Taxa de Erro de Palavras)
+\end{siglas}
+\cleardoublepage
 
 % ---------------------------------------------------------------
 % SUMÁRIO
