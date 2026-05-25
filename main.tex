@@ -171,9 +171,9 @@ Na maioria dos sistemas atuais, a interação com assistentes virtuais baseados 
 
 Em interações humanas cotidianas, comandos e solicitações são frequentemente expressos de forma implícita, inseridos naturalmente no fluxo da conversação, sem a necessidade de uma palavra específica para iniciar a comunicação \cite{Weld2022}. Em contraste, os sistemas baseados em \textit{wake-words} são vulneráveis ao fenômeno de ativações falsas por palavras foneticamente semelhantes, conhecido como \textit{FakeWake} \cite{Chen2021}. Esse problema compromete a qualidade da experiência, reforçando as limitações da abordagem atual para uma interação verdadeiramente natural e intuitiva.
 
-Nesse cenário, surge a área de pesquisa denominada Detecção de Fala Direcionada ao Dispositivo, em inglês \textit{Device-Directed Speech Detection} (DDSD), que visa determinar automaticamente se uma fala é direcionada a um assistente virtual, mesmo na ausência de uma palavra de ativação explícita, ou se faz parte de uma conversa entre humanos \cite{Mallidi2018, Wagner2024}. Essa abordagem possibilita interações mais naturais e fluidas, reduzindo a necessidade de gatilhos verbais explícitos (\textit{wake-words}) e representando um avanço significativo rumo a uma comunicação humano-computador mais intuitiva e semelhante ao diálogo cotidiano.
+Nesse cenário, surge a área de pesquisa denominada \textit{Device-Directed Speech Detection} (traduzido como Detecção de Fala Direcionada ao Dispositivo, referenciado pela sigla DDSD), que visa determinar automaticamente se uma fala é direcionada a um assistente virtual, mesmo na ausência de uma palavra de ativação explícita, ou se faz parte de uma conversa entre humanos \cite{Mallidi2018, Wagner2024}. Essa abordagem possibilita interações mais naturais e fluidas, reduzindo a necessidade de gatilhos verbais explícitos (\textit{wake-words}) e representando um avanço significativo rumo a uma comunicação humano-computador mais intuitiva e semelhante ao diálogo cotidiano.
 
-Este trabalho investiga a viabilidade da DDSD em português brasileiro por meio de uma abordagem baseada exclusivamente no nível textual. O sistema proposto opera com transcrições de fala obtidas via Reconhecimento Automático de Fala, em inglês \textit{Automatic Speech Recognition} (ASR), e aplica técnicas de Processamento de Linguagem Natural (PLN) e Aprendizado de Máquina, em inglês \textit{Machine Learning} (ML), para classificar automaticamente se uma fala é direcionada ao dispositivo ou faz parte de uma conversa incidental entre humanos. O foco central está na etapa de classificação de intenção; o ASR é tratado como módulo de pré-processamento responsável pela geração das transcrições textuais utilizadas como entrada do classificador.
+Este trabalho investiga a viabilidade da DDSD em português brasileiro por meio de uma abordagem baseada exclusivamente no nível textual. O sistema proposto opera com transcrições de fala obtidas via Reconhecimento Automático de Fala (do inglês \textit{Automatic Speech Recognition}, referido pela sigla ASR), e aplica técnicas de Processamento de Linguagem Natural (conhecido por NLP, do inglês \textit{Natural Language Processing}) e ML (Aprendizado de Máquina, do inglês \textit{Machine Learning}), para classificar automaticamente se uma fala é direcionada ao dispositivo ou faz parte de uma conversa incidental entre humanos. O foco central está na etapa de classificação de intenção; o ASR é tratado como módulo de pré-processamento responsável pela geração das transcrições textuais utilizadas como entrada do classificador.
 
 % ---------------------------------------------------------------
 
@@ -198,11 +198,11 @@ Esse tipo de sistema tem aplicações relevantes em diferentes contextos: casas 
 \section{Contexto}
 \label{sec:contexto}
 
-O desenvolvimento dos assistentes virtuais baseados em voz acompanhou os avanços significativos nas áreas de ASR e PLN. Modelos como o Whisper \cite{Radford2023} representam um marco no campo do ASR, possibilitando transcrições de áudio com alta precisão e robustez em múltiplos idiomas. No entanto, sua arquitetura padrão opera em lotes (\textit{batch}), o que dificulta seu uso direto em interações fluidas que exigem processamento contínuo em tempo real (\textit{streaming}). Para contornar essa limitação, trabalhos como o Whispy \cite{Bevilacqua2024} propuseram adaptações arquiteturais para viabilizar o uso do Whisper nesses cenários dinâmicos. Paralelamente, surgiram modelos projetados para transcrição ao vivo com menor custo computacional, como o Moonshine \cite{Jeffries2024}, apresentado como uma alternativa otimizada para tarefas de comando de voz e assistentes embarcados.
+O desenvolvimento dos assistentes virtuais baseados em voz acompanhou os avanços significativos nas áreas de ASR e NLP. Modelos como o Whisper \cite{Radford2023} representam um marco no campo do ASR, possibilitando transcrições de áudio com alta precisão e robustez em múltiplos idiomas. No entanto, sua arquitetura padrão opera em lotes (\textit{batch}), o que dificulta seu uso direto em interações fluidas que exigem processamento contínuo em tempo real (\textit{streaming}). Para contornar essa limitação, trabalhos como o Whispy \cite{Bevilacqua2024} propuseram adaptações arquiteturais para viabilizar o uso do Whisper nesses cenários dinâmicos. Paralelamente, surgiram modelos projetados para transcrição ao vivo com menor custo computacional, como o Moonshine \cite{Jeffries2024}, apresentado como uma alternativa otimizada para tarefas de comando de voz e assistentes embarcados.
 
 No caso específico do português brasileiro, modelos baseados na arquitetura Wav2Vec 2.0 \cite{Grosman2021}, treinados com dados locais, têm apresentado resultados expressivos, especialmente em cenários com menor disponibilidade de dados rotulados, oferecendo alta precisão e melhor adaptação às particularidades linguísticas do idioma.
 
-Simultaneamente, no campo do PLN, a arquitetura Transformer, proposta por \citeonline{Vaswani2017}, revolucionou o processamento de linguagem natural, servindo de base para os modernos \textit{Large Language Models} (LLMs). No cenário nacional, modelos como o BERTimbau \cite{Souza2020} consolidaram o uso de arquiteturas Transformer adaptadas ao português brasileiro em tarefas de compreensão textual, enquanto abordagens mais recentes, como Albertina \cite{Rodrigues2023} e DeBERTinha \cite{Abonizio2023}, buscam maior eficiência e desempenho em tarefas de representação linguística. Paralelamente, LLMs generativos como o Sabiá \cite{Pires2023} expandiram essas capacidades para aplicações conversacionais e de geração de texto, estabelecendo avanços relevantes no processamento de linguagem natural em português.
+Simultaneamente, no campo do NLP, a arquitetura Transformer, proposta por \citeonline{Vaswani2017}, revolucionou o processamento de linguagem natural, servindo de base para os modernos LLMs (Modelos de Linguagem de Grande Porte, do inglês \textit{Large Language Models}). No cenário nacional, modelos como o BERTimbau \cite{Souza2020} consolidaram o uso de arquiteturas Transformer adaptadas ao português brasileiro em tarefas de compreensão textual, enquanto abordagens mais recentes, como Albertina \cite{Rodrigues2023} e DeBERTinha \cite{Abonizio2023}, buscam maior eficiência e desempenho em tarefas de representação linguística. Paralelamente, LLMs generativos como o Sabiá \cite{Pires2023} expandiram essas capacidades para aplicações conversacionais e de geração de texto, estabelecendo avanços relevantes no processamento de linguagem natural em português.
 
 É importante delimitar o papel de cada família de modelos neste trabalho: os modelos ASR (Whisper, Moonshine, Wav2Vec 2.0) são utilizados exclusivamente como módulos de transcrição de fala para texto, gerando a entrada textual do classificador. Os modelos de linguagem pré-treinados (BERTimbau, Albertina, DeBERTinha) são os candidatos ao papel de classificador de intenção, componente central da proposta. Modelos como o Sabiá são mencionados apenas como parte do referencial teórico sobre o estado da arte em LLMs para o português. A tabela \ref{tab:tecnologias} sintetiza esse mapeamento.
 
@@ -226,13 +226,13 @@ Sabiá               & Referencial teórico — LLM PT-BR  & Não \\
 \fonte{Elaborado pelo autor.}
 \end{table}
 
-Pesquisas recentes na área de DDSD têm explorado abordagens semelhantes à proposta neste trabalho, utilizando transcrições de áudio aliadas a técnicas de PLN para superar as limitações de abordagens exclusivamente acústicas. Trabalhos como os de \citeonline{Wagner2024} e \citeonline{Dighe2024} demonstraram que a aplicação de modelos de linguagem sobre as hipóteses textuais geradas por sistemas ASR é uma estratégia promissora para detectar a intenção de fala direcionada ao dispositivo. Expandindo esse conceito, \citeonline{Rudovic2024} evidenciaram como essa análise baseada em texto permite compreender intenções em interações contínuas e fluxos de diálogo, corroborando a premissa de que a análise textual do áudio transcrito é um caminho viável e promissor.
+Pesquisas recentes na área de DDSD têm explorado abordagens semelhantes à proposta neste trabalho, utilizando transcrições de áudio aliadas a técnicas de NLP para superar as limitações de abordagens exclusivamente acústicas. Trabalhos como os de \citeonline{Wagner2024} e \citeonline{Dighe2024} demonstraram que a aplicação de modelos de linguagem sobre as hipóteses textuais geradas por sistemas ASR é uma estratégia promissora para detectar a intenção de fala direcionada ao dispositivo. Expandindo esse conceito, \citeonline{Rudovic2024} evidenciaram como essa análise baseada em texto permite compreender intenções em interações contínuas e fluxos de diálogo, corroborando a premissa de que a análise textual do áudio transcrito é um caminho viável e promissor.
 
 % ---------------------------------------------------------------
 \section{Justificativa}
 \label{sec:justificativa}
 
-A crescente presença de assistentes virtuais baseados em voz em diferentes dispositivos computacionais evidencia a relevância de pesquisas voltadas à melhoria de interações humano-computador. Apesar dos avanços significativos em ASR e PLN, a maioria dos sistemas atuais ainda depende de palavras de ativação explícitas (\textit{wake-words}), que podem comprometer a naturalidade e a fluidez da comunicação \cite{Mallidi2018}. Em ambientes dinâmicos, a necessidade de invocar repetidamente o dispositivo pode gerar fadiga no usuário e reduzir a percepção de naturalidade da interação \cite{Nie2021}. Nesse contexto, a DDSD apresenta-se como uma abordagem relevante para reduzir a dependência de palavras de ativação explícitas e promover interações mais fluidas e intuitivas \cite{Wagner2024}.
+A crescente presença de assistentes virtuais baseados em voz em diferentes dispositivos computacionais evidencia a relevância de pesquisas voltadas à melhoria de interações humano-computador. Apesar dos avanços significativos em ASR e NLP, a maioria dos sistemas atuais ainda depende de palavras de ativação explícitas (\textit{wake-words}), que podem comprometer a naturalidade e a fluidez da comunicação \cite{Mallidi2018}. Em ambientes dinâmicos, a necessidade de invocar repetidamente o dispositivo pode gerar fadiga no usuário e reduzir a percepção de naturalidade da interação \cite{Nie2021}. Nesse contexto, a DDSD apresenta-se como uma abordagem relevante para reduzir a dependência de palavras de ativação explícitas e promover interações mais fluidas e intuitivas \cite{Wagner2024}.
 
 Do ponto de vista acadêmico, o estudo de métodos alternativos de ativação baseados na detecção de intenção implícita atua na interseção de três áreas de pesquisa: (i) reconhecimento de fala, responsável pela transcrição do sinal acústico; (ii) processamento de linguagem natural, voltado à interpretação semântica; e (iii) interação humano-computador, que modela os aspectos de interação do sistema. Estudos recentes indicam que abordagens multimodais para DDSD têm alcançado melhorias consistentes em métricas de desempenho em comparação a modelos unimodais de texto ou áudio \cite{Wagner2024}. Entretanto, essas abordagens geralmente demandam alto poder computacional, grandes volumes de dados multimodais rotulados e processos complexos de sincronização entre modalidades, o que impõe barreiras significativas para o treinamento e a aplicação em dispositivos com recursos restritos \cite{Xu2024}.
 
@@ -242,7 +242,7 @@ Embora haja avanços recentes na disponibilização de recursos linguísticos pa
 
 Diante desse cenário, este trabalho busca contribuir para o preenchimento dessa lacuna ao investigar uma abordagem de DDSD baseada exclusivamente no nível textual, a partir de transcrições geradas por sistemas ASR e utilizando modelos de linguagem pré-treinados para o português brasileiro. A escolha da modalidade textual justifica-se por três fatores principais: (i) modelos baseados em arquitetura Transformer alcançam estado da arte em tarefas de classificação de intenção e inferência semântica \cite{Weld2022}; (ii) experimentos recentes demonstram que aplicar modelos de linguagem sobre hipóteses de sistemas ASR fornece um sinal discriminativo relevante para distinguir entre fala dirigida e não dirigida ao sistema \cite{Wagner2024, Dighe2024}; e (iii) a abordagem em nível de texto garante maior modularidade arquitetural, facilitando a comparação com \textit{baselines} clássicos e a análise do impacto de erros de transcrição, configurando-se como uma alternativa prática e escalável \cite{Dighe2024}.
 
-Ainda que abordagens multimodais frequentemente alcancem melhor desempenho em métricas como a Taxa de Erro Igual, em inglês \textit{Equal Error Rate} (EER) \cite{Wagner2024}, a construção de um \textit{baseline} textual sólido é um pré-requisito metodológico para investigações futuras mais complexas. Em ausência de qualquer ponto de referência para DDSD em português brasileiro, adicionar modalidades acústicas ao sistema antes de estabelecer o desempenho da componente textual impede isolar a contribuição de cada modalidade, um requisito para o design experimental rigoroso de sistemas multimodais. A abordagem textual adotada neste trabalho cumpre, portanto, um papel duplo: é a modalidade mais viável dado o cenário de escassez de corpora acústicos anotados para DDSD em português brasileiro \cite{CORAA2023}, e é simultaneamente a etapa metodologicamente necessária para fundamentar extensões futuras com modalidades adicionais. O desenvolvimento deste \textit{baseline} inicial textual constitui, em si, uma contribuição original para a infraestrutura de pesquisa em DDSD no contexto brasileiro.
+Ainda que abordagens multimodais frequentemente alcancem melhor desempenho em métricas como a Taxa de Erro Igual (do inglês \textit{Equal Error Rate}, referida pela sigla EER) \cite{Wagner2024}, a construção de um \textit{baseline} textual sólido é um pré-requisito metodológico para investigações futuras mais complexas. Em ausência de qualquer ponto de referência para DDSD em português brasileiro, adicionar modalidades acústicas ao sistema antes de estabelecer o desempenho da componente textual impede isolar a contribuição de cada modalidade, um requisito para o design experimental rigoroso de sistemas multimodais. A abordagem textual adotada neste trabalho cumpre, portanto, um papel duplo: é a modalidade mais viável dado o cenário de escassez de corpora acústicos anotados para DDSD em português brasileiro \cite{CORAA2023}, e é simultaneamente a etapa metodologicamente necessária para fundamentar extensões futuras com modalidades adicionais. O desenvolvimento deste \textit{baseline} inicial textual constitui, em si, uma contribuição original para a infraestrutura de pesquisa em DDSD no contexto brasileiro.
 
 % ---------------------------------------------------------------
 
@@ -251,7 +251,7 @@ Ainda que abordagens multimodais frequentemente alcancem melhor desempenho em m�
 
 A hipótese central deste trabalho é a seguinte:
 
-\textit{Sob condições de ambiente controlado, modelos de linguagem pré-treinados para o português brasileiro, aplicados sobre transcrições geradas por sistemas de Reconhecimento Automático de Fala (ASR), conseguem alcançar desempenho superior a \textit{baselines} textuais tradicionais (TF-IDF + SVM ou Regressão Logística) avaliados sobre o mesmo corpus, em métricas de F1-score, acurácia e EER, demonstrando a viabilidade técnica da abordagem textual para DDSD em português brasileiro.}
+\textit{Sob condições de ambiente controlado, modelos de linguagem pré-treinados para o português brasileiro, aplicados sobre transcrições geradas por sistemas de Reconhecimento Automático de Fala (ASR), conseguem alcançar desempenho superior a \textit{baselines} textuais baseados em Frequência do Termo - Inverso da Frequência nos Documentos (TF-IDF, do inglês \textit{Term Frequency-Inverse Document Frequency}) combinada com Máquinas de Vetores de Suporte (SVM, do inglês \textit{Support Vector Machines}) ou Regressão Logística (LR, do inglês \textit{Logistic Regression}) avaliados sobre o mesmo corpus, em métricas de F1-score, acurácia e EER, demonstrando a viabilidade técnica da abordagem textual para DDSD em português brasileiro.}
 
 A hipótese é fundamentada em três evidências da literatura. Primeiro, estudos recentes demonstram que a análise textual de hipóteses ASR fornece sinal discriminativo relevante para a tarefa de DDSD \cite{Wagner2024, Dighe2024}. Segundo, modelos baseados na arquitetura Transformer superam abordagens tradicionais de aprendizado de máquina em classificação de intenção textual \cite{Weld2022}. Terceiro, modelos pré-treinados especificamente para o português brasileiro, como o BERTimbau \cite{Souza2020} e o DeBERTinha \cite{Abonizio2023}, apresentam desempenho consistente em tarefas de classificação textual, o que fundamenta sua aplicabilidade ao domínio proposto.
 
@@ -274,7 +274,7 @@ Para que o objetivo principal seja alcançado, foram definidos os seguintes obje
 
     \item Implementar e avaliar um classificador binário baseado no BERTimbau \cite{Souza2020} como modelo principal, com BERTimbau ajustado por \textit{fine-tuning} para a tarefa de DDSD, e comparar seu desempenho com um \textit{baseline} clássico baseado em TF-IDF combinado com SVM ou Regressão Logística \cite{Manning2008}, utilizando como entrada as transcrições geradas pelo Whisper \cite{Radford2023};
 
-    \item Analisar o impacto de erros de transcrição do sistema ASR no desempenho do classificador de intenção, comparando os resultados obtidos com transcrições manuais e com transcrições automáticas, e medindo a correlação entre a Taxa de Erro de Palavras (\textit{Word Error Rate}, WER) do ASR e a degradação do desempenho do classificador \cite{Dighe2024}.
+    \item Analisar o impacto de erros de transcrição do sistema ASR no desempenho do classificador de intenção, comparando os resultados obtidos com transcrições manuais e com transcrições automáticas, e medindo a correlação entre a Taxa de Erro de Palavras (conhecida por WER, do inglês \textit{Word Error Rate}) do ASR e a degradação do desempenho do classificador \cite{Dighe2024}.
 \end{enumerate}
 
 % ---------------------------------------------------------------
@@ -286,7 +286,7 @@ Este trabalho apresenta limitações inerentes ao seu escopo e ao contexto em qu
 
 A primeira limitação diz respeito à modalidade de entrada. A abordagem proposta opera exclusivamente sobre o nível textual, descartando pistas acústicas como prosódia, entonação e características paralinguísticas que são reconhecidamente úteis para a tarefa de DDSD \cite{Norouzian2019, Krishna2023}. Essa é uma escolha estratégica de escopo: o objetivo é criar um \textit{baseline} textual sólido antes de incorporar modalidades adicionais. Ainda assim, implica que o sistema pode apresentar desempenho inferior a abordagens multimodais em cenários com alta variabilidade acústica.
 
-A segunda limitação refere-se ao impacto dos erros de transcrição. A qualidade das saídas geradas pelo sistema ASR afeta diretamente o classificador textual: erros de transcrição podem degradar o desempenho do modelo, especialmente em falas com sotaque, ruído de fundo ou vocabulário incomum \cite{Bevilacqua2024}. O impacto desses erros será analisado como parte dos experimentos, mas representa uma fonte de variabilidade não completamente controlável. A comparação entre transcrições manuais e automáticas, prevista no quarto objetivo específico, buscará quantificar essa degradação.
+A segunda limitação refere-se ao impacto dos erros de transcrição. A qualidade das saídas geradas pelo sistema ASR afeta diretamente o classificador textual: erros de transcrição podem degradar o desempenho do modelo, especialmente em falas com sotaque, ruído de fundo ou vocabulário incomum \cite{Bevilacqua2024}. O impacto desses erros será analisado como parte dos experimentos, mas representa uma fonte de variabilidade não completamente controlável. A comparação entre transcrições manuais e automáticas, prevista no terceiro objetivo específico, buscará quantificar essa degradação.
 
 A terceira limitação envolve a construção do corpus. A escassez de corpora especificamente anotados para DDSD em português brasileiro obriga a construção de um corpus próprio em ambiente controlado. Isso implica limitações em termos de escala, diversidade dialetal e espontaneidade. O corpus resultante não cobrirá toda a variabilidade da fala espontânea em contextos reais \cite{CORAA2023}, o que pode limitar a generalização dos resultados.
 
@@ -300,7 +300,7 @@ Por fim, este trabalho não aborda aspectos de privacidade, armazenamento de áu
 
 % A revisão bibliográfica apresenta o embasamento teórico que fundamenta este trabalho, organizada por temas relevantes ao problema de pesquisa. Inicialmente, são apresentados os conceitos gerais que contextualizam a proposta. Em seguida, descreve-se a metodologia utilizada para a seleção dos trabalhos consultados. Os fundamentos técnicos são então detalhados, seguidos pela análise dos trabalhos diretamente relacionados ao problema abordado.
 
-Este capitulo tem como finalidade estabelecer o embasamento teórico e tecnológico que sustenta a pesquisa proposta. Inicialmente, descreve-se a metodologia utilizada para a seleção dos trabalhos consultados. Na sequência, o referencial teórico explora os paradigmas da interação humano-computador por meio da voz, analisando os mecanismos tradicionais de ativação baseados em wake-words, seus principais gargalos cognitivos e limitações, bem como as abordagens emergentes para a detecção de fala direcionada ao dispositivo (DDSD). Os fundamentos técnicos são então apresentados, com ênfase no Reconhecimento Automático de Fala (ASR), no Processamento de Linguagem Natural (PLN) e nos modelos de linguagem pré-treinados, especialmente aqueles adaptados ao português brasileiro. Por fim, é realizada a análise dos trabalhos mais diretamente relacionados ao tema, identificando lacunas que este trabalho busca preencher.
+Este capitulo tem como finalidade estabelecer o embasamento teórico e tecnológico que sustenta a pesquisa proposta. Inicialmente, descreve-se a metodologia utilizada para a seleção dos trabalhos consultados. Na sequência, o referencial teórico explora os paradigmas da interação humano-computador por meio da voz, analisando os mecanismos tradicionais de ativação baseados em wake-words, seus principais gargalos cognitivos e limitações, bem como as abordagens emergentes para a detecção de fala direcionada ao dispositivo (conhecida por DDSD, do inglês \textit{Device-Directed Speech Detection}). Os fundamentos técnicos são então apresentados, com ênfase no ASR (Reconhecimento Automático de Fala, do inglês \textit{Automatic Speech Recognition}), no Processamento de Linguagem Natural (do inglês \textit{Natural Language Processing}, referido pela sigla NLP) e nos modelos de linguagem pré-treinados, especialmente aqueles adaptados ao português brasileiro. Por fim, é realizada a análise dos trabalhos mais diretamente relacionados ao tema, identificando lacunas que este trabalho busca preencher.
 
 \section{Metodologia da pesquisa bibliográfica}
 \label{sec:metodologia_pesquisa}
@@ -335,7 +335,7 @@ O referencial teórico apresenta os conceitos fundamentais que sustentam o desen
 
 A evolução da Interação Humano-Computador (IHC) tem se distanciado progressivamente de interfaces puramente gráficas e táteis, avançando em direção a interfaces conversacionais e ubíquas. Nesse contexto, os assistentes virtuais baseados em voz consolidaram-se como agentes computacionais capazes de interpretar linguagem natural, processar requisições e executar tarefas automatizadas, atuando como intermediários entre o usuário e ecossistemas de serviços digitais \cite{NMSC2025}.
 
-De acordo com \citeonline{Jurafsky2024}, assistentes virtuais são sistemas que integram tecnologias de Reconhecimento Automático de Fala (Automatic Speech Recognition --- ASR), Compreensão de Linguagem Natural (Natural Language Understanding --- NLU) e Síntese de Fala (Text-to-Speech --- TTS) para viabilizar interações fluidas entre humanos e dispositivos. O funcionamento típico desses sistemas segue um \textit{pipeline} composto por etapas sequenciais: (i) captura do sinal de áudio; (ii) Detecção de Atividade de Voz (Voice Activity Detection --- VAD); (iii) ASR; (iv) NLU; e (v) geração da resposta ou execução da ação solicitada.
+De acordo com \citeonline{Jurafsky2024}, assistentes virtuais são sistemas que integram tecnologias de ASR, Compreensão de Linguagem Natural (conhecida por NLU, do inglês \textit{Natural Language Understanding}) e Síntese de Fala (do inglês \textit{Text-to-Speech}, referida pela sigla TTS) para viabilizar interações fluidas entre humanos e dispositivos. O funcionamento típico desses sistemas segue um \textit{pipeline} composto por etapas sequenciais: (i) captura do sinal de áudio; (ii) Detecção de Atividade de Voz (VAD, do inglês \textit{Voice Activity Detection}); (iii) ASR; (iv) NLU; e (v) geração da resposta ou execução da ação solicitada.
 
 Na maioria dos sistemas comerciais, as etapas de processamento são precedidas por um módulo de detecção de \textit{wake-word}, que atua como gatilho para iniciar o processamento mais custoso \cite{Garg2021}. Essa arquitetura permite que o assistente permaneça em modo de baixo consumo até ser explicitamente invocado.
 
@@ -353,7 +353,7 @@ No entanto, a eficácia dessa interação depende criticamente da capacidade do 
 
 \subsection{Detecção de Atividade de Voz (VAD)}
 
-A Detecção de Atividade de Voz (\textit{Voice Activity Detection} --- VAD) é a primeira etapa de processamento de sinal após a captura do áudio pelo microfone. Sua função principal é identificar os segmentos do sinal que contêm fala humana, separando-os de trechos de silêncio, ruído de fundo e sons não-verbais \cite{Li2021}.
+A Detecção de Atividade de Voz (VAD) é a primeira etapa de processamento de sinal após a captura do áudio pelo microfone. Sua função principal é identificar os segmentos do sinal que contêm fala humana, separando-os de trechos de silêncio, ruído de fundo e sons não-verbais \cite{Li2021}.
 
 Essa etapa é fundamental para a eficiência do sistema como um todo. Ao descartar trechos sem fala, o VAD reduz significativamente o volume de dados que precisa ser processado pelos módulos subsequentes (ASR e NLU), diminuindo o consumo computacional, a latência e o gasto energético, aspectos especialmente críticos em dispositivos embarcados e de borda.
 
@@ -383,7 +383,7 @@ Um dos principais marcos da área foi o modelo Whisper, proposto por Radford et 
 
 Paralelamente, têm surgido modelos otimizados para cenários específicos de baixa latência e execução em borda, como Moonshine \cite{Jeffries2024} e Whispy \cite{Bevilacqua2024}, projetados para processamento contínuo (\textit{streaming}). No contexto do português brasileiro, modelos baseados em arquiteturas auto-supervisionadas, como o Wav2Vec 2.0 \cite{Grosman2021}, também apresentam resultados promissores.
 
-A qualidade dos sistemas de ASR é comumente mensurada pela métrica \textit{Word Error Rate} (WER), que calcula a taxa de palavras erradas, substituídas, deletadas ou inseridas em relação a uma transcrição de referência. Em aplicações de assistentes virtuais, a redução do WER é fundamental, pois erros de transcrição propagam-se diretamente para as etapas de classificação de intenção e extração de entidades.
+A qualidade dos sistemas de ASR é comumente mensurada pela métrica \textit{Word Error Rate} (traduzido como Taxa de Erro de Palavras, conhecido pela sigla WER), que calcula a taxa de palavras erradas, substituídas, deletadas ou inseridas em relação a uma transcrição de referência. Em aplicações de assistentes virtuais, a redução do WER é fundamental, pois erros de transcrição propagam-se diretamente para as etapas de classificação de intenção e extração de entidades.
 
 Neste trabalho, o módulo de ASR será utilizado primordialmente como etapa de pré-processamento. As transcrições geradas (principalmente pelo Whisper) servirão de entrada para o classificador textual de intenção implícita, tornando a qualidade e a robustez do ASR um fator relevante para o desempenho final do sistema proposto.
 
@@ -409,7 +409,9 @@ A Detecção de Fala Direcionada ao Dispositivo (\textit{Device-Directed Speech 
 
 Diferentemente do mecanismo tradicional de wake-words, que exige uma ativação explícita, a DDSD busca permitir interações mais naturais e fluidas, aproximando a comunicação humano-computador do padrão conversacional humano. Essa abordagem representa um dos principais caminhos para superar as limitações de rigidez e fricção cognitiva impostas pelas palavras de ativação \cite{Nie2021}.
 
-As pesquisas na área de DDSD têm evoluído principalmente em duas frentes: abordagens multimodais e abordagens unimodais (baseadas em áudio ou texto). As soluções multimodais combinam informações acústicas, textuais, prosódicas e, em alguns casos, visuais (detecção facial e rastreamento labial). Wagner et al. \cite{Wagner2024} demonstraram que a fusão de características acústicas, hipóteses do decodificador ASR e representações textuais processadas por Large Language Models (LLMs) pode reduzir a taxa de erro em até 61\% em comparação com modelos unimodais. Da mesma forma, Krishna et al. \cite{Krishna2023} exploraram a combinação de características verbais com informações prosódicas não verbais (entonação, ritmo e pausas), obtendo melhorias significativas na taxa de falsa aceitação.
+Por convenção, neste trabalho a sigla DDSD será sempre apresentada, na primeira ocorrência de cada capítulo, com o termo em português seguido do termo em inglês em itálico.
+
+As pesquisas na área de DDSD têm evoluído principalmente em duas frentes: abordagens multimodais e abordagens unimodais (baseadas em áudio ou texto). As soluções multimodais combinam informações acústicas, textuais, prosódicas e, em alguns casos, visuais (detecção facial e rastreamento labial). Wagner et al. \cite{Wagner2024} demonstraram que a fusão de características acústicas, hipóteses do decodificador ASR e representações textuais processadas por Modelos de Linguagem de Grande Porte (do inglês \textit{Large Language Models}, referidos como LLMs) pode reduzir a taxa de erro em até 61\% em comparação com modelos unimodais. Da mesma forma, Krishna et al. \cite{Krishna2023} exploraram a combinação de características verbais com informações prosódicas não verbais (entonação, ritmo e pausas), obtendo melhorias significativas na taxa de falsa aceitação.
 
 Em outra linha, Nie et al. \cite{Nie2021} propuseram um sistema multimodal que integra informações visuais (detecção facial e rastreamento de lábios) com características acústicas, sendo particularmente útil em robôs de diálogo e dispositivos equipados com câmeras.
 
@@ -421,11 +423,11 @@ A DDSD representa, portanto, uma evolução natural na interação humano-comput
 
 \subsection{Processamento de Linguagem Natural e classificação de intenção}
 
-O Processamento de Linguagem Natural (PLN) compreende o conjunto de técnicas computacionais destinadas à análise, compreensão e geração de linguagem humana em formato textual \cite{Jurafsky2024}. No contexto de assistentes virtuais, a subárea de Compreensão de Linguagem Natural (\textit{Natural Language Understanding} --- NLU) é responsável por extrair o significado semântico, a intenção do usuário e as entidades mencionadas a partir das transcrições geradas pelo módulo de ASR \cite{Weld2022}.
+O Processamento de Linguagem Natural (NLP) compreende o conjunto de técnicas computacionais destinadas à análise, compreensão e geração de linguagem humana em formato textual \cite{Jurafsky2024}. No contexto de assistentes virtuais, a subárea de Compreensão de Linguagem Natural (NLU) é responsável por extrair o significado semântico, a intenção do usuário e as entidades mencionadas a partir das transcrições geradas pelo módulo de ASR \cite{Weld2022}.
 
 Uma das tarefas centrais da NLU é a \textit{classificação de intenção} (\textit{intent classification}). Dado um enunciado do usuário, o objetivo é identificar qual é a intenção subjacente expressa nesse texto, ou seja, qual ação o usuário deseja que o sistema realize \cite{Weld2022}. Essa tarefa é frequentemente combinada com o preenchimento de \textit{slots} (\textit{slot filling}), responsável por extrair os parâmetros necessários para a execução da ação pretendida (ex.: “Defina um alarme para as 8 horas” → intenção: “criar alarme”; slot: horário = “8 horas”).
 
-Historicamente, os sistemas de classificação de intenção baseavam-se em regras manuais e padrões lexicais. Com o tempo, métodos estatísticos tradicionais, como modelos de sequência e Support Vector Machines (SVM), tornaram-se predominantes \cite{Manning2008}. No entanto, foi a partir da introdução da arquitetura Transformer \cite{Vaswani2017} e, especialmente, do modelo BERT \cite{Devlin2019} que a área experimentou um avanço expressivo. \cite{Weld2022}, em um abrangente levantamento da literatura, concluem que os modelos pré-treinados baseados em Transformers superam consistentemente abordagens anteriores em tarefas de detecção de intenção e preenchimento de slots, tanto em precisão quanto em generalização.
+Historicamente, os sistemas de classificação de intenção baseavam-se em regras manuais e padrões lexicais. Com o tempo, métodos estatísticos tradicionais, como modelos de sequência e Máquinas de Vetores de Suporte (conhecidas por SVM, do inglês \textit{Support Vector Machines}), tornaram-se predominantes \cite{Manning2008}. No entanto, foi a partir da introdução da arquitetura Transformer \cite{Vaswani2017} e, especialmente, do modelo BERT \cite{Devlin2019} que a área experimentou um avanço expressivo. \cite{Weld2022}, em um abrangente levantamento da literatura, concluem que os modelos pré-treinados baseados em Transformers superam consistentemente abordagens anteriores em tarefas de detecção de intenção e preenchimento de slots, tanto em precisão quanto em generalização.
 
 A principal vantagem dos modelos pré-treinados reside na capacidade de realizar \textit{fine-tuning} com quantidades relativamente pequenas de dados rotulados específicos para a tarefa \cite{Devlin2019}. Essa característica torna tais modelos particularmente atrativos para idiomas com poucos recursos linguísticos, como o português brasileiro.
 
@@ -435,13 +437,13 @@ No escopo deste trabalho, a classificação de intenção assume papel central, 
 
 A arquitetura Transformer, proposta por \citeonline{Vaswani2017}, representou um dos principais marcos na história do Processamento de Linguagem Natural. Diferentemente das redes neurais recorrentes (RNNs) e convolucionais dominantes até então, o Transformer introduziu o mecanismo de \textit{atenção multi-cabeça} (\textit{multi-head attention}) como principal componente para modelar dependências entre elementos de uma sequência. Essa arquitetura permite o processamento paralelo de toda a sequência de entrada, resultando em maior eficiência computacional durante o treinamento e melhor capacidade de capturar dependências de longo alcance \cite{Vaswani2017}.
 
-A partir dessa arquitetura, \citeonline{Devlin2019} propuseram o modelo BERT (\textit{Bidirectional Encoder Representations from Transformers}). O BERT realiza um pré-treinamento bidirecional por meio de duas tarefas principais: \textit{Masked Language Modeling} (MLM), que consiste em prever tokens aleatoriamente mascarados dentro de uma sentença, e \textit{Next Sentence Prediction} (NSP), que treina o modelo a identificar se duas sentenças são consecutivas. Após essa fase de pré-treinamento em grandes corpora não anotados, o modelo pode ser adaptado (\textit{fine-tuning}) para diversas tarefas específicas de PLN, adicionando uma camada de classificação sobre a representação do token especial \texttt{[CLS]} \cite{Devlin2019}.
+A partir dessa arquitetura, \citeonline{Devlin2019} propuseram o modelo BERT (\textit{Bidirectional Encoder Representations from Transformers}). O BERT realiza um pré-treinamento bidirecional por meio de duas tarefas principais: \textit{Masked Language Modeling} (MLM), que consiste em prever tokens aleatoriamente mascarados dentro de uma sentença, e \textit{Next Sentence Prediction} (NSP), que treina o modelo a identificar se duas sentenças são consecutivas. Após essa fase de pré-treinamento em grandes corpora não anotados, o modelo pode ser adaptado (\textit{fine-tuning}) para diversas tarefas específicas de NLP, adicionando uma camada de classificação sobre a representação do token especial \texttt{[CLS]} \cite{Devlin2019}.
 
 A capacidade de transferência de conhecimento dos modelos pré-treinados permitiu avanços significativos em diversas tarefas, incluindo classificação de texto, reconhecimento de entidades nomeadas, análise de sentimento e, especialmente, classificação de intenção. Diversos estudos demonstram que modelos baseados em Transformers superam consistentemente abordagens tradicionais quando ajustados para domínios específicos \cite{Weld2022}.
 
-No contexto do português brasileiro, \citeonline{Souza2020} desenvolveram o BERTimbau, uma versão do BERT pré-treinada especificamente para o idioma. O modelo foi treinado em um corpus de aproximadamente 2,7 bilhões de tokens extraídos da Wikipédia em português e do corpus brWaC. Os autores demonstraram que o BERTimbau supera os modelos multilíngues em várias tarefas de PLN para o português, incluindo classificação textual, reconhecimento de entidades e similaridade semântica.
+No contexto do português brasileiro, \citeonline{Souza2020} desenvolveram o BERTimbau, uma versão do BERT pré-treinada especificamente para o idioma. O modelo foi treinado em um corpus de aproximadamente 2,7 bilhões de tokens extraídos da Wikipédia em português e do corpus brWaC. Os autores demonstraram que o BERTimbau supera os modelos multilíngues em várias tarefas de NLP para o português, incluindo classificação textual, reconhecimento de entidades e similaridade semântica.
 
-Posteriormente, outros modelos baseados em Transformers foram adaptados para o português, como a família Albertina \cite{Rodrigues2023} e a DeBERTinha \cite{Abonizio2023}, buscando maior eficiência computacional e desempenho em tarefas específicas do idioma. Esses avanços têm sido fundamentais para viabilizar aplicações de PLN em português com qualidade comparável à obtida em inglês.
+Posteriormente, outros modelos baseados em Transformers foram adaptados para o português, como a família Albertina \cite{Rodrigues2023} e a DeBERTinha \cite{Abonizio2023}, buscando maior eficiência computacional e desempenho em tarefas específicas do idioma. Esses avanços têm sido fundamentais para viabilizar aplicações de NLP em português com qualidade comparável à obtida em inglês.
 
 No presente trabalho, os modelos baseados em Transformers, especialmente o BERTimbau, são utilizados como base para o classificador textual de intenção implícita na tarefa de DDSD, explorando sua capacidade de capturar nuances semânticas e contextuais presentes nas transcrições geradas pelo ASR.
 
@@ -494,7 +496,7 @@ O BERT é treinado em duas tarefas de pré-treinamento não supervisionadas em g
 
 Após o pré-treinamento em grandes volumes de dados não anotados, o BERT pode ser adaptado para tarefas específicas por meio do processo chamado \textit{fine-tuning}. Nesse estágio, o modelo é inicializado com os pesos aprendidos durante o pré-treinamento e continua o treinamento em um conjunto de dados menor e rotulado para uma tarefa específica (classificação de texto, reconhecimento de entidades, resposta a perguntas, etc.). Apenas uma camada de classificação adicional é adicionada sobre a representação do token especial \texttt{[CLS]}, que concentra informações de toda a sequência \cite{Devlin2019}.
 
-Uma das grandes vantagens do BERT é que o \textit{fine-tuning} requer relativamente poucos dados rotulados e poucas épocas de treinamento quando comparado ao treinamento do zero. Devlin et al. \cite{Devlin2019} demonstraram que, com o fine-tuning, o BERT conseguiu superar o estado da arte em 11 tarefas de PLN diferentes, incluindo GLUE, SQuAD e SWAG.
+Uma das grandes vantagens do BERT é que o \textit{fine-tuning} requer relativamente poucos dados rotulados e poucas épocas de treinamento quando comparado ao treinamento do zero. Devlin et al. \cite{Devlin2019} demonstraram que, com o fine-tuning, o BERT conseguiu superar o estado da arte em 11 tarefas de NLP diferentes, incluindo GLUE, SQuAD e SWAG.
 
 No contexto de classificação de intenção, o processo de fine-tuning é relativamente simples: a última camada do modelo é substituída por uma camada linear com softmax (para classificação binária ou multiclasse), e o modelo é treinado minimizando a perda de entropia cruzada. Durante esse processo, os pesos das camadas anteriores também são atualizados, permitindo que o modelo ajuste suas representações internas para melhor capturar as nuances da tarefa específica.
 
@@ -508,11 +510,11 @@ O modelo foi pré-treinado em um corpus de aproximadamente 2,7 bilhões de token
 
 Durante o pré-treinamento, o BERTimbau seguiu a mesma metodologia do BERT original: as tarefas de \textit{Masked Language Modeling} (MLM) e \textit{Next Sentence Prediction} (NSP). No entanto, por ter sido treinado exclusivamente com dados em português brasileiro, o modelo desenvolveu representações linguísticas mais adequadas às particularidades do idioma, tais como o uso abundante de pronomes pessoais, conjugações verbais complexas, artigos definidos e contrações comuns (ex.: “do”, “na”, “pelo”).
 
-\citeonline{Souza2020} realizaram uma avaliação abrangente comparando o BERTimbau com o BERT multilíngue (mBERT) em diversas tarefas de PLN para o português. Os resultados demonstraram superioridade consistente do BERTimbau, especialmente em tarefas como Reconhecimento de Entidades Nomeadas (NER), Análise de Similaridade Semântica e Classificação Textual. Em alguns casos, a diferença de desempenho chegou a mais de 5 pontos percentuais em relação ao modelo multilíngue.
+\citeonline{Souza2020} realizaram uma avaliação abrangente comparando o BERTimbau com o BERT multilíngue (mBERT) em diversas tarefas de NLP para o português. Os resultados demonstraram superioridade consistente do BERTimbau, especialmente em tarefas como Reconhecimento de Entidades Nomeadas (NER), Análise de Similaridade Semântica e Classificação Textual. Em alguns casos, a diferença de desempenho chegou a mais de 5 pontos percentuais em relação ao modelo multilíngue.
 
 Exemplo prático: na frase “O presidente viajou para Brasília ontem”, o BERTimbau consegue melhor diferenciar o uso contextual de palavras como “viajou” (sentido literal de deslocamento) e capturar corretamente relações sintáticas específicas do português brasileiro, como o uso do pronome “o” como objeto direto, algo que modelos multilíngues frequentemente apresentam maior dificuldade.
 
-A disponibilidade do BERTimbau foi um marco importante para o desenvolvimento de aplicações de PLN em português, pois reduziu significativamente a barreira de entrada para pesquisadores e desenvolvedores que antes dependiam de modelos multilíngues com desempenho subótimo ou de modelos treinados do zero, o que exige grande volume de dados e alto custo computacional.
+A disponibilidade do BERTimbau foi um marco importante para o desenvolvimento de aplicações de NLP em português, pois reduziu significativamente a barreira de entrada para pesquisadores e desenvolvedores que antes dependiam de modelos multilíngues com desempenho subótimo ou de modelos treinados do zero, o que exige grande volume de dados e alto custo computacional.
 
 No âmbito deste trabalho, o BERTimbau é utilizado como modelo base para o classificador de intenção implícita. Por meio do processo de \textit{fine-tuning}, o modelo é adaptado para a tarefa de Detecção de Fala Direcionada ao Dispositivo (DDSD), utilizando transcrições geradas por sistemas de ASR como entrada, buscando explorar suas representações linguísticas otimizadas para o português brasileiro.
 
@@ -522,13 +524,13 @@ Embora o BERT tenha estabelecido um novo patamar para modelos de linguagem, arqu
 
 A principal inovação do DeBERTa é o mecanismo de \textit{Disentangled Attention} (atenção desentrelada). Enquanto o BERT representa cada token por um único vetor que contém simultaneamente informação de conteúdo e de posição, o DeBERTa separa esses dois tipos de informação. Para cada par de tokens, o modelo calcula a atenção considerando tanto o conteúdo quanto a posição relativa de forma independente. Essa separação permite uma modelagem mais precisa de relações sintáticas e semânticas. Além disso, o DeBERTa utiliza um mecanismo de decodificação aprimorado (\textit{enhanced mask decoder}) durante o pré-treinamento, o que contribui para representações mais ricas \cite{He2021}.
 
-No contexto brasileiro, \citeonline{Abonizio2023} desenvolveram a \textbf{DeBERTinha}, uma versão compacta e adaptada do DeBERTaV3 (XSmall) para o português brasileiro. O modelo foi submetido a um processo de adaptação contínua (continual pre-training) utilizando grandes corpora em português, incluindo o brWaC e outros conjuntos de textos nacionais. Apesar de possuir apenas cerca de 70 milhões de parâmetros, a DeBERTinha demonstrou desempenho competitivo ou superior ao BERTimbau Large em várias tarefas de PLN para o português, com significativa vantagem em eficiência computacional.
+No contexto brasileiro, \citeonline{Abonizio2023} desenvolveram a \textbf{DeBERTinha}, uma versão compacta e adaptada do DeBERTaV3 (XSmall) para o português brasileiro. O modelo foi submetido a um processo de adaptação contínua (continual pre-training) utilizando grandes corpora em português, incluindo o brWaC e outros conjuntos de textos nacionais. Apesar de possuir apenas cerca de 70 milhões de parâmetros, a DeBERTinha demonstrou desempenho competitivo ou superior ao BERTimbau Large em várias tarefas de NLP para o português, com significativa vantagem em eficiência computacional.
 
 Outra iniciativa relevante é a família \textbf{Albertina PT-BR}, desenvolvida por \citeonline{Rodrigues2023}. Diferentemente da DeBERTinha, que se baseia no DeBERTa, a Albertina é construída sobre a arquitetura DeBERTaV3 e foi pré-treinada do zero em português, com diferentes tamanhos de modelo (Albertina 1.5B, 3B e 7B). Os autores enfatizaram a qualidade dos dados de pré-treinamento e técnicas avançadas de tokenização, resultando em modelos que alcançam estado da arte em diversas tarefas de entendimento de linguagem em português.
 
 Exemplo prático: na sentença “O banco ficou cheio depois da chuva”, o modelo precisa resolver a ambiguidade da palavra “banco” (instituição financeira × assento). Modelos como DeBERTinha e Albertina, por possuírem mecanismos de atenção mais sofisticados e terem sido treinados em corpora brasileiros ricos em contexto, tendem a resolver essa ambiguidade com maior precisão ao considerar melhor o contexto global da frase.
 
-Tanto a DeBERTinha quanto a Albertina representam avanços importantes para o ecossistema de PLN em português brasileiro, oferecendo alternativas mais eficientes e especializadas em relação aos modelos multilíngues ou ao BERTimbau. Essas iniciativas reduzem a dependência de modelos estrangeiros e contribuem para a soberania tecnológica no processamento de linguagem natural da nossa língua.
+Tanto a DeBERTinha quanto a Albertina representam avanços importantes para o ecossistema de NLP em português brasileiro, oferecendo alternativas mais eficientes e especializadas em relação aos modelos multilíngues ou ao BERTimbau. Essas iniciativas reduzem a dependência de modelos estrangeiros e contribuem para a soberania tecnológica no processamento de linguagem natural da nossa língua.
 
 No presente trabalho, tais modelos são considerados como alternativas ao BERTimbau para o classificador de intenção implícita, especialmente em cenários onde eficiência computacional e desempenho em português brasileiro são fatores críticos.
 
@@ -536,7 +538,7 @@ No presente trabalho, tais modelos são considerados como alternativas ao BERTim
 
 Na área de classificação textual, é prática comum utilizar modelos mais simples e interpretáveis como baselines para comparar o desempenho de abordagens baseadas em deep learning. Neste trabalho, foram selecionados três componentes clássicos: o TF-IDF para representação vetorial de texto, combinado com Support Vector Machines (SVM) e Regressão Logística como classificadores.
 
-O \textit{Term Frequency-Inverse Document Frequency} (TF-IDF) é uma das técnicas mais tradicionais e eficazes de representação vetorial de documentos \cite{Manning2008}. Ele atribui pesos às palavras considerando duas dimensões: a frequência do termo no documento (\textit{Term Frequency} — TF) e a raridade do termo em toda a coleção de documentos (\textit{Inverse Document Frequency} — IDF). A fórmula completa é dada por:
+A Frequência do Termo - Inverso da Frequência nos Documentos (do inglês \textit{Term Frequency-Inverse Document Frequency}, referenciado por TF-IDF) é uma das técnicas mais tradicionais e eficazes de representação vetorial de documentos \cite{Manning2008}. Ele atribui pesos às palavras considerando duas dimensões: a frequência do termo no documento (\textit{Term Frequency} — TF) e a raridade do termo em toda a coleção de documentos (\textit{Inverse Document Frequency} — IDF). A fórmula completa é dada por:
 
 \[
 \text{TF-IDF}(t,d) = \text{TF}(t,d) \times \log\left(\frac{N}{\text{DF}(t) + 1}\right)
@@ -544,7 +546,7 @@ O \textit{Term Frequency-Inverse Document Frequency} (TF-IDF) é uma das técnic
 
 onde \( t \) é o termo, \( d \) é o documento, \( N \) é o número total de documentos e \( \text{DF}(t) \) é o número de documentos que contêm o termo \( t \). Essa ponderação reduz o peso de termos muito comuns (como artigos e preposições) e aumenta o peso de termos mais discriminativos. No contexto deste trabalho, o TF-IDF será aplicado sobre as transcrições geradas pelo ASR para criar vetores esparsos de alta dimensionalidade.
 
-Como classificadores, foram escolhidos o Support Vector Machine (SVM) e a Regressão Logística. O SVM, proposto por Cortes e Vapnik \cite{Cortes1995}, busca encontrar o hiperplano que maximiza a margem de separação entre as classes. Em problemas não linearmente separáveis, utiliza o truque do kernel (\textit{kernel trick}) para mapear os dados para um espaço de maior dimensionalidade onde a separação linear se torna possível. No caso de classificação binária de intenção (dirigida × não dirigida), o SVM tenta maximizar a distância entre os vetores TF-IDF das duas classes.
+Como classificadores, foram escolhidos as Máquinas de Vetores de Suporte (SVM) e a Regressão Logística. O SVM, proposto por Cortes e Vapnik \cite{Cortes1995}, busca encontrar o hiperplano que maximiza a margem de separação entre as classes. Em problemas não linearmente separáveis, utiliza o truque do kernel (\textit{kernel trick}) para mapear os dados para um espaço de maior dimensionalidade onde a separação linear se torna possível. No caso de classificação binária de intenção (dirigida × não dirigida), o SVM tenta maximizar a distância entre os vetores TF-IDF das duas classes.
 
 A Regressão Logística, por sua vez, é um modelo estatístico que modela a probabilidade de uma classe binária por meio da função sigmoide:
 
@@ -554,7 +556,7 @@ P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)}}
 
 Apesar de ser um modelo linear, a Regressão Logística frequentemente apresenta bom desempenho em tarefas de classificação textual quando combinada com representações TF-IDF, especialmente em conjuntos de dados de tamanho moderado \cite{Manning2008}.
 
-Ambos os classificadores (SVM e Regressão Logística) são amplamente utilizados como baselines em pesquisas de PLN por serem eficientes computacionalmente, altamente interpretáveis e servirem como referência sólida para avaliar o ganho real obtido por modelos mais complexos, como os baseados em Transformers. Estudos demonstram que, embora modelos neurais profundos geralmente superem esses baselines em grandes conjuntos de dados, a diferença de desempenho pode ser menor em corpora de tamanho moderado ou quando o problema possui forte componente semântico \cite{Weld2022}.
+Ambos os classificadores (SVM e Regressão Logística) são amplamente utilizados como baselines em pesquisas de NLP por serem eficientes computacionalmente, altamente interpretáveis e servirem como referência sólida para avaliar o ganho real obtido por modelos mais complexos, como os baseados em Transformers. Estudos demonstram que, embora modelos neurais profundos geralmente superem esses baselines em grandes conjuntos de dados, a diferença de desempenho pode ser menor em corpora de tamanho moderado ou quando o problema possui forte componente semântico \cite{Weld2022}.
 
 No presente trabalho, os modelos TF-IDF combinados com SVM e Regressão Logística serão implementados como baselines para comparação com o classificador baseado no BERTimbau na tarefa de Detecção de Fala Direcionada ao Dispositivo (DDSD). Essa comparação permitirá avaliar o ganho real de performance obtido pela abordagem baseada em modelos pré-treinados em relação a métodos tradicionais de classificação textual.
 
@@ -599,7 +601,7 @@ F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \t
 
 No cenário de DDSD, o F1-Score é uma das métricas principais, pois reflete bem o trade-off entre ativações corretas e ativações indevidas.
 
-Uma métrica de grande relevância na literatura de detecção de fala direcionada é a \textbf{Equal Error Rate (EER)}. Ela corresponde ao ponto na curva ROC onde a taxa de falsos positivos (False Positive Rate) é igual à taxa de falsos negativos (False Negative Rate). Quanto menor o EER, melhor o desempenho do sistema. \citeonline{Wagner2024} e \citeonline{Krishna2023} utilizam o EER como métrica principal em seus trabalhos, por ser uma medida robusta e independente do threshold de decisão.
+Uma métrica de grande relevância na literatura de detecção de fala direcionada é a \textbf{Taxa de Erro Igual} (do inglês \textit{Equal Error Rate}, referida pela sigla EER). Ela corresponde ao ponto na curva ROC onde a taxa de falsos positivos (False Positive Rate) é igual à taxa de falsos negativos (False Negative Rate). Quanto menor o EER, melhor o desempenho do sistema. \citeonline{Wagner2024} e \citeonline{Krishna2023} utilizam o EER como métrica principal em seus trabalhos, por ser uma medida robusta e independente do threshold de decisão.
 
 Além dessas, será calculada a \textbf{Área sob a Curva ROC (ROC-AUC)}, que avalia a capacidade do modelo de distinguir entre as classes em diferentes thresholds. Quanto mais próxima de 1, melhor o poder discriminativo do classificador.
 
@@ -876,7 +878,7 @@ duplo e insubstituível. Primeiro, valida empiricamente que abordagens
 baseadas exclusivamente em texto extraído de ASR são suficientes para gerar
 sinal discriminativo relevante na tarefa de detecção de intenção implícita,
 fortalecendo a escolha metodológica deste trabalho de operar exclusivamente
-no nível textual. Segundo, motiva e fundamenta o quarto objetivo específico
+no nível textual. Segundo, motiva e fundamenta o terceiro objetivo específico
 deste TCC: a análise da correlação entre o WER do ASR e a degradação do
 desempenho do classificador textual no contexto do português brasileiro,
 explorando uma lacuna deixada em aberto pelos próprios autores.
@@ -1078,34 +1080,18 @@ cada escolha com base na literatura revisada no Capítulo~\ref{cap:revisao}.
 \section{Visão geral da solução proposta}
 \label{sec:visao_geral}
 
-A solução proposta consiste em um sistema de Detecção de Fala Direcionada
-ao Dispositivo (DDSD) para o português brasileiro, operando exclusivamente
-sobre o nível textual. O sistema recebe como entrada um segmento de fala
-capturado em ambiente controlado, processa esse sinal por meio de um
-módulo de Reconhecimento Automático de Fala (ASR) e classifica
-automaticamente o enunciado resultante como dirigido ao dispositivo ou
-como conversa incidental, por meio de um classificador textual baseado
-em modelos de linguagem pré-treinados \cite{Dighe2024, Wagner2024}.
+A solução proposta consiste em um sistema de Detecção de Fala Direcionada ao Dispositivo (do inglês \textit{Device-Directed Speech Detection}, referida pela sigla DDSD) para o português brasileiro, operando exclusivamente sobre o nível textual. O sistema recebe como entrada um segmento de fala capturado em ambiente controlado, processa esse sinal por meio de um módulo de \textit{Automatic Speech Recognition} (traduzido como Reconhecimento Automático de Fala, referenciado pela sigla ASR) e classifica automaticamente o enunciado resultante como dirigido ao dispositivo ou como conversa incidental, por meio de um classificador textual baseado em modelos de linguagem pré-treinados \cite{Dighe2024, Wagner2024}.
 
-A abordagem adotada é deliberadamente modular: o módulo ASR e o módulo
-de classificação são componentes independentes, com interfaces bem
-definidas entre si. Essa modularidade facilita a substituição de
-qualquer componente sem alterações no restante do sistema, permitindo
-a comparação entre diferentes modelos ASR e diferentes classificadores
-de forma controlada \cite{Wazlawick2020}.
+A abordagem adotada é deliberadamente modular: o módulo ASR e o módulo de classificação são componentes independentes, com interfaces bem definidas entre si. Essa modularidade facilita a substituição de qualquer componente sem alterações no restante do sistema, permitindo a comparação entre diferentes modelos ASR e diferentes classificadores de forma controlada \cite{Wazlawick2020}.
 
 % ---------------------------------------------------------------
 \subsection{Arquitetura do pipeline}
 \label{sec:pipeline}
 
-O \textit{pipeline} completo do sistema é composto por quatro etapas
-sequenciais, ilustradas na Figura~\ref{fig:pipeline}:
+O \textit{pipeline} completo do sistema é composto por quatro etapas sequenciais, ilustradas na Figura~\ref{fig:pipeline}:
 
 \begin{enumerate}
-    \item \textbf{Captura de áudio}: o sinal de fala é capturado em
-    ambiente controlado e segmentado em enunciados individuais por meio
-    de um módulo de Detecção de Atividade de Voz (VAD), que delimita
-    os trechos de fala relevantes \cite{Li2021};
+    \item \textbf{Captura de áudio}: o sinal de fala é capturado em ambiente controlado e segmentado em enunciados individuais por meio de um módulo de Detecção de Atividade de Voz (conhecida por VAD, do inglês \textit{Voice Activity Detection}), que delimita os trechos de fala relevantes \cite{Li2021};
 
     \item \textbf{Transcrição ASR}: o enunciado segmentado é processado
     pelo modelo Whisper \cite{Radford2023}, que gera as $N$ hipóteses
@@ -1246,8 +1232,8 @@ desempenho próximo ao modelo completo com ganho de velocidade de
 aproximadamente 6 vezes \cite{Jeffries2024, Bevilacqua2024}, tornando-o
 particularmente adequado para cenários com restrições de latência.
 A comparação entre as três variantes permitirá analisar a relação entre
-a Taxa de Erro de Palavras (WER) de cada modelo e o desempenho final
-do classificador de intenção, conforme previsto no quarto objetivo
+a WER (Taxa de Erro de Palavras, do inglês \textit{Word Error Rate}) de cada modelo e o desempenho final
+do classificador de intenção, conforme previsto no terceiro objetivo
 específico (Seção~\ref{sec:objetivos}).
 
 % ---------------------------------------------------------------
@@ -1321,7 +1307,7 @@ demonstrada por \citeonline{Souza2020} em múltiplos benchmarks; (ii)
 capacidade de \textit{fine-tuning} eficiente com quantidades moderadas
 de dados rotulados, característica crítica dado o tamanho limitado do
 corpus de DDSD em português brasileiro; e (iii) ampla adoção na
-literatura de PLN em português, facilitando a reprodutibilidade e a
+literatura de NLP (Processamento de Linguagem Natural, do inglês \textit{Natural Language Processing}) em português, facilitando a reprodutibilidade e a
 comparação com estudos futuros \cite{Souza2020, Weld2022}.
 
 O processo de \textit{fine-tuning} seguirá a metodologia padrão
@@ -1391,7 +1377,7 @@ A DeBERTinha é uma versão compacta do DeBERTaV3 adaptada para o
 português brasileiro por \citeonline{Abonizio2023}, com
 aproximadamente 70 milhões de parâmetros. Apesar de seu tamanho
 reduzido, demonstrou desempenho competitivo ou superior ao BERTimbau
-Large em diversas tarefas de PLN para o português, com vantagem
+Large em diversas tarefas de NLP para o português, com vantagem
 significativa em eficiência computacional. Sua avaliação neste trabalho
 é motivada pela possibilidade de que um modelo mais eficiente alcance
 desempenho comparável ao BERTimbau em DDSD, o que teria implicações
@@ -1412,8 +1398,7 @@ infraestrutura computacional adequada.
 
 Para permitir a quantificação objetiva do ganho de desempenho obtido
 pelos modelos baseados em Transformers, serão implementados dois
-\textit{baselines} clássicos: TF-IDF combinado com Support Vector
-Machine (SVM) e TF-IDF combinado com Regressão Logística
+\textit{baselines} clássicos: TF-IDF (Frequência do Termo - Inverso da Frequência nos Documentos, do inglês \textit{Term Frequency-Inverse Document Frequency}) combinada com SVM (Máquinas de Vetores de Suporte, do inglês \textit{Support Vector Machines}) ou combinada com Regressão Logística (LR, do inglês \textit{Logistic Regression})
 \cite{Manning2008}.
 
 Esses \textit{baselines} serão implementados com as seguintes
@@ -1505,7 +1490,7 @@ ambíguos.
 
 O corpus será construído a partir de duas fontes complementares e
 distintas por classe: dados públicos existentes para a classe
-\texttt{NDD} e dados sintetizados com auxílio de LLMs para as classes
+\texttt{NDD} e dados sintetizados com auxílio de \textit{Large Language Models} (traduzidos como Modelos de Linguagem de Grande Porte, referidos pela sigla LLMs) para as classes
 \texttt{DD} e \texttt{AMB}. Essa separação reflete a disponibilidade
 assimétrica de recursos: corpora de fala espontânea em português
 brasileiro são relativamente abundantes para conversas incidentais,
@@ -1551,7 +1536,7 @@ raramente ocorrem em contextos de conversação cotidiana não mediada
 por dispositivo. Para suprir essa lacuna em escala, este trabalho
 adotará uma abordagem de \textbf{geração sintética assistida por
 modelos de linguagem de grande escala} (LLMs), estratégia que tem
-ganho crescente respaldo na literatura de PLN para a criação de dados
+ganho crescente respaldo na literatura de NLP para a criação de dados
 de treinamento em domínios com poucos recursos
 \cite{Møller2024}.
 
@@ -1775,7 +1760,7 @@ português brasileiro.
 
 Todos os experimentos serão avaliados sobre o conjunto de teste com as
 métricas descritas na Seção~\ref{sec:metricas}: F1-score, acurácia,
-precisão, \textit{recall}, EER e ROC-AUC. Os resultados serão
+precisão, \textit{recall}, Taxa de Erro Igual (conhecida por EER, do inglês \textit{Equal Error Rate}) e ROC-AUC. Os resultados serão
 reportados com média e desvio padrão sobre 5 execuções com diferentes
 sementes aleatórias, garantindo a robustez estatística das conclusões
 \cite{Wazlawick2020}.
@@ -1785,7 +1770,7 @@ sementes aleatórias, garantindo a robustez estatística das conclusões
 \textit{versus} automática}
 \label{sec:upper_bound}
 
-O quarto objetivo específico deste trabalho prevê a análise sistemática
+O terceiro objetivo específico deste trabalho prevê a análise sistemática
 do impacto dos erros de transcrição ASR no desempenho do classificador
 de intenção \cite{Dighe2024}. Para isso, será conduzido um experimento
 específico denominado \textit{upper-bound}:
