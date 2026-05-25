@@ -178,75 +178,74 @@
 \chapter{Introdução}
 \label{cap:introducao}
 
-Nas últimas décadas, os assistentes virtuais baseados em voz tornaram-se componentes cada vez mais presentes no cotidiano, sendo incorporados em \textit{smartphones}, alto-falantes inteligentes, \textit{wearables} e sistemas de automação residencial \cite{Jurafsky2024}. Esses sistemas permitem que usuários interajam com dispositivos computacionais por meio de comandos de voz, facilitando a execução de tarefas como busca de informações, controle de dispositivos domésticos e gerenciamento de atividades. O mercado global de assistentes virtuais baseados em voz foi avaliado em US\$ 7,35 bilhões em 2024 e é projetado para alcançar US\$ 33,74 bilhões até 2030, com uma taxa de crescimento anual composta de 26,5\%, evidenciando a escala e a relevância dessa tecnologia \cite{NMSC2025}.
+Nas últimas décadas, os assistentes de voz tornaram-se componentes cada vez mais presentes no cotidiano, incorporados a \textit{smartphones}, alto-falantes inteligentes, \textit{wearables} e sistemas de automação residencial~\cite{Jurafsky2024}. Esses sistemas permitem que usuários interajam com dispositivos computacionais por meio de comandos de voz, facilitando a execução de tarefas como busca de informações, controle de dispositivos domésticos e gerenciamento de atividades. O mercado global de assistentes de voz foi avaliado em US\$ 7,35 bilhões em 2024 e projeta-se que alcance US\$ 33,74 bilhões até 2030, com taxa de crescimento anual composta de 26,5\%, o que evidencia a escala e a relevância dessa tecnologia, conforme ilustrado no gráfico de projeção da Figura~\ref{fig:market}~\cite{NMSC2025}.
 
-\begin{figure}[h]       
+\begin{figure}[htb]       
     \centering           
+    \caption{Projeção de crescimento do mercado global de assistentes virtuais de voz (2024--2030).}
     \includegraphics[width=1.0\textwidth]{market.png} 
-    \legend{Fonte: Next Move Strategy Consulting (2025).}
-    \label{fig:market} % Used for referencing in text
+    \fonte{Next Move Strategy Consulting (2025).}
+    \label{fig:market}
 \end{figure}
 
-Na maioria dos sistemas atuais, a interação com assistentes virtuais baseados em voz é iniciada por meio de palavras de ativação explícitas, conhecidas como \textit{wake-words} ou \textit{hotwords}, tais como ``Hey Siri'', ``Alexa'' ou ``Ok Google''. Essas expressões atuam como um mecanismo de gatilho que sinaliza ao sistema o desejo do usuário de iniciar uma interação. Do ponto de vista técnico, essa abordagem é eficaz, pois permite reduzir o processamento contínuo de áudio e minimizar ativações indevidas \cite{Garg2021}. No entanto, a dependência de \textit{wake-words} impõe limitações significativas à naturalidade da comunicação humano-computador, tornando a interação menos fluida e intuitiva quando comparada ao diálogo humano \cite{Nie2021}.
+Na maioria dos sistemas atuais, a interação com assistentes de voz é iniciada por meio de palavras de ativação explícitas, conhecidas como \textit{wake-words} ou \textit{hotwords}, tais como ``Hey Siri'', ``Alexa'' ou ``Ok Google''. Essas expressões atuam como um mecanismo de gatilho que sinaliza ao sistema o desejo do usuário de iniciar uma interação. Do ponto de vista técnico, essa abordagem é eficaz, pois permite reduzir o processamento contínuo de áudio e minimizar ativações indevidas \cite{Garg2021}. No entanto, a dependência de \textit{wake-words} impõe limitações significativas à naturalidade da comunicação humano-computador, tornando a interação menos fluida e intuitiva quando comparada ao diálogo humano \cite{Nie2021}.
 
-Em interações humanas cotidianas, comandos e solicitações são frequentemente expressos de forma implícita, inseridos naturalmente no fluxo da conversação, sem a necessidade de uma palavra específica para iniciar a comunicação \cite{Weld2022}. Em contraste, os sistemas baseados em \textit{wake-words} são vulneráveis ao fenômeno de ativações falsas por palavras foneticamente semelhantes, conhecido como \textit{FakeWake} \cite{Chen2021}. Esse problema compromete a qualidade da experiência, reforçando as limitações da abordagem atual para uma interação verdadeiramente natural e intuitiva.
+Em interações humanas cotidianas, comandos e solicitações são frequentemente expressos de forma implícita, inseridos naturalmente no fluxo da conversação, sem a necessidade de uma palavra específica para iniciar a comunicação \cite{Weld2022}. Em contraste, os sistemas baseados em \textit{wake-words} são vulneráveis ao fenômeno de ativações falsas por palavras foneticamente semelhantes, conhecido como \textit{FakeWake} \cite{Chen2021}. Esse problema compromete a qualidade da experiência do usuário, evidenciando as limitações da abordagem atual para a viabilização de uma interação verdadeiramente natural e intuitiva.
 
 Nesse cenário, surge a área de pesquisa denominada \textit{Device-Directed Speech Detection} (traduzido como Detecção de Fala Direcionada ao Dispositivo, referenciado pela sigla DDSD), que visa determinar automaticamente se uma fala é direcionada a um assistente virtual, mesmo na ausência de uma palavra de ativação explícita, ou se faz parte de uma conversa entre humanos \cite{Mallidi2018, Wagner2024}. Essa abordagem possibilita interações mais naturais e fluidas, reduzindo a necessidade de gatilhos verbais explícitos (\textit{wake-words}) e representando um avanço significativo rumo a uma comunicação humano-computador mais intuitiva e semelhante ao diálogo cotidiano.
 
-Este trabalho investiga a viabilidade da DDSD em português brasileiro por meio de uma abordagem baseada exclusivamente no nível textual. O sistema proposto opera com transcrições de fala obtidas via Reconhecimento Automático de Fala (do inglês \textit{Automatic Speech Recognition}, referido pela sigla ASR), e aplica técnicas de Processamento de Linguagem Natural (conhecido por NLP, do inglês \textit{Natural Language Processing}) e ML (Aprendizado de Máquina, do inglês \textit{Machine Learning}), para classificar automaticamente se uma fala é direcionada ao dispositivo ou faz parte de uma conversa incidental entre humanos. O foco central está na etapa de classificação de intenção; o ASR é tratado como módulo de pré-processamento responsável pela geração das transcrições textuais utilizadas como entrada do classificador.
+Este trabalho investiga a viabilidade da DDSD em português brasileiro por meio de uma abordagem baseada exclusivamente no nível textual. O sistema proposto opera com transcrições de fala obtidas via Reconhecimento Automático de Fala (do inglês \textit{Automatic Speech Recognition}, referido pela sigla ASR), e aplica técnicas de Processamento de Linguagem Natural (do inglês \textit{Natural Language Processing}, referido pela sigla NLP) e Aprendizado de Máquina (do inglês \textit{Machine Learning}, referido pela sigla ML) para classificar automaticamente se uma fala é direcionada ao dispositivo ou faz parte de uma conversa incidental entre humanos. O foco deste trabalho reside na etapa de classificação de intenção, tratando o ASR como um módulo de pré-processamento encarregado de gerar as transcrições textuais que servirão de entrada para o classificador.
 
 % ---------------------------------------------------------------
 
 \section{Cenário motivador}
 \label{sec:cenario}
 
-Para ilustrar a dificuldade e a relevância do problema, considere o seguinte cenário: em uma sala de estar, duas pessoas conversam enquanto um assistente virtual permanece ligado. Umas delas diz, em tom casual: ``nossa, está escuro aqui''. O sistema não deve necessariamente acionar a iluminação, pois a frase é provavelmente um comentário, não um comando. Momentos depois, a mesma pessoa olha para o dispositivo e diz: ``acende a luz da sala''. Nesse caso, mesmo sem \textit{wake-word}, o sistema deveria identificar a fala como claramente direcionada ao dispositivo.
-
-\begin{figure}[h]       
+\begin{figure}[htb]       
     \centering           
-    \includegraphics[width=0.75\textwidth]{cenario.png} 
     \caption{Cenário ilustrativo de Detecção de Fala Direcionada ao Dispositivo (DDSD).}
-    \legend{Fonte: Elaborado pelo autor (2026).}
-    \label{fig:cenario} % Used for referencing in text
+    \includegraphics[width=0.75\textwidth]{cenario.png} 
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:cenario}
 \end{figure}
 
-Esse cenário ilustra três classes de enunciados que o sistema precisa distinguir: (i) comandos diretos implícitos dirigidos ao dispositivo, como ``acende a luz''; (ii) comentários incidentais que não são comandos, como ``nossa, está escuro aqui''; e (iii) casos ambíguos dependentes de contexto, como ``apaga a luz, por favor'', que pode ser dirigido a uma pessoa ou ao assistente. O problema de DDSD consiste precisamente em classificar automaticamente esses enunciados, sem depender de \textit{wake-words} explícitas \cite{Mallidi2018, Wagner2024}.
+Para ilustrar a complexidade e a relevância do problema, considere o cenário prático apresentado na Figura~\ref{fig:cenario}: em uma sala de estar, duas pessoas conversam informalmente na presença de um assistente de voz ativo. Uma delas comenta, em tom casual: ``nossa, está escuro aqui''. O sistema não deve acionar a iluminação, visto que o enunciado constitui apenas um comentário incidental e não uma instrução direcionada. Momentos depois, a mesma pessoa olha para o dispositivo e diz: ``acende a luz da sala''. Nesse cenário, mesmo na ausência de uma \textit{wake-word}, o assistente deve ser capaz de reconhecer a fala como claramente direcionada a ele.
 
-Esse tipo de sistema tem aplicações relevantes em diferentes contextos: casas inteligentes, veículos com assistentes de voz, dispositivos para pessoas idosas, \textit{smartphones} e \textit{wearables}. Em todos esses cenários, a necessidade de invocar repetidamente o dispositivo com uma \textit{wake-word} cria uma barreira artificial entre o usuário e o sistema, reduzindo a naturalidade e a fluidez da interação \cite{Nie2021}.
+Esse cenário ilustra as três classes de enunciados que o sistema precisa distinguir: (i) comandos implícitos direcionados ao dispositivo (DD, do inglês \textit{Device-Directed}), como ``acende a luz''; (ii) comentários incidentais e conversas paralelas, classificados como não direcionados ao dispositivo (NDD, do inglês \textit{Non-Device-Directed}), como ``nossa, está escuro aqui''; e (iii) enunciados ambíguos (AMB), cujo direcionamento depende estritamente do contexto extraverbal, como ``apaga a luz, por favor'', que pode ser direcionado tanto a um interlocutor humano quanto ao assistente. O problema de DDSD consiste precisamente em classificar automaticamente esses enunciados em tempo real, sem depender de \textit{wake-words} explícitas \cite{Mallidi2018, Wagner2024}.
 
 % ---------------------------------------------------------------
 \section{Contexto}
 \label{sec:contexto}
 
-O desenvolvimento dos assistentes virtuais baseados em voz acompanhou os avanços significativos nas áreas de ASR e NLP. Modelos como o Whisper \cite{Radford2023} representam um marco no campo do ASR, possibilitando transcrições de áudio com alta precisão e robustez em múltiplos idiomas. No entanto, sua arquitetura padrão opera em lotes (\textit{batch}), o que dificulta seu uso direto em interações fluidas que exigem processamento contínuo em tempo real (\textit{streaming}). Para contornar essa limitação, trabalhos como o Whispy \cite{Bevilacqua2024} propuseram adaptações arquiteturais para viabilizar o uso do Whisper nesses cenários dinâmicos. Paralelamente, surgiram modelos projetados para transcrição ao vivo com menor custo computacional, como o Moonshine \cite{Jeffries2024}, apresentado como uma alternativa otimizada para tarefas de comando de voz e assistentes embarcados.
+O desenvolvimento de assistentes de voz tem sido impulsionado por avanços significativos nas áreas de ASR e NLP. Modelos de última geração, como o Whisper \cite{Radford2023}, representam marcos importantes ao viabilizar a transcrição de áudio com elevada precisão e robustez em múltiplos idiomas. Em 2024, a OpenAI disponibilizou o Whisper Large V3 Turbo, uma versão otimizada que reduz o número de camadas do decodificador de 32 para 4, mantendo desempenho próximo ao modelo completo com ganho de velocidade de aproximadamente 6 vezes \cite{Jeffries2024, Bevilacqua2024}. Essa versão é adotada neste trabalho como módulo principal de ASR, por oferecer o melhor equilíbrio entre precisão e eficiência para o português brasileiro. Na literatura, outras alternativas relevantes incluem o Whispy \cite{Bevilacqua2024}, que adapta o Whisper para cenários de fluxo contínuo (\textit{streaming}), e modelos compactos como o Moonshine \cite{Jeffries2024}, voltados para execução em dispositivos embarcados.
 
-No caso específico do português brasileiro, modelos baseados na arquitetura Wav2Vec 2.0 \cite{Grosman2021}, treinados com dados locais, têm apresentado resultados expressivos, especialmente em cenários com menor disponibilidade de dados rotulados, oferecendo alta precisão e melhor adaptação às particularidades linguísticas do idioma.
+Especificamente para o português brasileiro, modelos baseados na arquitetura Wav2Vec 2.0 \cite{Grosman2021}, ajustados com dados nacionais, também têm demonstrado resultados relevantes na literatura, representando alternativas para lidar com as variações fonéticas e prosódicas do idioma.
 
-Simultaneamente, no campo do NLP, a arquitetura Transformer, proposta por \citeonline{Vaswani2017}, revolucionou o processamento de linguagem natural, servindo de base para os modernos LLMs (Modelos de Linguagem de Grande Porte, do inglês \textit{Large Language Models}). No cenário nacional, modelos como o BERTimbau \cite{Souza2020} consolidaram o uso de arquiteturas Transformer adaptadas ao português brasileiro em tarefas de compreensão textual, enquanto abordagens mais recentes, como Albertina \cite{Rodrigues2023} e DeBERTinha \cite{Abonizio2023}, buscam maior eficiência e desempenho em tarefas de representação linguística. Paralelamente, LLMs generativos como o Sabiá \cite{Pires2023} expandiram essas capacidades para aplicações conversacionais e de geração de texto, estabelecendo avanços relevantes no processamento de linguagem natural em português.
+Simultaneamente, os desenvolvimentos em NLP foram revolucionados pela arquitetura Transformer \cite{Vaswani2017}, que serve de base para os modernos LLMs (Modelos de Linguagem de Grande Porte, do inglês \textit{Large Language Models}). No âmbito nacional, o BERTimbau \cite{Souza2020} consolidou o uso de Transformers especializados em português brasileiro para tarefas de compreensão textual, sendo adotado neste trabalho como classificador principal de intenção. Mais recentemente, modelos como Albertina \cite{Rodrigues2023} e DeBERTinha \cite{Abonizio2023} introduziram abordagens altamente eficientes em termos de parâmetros e representação semântica, sendo considerados como alternativas a serem exploradas caso o cronograma permita. Ademais, LLMs generativos como o Sabiá \cite{Pires2023} ampliaram as competências de geração textual para o idioma, sendo empregado neste trabalho para a geração sintética de enunciados direcionados ao dispositivo na construção do corpus de experimentos.
 
-É importante delimitar o papel de cada família de modelos neste trabalho: os modelos ASR (Whisper, Moonshine, Wav2Vec 2.0) são utilizados exclusivamente como módulos de transcrição de fala para texto, gerando a entrada textual do classificador. Os modelos de linguagem pré-treinados (BERTimbau, Albertina, DeBERTinha) são os candidatos ao papel de classificador de intenção, componente central da proposta. Modelos como o Sabiá são mencionados apenas como parte do referencial teórico sobre o estado da arte em LLMs para o português. A tabela \ref{tab:tecnologias} sintetiza esse mapeamento.
+Torna-se necessário delimitar o papel específico de cada família de modelos no escopo deste projeto: o Whisper Large V3 Turbo atua como módulo principal de ASR para a conversão de fala em texto, enquanto Moonshine e Wav2Vec 2.0 são mencionados como referências da literatura. Os modelos de linguagem pré-treinados, com destaque para o BERTimbau como classificador principal e DeBERTinha e Albertina como alternativas, constituem o núcleo da decisão de DDSD textual. Por fim, o Sabiá é empregado como ferramenta de geração sintética de dados para a construção do corpus. A Tabela~\ref{tab:tecnologias} sintetiza essa distribuição de responsabilidades.
 
 \begin{table}[H]
-\caption{Mapeamento de tecnologias citadas no trabalho}
+\caption{Mapeamento de tecnologias e seus papéis no trabalho}
 \label{tab:tecnologias}
 \begin{tabular}{lll}
 \toprule
 \textbf{Tecnologia} & \textbf{Papel no trabalho} & \textbf{Será implementada?} \\
 \midrule
-Whisper             & ASR - geração de transcrição     & Sim (principal) \\
-Moonshine           & ASR - alternativa leve           & Opcional \\
-Wav2Vec 2.0 PT-BR   & ASR - referência em português    & Opcional \\
-BERTimbau           & Classificador textual (principal) & Sim \\
-DeBERTinha          & Classificador textual (alternativo) & Opcional \\
-Albertina           & Classificador textual (alternativo) & Opcional \\
-TF-IDF + SVM/LR     & Baseline clássico                & Sim \\
-Sabiá               & Referencial teórico — LLM PT-BR  & Não \\
+Whisper Large V3 Turbo & ASR - geração de transcrição     & Sim (principal) \\
+Moonshine              & ASR - referência bibliográfica   & Não \\
+Wav2Vec 2.0 PT-BR      & ASR - referência bibliográfica   & Não \\
+BERTimbau              & Classificador textual (principal) & Sim \\
+DeBERTinha             & Classificador textual (alternativo) & Opcional \\
+Albertina              & Classificador textual (alternativo) & Opcional \\
+TF-IDF + SVM/LR        & Baseline clássico                & Sim \\
+Sabiá                  & Geração sintética de dados DD    & Sim \\
 \bottomrule
 \end{tabular}
-\fonte{Elaborado pelo autor.}
+\fonte{Elaborado pelo autor (2026).}
 \end{table}
 
-Pesquisas recentes na área de DDSD têm explorado abordagens semelhantes à proposta neste trabalho, utilizando transcrições de áudio aliadas a técnicas de NLP para superar as limitações de abordagens exclusivamente acústicas. Trabalhos como os de \citeonline{Wagner2024} e \citeonline{Dighe2024} demonstraram que a aplicação de modelos de linguagem sobre as hipóteses textuais geradas por sistemas ASR é uma estratégia promissora para detectar a intenção de fala direcionada ao dispositivo. Expandindo esse conceito, \citeonline{Rudovic2024} evidenciaram como essa análise baseada em texto permite compreender intenções em interações contínuas e fluxos de diálogo, corroborando a premissa de que a análise textual do áudio transcrito é um caminho viável e promissor.
+Pesquisas recentes em DDSD têm investigado abordagens focadas no nível do texto para mitigar as limitações de sistemas puramente acústicos. Trabalhos recentes \cite{Wagner2024, Dighe2024} demonstraram que aplicar classificadores baseados em Transformers sobre as hipóteses de transcrição geradas por sistemas de ASR configura-se como uma estratégia robusta para inferir o direcionamento do enunciado. Expandindo essa premissa, \citeonline{Rudovic2024} evidenciaram como a semântica textual permite decodificar intenções implícitas em fluxos de diálogo contínuo, corroborando a viabilidade técnica da modelagem puramente linguística do sinal de áudio transcrito.
 
 % ---------------------------------------------------------------
 \section{Justificativa}
