@@ -281,18 +281,18 @@ A validação dessa hipótese será realizada por meio de experimentos controlad
 
 \subsection{Objetivo principal}
 
-O objetivo principal deste trabalho é avaliar a viabilidade e o desempenho de modelos de linguagem pré-treinados para o português brasileiro na tarefa de Detecção de Fala Direcionada ao Dispositivo (DDSD), operando exclusivamente sobre transcrições textuais geradas por sistemas de Reconhecimento Automático de Fala (ASR), e verificar se essa abordagem alcança desempenho superior a \textit{baselines} textuais tradicionais (TF-IDF + SVM/Regressão Logística) avaliados sobre o mesmo corpus, em termos de F1-score, acurácia e EER.
+O objetivo principal desta pesquisa consiste em avaliar a viabilidade técnica e o desempenho de modelos de linguagem pré-treinados para o português brasileiro aplicados à DDSD, operando sob transcrições puramente textuais geradas por sistemas de ASR, de modo a verificar se essa abordagem supera estatisticamente os \textit{baselines} lineares compostos por TF-IDF associado a SVM ou LR, nas métricas de F1-score, acurácia e EER.
 
 \subsection{Objetivos específicos}
 
 Para que o objetivo principal seja alcançado, foram definidos os seguintes objetivos específicos:
 
 \begin{enumerate}
-    \item Construir um corpus de sentenças em português brasileiro anotadas quanto à direção da fala (dirigida ao dispositivo \textit{vs.} conversa incidental), a partir de adaptações de \textit{datasets} existentes (CORAA ASR \cite{CORAA2023}, NURC-SP \cite{NURCSP2025}, TAGARELA \cite{Tagarela2026}) e de sentenças sintetizadas em ambiente controlado, com critérios explícitos de anotação, protocolo de concordância entre anotadores e divisão balanceada entre treino, validação e teste;
+    \item Construir e validar um corpus balanceado de sentenças em português brasileiro, anotadas com base no direcionamento de fala (DD e NDD) sob critérios explícitos de anotação e rigorosos de exclusão, a partir de adaptações de corpora públicos (CORAA ASR \cite{CORAA2023}, NURC-SP \cite{NURCSP2025} e TAGARELA \cite{Tagarela2026}) e enunciados sintetizados controlados gerados por LLMs.
 
-    \item Implementar e avaliar um classificador binário baseado no BERTimbau \cite{Souza2020} como modelo principal, com BERTimbau ajustado por \textit{fine-tuning} para a tarefa de DDSD, e comparar seu desempenho com um \textit{baseline} clássico baseado em TF-IDF combinado com SVM ou Regressão Logística \cite{Manning2008}, utilizando como entrada as transcrições geradas pelo Whisper \cite{Radford2023};
+    \item Implementar, ajustar (fine-tuning) e avaliar o modelo BERTimbau \cite{Souza2020} na tarefa de classificação binária de DDSD, confrontando empiricamente seus resultados com um \textit{baseline} composto pela representação vetorial TF-IDF aliada a SVM ou LR, utilizando hipóteses de transcrição geradas por ASR (1-best e/ou n-best).
 
-    \item Analisar o impacto de erros de transcrição do sistema ASR no desempenho do classificador de intenção, comparando os resultados obtidos com transcrições manuais e com transcrições automáticas, e medindo a correlação entre a Taxa de Erro de Palavras (conhecida por WER, do inglês \textit{Word Error Rate}) do ASR e a degradação do desempenho do classificador \cite{Dighe2024}.
+    \item Analisar o impacto gerado por erros e ruídos de transcrição automática no classificador semântico de intenções, mapeando o desempenho comparativo entre transcrições manuais e automáticas e estabelecendo a correlação estatística entre a \textit{Word Error Rate} (traduzida como Taxa de Erro de Palavras, referenciada pela sigla WER) das saídas do ASR e o decaimento de desempenho do classificador textual \cite{Dighe2024}.
 \end{enumerate}
 
 % ---------------------------------------------------------------
