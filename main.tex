@@ -347,6 +347,8 @@ O processo de seleção ocorreu em duas etapas, conforme ilustrado na Figura~\re
 
 O referencial teórico apresenta os conceitos que sustentam este trabalho, estabelecendo um contraponto entre o modelo predominante de interação com assistentes virtuais baseado em comandos explícitos (\textit{wake-words}) e a busca por interações mais naturais por meio da DDSD. A organização dos tópicos segue o fluxo típico de processamento de um assistente virtual baseado em voz, desde a captura e identificação da fala destinada ao sistema, passando pela transcrição do áudio, até a compreensão semântica da intenção do usuário.
 
+% ---------------------------------------------------------------
+
 \subsection{Assistentes virtuais e interação por voz}
 
 A evolução da Interação Humano-Computador (conhecida por HCI, do inglês \textit{Human-Computer Interaction}) tem avançado das interfaces puramente gráficas e táteis em direção a interfaces conversacionais e ubíquas. Nesse contexto, os assistentes virtuais baseados em voz consolidaram-se como agentes computacionais capazes de interpretar linguagem natural, processar requisições e executar tarefas automatizadas, mediando a relação entre o usuário e ecossistemas de serviços digitais.
@@ -357,27 +359,15 @@ Na maioria dos sistemas comerciais, essas etapas são precedidas por um módulo 
 
 A eficácia da interação, no entanto, depende da capacidade do sistema de identificar quando sua intervenção é solicitada. Em ambientes cotidianos, onde a fala humana é simultaneamente direcionada a outras pessoas e a dispositivos, surge o desafio de distinguir intenções implícitas, tema central deste trabalho.
 
+% ---------------------------------------------------------------
+
 \subsection{Detecção de Atividade de Voz (VAD)}
 
-A Detecção de Atividade de Voz (VAD) é a primeira etapa de processamento de sinal após a captura do áudio pelo microfone. Sua função principal é identificar os segmentos do sinal que contêm fala humana, separando-os de trechos de silêncio, ruído de fundo e sons não-verbais \cite{Li2021}.
+A Detecção de Atividade de Voz (VAD) é a primeira etapa de processamento após a captura do áudio, sendo responsável por identificar os segmentos do sinal que contêm fala humana e separá-los de trechos de silêncio, ruído de fundo e sons não verbais \cite{Li2021}. Ao descartar trechos sem fala, o VAD reduz o volume de dados processado pelos módulos subsequentes (ASR e NLU), diminuindo o consumo computacional e a latência, aspectos críticos em dispositivos embarcados e de borda.
 
-Essa etapa é fundamental para a eficiência do sistema como um todo. Ao descartar trechos sem fala, o VAD reduz significativamente o volume de dados que precisa ser processado pelos módulos subsequentes (ASR e NLU), diminuindo o consumo computacional, a latência e o gasto energético, aspectos especialmente críticos em dispositivos embarcados e de borda.
+Em ambientes controlados, a tarefa é relativamente simples, baseada em limiares de energia ou características acústicas tradicionais. Em cenários reais, a robustez torna-se um desafio, e modelos baseados em aprendizado profundo têm alcançado resultados superiores \cite{Li2021}. A qualidade da detecção impacta diretamente as etapas posteriores do \textit{pipeline}. Um VAD muito permissivo gera ativações desnecessárias, enquanto um VAD restritivo demais pode descartar falas relevantes. Dessa forma, o equilíbrio entre sensibilidade e especificidade constitui um aspecto importante para o desempenho de assistentes de voz. Embora o VAD esteja fora do escopo de implementação deste trabalho, seu papel como pré-requisito funcional do \textit{pipeline} justifica sua menção no referencial.
 
-Em ambientes controlados, a tarefa de VAD é relativamente simples, baseada principalmente em limiares de energia ou características acústicas tradicionais. Entretanto, em cenários reais (cozinhas, salas com televisão ligada, conversas paralelas), a robustez do VAD torna-se um desafio considerável. Modelos baseados em aprendizado profundo têm apresentado resultados superiores nesses contextos.
-
-Li et al. \cite{Li2021} propuseram um modelo de VAD baseado em Redes Neurais Convolucionais com Codificador Auditivo Mascarado (Masked Auditory Encoder CNN --- M-AECNN), inspirado em características da audição humana. Seus experimentos demonstraram ganhos significativos de precisão em ambientes ruidosos quando comparado a métodos tradicionais baseados em energia ou estatísticas de sinal.
-
-A qualidade da detecção realizada pelo VAD impacta diretamente todas as etapas posteriores do pipeline. Um VAD excessivamente permissivo gera muitas ativações desnecessárias, enquanto um VAD muito restritivo pode descartar falas relevantes do usuário. Portanto, o equilíbrio entre sensibilidade e especificidade é um ponto crítico no projeto de assistentes virtuais baseados em voz.
-
-% \subsection{Reconhecimento automático de fala (ASR)}
-
-% O ASR consiste na conversão de sinais acústicos da fala humana em texto escrito. Os avanços recentes nessa área foram fortemente impulsionados pela adoção de arquiteturas baseadas em Transformer \cite{Vaswani2017}, que substituíram os modelos baseados em Redes Neurais Recorrentes, em inglês \textit{Recurrent Neural Networks} (RNNs), dominantes em períodos anteriores.
-
-% Um marco importante foi o modelo Whisper, proposto por \citeonline{Radford2023}. Treinado com aproximadamente 680 mil horas de dados de áudio multilíngue sob supervisão fraca, o Whisper demonstrou alta robustez e generalização, alcançando desempenho competitivo em tarefas de transcrição, tradução de fala e identificação de idioma, inclusive para o português brasileiro.
-
-% Paralelamente, tem crescido o interesse em soluções de ASR otimizadas para execução em dispositivos de borda (\textit{edge computing}). \citeonline{Xu2023} propuseram otimizações para modelos Conformer visando dispositivos com recursos extremamente limitados. Complementarmente, \citeonline{Jeffries2024} apresentaram o Moonshine, uma arquitetura de codificador-decodificador projetada especificamente para transcrição em tempo real e comandos de voz com baixa latência. Da mesma forma, \citeonline{Bevilacqua2024} desenvolveram o Whispy, um sistema que adapta modelos Whisper para operação em fluxos de áudio contínuos em tempo real.
-
---------------------------------------
+% ---------------------------------------------------------------
 
 \subsection{Reconhecimento Automático de Fala (ASR)}
 
