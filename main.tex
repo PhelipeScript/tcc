@@ -148,6 +148,7 @@
   \item[DDSD] \textit{Device-Directed Speech Detection} (Detecção de Fala Direcionada ao Dispositivo)
   \item[EER] \textit{Equal Error Rate} (Taxa de Erro Igual)
   \item[HCI] \textit{Human-Computer Interaction} (Interação Humano-Computador)
+  \item[HMM] \textit{Hidden Markov Model} (Modelo Oculto de Markov)
   \item[LLM] \textit{Large Language Model} (Modelo de Linguagem de Grande Porte)
   \item[LR] \textit{Logistic Regression} (Regressão Logística)
   \item[ML] \textit{Machine Learning} (Aprendizado de Máquina)
@@ -371,17 +372,13 @@ Em ambientes controlados, a tarefa é relativamente simples, baseada em limiares
 
 \subsection{Reconhecimento Automático de Fala (ASR)}
 
-O Reconhecimento Automático de Fala (\textit{Automatic Speech Recognition} --- ASR) consiste no processo de conversão de um sinal de áudio contendo fala humana em texto legível por máquina \cite{Jurafsky2024}. No contexto de assistentes virtuais, o ASR atua como um componente crítico, funcionando como ponte entre o processamento do sinal acústico (após o VAD) e os módulos de compreensão semântica (NLU).
+O Reconhecimento Automático de Fala (ASR) consiste na conversão de um sinal de áudio contendo fala humana em texto legível por máquina \cite{Jurafsky2024}. No contexto de assistentes virtuais, o ASR atua como ponte entre o processamento do sinal acústico e os módulos de compreensão semântica.
 
-Historicamente, os sistemas de ASR baseavam-se em abordagens híbridas que combinavam Modelos de Markov Ocultos (\textit{Hidden Markov Models} --- HMM) com Modelos de Linguagem estatísticos \cite{Jurafsky2024}. Essas abordagens dominaram a área por décadas, mas apresentavam limitações importantes na modelagem de dependências temporais longas e no aproveitamento de grandes volumes de dados. A partir da década de 2010, o avanço do aprendizado profundo trouxe significativa evolução, inicialmente com redes recorrentes (RNN/LSTM) e convolucionais, e posteriormente com a arquitetura Transformer \cite{Vaswani2017}, que permitiu saltos expressivos de performance.
+Historicamente, os sistemas de ASR baseavam-se em abordagens híbridas que combinavam Modelos de Markov Ocultos (HMM, do inglês \textit{Hidden Markov Models}) com modelos de linguagem estatísticos \cite{Jurafsky2024}. Essas abordagens dominaram a área por décadas, mas apresentavam limitações na modelagem de dependências temporais longas e no aproveitamento de grandes volumes de dados. A partir da década de 2010, o aprendizado profundo trouxe avanços significativos, inicialmente com redes recorrentes (RNN, LSTM) e convolucionais, e posteriormente com a arquitetura Transformer \cite{Vaswani2017}, que permitiu saltos expressivos de desempenho. Modelos contemporâneos, como o Whisper \cite{Radford2023}, atingiram robustez elevada em múltiplos idiomas ao serem treinados com supervisão fraca em corpora massivos. Os detalhes técnicos do Whisper e de outros modelos de ASR empregados neste trabalho são apresentados na Seção~\ref{sec:fundamentos}.
 
-Um dos principais marcos da área foi o modelo Whisper, proposto por Radford et al. \cite{Radford2023}. Treinado com aproximadamente 680 mil horas de dados multilíngues sob supervisão fraca, o Whisper destacou-se pela alta robustez a ruídos, variações de sotaque e diferentes condições acústicas. Em 2024, a OpenAI lançou o Whisper Large V3 e sua versão otimizada **Whisper Large V3 Turbo**, que reduz drasticamente o número de camadas do decodificador (de 32 para 4), mantendo desempenho próximo ao modelo completo com ganho substancial de velocidade (cerca de 6x mais rápido) \cite{Jeffries2024, Bevilacqua2024}. Essas versões tornaram o Whisper ainda mais viável para aplicações em tempo real e dispositivos com recursos limitados.
+A qualidade dos sistemas de ASR é comumente mensurada pela métrica \textit{Word Error Rate} (traduzida como Taxa de Erro de Palavras, referenciada pela sigla WER), que calcula a proporção de palavras erradas, substituídas, deletadas ou inseridas em relação a uma transcrição de referência. Em aplicações de assistentes virtuais, erros de transcrição propagam-se diretamente para as etapas de classificação de intenção, o que torna o WER um indicador relevante para o desempenho final do sistema.
 
-Paralelamente, têm surgido modelos otimizados para cenários específicos de baixa latência e execução em borda, como Moonshine \cite{Jeffries2024} e Whispy \cite{Bevilacqua2024}, projetados para processamento contínuo (\textit{streaming}). No contexto do português brasileiro, modelos baseados em arquiteturas auto-supervisionadas, como o Wav2Vec 2.0 \cite{Grosman2021}, também apresentam resultados promissores.
-
-A qualidade dos sistemas de ASR é comumente mensurada pela métrica \textit{Word Error Rate} (traduzido como Taxa de Erro de Palavras, conhecido pela sigla WER), que calcula a taxa de palavras erradas, substituídas, deletadas ou inseridas em relação a uma transcrição de referência. Em aplicações de assistentes virtuais, a redução do WER é fundamental, pois erros de transcrição propagam-se diretamente para as etapas de classificação de intenção e extração de entidades.
-
-Neste trabalho, o módulo de ASR será utilizado primordialmente como etapa de pré-processamento. As transcrições geradas (principalmente pelo Whisper) servirão de entrada para o classificador textual de intenção implícita, tornando a qualidade e a robustez do ASR um fator relevante para o desempenho final do sistema proposto.
+% ---------------------------------------------------------------
 
 \subsection{Wake-words: mecanismo, vantagens e limitações}
 
