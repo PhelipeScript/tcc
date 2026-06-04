@@ -603,79 +603,52 @@ Para este trabalho, a contribuição de \citeonline{Mallidi2018} é fundamental 
 
 % ---------------------------------------------------------------
 
-\subsection{\textit{A Multimodal Approach to Device-Directed Speech Detection
-with Large Language Models}}
+\subsection{Wagner et al. (2024)}
 
-O trabalho de \citeonline{Wagner2024}, publicado no IEEE International
-Conference on Acoustics, Speech and Signal Processing (ICASSP) em 2024,
-representa o estado da arte em Detecção de Fala Direcionada ao Dispositivo
-até o momento da elaboração deste TCC. O estudo propõe uma arquitetura
-multimodal que integra três fontes de informação complementares para
-maximizar o desempenho na tarefa de DDSD: características acústicas do
-sinal de áudio, hipóteses intermediárias geradas pelo decodificador do
-sistema de ASR e representações semânticas produzidas por \textit{Large
-Language Models} (LLMs).
+O trabalho de \citeonline{Wagner2024}, intitulado \textit{A Multimodal Approach to Device-Directed Speech Detection with Large Language Models}, publicado no IEEE \textit{International Conference on Acoustics, Speech and Signal Processing} (ICASSP) em 2024, constitui um exemplo representativo das abordagens multimodais recentes para DDSD. O estudo propõe uma arquitetura que integra características acústicas do sinal de áudio, hipóteses intermediárias geradas pelo decodificador ASR e representações semânticas produzidas por LLMs.
 
-A motivação central de \citeonline{Wagner2024} parte de uma crítica às
-abordagens unimodais então predominantes na literatura: sistemas baseados
-exclusivamente em áudio capturam bem informações prosódicas e paralinguísticas,
-mas carecem de compreensão semântica; sistemas baseados exclusivamente em
-texto capturam a semântica, mas ignoram pistas acústicas como entonação e
-ritmo, que são altamente informativas para distinguir comandos de
-comentários. A fusão de múltiplas modalidades permitiria, portanto,
+A motivação parte de uma crítica às abordagens unimodais: sistemas baseados
+em áudio capturam informações prosódicas, mas carecem de compreensão
+semântica; sistemas baseados em texto capturam a semântica, mas ignoram
+pistas acústicas como entonação e ritmo. A fusão de modalidades permite
 explorar o sinal discriminativo presente em cada domínio de forma
 complementar \cite{Wagner2024}.
 
-Arquiteturalmente, o sistema proposto adota uma estratégia de fusão tardia
-(\textit{late fusion}): cada modalidade é processada por um \textit{encoder}
-especializado de forma independente, e as representações resultantes são
-combinadas em um módulo de fusão para a classificação final. O componente
-acústico utiliza \textit{features} extraídas diretamente do sinal de áudio,
-processadas por uma rede neural especializada. O componente textual principal
-utiliza representações geradas por um LLM a partir da transcrição 1-best
-produzida pelo ASR. Um terceiro componente, de particular interesse técnico,
-explora as hipóteses intermediárias geradas pelo processo de
-\textit{beam search} do decodificador ASR --- não apenas a transcrição
-mais provável, mas o conjunto de hipóteses alternativas com seus respectivos
-escores de confiança \cite{Wagner2024}. Essa informação, denominada
-\textit{n-best list}, carrega a incerteza do modelo ASR de forma explícita
-e mostrou-se altamente informativa para o classificador de intenção.
+O sistema adota fusão tardia (\textit{late fusion}), cada modalidade é
+processada por um \textit{encoder} independente, e as representações são
+combinadas para a classificação final. O componente textual utiliza
+representações geradas por um LLM a partir da transcrição 1-best do ASR.
+Um terceiro componente explora as hipóteses intermediárias do
+\textit{beam search} do decodificador, a \textit{n-best list} com
+respectivos escores de confiança, informação que carrega a incerteza
+do modelo ASR e mostrou-se altamente informativa \cite{Wagner2024}.
 
-Os resultados reportados por \citeonline{Wagner2024} são expressivos: o
-modelo multimodal alcançou uma redução de até 61\% na \textit{Equal Error
-Rate} (EER) em comparação com as melhores abordagens unimodais, demonstrando
-o valor da integração de modalidades para a tarefa de DDSD. Os experimentos
-foram conduzidos em um corpus interno de grande escala, contendo interações
-reais em ambientes domésticos em inglês. Os autores demonstraram ainda que
-o componente textual, isoladamente, já contribui de forma significativa para
-o desempenho do sistema --- evidência direta de que informações semânticas
-extraídas de transcrições de ASR constituem um sinal discriminativo relevante
-para a tarefa \cite{Wagner2024}.
+Os resultados são expressivos, o modelo multimodal alcançou redução de
+até 61\% na EER em comparação com as melhores abordagens unimodais,
+demonstrando o valor da integração de modalidades. Os experimentos foram
+conduzidos em corpus interno de grande escala em inglês. Os autores
+demonstraram ainda que o componente textual, isoladamente, já contribui
+de forma significativa, evidência direta de que informações semânticas
+de transcrições ASR constituem sinal discriminativo relevante
+\cite{Wagner2024}.
 
-Embora os resultados sejam notáveis, o trabalho apresenta limitações
-práticas importantes. A arquitetura multimodal proposta exige alto poder
-computacional, tanto no treinamento quanto na inferência, além de
-sincronização precisa entre os componentes de cada modalidade. O uso de
-LLMs de grande escala como componente central impõe restrições adicionais
-de latência e custo operacional, dificultando a implantação em dispositivos
-com recursos computacionais limitados \cite{Xu2024}. Além disso, a
-abordagem foi desenvolvida e avaliada exclusivamente em inglês, com um
-corpus proprietário não disponibilizado publicamente, o que impede sua
-adaptação direta para o português brasileiro e limita a comparação
-objetiva com estudos futuros \cite{Wagner2024}.
+Embora os resultados sejam notáveis, a arquitetura multimodal exige alto
+poder computacional e sincronização precisa entre componentes. O uso de
+LLMs de grande escala impõe restrições de latência e custo operacional,
+dificultando a implantação em dispositivos com recursos limitados
+\cite{Xu2024}. A abordagem foi desenvolvida e avaliada exclusivamente em
+inglês, com corpus proprietário \cite{Wagner2024}.
 
-Para o presente trabalho, o estudo de \citeonline{Wagner2024} cumpre dois
-papéis fundamentais. Primeiro, fornece a evidência empírica mais robusta
-disponível na literatura de que representações textuais extraídas de
-hipóteses ASR contêm sinal discriminativo suficiente para a tarefa de
-DDSD --- evidência que fundamenta diretamente a hipótese de pesquisa deste
-TCC. Segundo, estabelece o referencial de EER com o qual abordagens futuras,
-incluindo a proposta neste trabalho, poderão ser comparadas em caráter
-aproximado, respeitando as diferenças de idioma, corpus e modalidade.
-A abordagem puramente textual proposta neste TCC pode ser entendida, nesse
-sentido, como a investigação isolada do componente que \citeonline{Wagner2024}
-identificaram como altamente discriminativo, aplicada ao português brasileiro
-com um modelo de linguagem especificamente adaptado ao idioma.
+Para este trabalho, o estudo cumpre dois papéis. Primeiro, fornece a
+evidência empírica mais robusta disponível de que representações textuais
+de hipóteses ASR contêm sinal discriminativo suficiente para a DDSD, evidência que fundamenta diretamente a hipótese de pesquisa deste TCC.
+Segundo, estabelece o referencial de EER com o qual abordagens futuras
+poderão ser comparadas em caráter aproximado, respeitando diferenças de
+idioma, corpus e modalidade. A abordagem puramente textual proposta neste
+TCC pode ser entendida como a investigação isolada do componente que
+\citeonline{Wagner2024} identificaram como altamente discriminativo,
+aplicada ao português brasileiro com um modelo de linguagem adaptado ao
+idioma.
 
 % ---------------------------------------------------------------
 
