@@ -652,80 +652,21 @@ idioma.
 
 % ---------------------------------------------------------------
 
-\subsection{\textit{Leveraging Large Language Models for Exploiting ASR Uncertainty}}
+\subsection{Dighe et al. (2024)}
 
-O trabalho de \citeonline{Dighe2024}, também publicado no IEEE International
-Conference on Acoustics, Speech and Signal Processing (ICASSP) em 2024, é
-o estudo metodologicamente mais próximo da proposta deste TCC. O artigo
-investiga o uso de \textit{Large Language Models} para explorar a incerteza
-inerente às saídas dos sistemas de ASR em tarefas de \textit{Spoken Language
-Understanding} (SLU), com ênfase na detecção de intenção --- o que o torna
-diretamente relevante para o problema de DDSD investigado neste trabalho.
+O trabalho de \citeonline{Dighe2024}, entitulado \textit{Leveraging Large Language Models for Exploiting ASR Uncertainty} também publicado no IEEE ICASSP em 2024, é o estudo metodologicamente mais próximo desta proposta. O artigo investiga o uso de LLMs para explorar a incerteza inerente às saídas de ASR em tarefas de \textit{Spoken Language Understanding} (SLU), com ênfase na detecção de intenção.
 
-A premissa central de \citeonline{Dighe2024} é que pipelines tradicionais
-de SLU tratam a saída do ASR como determinística: utilizam apenas a
-transcrição mais provável (1-best) como entrada para os módulos semânticos
-subsequentes. Essa abordagem descarta informações potencialmente valiosas
-geradas durante o processo de decodificação, em particular as hipóteses
-alternativas produzidas pelo \textit{beam search}, que carregam a incerteza
-do reconhecedor de forma explícita. Os autores argumentam que LLMs são
-especialmente adequados para explorar essa incerteza, uma vez que possuem
-a capacidade de raciocinar sobre múltiplas hipóteses textuais e selecionar
-a interpretação semanticamente mais plausível em função do contexto
-\cite{Dighe2024}.
+A premissa central é que \textit{pipelines} tradicionais de SLU tratam a saída do ASR como determinística, utilizando apenas a transcrição mais provável (1-best) como entrada para os módulos semânticos. Essa abordagem descarta informações valiosas geradas pelo \textit{beam search}, particularmente as hipóteses alternativas que carregam a incerteza do reconhecedor de forma explícita. Os autores argumentam que LLMs são adequados para explorar essa incerteza, por possuírem a capacidade de raciocinar sobre múltiplas hipóteses textuais e selecionar a interpretação semanticamente mais plausível \cite{Dighe2024}.
 
-A metodologia proposta consiste em fornecer ao LLM não apenas a transcrição
-1-best, mas um conjunto de hipóteses ASR (\textit{n-best list}) ordenadas
-por probabilidade, ou alternativamente representações latentes do
-decodificador. O LLM processa essas hipóteses e produz uma representação
-semântica que leva em conta a incerteza do ASR ao classificar a intenção
-do enunciado. Os experimentos demonstram que essa abordagem gera ganhos
-consistentes em métricas de entendimento de intenção quando comparada a
-pipelines que utilizam apenas a transcrição 1-best, confirmando que a
-informação de incerteza do ASR é semanticamente relevante para a tarefa
-de classificação de intenção \cite{Dighe2024}.
+A metodologia consiste em fornecer ao LLM não apenas a transcrição 1-best, mas um conjunto de hipóteses ASR (\textit{n-best list}) ordenadas por probabilidade. O LLM processa essas hipóteses e produz representação semântica que leva em conta a incerteza do ASR ao classificar a intenção. Os experimentos demonstram ganhos consistentes em métricas de entendimento de intenção quando comparados a \textit{pipelines} que utilizam apenas a transcrição 1-best \cite{Dighe2024}.
 
-Uma contribuição técnica relevante do trabalho é demonstrar que modelos de
-linguagem pré-treinados são capazes de atuar como um segundo estágio de
-refinamento semântico após o ASR, compensando parcialmente erros de
-transcrição ao considerar a plausibilidade das hipóteses alternativas. Essa
-capacidade é particularmente importante em cenários com ruído ambiental ou
-sotaque regional, onde a transcrição 1-best pode conter erros que
-comprometem a classificação de intenção \cite{Dighe2024}. Os autores
-sugerem ainda, como direção para trabalhos futuros, a análise sistemática
-da correlação entre a Taxa de Erro de Palavras (WER) do ASR e a degradação
-do desempenho do classificador de intenção --- investigação que este TCC
-incorpora explicitamente como um de seus objetivos específicos.
+Uma contribuição técnica relevante é demonstrar que modelos de linguagem pré-treinados atuam como segundo estágio de refinamento semântico após o ASR, compensando parcialmente erros de transcrição ao considerar a plausibilidade das hipóteses alternativas. Os autores sugerem, como direção futura, a análise sistemática da correlação entre o WER do ASR e a degradação do classificador de intenção, investigação que este TCC incorpora explicitamente como objetivo específico.
 
-Do ponto de vista técnico, o estudo valida a viabilidade de arquiteturas em
-cascata (ASR $\rightarrow$ LLM) para tarefas de compreensão de intenção em
-fala, nas quais a saída textual do reconhecedor é processada por modelos de
-linguagem sem necessidade de acesso ao sinal acústico bruto. Embora os
-experimentos de \citeonline{Dighe2024} tenham sido conduzidos em inglês, a
-metodologia proposta é, em princípio, transferível para outros idiomas
-mediante o uso de modelos de linguagem pré-treinados no idioma-alvo ---
-o que constitui precisamente a contribuição central deste TCC, ao aplicar
-uma arquitetura análoga utilizando o BERTimbau \cite{Souza2020} como
-classificador para o português brasileiro.
+O estudo valida a viabilidade de arquiteturas em cascata (ASR~$\rightarrow$~LLM) para compreensão de intenção em fala. Embora os experimentos tenham sido conduzidos em inglês, a metodologia é transferível para outros idiomas mediante modelos pré-treinados no idioma-alvo, que é precisamente a contribuição central deste TCC, ao aplicar uma arquitetura análoga com o BERTimbau \cite{Souza2020} para o português brasileiro.
 
-Vale observar, contudo, que \citeonline{Dighe2024} utilizam LLMs de grande
-escala como componente central, o que implica custo computacional elevado
-e dependência de infraestrutura de nuvem para inferência em tempo real.
-Este trabalho se diferencia ao propor o uso do BERTimbau --- um modelo de
-menor escala, especificamente pré-treinado para o português brasileiro e
-viável para execução local --- como classificador de intenção, tornando a
-abordagem mais acessível e adequada a cenários com recursos computacionais
-restritos \cite{Souza2020, Xu2024}.
+Cabe observar que \citeonline{Dighe2024} utilizam LLMs de grande escala, o que implica custo computacional elevado e dependência de infraestrutura de nuvem. Este trabalho se diferencia ao propor o BERTimbau, modelo de menor escala, especificamente pré-treinado para o português brasileiro e viável para execução local, como classificador, tornando a abordagem mais acessível a cenários com recursos restritos \cite{Souza2020, Xu2024}.
 
-Para o presente TCC, o trabalho de \citeonline{Dighe2024} cumpre um papel
-duplo e insubstituível. Primeiro, valida empiricamente que abordagens
-baseadas exclusivamente em texto extraído de ASR são suficientes para gerar
-sinal discriminativo relevante na tarefa de detecção de intenção implícita,
-fortalecendo a escolha metodológica deste trabalho de operar exclusivamente
-no nível textual. Segundo, motiva e fundamenta o terceiro objetivo específico
-deste TCC: a análise da correlação entre o WER do ASR e a degradação do
-desempenho do classificador textual no contexto do português brasileiro,
-explorando uma lacuna deixada em aberto pelos próprios autores.
+O trabalho de \citeonline{Dighe2024} cumpre papel duplo e fundamental para esta pesquisa. Primeiro, valida empiricamente que abordagens baseadas em texto extraído de ASR geram sinal discriminativo relevante para a detecção de intenção implícita, fortalecendo a escolha metodológica de operar no nível textual. Segundo, motiva e fundamenta o terceiro objetivo específico deste TCC, a análise da correlação entre WER e degradação do classificador no contexto do português brasileiro.
 
 % ---------------------------------------------------------------
 
