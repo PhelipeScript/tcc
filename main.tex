@@ -509,29 +509,27 @@ Outra iniciativa relevante é a família \textbf{Albertina PT-BR}, desenvolvida 
 
 \subsection{Modelos baseline: TF-IDF, SVM e Regressão Logística}
 
-Na área de classificação textual, é prática comum utilizar modelos mais simples e interpretáveis como baselines para comparar o desempenho de abordagens baseadas em deep learning. Neste trabalho, foram selecionados três componentes clássicos: o TF-IDF para representação vetorial de texto, combinado com Support Vector Machines (SVM) e Regressão Logística como classificadores.
+Na classificação textual, é prática comum utilizar modelos mais simples e interpretáveis como \textit{baselines} para comparação com abordagens de \textit{deep learning}. Foram selecionados três componentes clássicos: TF-IDF para representação vetorial, combinado com SVM e Regressão Logística como classificadores.
 
-A Frequência do Termo - Inverso da Frequência nos Documentos (do inglês \textit{Term Frequency-Inverse Document Frequency}, referenciado por TF-IDF) é uma das técnicas mais tradicionais e eficazes de representação vetorial de documentos \cite{Manning2008}. Ele atribui pesos às palavras considerando duas dimensões: a frequência do termo no documento (\textit{Term Frequency} — TF) e a raridade do termo em toda a coleção de documentos (\textit{Inverse Document Frequency} — IDF). A fórmula completa é dada por:
+A Frequência do Termo-Inverso da Frequência nos Documentos (TF-IDF, do inglês \textit{Term Frequency-Inverse Document Frequency}) é uma das técnicas mais tradicionais de representação vetorial de texto \cite{Manning2008}. Atribui pesos às palavras considerando a frequência do termo no documento (TF) e a raridade do termo na coleção (IDF):
 
 \[
 \text{TF-IDF}(t,d) = \text{TF}(t,d) \times \log\left(\frac{N}{\text{DF}(t) + 1}\right)
 \]
 
-onde \( t \) é o termo, \( d \) é o documento, \( N \) é o número total de documentos e \( \text{DF}(t) \) é o número de documentos que contêm o termo \( t \). Essa ponderação reduz o peso de termos muito comuns (como artigos e preposições) e aumenta o peso de termos mais discriminativos. No contexto deste trabalho, o TF-IDF será aplicado sobre as transcrições geradas pelo ASR para criar vetores esparsos de alta dimensionalidade.
+onde \( t \) é o termo, \( d \) é o documento, \( N \) é o número total de documentos e \( \text{DF}(t) \) é o número de documentos que contêm \( t \). Essa ponderação reduz o peso de termos comuns e aumenta o peso de termos discriminativos.
 
-Como classificadores, foram escolhidos as Máquinas de Vetores de Suporte (SVM) e a Regressão Logística. O SVM, proposto por Cortes e Vapnik \cite{Cortes1995}, busca encontrar o hiperplano que maximiza a margem de separação entre as classes. Em problemas não linearmente separáveis, utiliza o truque do kernel (\textit{kernel trick}) para mapear os dados para um espaço de maior dimensionalidade onde a separação linear se torna possível. No caso de classificação binária de intenção (dirigida × não dirigida), o SVM tenta maximizar a distância entre os vetores TF-IDF das duas classes.
+As Máquinas de Vetores de Suporte (SVM), propostas por \citeonline{Cortes1995}, buscam o hiperplano que maximiza a margem de separação entre as classes. Em problemas não linearmente separáveis, o truque do kernel (\textit{kernel trick}) mapeia os dados para um espaço de maior dimensionalidade onde a separação linear se torna possível. Na classificação binária de DDSD (DD~$\times$~NDD), o SVM busca maximizar a distância entre os vetores TF-IDF das duas classes.
 
-A Regressão Logística, por sua vez, é um modelo estatístico que modela a probabilidade de uma classe binária por meio da função sigmoide:
+A Regressão Logística modela a probabilidade de uma classe binária por meio da função sigmoide:
 
 \[
 P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)}}
 \]
 
-Apesar de ser um modelo linear, a Regressão Logística frequentemente apresenta bom desempenho em tarefas de classificação textual quando combinada com representações TF-IDF, especialmente em conjuntos de dados de tamanho moderado \cite{Manning2008}.
+Apesar de ser um modelo linear, a Regressão Logística frequentemente obtém bom desempenho em classificação textual quando combinada com TF-IDF, especialmente em conjuntos de dados de tamanho moderado \cite{Manning2008}.
 
-Ambos os classificadores (SVM e Regressão Logística) são amplamente utilizados como baselines em pesquisas de NLP por serem eficientes computacionalmente, altamente interpretáveis e servirem como referência sólida para avaliar o ganho real obtido por modelos mais complexos, como os baseados em Transformers. Estudos demonstram que, embora modelos neurais profundos geralmente superem esses baselines em grandes conjuntos de dados, a diferença de desempenho pode ser menor em corpora de tamanho moderado ou quando o problema possui forte componente semântico \cite{Weld2022}.
-
-No presente trabalho, os modelos TF-IDF combinados com SVM e Regressão Logística serão implementados como baselines para comparação com o classificador baseado no BERTimbau na tarefa de Detecção de Fala Direcionada ao Dispositivo (DDSD). Essa comparação permitirá avaliar o ganho real de performance obtido pela abordagem baseada em modelos pré-treinados em relação a métodos tradicionais de classificação textual.
+Ambos os classificadores são amplamente utilizados como \textit{baselines} em pesquisas de NLP por serem eficientes, interpretáveis e constituírem referência sólida para aferir o ganho real obtido por modelos mais complexos. Embora modelos neurais profundos geralmente os superem em grandes conjuntos de dados, a diferença pode ser reduzida em corpora de tamanho moderado \cite{Weld2022}. A comparação entre os \textit{baselines} TF-IDF+SVM e TF-IDF+LR com o classificador BERTimbau permitirá quantificar objetivamente o ganho da abordagem baseada em Transformer na tarefa de DDSD.
 
 \subsection{ASR com Whisper}
 
