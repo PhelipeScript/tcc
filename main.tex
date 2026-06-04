@@ -531,27 +531,21 @@ Apesar de ser um modelo linear, a Regressão Logística frequentemente obtém bo
 
 Ambos os classificadores são amplamente utilizados como \textit{baselines} em pesquisas de NLP por serem eficientes, interpretáveis e constituírem referência sólida para aferir o ganho real obtido por modelos mais complexos. Embora modelos neurais profundos geralmente os superem em grandes conjuntos de dados, a diferença pode ser reduzida em corpora de tamanho moderado \cite{Weld2022}. A comparação entre os \textit{baselines} TF-IDF+SVM e TF-IDF+LR com o classificador BERTimbau permitirá quantificar objetivamente o ganho da abordagem baseada em Transformer na tarefa de DDSD.
 
+% ---------------------------------------------------------------
+
 \subsection{ASR com Whisper}
 
-O Whisper é um modelo de Reconhecimento Automático de Fala de grande escala desenvolvido pela OpenAI e apresentado por \citeonline{Radford2023}. Diferentemente da maioria dos sistemas ASR tradicionais, que são treinados com supervisão forte em conjuntos de dados relativamente pequenos e limpos, o Whisper foi treinado com uma abordagem de \textbf{supervisão fraca} em um corpus massivo de aproximadamente 680 mil horas de áudio multilíngue, coletado da web. Essa estratégia permitiu que o modelo aprendesse diretamente de dados brutos e ruidosos, resultando em alta robustez e generalização.
+O Whisper é um modelo de ASR de grande escala desenvolvido pela OpenAI \cite{Radford2023}. Diferentemente da maioria dos sistemas tradicionais, treinados com supervisão forte em conjuntos relativamente pequenos e limpos, o Whisper foi treinado com supervisão fraca em um corpus de aproximadamente 680 mil horas de áudio multilíngue coletado da web. Essa estratégia conferiu ao modelo alta robustez e capacidade de generalização.
 
-Arquiteturalmente, o Whisper segue o padrão Encoder-Decoder baseado em Transformer. O encoder processa o espectrograma log-Mel do áudio de entrada, gerando representações contextuais ricas. O decoder, por sua vez, é um Transformer autoregressivo que gera o texto transcrito token a token, podendo também realizar tarefas adicionais como tradução de fala, identificação de idioma e detecção de voz. Uma característica importante é o uso de prompts especiais no decoder, que permitem ao modelo alternar entre diferentes tarefas (transcrição, tradução, legendas, etc.) sem necessidade de modificar a arquitetura \cite{Radford2023}.
+Arquiteturalmente, o Whisper segue o padrão Encoder-Decoder baseado em Transformer. O \textit{encoder} processa o espectrograma log-Mel do áudio de entrada, gerando representações contextuais. O \textit{decoder}, autoregressivo, gera o texto transcrito token a token, podendo também realizar tarefas como tradução de fala e identificação de idioma por meio de \textit{prompts} especiais \cite{Radford2023}.
 
-Em 2024, a OpenAI lançou versões aprimoradas, com destaque para o \textbf{Whisper Large V3} e o \textbf{Whisper Large V3 Turbo}. A versão Turbo reduz significativamente o número de camadas do decoder (de 32 para apenas 4 camadas), mantendo a maior parte do desempenho do modelo completo, com ganho de velocidade de inferência de aproximadamente 6 vezes, tornando-o mais viável para aplicações em tempo real e dispositivos com recursos limitados \cite{Jeffries2024, Bevilacqua2024}.
+Em 2024, a OpenAI lançou versões aprimoradas, com destaque para o Whisper Large V3 Turbo. Essa versão reduz o número de camadas do \textit{decoder} de 32 para 4, mantendo desempenho próximo ao modelo completo com ganho de velocidade de inferência de cerca de 6 vezes, tornando-o mais viável para aplicações em tempo real \cite{Jeffries2024, Bevilacqua2024}.
 
-Entre as principais vantagens do Whisper destacam-se:
-\begin{itemize}
-    \item Excelente desempenho em português brasileiro, mesmo em fala espontânea e com diferentes sotaques regionais;
-    \item Alta robustez a ruídos ambientais, música de fundo e sobreposição de vozes;
-    \item Capacidade nativa de identificar automaticamente o idioma falado;
-    \item Suporte a transcrição com timestamps e detecção de múltiplos falantes (em versões mais recentes).
-\end{itemize}
+Entre as vantagens do Whisper para este trabalho destacam-se o bom desempenho em português brasileiro, a robustez a ruídos ambientais e a capacidade nativa de identificação de idioma. As transcrições geradas servirão de entrada para o classificador textual de DDSD. Experimentos no TCC2 incluirão a comparação entre diferentes tamanhos de modelo (Medium, Large V3 e Turbo) e a análise da relação entre o WER do ASR e o desempenho do classificador.
 
-Como exemplo prático, ao processar a frase “Vou ligar o ar-condicionado porque está muito quente aqui”, o Whisper consegue transcrever corretamente mesmo com ruído de fundo ou sotaque regional, preservando contrações típicas do português brasileiro (“tá” em vez de “está”), o que facilita o trabalho posterior do classificador de intenção.
+Embora o Whisper represente o estado da arte em ASR multilíngue, erros de transcrição podem ocorrer, especialmente em ambientes ruidosos ou com vocabulário incomum. A avaliação do impacto desses erros sobre a detecção de intenção implícita constitui um dos objetivos específicos deste trabalho.
 
-No escopo deste trabalho, o Whisper será utilizado exclusivamente como módulo de pré-processamento. As transcrições geradas por ele servirão de entrada para o classificador textual de intenção implícita. Essa escolha se justifica pela robustez do modelo em português e pela disponibilidade de versões otimizadas para diferentes cenários de latência e precisão. Experimentos no TCC2 incluirão a comparação entre diferentes tamanhos de modelo (Medium, Large V3 e Turbo) e a análise da relação entre a taxa de erro de palavras (Word Error Rate — WER) do ASR e o desempenho final do classificador de DDSD.
-
-Embora o Whisper represente o estado da arte atual em ASR multilíngue, erros de transcrição ainda podem ocorrer, especialmente em ambientes muito ruidosos ou com vocabulário técnico. Por isso, a avaliação do impacto desses erros sobre a tarefa de detecção de intenção implícita constitui um dos objetivos específicos deste trabalho.
+% ---------------------------------------------------------------
 
 \subsection{Métricas de avaliação}
 \label{sec:metricas}
