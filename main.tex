@@ -673,13 +673,7 @@ O trabalho de \citeonline{Dighe2024} cumpre papel duplo e fundamental para esta 
 \subsection{Síntese comparativa}
 \label{sec:sintese_comparativa}
 
-A análise individual dos três trabalhos relacionados permite, em conjunto,
-delinear com precisão o estado da arte em DDSD e identificar as lacunas
-que este TCC busca preencher. Para facilitar essa análise, as
-Tabelas~\ref{tab:comparacao_trabalhos} e~\ref{tab:diferencial_tcc}
-sintetizam, respectivamente, as características técnicas dos trabalhos
-relacionados entre si e o diferencial introduzido pela proposta deste
-trabalho.
+A análise dos três trabalhos relacionados permite delinear o estado da arte em DDSD e identificar as lacunas que este TCC busca preencher. As Tabelas~\ref{tab:comparacao_trabalhos} e~\ref{tab:diferencial_tcc} sintetizam, respectivamente, as características técnicas dos trabalhos e o diferencial introduzido por esta proposta.
 
 \begin{table}[htb]
     \centering
@@ -698,7 +692,7 @@ trabalho.
             & Texto + ASR \\
         \midrule
         Modelo principal
-            & RNN \textit{Feed-Forward}
+            & DNN \textit{Feed-Forward}
             & LLM + fusão tardia
             & LLM (\textit{n-best}) \\
         \midrule
@@ -728,30 +722,12 @@ trabalho.
             & Apenas inglês \\
         \bottomrule
     \end{tabular}
-    \legend{Fonte: Elaborado pelo autor (2026).}
+    \fonte{Elaborado pelo autor (2026).}
 \end{table}
 
 \vspace{0.4cm}
 
-A Tabela~\ref{tab:comparacao_trabalhos} revela que, apesar das diferenças
-de abordagem e complexidade entre os três estudos, há um padrão comum a
-todos eles: foram desenvolvidos exclusivamente para o inglês, com corpora
-proprietários de grande escala não disponibilizados publicamente, e nenhum
-deles adota \textit{baselines} clássicos como referência de comparação. A
-ausência de \textit{baselines} tradicionais é uma limitação metodológica
-relevante, pois impede a quantificação do ganho real obtido pelos modelos
-neurais propostos em relação a métodos mais simples e interpretáveis
-\cite{Manning2008, Weld2022}.
-
-Do ponto de vista da evolução das abordagens, observa-se uma trajetória
-clara ao longo do período coberto pelos três estudos: de métodos puramente
-acústicos \cite{Mallidi2018}, passando por arquiteturas multimodais de alta
-complexidade \cite{Wagner2024}, até soluções em cascata que centralizam o
-processamento no componente textual do ASR \cite{Dighe2024}. Essa trajetória
-indica que a semântica textual tem ganhado protagonismo crescente na tarefa
-de DDSD, o que fundamenta a escolha metodológica deste trabalho de adotar
-uma abordagem exclusivamente textual, apoiada em modelos de linguagem
-pré-treinados para o português brasileiro.
+A Tabela~\ref{tab:comparacao_trabalhos} revela um padrão comum aos três estudos, foram desenvolvidos exclusivamente para o inglês, com corpora proprietários não disponibilizados publicamente, e nenhum adota \textit{baselines} clássicos como referência. A ausência de \textit{baselines} tradicionais é uma limitação metodológica, pois impede a quantificação do ganho real dos modelos neurais em relação a métodos mais simples e interpretáveis \cite{Manning2008, Weld2022}.
 
 \begin{table}[htb]
     \centering
@@ -788,62 +764,17 @@ pré-treinados para o português brasileiro.
 
 \vspace{0.4cm}
 
-A Tabela~\ref{tab:diferencial_tcc} posiciona este TCC como uma contribuição
-original em pelo menos quatro dimensões distintas, detalhadas a seguir.
+A Tabela~\ref{tab:diferencial_tcc} posiciona este TCC como contribuição original em quatro dimensões.
 
-O primeiro e mais imediato diferencial é o \textbf{idioma}. Nenhum dos
-trabalhos relacionados aborda o português brasileiro, que permanece
-sub-representado na literatura de DDSD apesar de ser um dos idiomas mais
-falados do mundo \cite{CORAA2023}. O português brasileiro apresenta
-características morfossintáticas específicas --- como o uso abundante de
-pronomes clíticos, contrações e variação dialetal regional --- que podem
-influenciar diretamente o desempenho de classificadores de intenção
-treinados ou avaliados nesse idioma. A ausência de estudos de DDSD em
-português não é meramente uma lacuna acadêmica, mas uma barreira prática
-para o desenvolvimento de assistentes de voz mais naturais e acessíveis
-para a população brasileira.
+O primeiro diferencial é o idioma. Nenhum dos trabalhos aborda o português brasileiro, que permanece sub-representado na literatura de DDSD apesar de ser um dos idiomas mais falados do mundo \cite{CORAA2023}. O português brasileiro apresenta características morfossintáticas específicas, como pronomes clíticos, contrações e variação dialetal, que podem influenciar diretamente o desempenho de classificadores de intenção. A ausência de estudos de DDSD em português constitui barreira prática para o desenvolvimento de assistentes de voz mais naturais para a população brasileira.
 
-O segundo diferencial planejado é a \textbf{construção e disponibilização pública de um corpus
-textual em português brasileiro} especificamente para a
-tarefa de DDSD. Os três trabalhos relacionados utilizam corpora internos e
-proprietários, o que impede a reprodutibilidade e dificulta comparações
-metodológicas entre estudos \cite{Wazlawick2020}. O corpus a ser produzido neste
-trabalho, com volume estimado em aproximadamente 105.000 amostras textuais, combinará transcrições
-extraídas de corpora públicos de fala espontânea \cite{CORAA2023, NURCSP2025,
-Tagarela2026} com enunciados sintéticos gerados por LLMs \cite{Møller2024},
-e será documentado com protocolo de validação explícito, critérios de divisão
-estratificada entre treino, validação e teste, e disponibilizado publicamente, contribuindo para a infraestrutura de recursos linguísticos
-para DDSD em português brasileiro.
+O segundo diferencial planejado é a construção e disponibilização pública de um corpus textual para DDSD em português brasileiro. Os três trabalhos relacionados utilizam corpora internos e proprietários, o que impede a reprodutibilidade \cite{Wazlawick2020}. O corpus a ser produzido, com volume estimado em aproximadamente 105.000 amostras textuais, combinará transcrições de corpora públicos de fala espontânea \cite{CORAA2023, NURCSP2025, Tagarela2026} com enunciados sintéticos gerados por LLMs \cite{Møller2024}, sendo documentado com protocolo de validação explícito e divisão estratificada.
 
-O terceiro diferencial é a inclusão de \textbf{\textit{baselines} clássicos}
---- TF-IDF combinado com SVM e Regressão Logística \cite{Manning2008} ---
-como referência de comparação explícita. Essa escolha, ausente nos três
-trabalhos relacionados, permite quantificar objetivamente o ganho de
-desempenho obtido pela abordagem baseada em BERTimbau em relação a métodos
-tradicionais amplamente conhecidos, tornando os resultados mais
-interpretáveis e a análise mais rigorosa do ponto de vista científico
-\cite{Weld2022}.
+O terceiro diferencial é a inclusão de \textit{baselines} clássicos, TF-IDF combinado com SVM e Regressão Logística \cite{Manning2008}, como referência de comparação. Essa escolha, ausente nos três trabalhos relacionados, permite quantificar objetivamente o ganho obtido pelo BERTimbau, tornando os resultados mais interpretáveis e a análise mais rigorosa \cite{Weld2022}.
 
-O quarto diferencial é a \textbf{análise sistemática do impacto dos erros
-de transcrição (WER) sobre o desempenho do classificador de intenção}.
-Embora \citeonline{Dighe2024} tratem parcialmente dessa questão ao explorar
-hipóteses alternativas do ASR, nenhum dos trabalhos relacionados propõe
-uma avaliação direta e quantitativa da correlação entre WER e degradação
-do classificador textual no contexto de português brasileiro. Essa análise
-é particularmente relevante dado que o português apresenta desafios
-específicos para sistemas de ASR, como a alta variabilidade fonética
-regional e a presença de reduções vocálicas características da fala informal
-\cite{CORAA2023, Bevilacqua2024}.
+O quarto diferencial é a análise sistemática do impacto dos erros de transcrição (WER) sobre o classificador de intenção. Embora \citeonline{Dighe2024} tratem parcialmente dessa questão, nenhum dos trabalhos propõe avaliação direta e quantitativa da correlação entre WER e degradação do classificador no contexto do português brasileiro, idioma que apresenta desafios específicos para ASR, como alta variabilidade fonética regional e reduções vocálicas da fala informal \cite{CORAA2023, Bevilacqua2024}.
 
-Em conjunto, esses quatro diferenciais evidenciam que o presente trabalho
-não é uma replicação dos estudos anteriores em outro idioma, mas uma
-contribuição com dimensões próprias e complementares ao estado da arte em
-DDSD. O objetivo não é superar os resultados de abordagens multimodais
-complexas como a de \citeonline{Wagner2024} --- o que seria improvável dado
-o escopo e os recursos disponíveis --- mas estabelecer um \textit{baseline}
-textual sólido, reprodutível e documentado para o português brasileiro,
-que sirva de ponto de partida para investigações futuras na área
-\cite{Wazlawick2020, Dighe2024}.
+Em conjunto, esses diferenciais evidenciam que o presente trabalho não é uma replicação dos estudos anteriores em outro idioma, mas uma contribuição com dimensões próprias e complementares ao estado da arte. O objetivo não é superar os resultados de abordagens multimodais como a de \citeonline{Wagner2024}, o que seria improvável dado o escopo e os recursos disponíveis, mas estabelecer um \textit{baseline} textual sólido, reprodutível e documentado para o português brasileiro, que sirva de ponto de partida para investigações futuras na área \cite{Wazlawick2020, Dighe2024}.
 
 % ---------------------------------------------------------------
 
