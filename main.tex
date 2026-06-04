@@ -550,29 +550,27 @@ Embora o Whisper represente o estado da arte em ASR multilíngue, erros de trans
 \subsection{Métricas de avaliação}
 \label{sec:metricas}
 
-A avaliação de modelos de classificação, especialmente em tarefas de Detecção de Fala Direcionada ao Dispositivo (DDSD), requer métricas que permitam analisar não apenas a acurácia geral, mas também o equilíbrio entre erros de falso positivo e falso negativo. Neste trabalho, serão utilizadas métricas tradicionais de classificação binária e métricas específicas da área de DDSD.
+A avaliação de modelos de classificação em tarefas de DDSD requer métricas que analisem não apenas a acurácia geral, mas também o equilíbrio entre erros de falso positivo e falso negativo. Serão utilizadas métricas tradicionais de classificação binária e métricas específicas da área.
 
-A \textbf{Acurácia} (\textit{Accuracy}) mede a proporção de classificações corretas em relação ao total de amostras. Embora seja intuitiva, pode ser enganosa em conjuntos de dados desbalanceados, situação comum em tarefas de DDSD, onde as falas não direcionadas ao dispositivo geralmente são mais frequentes \cite{Manning2008}.
+A \textbf{Acurácia} (\textit{Accuracy}) mede a proporção de classificações corretas em relação ao total de amostras. Embora intuitiva, pode ser enganosa em conjuntos desbalanceados, situação comum em DDSD, onde falas não direcionadas ao dispositivo geralmente são mais frequentes \cite{Manning2008}.
 
-A \textbf{Precisão} (\textit{Precision}) indica a proporção de exemplos classificados como positivos que são realmente positivos. No contexto deste trabalho, representa a proporção de falas classificadas como direcionadas ao dispositivo que realmente o eram. É especialmente importante quando o custo de falsos positivos é alto (ativações indesejadas) \cite{Weld2022}.
+A \textbf{Precisão} (\textit{Precision}) indica a proporção de exemplos classificados como positivos que são realmente positivos. Representa, neste contexto, a proporção de falas classificadas como direcionadas ao dispositivo que efetivamente o eram. É especialmente relevante quando o custo de falsos positivos (ativações indesejadas) é alto \cite{Weld2022}.
 
-A \textbf{Sensibilidade} (\textit{Recall}) mede a proporção de exemplos positivos que foram corretamente identificados. Neste caso, indica quantas das falas realmente direcionadas ao dispositivo foram detectadas pelo modelo. Um recall baixo implica que muitas intenções do usuário estão sendo perdidas \cite{Weld2022}.
+A \textbf{Sensibilidade} (\textit{Recall}) mede a proporção de exemplos positivos corretamente identificados. Um \textit{recall} baixo indica que muitas intenções do usuário estão sendo perdidas \cite{Weld2022}.
 
-A métrica \textbf{F1-Score} representa a média harmônica entre Precisão e Sensibilidade, sendo particularmente útil quando se busca um equilíbrio entre as duas. Sua fórmula é dada por:
+O \textbf{F1-Score} representa a média harmônica entre Precisão e Sensibilidade:
 
 \[
 F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \]
 
-No cenário de DDSD, o F1-Score é uma das métricas principais, pois reflete bem o trade-off entre ativações corretas e ativações indevidas.
+No cenário de DDSD, o F1-Score é uma das métricas principais, pois reflete o compromisso entre ativações corretas e ativações indevidas.
 
-Uma métrica de grande relevância na literatura de detecção de fala direcionada é a \textbf{Taxa de Erro Igual} (do inglês \textit{Equal Error Rate}, referida pela sigla EER). Ela corresponde ao ponto na curva ROC onde a taxa de falsos positivos (False Positive Rate) é igual à taxa de falsos negativos (False Negative Rate). Quanto menor o EER, melhor o desempenho do sistema. \citeonline{Wagner2024} e \citeonline{Krishna2023} utilizam o EER como métrica principal em seus trabalhos, por ser uma medida robusta e independente do threshold de decisão.
+A \textbf{Taxa de Erro Igual} (EER, do inglês \textit{Equal Error Rate}) corresponde ao ponto na curva ROC onde a taxa de falsos positivos iguala a taxa de falsos negativos. Quanto menor o EER, melhor o desempenho do sistema. \citeonline{Wagner2024} e \citeonline{Krishna2023} utilizam o EER como métrica principal em seus trabalhos, por ser robusta e independente do \textit{threshold} de decisão.
 
-Além dessas, será calculada a \textbf{Área sob a Curva ROC (ROC-AUC)}, que avalia a capacidade do modelo de distinguir entre as classes em diferentes thresholds. Quanto mais próxima de 1, melhor o poder discriminativo do classificador.
+Será calculada também a \textbf{Área sob a Curva ROC (ROC-AUC)}, que avalia a capacidade discriminativa do modelo em diferentes \textit{thresholds}. Por fim, como o sistema proposto utiliza transcrições de ASR, o impacto da qualidade da transcrição será analisado por meio da \textbf{Word Error Rate (WER)}. Estudos demonstram correlação direta entre o WER do ASR e a degradação do desempenho do classificador textual \cite{Dighe2024}.
 
-Por fim, como o sistema proposto utiliza transcrições geradas por ASR, será analisado o impacto da qualidade da transcrição por meio da métrica \textbf{Word Error Rate (WER)}. O WER mede a taxa de erro entre a transcrição gerada e o texto de referência, considerando substituições, inserções e deleções de palavras. Estudos demonstram que existe correlação direta entre o WER do ASR e a degradação do desempenho do classificador textual \cite{Dighe2024}.
-
-A combinação dessas métricas permite uma avaliação multidimensional do sistema: acurácia geral, equilíbrio entre precisão e recall, robustez a variações de threshold (EER) e sensibilidade à qualidade da transcrição (WER). Todas as métricas serão calculadas utilizando validação cruzada e conjuntos de teste separados, garantindo maior confiabilidade dos resultados.
+A combinação dessas métricas permite avaliação multidimensional: acurácia geral, equilíbrio entre precisão e \textit{recall}, robustez a variações de \textit{threshold} (EER) e sensibilidade à qualidade da transcrição (WER). Todas serão calculadas com validação cruzada e conjuntos de teste separados, assegurando maior confiabilidade dos resultados.
 
 % ---------------------------------------------------------------
 \section{Trabalhos relacionados}
