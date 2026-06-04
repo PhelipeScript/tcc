@@ -428,37 +428,35 @@ No contexto do português brasileiro, \citeonline{Souza2020} desenvolveram o BER
 \section{Fundamentos}
 \label{sec:fundamentos}
 
-Esta seção detalha as tecnologias, algoritmos e metodologias específicas que serão empregados no desenvolvimento da solução proposta. Diferentemente do referencial teórico, que apresenta conceitos gerais, os fundamentos aprofundam os aspectos técnicos diretamente utilizados na implementação.
+Esta seção detalha as tecnologias, algoritmos e metodologias específicas que serão empregadas no desenvolvimento da solução proposta. Diferentemente do referencial teórico, que contextualiza os conceitos gerais da área, os fundamentos aprofundam os aspectos técnicos diretamente utilizados na implementação.
 
 \subsection{Arquitetura Transformer}
 
-A arquitetura Transformer, introduzida por \citeonline{Vaswani2017}, revolucionou o Processamento de Linguagem Natural ao eliminar a dependência de recorrência e convoluções, substituindo-as pelo mecanismo de atenção como principal componente para modelagem de sequências. Diferentemente das Redes Neurais Recorrentes (RNNs) e Long Short-Term Memory (LSTM), que processam sequências de forma sequencial, o Transformer processa todos os elementos da sequência de entrada simultaneamente, permitindo alto grau de paralelização e melhor captura de dependências de longo alcance \cite{Vaswani2017}.
+A arquitetura Transformer, introduzida por \citeonline{Vaswani2017}, eliminou a dependência de recorrência e convoluções, substituindo-as pelo mecanismo de atenção como principal componente para modelagem de sequências. Diferentemente das RNNs (Redes Neurais Recorrentes, do inglês \textit{Recurrent Neural Networks}), que processam sequências de forma sequencial, o Transformer processa todos os elementos da entrada simultaneamente, permitindo alto grau de paralelização. Embora variantes como LSTM (Memória de Longo e Curto Prazo, do inglês \textit{Long Short-Term Memory}) e GRU (Unidade Recorrente com Portão, do inglês \textit{Gated Recurrent Unit}) atenuem parcialmente o problema de dissipação de gradientes das RNNs tradicionais, essas arquiteturas ainda enfrentam limitações em dependências muito longas, que o Transformer supera por construção \cite{Vaswani2017}.
 
-O componente central da arquitetura é o mecanismo de \textit{Self-Attention}. Para cada token da sequência, o modelo calcula três vetores: \textit{Query} (Q), \textit{Key} (K) e \textit{Value} (V). A atenção é calculada pela seguinte fórmula:
+O componente central é o mecanismo de \textit{Self-Attention}. Para cada token da sequência, o modelo calcula três vetores: \textit{Query} (Q), \textit{Key} (K) e \textit{Value} (V). A atenção é obtida por:
 
 \[
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 \]
 
-onde \(d_k\) é a dimensão dos vetores de chave. Essa operação permite que cada token “preste atenção” em todos os outros tokens da sequência, ponderando sua importância relativa. O fator de escala \(\sqrt{d_k}\) é utilizado para estabilizar os gradientes durante o treinamento.
+onde \(d_k\) é a dimensão dos vetores de chave. Essa operação permite que cada token pondere a importância de todos os demais tokens da sequência. O fator de escala \(\sqrt{d_k}\) estabiliza os gradientes durante o treinamento.
 
-Para aumentar a capacidade representacional do modelo, \citeonline{Vaswani2017} propuseram o \textit{Multi-Head Attention}, que executa o mecanismo de atenção em paralelo \(h\) vezes (geralmente 8 ou 16 cabeças), cada uma com projeções lineares diferentes de Q, K e V. As saídas das cabeças são concatenadas e projetadas linearmente, permitindo que o modelo capture diferentes tipos de relações semânticas e sintáticas na mesma camada.
+Para aumentar a capacidade representacional, \citeonline{Vaswani2017} propuseram o \textit{Multi-Head Attention}, que executa o mecanismo de atenção em paralelo \(h\) vezes (tipicamente 8 ou 16 cabeças), cada uma com projeções lineares independentes de Q, K e V. As saídas são concatenadas e projetadas linearmente, permitindo que o modelo capture diferentes tipos de relações semânticas e sintáticas em uma mesma camada.
 
-Outro componente essencial é o \textit{Positional Encoding}. Como o Transformer não possui recorrência, é necessário injetar informação sobre a posição dos tokens na sequência. Os autores utilizaram funções seno e cosseno de diferentes frequências:
+Como o Transformer não possui recorrência, é necessário injetar informação posicional por meio do \textit{Positional Encoding}. Os autores utilizaram funções seno e cosseno de diferentes frequências:
 
 \[
 PE_{(pos,2i)} = \sin\left(\frac{pos}{10000^{2i/d_{model}}}\right), \quad PE_{(pos,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{model}}}\right)
 \]
 
-Esses valores são somados aos embeddings dos tokens de entrada, fornecendo ao modelo informação explícita sobre a ordem dos elementos.
+Esses valores são somados aos \textit{embeddings} dos tokens de entrada, fornecendo informação explícita sobre a ordem dos elementos.
 
-A arquitetura completa é composta por blocos de \textit{Encoder} e \textit{Decoder}. Cada bloco do Encoder contém uma camada de Multi-Head Self-Attention seguida de uma rede feed-forward posicionada (duas camadas lineares com ativação ReLU). O Decoder possui uma camada adicional de Multi-Head Attention que recebe as saídas do Encoder (Cross-Attention). Conexões residuais (\textit{residual connections}) e normalização de camada (\textit{layer normalization}) são aplicadas em torno de cada subcamada para facilitar o treinamento de redes profundas.
+A arquitetura completa é composta por blocos de \textit{Encoder} e \textit{Decoder}. Cada bloco do Encoder contém uma camada de Multi-Head Self-Attention seguida de uma rede \textit{feed-forward} posicionada (duas camadas lineares com ativação ReLU). O Decoder possui uma camada adicional de \textit{Cross-Attention} que recebe as saídas do Encoder. Conexões residuais e normalização de camada (\textit{layer normalization}) são aplicadas em torno de cada subcamada, facilitando o treinamento de redes profundas.
 
-Exemplo prático: na frase “O gato está no tapete”, o token “tapete” deve ter forte atenção com “gato” para entender a relação semântica. Enquanto uma RNN processaria a frase palavra por palavra (esquecendo informações iniciais em sequências longas), o Transformer consegue relacionar “tapete” diretamente com “gato” em uma única passada, independentemente da distância entre eles.
+Para ilustrar: na frase ``O gato está no tapete'', o token ``tapete'' deve apresentar forte atenção com ``gato'' para capturar a relação semântica. Enquanto RNNs tradicionais processam a frase de forma sequencial, com dificuldade crescente para reter contextos distantes, mesmo com mecanismos de \textit{gating}, o Transformer relaciona ``tapete'' diretamente com ``gato'' em uma única passada, independentemente da distância entre eles.
 
-A arquitetura Transformer serviu de base para diversos modelos de grande sucesso, como BERT (apenas Encoder), GPT (apenas Decoder) e T5 (Encoder-Decoder). Sua escalabilidade permitiu o treinamento de modelos com centenas de bilhões de parâmetros, consolidando-se como o fundamento dos modernos Large Language Models.
-
-No contexto deste trabalho, a arquitetura Transformer é fundamental, pois tanto o BERTimbau quanto outros modelos utilizados no classificador de intenção implícita são construídos sobre ela.
+A arquitetura serviu de base para modelos como BERT (apenas Encoder), GPT (apenas Decoder) e T5 (Encoder-Decoder), consolidando-se como o alicerce dos modernos Modelos de Linguagem de Grande Porte (LLMs).
 
 \subsection{BERT e o mecanismo de fine-tuning}
 
