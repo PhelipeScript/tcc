@@ -430,6 +430,8 @@ No contexto do português brasileiro, \citeonline{Souza2020} desenvolveram o BER
 
 Esta seção detalha as tecnologias, algoritmos e metodologias específicas que serão empregadas no desenvolvimento da solução proposta. Diferentemente do referencial teórico, que contextualiza os conceitos gerais da área, os fundamentos aprofundam os aspectos técnicos diretamente utilizados na implementação.
 
+% ---------------------------------------------------------------
+
 \subsection{Arquitetura Transformer}
 
 A arquitetura Transformer, introduzida por \citeonline{Vaswani2017}, eliminou a dependência de recorrência e convoluções, substituindo-as pelo mecanismo de atenção como principal componente para modelagem de sequências. Diferentemente das RNNs (Redes Neurais Recorrentes, do inglês \textit{Recurrent Neural Networks}), que processam sequências de forma sequencial, o Transformer processa todos os elementos da entrada simultaneamente, permitindo alto grau de paralelização. Embora variantes como LSTM (Memória de Longo e Curto Prazo, do inglês \textit{Long Short-Term Memory}) e GRU (Unidade Recorrente com Portão, do inglês \textit{Gated Recurrent Unit}) atenuem parcialmente o problema de dissipação de gradientes das RNNs tradicionais, essas arquiteturas ainda enfrentam limitações em dependências muito longas, que o Transformer supera por construção \cite{Vaswani2017}.
@@ -458,24 +460,26 @@ Para ilustrar: na frase ``O gato está no tapete'', o token ``tapete'' deve apre
 
 A arquitetura serviu de base para modelos como BERT (apenas Encoder), GPT (apenas Decoder) e T5 (Encoder-Decoder), consolidando-se como o alicerce dos modernos Modelos de Linguagem de Grande Porte (LLMs).
 
+% ---------------------------------------------------------------
+
 \subsection{BERT e o mecanismo de fine-tuning}
 
-O modelo BERT (\textit{Bidirectional Encoder Representations from Transformers}), proposto por Devlin et al. \cite{Devlin2019}, foi um dos principais avanços no Processamento de Linguagem Natural ao introduzir o conceito de pré-treinamento bidirecional profundo. Diferentemente dos modelos anteriores que processavam o texto de forma unidirecional (da esquerda para a direita ou vice-versa), o BERT é capaz de considerar o contexto completo de uma palavra, analisando tanto os tokens à esquerda quanto à direita simultaneamente.
+O modelo BERT (\textit{Bidirectional Encoder Representations from Transformers}), proposto por \citeonline{Devlin2019}, introduziu o conceito de pré-treinamento bidirecional profundo. Diferentemente dos modelos anteriores, que processavam o texto de forma unidirecional, o BERT considera o contexto completo de cada palavra, analisando simultaneamente os tokens à esquerda e à direita.
 
-O BERT é treinado em duas tarefas de pré-treinamento não supervisionadas em grandes corpora de texto:
+O pré-treinamento ocorre por meio de duas tarefas em grandes corpora não anotados:
 
 \begin{enumerate}
-    \item \textbf{Masked Language Modeling (MLM)}: Durante o treinamento, 15\% dos tokens da entrada são aleatoriamente mascarados. O modelo deve prever qual era o token original com base apenas no contexto bidirecional. Por exemplo, na frase “O [MASK] está no tapete”, o modelo aprende a prever “gato” considerando tanto o contexto anterior quanto o posterior.
-    \item \textbf{Next Sentence Prediction (NSP)}: O modelo recebe pares de sentenças e deve aprender a identificar se a segunda sentença é a continuação lógica da primeira. Essa tarefa permite que o BERT desenvolva compreensão de relações discursivas e coerência textual.
+    \item \textbf{Masked Language Modeling (MLM)}: 15\% dos tokens da entrada são aleatoriamente mascarados, e o modelo deve prever o token original com base no contexto bidirecional. Na frase ``O [MASK] está no tapete'', o modelo aprende a prever ``gato'' considerando tanto o contexto anterior quanto o posterior.
+    \item \textbf{Next Sentence Prediction (NSP)}: o modelo recebe pares de sentenças e deve identificar se a segunda é a continuação lógica da primeira, desenvolvendo compreensão de relações discursivas e coerência textual.
 \end{enumerate}
 
-Após o pré-treinamento em grandes volumes de dados não anotados, o BERT pode ser adaptado para tarefas específicas por meio do processo chamado \textit{fine-tuning}. Nesse estágio, o modelo é inicializado com os pesos aprendidos durante o pré-treinamento e continua o treinamento em um conjunto de dados menor e rotulado para uma tarefa específica (classificação de texto, reconhecimento de entidades, resposta a perguntas, etc.). Apenas uma camada de classificação adicional é adicionada sobre a representação do token especial \texttt{[CLS]}, que concentra informações de toda a sequência \cite{Devlin2019}.
+Após o pré-treinamento, o BERT pode ser adaptado para tarefas específicas por meio de \textit{fine-tuning}. Nesse estágio, o modelo é inicializado com os pesos pré-treinados e continua o treinamento em um conjunto de dados menor e rotulado. Uma camada de classificação é adicionada sobre a representação do token especial \texttt{[CLS]}, que concentra informações de toda a sequência \cite{Devlin2019}. Os pesos das camadas anteriores também são atualizados, permitindo que as representações internas se ajustem à tarefa em questão.
 
-Uma das grandes vantagens do BERT é que o \textit{fine-tuning} requer relativamente poucos dados rotulados e poucas épocas de treinamento quando comparado ao treinamento do zero. Devlin et al. \cite{Devlin2019} demonstraram que, com o fine-tuning, o BERT conseguiu superar o estado da arte em 11 tarefas de NLP diferentes, incluindo GLUE, SQuAD e SWAG.
+Uma das vantagens do \textit{fine-tuning} é a necessidade de relativamente poucos dados rotulados e poucas épocas de treinamento. \citeonline{Devlin2019} demonstraram que, com essa abordagem, o BERT superou o estado da arte em 11 tarefas de NLP, incluindo os \textit{benchmarks} GLUE, SQuAD e SWAG.
 
-No contexto de classificação de intenção, o processo de fine-tuning é relativamente simples: a última camada do modelo é substituída por uma camada linear com softmax (para classificação binária ou multiclasse), e o modelo é treinado minimizando a perda de entropia cruzada. Durante esse processo, os pesos das camadas anteriores também são atualizados, permitindo que o modelo ajuste suas representações internas para melhor capturar as nuances da tarefa específica.
+Na classificação de intenção, o processo é direto: a última camada é substituída por uma camada linear com \textit{softmax}, e o modelo é treinado minimizando a perda de entropia cruzada. Essa abordagem será aplicada sobre o BERTimbau para especializá-lo na tarefa de DDSD em português brasileiro.
 
-No presente trabalho, o mecanismo de fine-tuning é fundamental, pois será aplicado sobre o BERTimbau para especializá-lo na tarefa de Detecção de Fala Direcionada ao Dispositivo (DDSD) em português brasileiro, utilizando transcrições geradas por ASR como entrada.
+% ---------------------------------------------------------------
 
 \subsection{BERTimbau: BERT para o português brasileiro}
 
