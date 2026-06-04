@@ -585,87 +585,21 @@ Com base nesses critérios, três trabalhos foram selecionados como relacionados
 
 % ---------------------------------------------------------------
 
-\subsection{\textit{Device-directed Utterance Detection}}
+\subsection{Mallidi et al. (2018)}
 
-O trabalho de \citeonline{Mallidi2018}, intitulado \textit{Device-directed
-Utterance Detection}, é considerado o estudo pioneiro e fundacional na
-área de Detecção de Fala Direcionada ao Dispositivo. Publicado nos anais
-do \textit{Interspeech} em 2018, o estudo foi o primeiro a formalizar o
-problema de DDSD como uma tarefa independente de classificação binária,
-estabelecendo a terminologia, o protocolo experimental e as métricas de
-avaliação que seriam adotados por estudos posteriores na área
-\cite{Mallidi2018, Wagner2024}.
+O trabalho de \citeonline{Mallidi2018}, intitulado \textit{Device-directed Utterance Detection}, é considerado o estudo pioneiro na área de DDSD. Publicado nos anais do \textit{Interspeech} em 2018, foi o primeiro a formalizar o problema como tarefa independente de classificação binária, estabelecendo a terminologia, o protocolo experimental e as métricas adotados por estudos posteriores \cite{Mallidi2018, Wagner2024}.
 
-O problema abordado pelos autores parte de uma constatação prática: em
-ambientes domésticos com assistentes virtuais sempre ligados, uma parcela
-significativa das falas captadas pelo microfone não é dirigida ao
-dispositivo, mas sim a outras pessoas presentes no ambiente ou constitui
-comentários incidentais do próprio usuário. Ativar o pipeline completo de
-processamento de voz --- que inclui ASR, NLU e geração de resposta --- para
-cada trecho de fala detectado pelo VAD resultaria em altíssimo consumo
-computacional, degradação da privacidade e experiência do usuário
-comprometida \cite{Mallidi2018}. A proposta dos autores foi, portanto,
-inserir um módulo intermediário entre o VAD e o ASR, capaz de filtrar
-automaticamente as falas não dirigidas ao dispositivo antes que o
-processamento custoso fosse iniciado.
+O problema parte de uma constatação prática: em ambientes domésticos com assistentes sempre ligados, parcela significativa das falas captadas não é dirigida ao dispositivo. Ativar o \textit{pipeline} completo (ASR, NLU e geração de resposta) para cada trecho de fala detectado pelo VAD resultaria em alto consumo computacional, degradação da privacidade e comprometimento da experiência do usuário \cite{Mallidi2018}. A proposta foi inserir um módulo intermediário entre VAD e ASR, capaz de filtrar automaticamente as falas não dirigidas ao dispositivo.
 
-Do ponto de vista técnico, a abordagem proposta por \citeonline{Mallidi2018}
-é inteiramente baseada em características acústicas extraídas diretamente
-do sinal de áudio, sem depender de transcrições textuais. Os autores
-utilizaram um conjunto de \textit{features} tradicionais de reconhecimento
-de fala, incluindo coeficientes cepstrais de frequência de Mel (MFCCs),
-\textit{pitch}, energia e características prosódicas como duração de pausas
-e velocidade de fala. Essas \textit{features} foram utilizadas como entrada
-para um modelo de classificação baseado em Redes Neurais
-\textit{Feed-Forward}, treinado de forma supervisionada para distinguir
-enunciados dirigidos ao dispositivo de conversas incidentais entre humanos.
+A abordagem é inteiramente baseada em características acústicas extraídas do sinal de áudio, sem depender de transcrições textuais. Os autores utilizaram coeficientes cepstrais de frequência de Mel (MFCCs), \textit{pitch}, energia e características prosódicas como duração de pausas e velocidade de fala, alimentando um modelo de classificação baseado em Redes Neurais \textit{Feed-Forward} treinado de forma supervisionada \cite{Mallidi2018}.
 
-Os experimentos foram conduzidos em um corpus interno, coletado em cenários
-reais de uso doméstico em inglês, contendo tanto comandos explicitamente
-dirigidos ao assistente quanto conversas paralelas. Os autores reportaram
-uma \textit{Equal Error Rate} (EER) de aproximadamente 12\% em condições
-controladas, resultado considerado promissor para a época. Um achado
-relevante do estudo foi a constatação de que características prosódicas ---
-em especial a entonação e a duração de pausas --- exercem papel
-discriminativo importante para separar comandos intencionais de comentários
-incidentais, uma vez que esses elementos carregam informações sobre a
-intencionalidade que vão além do conteúdo lexical \cite{Mallidi2018}.
+Os experimentos foram conduzidos em um corpus interno, coletado em cenários reais de uso doméstico em inglês. Os autores reportaram uma EER de aproximadamente 12\% em condições controladas. Um achado relevante foi que características prosódicas, entonação e duração de pausas, exercem papel discriminativo importante para separar comandos intencionais de comentários incidentais \cite{Mallidi2018}.
 
-Além da proposta técnica, \citeonline{Mallidi2018} ofereceram uma
-contribuição conceitual relevante ao argumentar que a dependência de
-\textit{wake-words} impõe uma sobrecarga cognitiva artificial ao usuário,
-que precisa lembrar e pronunciar corretamente uma expressão específica
-a cada vez que deseja interagir com o assistente. Esse argumento fundamentou
-a necessidade de sistemas capazes de detectar intenção implícita sem
-gatilhos verbais explícitos, tornando-se referência recorrente na
-justificativa de trabalhos posteriores na área \cite{Nie2021, Wagner2024}.
+Além da contribuição técnica, \citeonline{Mallidi2018} argumentaram que a dependência de \textit{wake-words} impõe sobrecarga cognitiva artificial ao usuário, fundamentando a necessidade de sistemas capazes de detectar intenção implícita. Esse argumento tornou-se referência recorrente em trabalhos posteriores \cite{Nie2021, Wagner2024}.
 
-Apesar de seu inegável pioneirismo, o trabalho apresenta limitações
-significativas à luz do estado da arte atual. A abordagem puramente acústica
-não explora informações textuais ou semânticas das transcrições, o que
-restringe sua capacidade discriminativa em cenários onde a distinção entre
-comando e comentário incidental depende predominantemente do conteúdo
-linguístico do enunciado. Considere, por exemplo, os enunciados ``acende
-a luz'' e ``nossa, está escuro aqui'': do ponto de vista acústico, ambos
-podem apresentar padrões prosódicos semelhantes --- curta duração, entonação
-descendente, ausência de pausas --- enquanto do ponto de vista semântico são
-claramente distintos. Um modelo que não analisa o conteúdo textual tende a
-apresentar dificuldade justamente nesses casos ambíguos, que são os mais
-frequentes e relevantes em cenários de uso real \cite{Wagner2024,
-Dighe2024}. Adicionalmente, os experimentos foram realizados exclusivamente
-em inglês e com um corpus proprietário não disponibilizado publicamente,
-o que impede a reprodutibilidade dos resultados e a adaptação direta para
-outros idiomas, especialmente o português brasileiro.
+Apesar do pioneirismo, o trabalho apresenta limitações à luz do estado da arte atual. A abordagem puramente acústica não explora informações textuais ou semânticas, restringindo sua capacidade discriminativa em cenários onde a distinção entre comando e comentário depende do conteúdo linguístico. Os enunciados ``acende a luz'' e ``nossa, está escuro aqui'', por exemplo, podem apresentar padrões prosódicos semelhantes, mas são semanticamente distintos. Adicionalmente, os experimentos foram realizados exclusivamente em inglês e com corpus proprietário \cite{Wagner2024, Dighe2024}.
 
-Para o presente trabalho, a contribuição de \citeonline{Mallidi2018} é
-insubstituível do ponto de vista conceitual: a formalização do problema de
-DDSD como classificação binária, a definição das classes (dirigida ao
-dispositivo \textit{versus} conversa incidental) e o uso do EER como
-métrica principal são elementos diretamente adotados neste TCC. No entanto,
-a abordagem técnica segue uma direção oposta: enquanto \citeonline{Mallidi2018}
-operam no domínio acústico, este trabalho opera exclusivamente no domínio
-textual, explorando a semântica dos enunciados por meio de modelos de
-linguagem pré-treinados para o português brasileiro.
+Para este trabalho, a contribuição de \citeonline{Mallidi2018} é fundamental do ponto de vista conceitual, a formalização do problema como classificação binária, a definição das classes (DD \textit{versus} NDD) e o uso do EER como métrica principal são elementos diretamente adotados nesta pesquisa. A abordagem técnica, contudo, segue direção oposta, enquanto \citeonline{Mallidi2018} operam no domínio acústico, este trabalho opera exclusivamente no domínio textual.
 
 % ---------------------------------------------------------------
 
