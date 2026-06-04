@@ -572,42 +572,16 @@ Será calculada também a \textbf{Área sob a Curva ROC (ROC-AUC)}, que avalia a
 
 A combinação dessas métricas permite avaliação multidimensional: acurácia geral, equilíbrio entre precisão e \textit{recall}, robustez a variações de \textit{threshold} (EER) e sensibilidade à qualidade da transcrição (WER). Todas serão calculadas com validação cruzada e conjuntos de teste separados, assegurando maior confiabilidade dos resultados.
 
-% ---------------------------------------------------------------
+% ---------------------------------------------------------------\
+
 \section{Trabalhos relacionados}
 \label{sec:trabalhos_relacionados}
 
-A identificação e análise de trabalhos relacionados é uma etapa
-fundamental no processo de pesquisa científica, pois permite situar a
-proposta no contexto do conhecimento existente, evidenciar lacunas ainda
-não exploradas e justificar as escolhas metodológicas adotadas
-\cite{Wazlawick2020}. Nesta seção, são apresentados e discutidos os
-principais estudos relacionados à Detecção de Fala Direcionada ao
-Dispositivo (DDSD), selecionados a partir da metodologia descrita na
-Seção~\ref{sec:metodologia_pesquisa}.
+Nesta seção, são apresentados e discutidos os principais estudos sobre DDSD, selecionados a partir da metodologia descrita na Seção~\ref{sec:metodologia_pesquisa}.
 
-Os trabalhos foram selecionados segundo dois critérios centrais: (i)
-abordagem direta do problema de DDSD ou de tarefa funcionalmente
-equivalente --- isto é, a classificação automática de enunciados de voz
-como dirigidos ou não a um sistema computacional --- e (ii) uso de
-componente textual ou acústico relevante para a tarefa de classificação
-de intenção. Trabalhos que tratam apenas de ASR, VAD, \textit{keyword
-spotting} clássico ou classificação de intenção em domínios distintos do
-de assistentes de voz foram excluídos, pois não compartilham o problema
-central investigado neste TCC \cite{Wazlawick2020}.
+Os trabalhos foram selecionados segundo dois critérios centrais: (i) abordagem direta do problema de DDSD ou de tarefa funcionalmente equivalente, isto é, a classificação automática de enunciados como dirigidos ou não a um sistema computacional, e (ii) uso de componente textual ou acústico relevante para a classificação de intenção. Trabalhos que tratam apenas de ASR, VAD, \textit{keyword spotting} clássico ou classificação de intenção em domínios distintos foram excluídos, pois não compartilham o problema central investigado neste TCC \cite{Wazlawick2020}.
 
-Com base nesses critérios, três trabalhos foram selecionados como
-relacionados principais. O primeiro, de \citeonline{Mallidi2018},
-estabelece as bases conceituais e experimentais da DDSD e representa o
-trabalho fundacional da área. O segundo, de \citeonline{Wagner2024},
-corresponde ao estado da arte em abordagens multimodais para DDSD,
-combinando características acústicas com representações textuais
-processadas por \textit{Large Language Models} (LLMs). O terceiro, de
-\citeonline{Dighe2024}, é o trabalho metodologicamente mais próximo da
-proposta deste TCC, por demonstrar que modelos de linguagem aplicados
-sobre saídas textuais de ASR são capazes de gerar sinal discriminativo
-suficiente para a tarefa de detecção de intenção. A análise crítica
-desses três estudos, conduzida nas subseções seguintes, permite
-identificar com precisão as lacunas que este trabalho busca preencher.
+Com base nesses critérios, três trabalhos foram selecionados como relacionados principais. O primeiro, de \citeonline{Mallidi2018}, estabelece as bases conceituais e experimentais da DDSD. O segundo, de \citeonline{Wagner2024}, foi selecionado por representar uma das abordagens multimodais mais recentes encontradas na literatura revisada. O terceiro, de \citeonline{Dighe2024}, é o trabalho metodologicamente mais próximo desta proposta, por demonstrar que modelos de linguagem aplicados sobre saídas textuais de ASR geram sinal discriminativo suficiente para a detecção de intenção. A análise crítica desses três estudos, conduzida nas subseções seguintes, permite identificar as lacunas que este trabalho busca preencher.
 
 % ---------------------------------------------------------------
 
