@@ -1190,51 +1190,34 @@ Caso a hipótese não seja confirmada, os resultados serão igualmente reportado
 \section{Tecnologias e ferramentas}
 \label{sec:tecnologias}
 
-A implementação do sistema proposto utilizará o ecossistema Python de
-aprendizado de máquina e processamento de linguagem natural, consolidado
-como padrão na área \cite{Weld2022}. A Tabela~\ref{tab:ferramentas}
-lista as principais bibliotecas e ferramentas previstas.
+A implementação utilizará o ecossistema Python de aprendizado de máquina e NLP, consolidado como padrão na área \cite{Weld2022}. A Tabela~\ref{tab:ferramentas} lista as principais bibliotecas e ferramentas previstas.
 
 \begin{table}[htb]
     \centering
     \caption{Tecnologias e ferramentas previstas para o desenvolvimento}
     \label{tab:ferramentas}
-    \begin{tabular}{l|l|l}
+    \begin{tabular}{lll}
         \toprule
         \textbf{Ferramenta}
             & \textbf{Versão prevista}
             & \textbf{Finalidade} \\
         \midrule
         Python          & 3.11+     & Linguagem principal \\
-        \midrule
         PyTorch         & 2.x       & Framework de deep learning \\
-        \midrule
         HuggingFace Transformers & 4.x & Fine-tuning BERTimbau \\
-        \midrule
         HuggingFace Datasets & 2.x & Gerenciamento do corpus \\
-        \midrule
-        OpenAI Whisper  & Large V3  & Módulo ASR \\
-        \midrule
+        OpenAI Whisper  & Medium / Large V3 / Turbo & Módulo ASR \\
         scikit-learn    & 1.x       & Baselines TF-IDF + SVM/LR \\
-        \midrule
         NumPy / Pandas  & ---       & Manipulação de dados \\
-        \midrule
         Matplotlib / Seaborn & --- & Visualização de resultados \\
-        \midrule
         SHAP            & ---       & Análise de interpretabilidade \\
-        \midrule
         Git / GitHub    & ---       & Controle de versão \\
         \bottomrule
     \end{tabular}
     \legend{Fonte: Elaborado pelo autor (2026).}
 \end{table}
 
-Os experimentos serão executados em ambiente com suporte a GPU, dado
-o custo computacional do \textit{fine-tuning} de modelos baseados em
-Transformers. Caso os recursos computacionais locais sejam insuficientes,
-será utilizada a plataforma Google Colab Pro ou equivalente com acesso
-a GPUs de pelo menos 16GB de VRAM, requisito mínimo para o
-\textit{fine-tuning} do BERTimbau Large \cite{Souza2020}.
+Os experimentos serão executados em ambiente com suporte a GPU, dado o custo computacional do \textit{fine-tuning} de modelos Transformer \cite{Souza2020}.
 
 % ---------------------------------------------------------------
 \section{Resultados esperados}
