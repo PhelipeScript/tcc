@@ -985,28 +985,11 @@ A inclusão de \textit{baselines} clássicos constitui uma contribuição metodo
 \section{Construção do corpus}
 \label{sec:corpus}
 
-A construção de um corpus textual em português brasileiro para a tarefa
-de DDSD é um dos objetivos específicos centrais deste trabalho e,
-simultaneamente, uma de suas contribuições mais relevantes para a
-comunidade de pesquisa. A ausência de corpora públicos para DDSD em
-português, identificada na análise dos trabalhos relacionados
-(Seção~\ref{sec:sintese_comparativa}), impõe a necessidade de construção
-de um recurso próprio, com protocolo de anotação explícito e critérios
-de qualidade documentados \cite{Wazlawick2020}.
+A construção de um corpus textual em português brasileiro para DDSD é um dos objetivos específicos centrais deste trabalho e, ao mesmo tempo, uma de suas contribuições mais relevantes. A ausência de corpora públicos para essa tarefa em português, identificada na Seção~\ref{sec:sintese_comparativa}, impõe a necessidade de um recurso próprio, com protocolo de qualidade documentado \cite{Wazlawick2020}.
 
-Uma característica central deste corpus, que o distingue de corpora de
-DDSD típicos da literatura \cite{Mallidi2018, Wagner2024}, é que ele é
-\textbf{exclusivamente textual}, ou seja, não contém gravações de áudio nem
-anotações acústicas. Isso decorre diretamente da modalidade de entrada
-do classificador proposto, que será operado, durante o experimento, sobre transcrições textuais geradas
-por ASR. Essa decisão, além de ser coerente com a abordagem técnica
-adotada, tem uma consequência prática relevante, na qual remove as restrições
-de escala que corpora de fala impõem, uma vez que a coleta, geração e
-anotação de texto é significativamente mais rápida e barata do que a
-gravação e transcrição de áudio \cite{Møller2024}. Estima-se, por isso,
-um corpus de grande escala, com volume superior a 100.000 amostras
-textuais distribuídas entre as classes, o que representa uma ordem de
-grandeza acima dos corpora de DDSD existentes na literatura.
+Uma característica central distingue este corpus dos corpora de DDSD típicos da literatura \cite{Mallidi2018, Wagner2024}, ele é \textbf{exclusivamente textual}, sem gravações de áudio nem anotações acústicas. Isso decorre da modalidade de entrada do classificador proposto, que opera sobre transcrições textuais. Além de coerente com a abordagem técnica, essa decisão remove as restrições de escala que corpora de fala impõem, a coleta e anotação de texto é significativamente mais rápida e barata do que a gravação e transcrição de áudio \cite{Møller2024}. Estima-se um corpus de grande escala, com volume superior a 100.000 amostras textuais, o que representa uma ordem de grandeza acima dos corpora de DDSD reportados na literatura.
+
+Para garantir a viabilidade dos experimentos mesmo em caso de dificuldades na construção do corpus completo, define-se um volume mínimo viável de 40.000 amostras (aproximadamente 20.000 por classe principal). Abaixo desse limiar, a capacidade de \textit{fine-tuning} do BERTimbau e a representatividade estatística dos resultados seriam comprometidas, exigindo reavaliação do escopo experimental.
 
 % ---------------------------------------------------------------
 \subsection{Esquema de rotulação}
