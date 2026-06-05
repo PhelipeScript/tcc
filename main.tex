@@ -995,39 +995,19 @@ Para garantir a viabilidade dos experimentos mesmo em caso de dificuldades na co
 \subsection{Esquema de rotulação}
 \label{sec:rotulacao}
 
-Cada enunciado do corpus receberá um rótulo pertencente a um dos três
-esquemas a seguir:
+Cada enunciado do corpus receberá um rótulo dentre três categorias:
 
 \begin{itemize}
-    \item \texttt{DD} (\textit{Device-Directed}): o enunciado é
-    inequivocamente um comando, pergunta ou solicitação dirigida ao
-    assistente virtual. Exemplos: ``liga o ventilador'', ``qual a
-    previsão do tempo para amanhã?'', ``toca uma música relaxante'';
+    \item \texttt{DD} (\textit{Device-Directed}): enunciado claramente dirigido ao assistente virtual, comando, pergunta ou solicitação. Exemplos: ``liga o ventilador'', ``qual a previsão do tempo para amanhã?'', ``toca uma música relaxante'';
 
-    \item \texttt{NDD} (\textit{Non-Device-Directed}): o enunciado
-    claramente não é dirigido ao dispositivo, sendo parte de uma
-    conversa entre humanos, um comentário incidental ou um enunciado
-    sem destinatário específico. Exemplos: ``nossa, está quente hoje'',
-    ``você foi ao mercado ontem?'', ``preciso terminar esse relatório'';
+    \item \texttt{NDD} (\textit{Non-Device-Directed}): enunciado claramente não dirigido ao dispositivo, sendo parte de conversa entre humanos ou comentário incidental. Exemplos: ``nossa, está quente hoje'', ``você foi ao mercado ontem?'', ``preciso terminar esse relatório'';
 
-    \item \texttt{AMB} (\textit{Ambiguous}): o enunciado poderia ser
-    interpretado como DD ou NDD dependendo do contexto não disponível
-    no texto. Exemplos: ``apaga a luz, por favor'', ``pode colocar
-    mais baixo?'', ``me lembra disso amanhã''.
+    \item \texttt{AMB} (\textit{Ambiguous}): enunciado cuja interpretação como DD ou NDD depende de contexto não disponível no texto. Exemplos: ``apaga a luz, por favor'', ``pode colocar mais baixo?'', ``me lembra disso amanhã''.
 \end{itemize}
 
-Para os experimentos de classificação binária, os enunciados
-\texttt{AMB} serão tratados como \texttt{NDD}, seguindo a lógica
-conservadora de que, na ausência de contexto suficiente para confirmar
-a intenção ao dispositivo, o sistema não deve acionar o assistente.
-Essa convenção está alinhada com a definição do problema de DDSD como
-tarefa de classificação binária \cite{Mallidi2018} e com o princípio
-de minimização de ativações indevidas. Os enunciados \texttt{AMB}
-serão mantidos como subconjunto identificado, permitindo análises
-específicas sobre o comportamento do classificador nesses casos
-ambíguos.
+Para a classificação binária, os enunciados \texttt{AMB} serão tratados como \texttt{NDD}, seguindo a lógica conservadora de que, na ausência de contexto suficiente para confirmar a intenção, o sistema não deve acionar o assistente. Essa convenção alinha-se com a definição do problema como classificação binária \cite{Mallidi2018} e com o princípio de minimização de ativações indevidas. Os enunciados \texttt{AMB} serão mantidos como subconjunto identificado por uma \textit{flag}, permitindo análises de desempenho segmentadas.
 
-É importante reconhecer que a incorporação dos enunciados AMB à classe NDD introduz um viés conservador mensurável sobre as métricas de avaliação: como casos genuinamente ambíguos tendem a ser mais fáceis de classificar como NDD do que casos claramente DD, essa fusão pode inflacionar artificialmente as métricas de acurácia e F1 no subconjunto AMB. Para controlar esse efeito, os enunciados AMB serão identificados por uma flag no corpus, e os resultados serão reportados de forma segmentada: desempenho sobre o corpus completo (DD + NDD + AMB fundido) e desempenho sobre amostras inequívocas (apenas DD e NDD puros). Essa análise segmentada permitirá avaliar em que medida os casos AMB facilitam ou dificultam a tarefa do classificador, tornando as conclusões metodologicamente mais robustas.
+É necessário reconhecer que a fusão de AMB com NDD introduz um viés conservador mensurável, casos genuinamente ambíguos tendem a ser mais fáceis de classificar como NDD, o que pode inflacionar artificialmente as métricas no subconjunto AMB. Para controlar esse efeito, os resultados serão reportados em duas perspectivas, desempenho sobre o corpus completo e desempenho sobre amostras inequívocas (apenas DD e NDD puros). Essa análise segmentada tornará as conclusões metodologicamente mais robustas.
 
 % ---------------------------------------------------------------
 \subsection{Fontes de dados e estratégias de construção}
