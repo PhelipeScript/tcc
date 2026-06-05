@@ -921,31 +921,15 @@ Para quantificar esse impacto, o experimento \textit{upper-bound} detalhado na S
 \subsection{Modelo principal: BERTimbau com \textit{fine-tuning}}
 \label{sec:bertimbau_finetune}
 
-O classificador principal será implementado com base no BERTimbau,
-modelo BERT pré-treinado especificamente para o português brasileiro
-por \citeonline{Souza2020}. A escolha do BERTimbau como modelo principal
-justifica-se por três fatores: (i) superioridade consistente sobre
-modelos multilíngues em tarefas de classificação textual em português,
-demonstrada por \citeonline{Souza2020} em múltiplos benchmarks; (ii)
-capacidade de \textit{fine-tuning} eficiente com quantidades moderadas
-de dados rotulados, característica crítica dado o tamanho limitado do
-corpus de DDSD em português brasileiro; e (iii) ampla adoção na
-literatura de NLP (Processamento de Linguagem Natural, do inglês \textit{Natural Language Processing}) em português, facilitando a reprodutibilidade e a
-comparação com estudos futuros \cite{Souza2020, Weld2022}.
+O classificador principal será o BERTimbau \cite{Souza2020}. A escolha justifica-se por três fatores: (i) superioridade consistente sobre modelos multilíngues em tarefas de classificação textual em português, demonstrada em múltiplos \textit{benchmarks} \cite{Souza2020}; (ii) capacidade de \textit{fine-tuning} eficiente com quantidades moderadas de dados rotulados, característica crítica dado o tamanho do corpus de DDSD em português; e (iii) ampla adoção na literatura de NLP em português, o que facilita a reprodutibilidade e a comparação com estudos futuros.
 
-O processo de \textit{fine-tuning} seguirá a metodologia padrão
-descrita por \citeonline{Devlin2019}: uma camada de classificação linear
-com ativação \textit{softmax} será adicionada sobre a representação do
-token especial \texttt{[CLS]}, e o modelo completo será treinado de
-forma supervisionada para minimizar a perda de entropia cruzada binária.
-Os hiperparâmetros iniciais adotados para o \textit{fine-tuning} estão
-descritos na Tabela~\ref{tab:hiperparametros}.
+O processo de \textit{fine-tuning} seguirá a metodologia padrão de \citeonline{Devlin2019}, uma camada de classificação linear com ativação \textit{softmax} será adicionada sobre a representação do token \texttt{[CLS]}, e o modelo completo será treinado para minimizar a entropia cruzada binária. Os hiperparâmetros iniciais estão descritos na Tabela~\ref{tab:hiperparametros}.
 
 \begin{table}[htb]
     \centering
     \caption{Hiperparâmetros iniciais para o \textit{fine-tuning} do BERTimbau}
     \label{tab:hiperparametros}
-    \begin{tabular}{l|c|l}
+    \begin{tabular}{lcl}
         \toprule
         \textbf{Hiperparâmetro}
             & \textbf{Valor inicial}
@@ -954,23 +938,18 @@ descritos na Tabela~\ref{tab:hiperparametros}.
         Taxa de aprendizado
             & $2 \times 10^{-5}$
             & Padrão BERT \cite{Devlin2019} \\
-        \midrule
         Tamanho do batch
             & 16 ou 32
             & Limitação de memória GPU \\
-        \midrule
         Épocas de treinamento
             & 3--5
             & Padrão \textit{fine-tuning} \cite{Devlin2019} \\
-        \midrule
         Comprimento máx. de sequência
             & 128 tokens
             & Adequado a enunciados curtos \\
-        \midrule
         \textit{Warmup steps}
             & 10\% do total
             & Estabilidade no início \\
-        \midrule
         \textit{Dropout}
             & 0,1
             & Regularização padrão BERT \\
@@ -980,12 +959,7 @@ descritos na Tabela~\ref{tab:hiperparametros}.
     Souza2020}.}
 \end{table}
 
-Serão avaliadas as duas variantes disponíveis do BERTimbau: a versão
-Base (12 camadas, 110 milhões de parâmetros) e a versão Large (24
-camadas, 335 milhões de parâmetros) \cite{Souza2020}. A versão Base
-será utilizada como padrão principal, enquanto a versão Large será
-avaliada como alternativa de maior capacidade representacional, a
-depender dos recursos computacionais disponíveis no TCC2.
+Serão avaliadas as duas variantes disponíveis: BERTimbau Base (12 camadas, 110M de parâmetros) e BERTimbau Large (24 camadas, 335M de parâmetros) \cite{Souza2020}. A versão Base será o padrão principal; a versão Large será avaliada como alternativa de maior capacidade representacional, condicionada aos recursos computacionais disponíveis no TCC2.
 
 % ---------------------------------------------------------------
 \subsection{Modelos alternativos: DeBERTinha e Albertina}
