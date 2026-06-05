@@ -1013,127 +1013,55 @@ Para a classificação binária, os enunciados \texttt{AMB} serão tratados como
 \subsection{Fontes de dados e estratégias de construção}
 \label{sec:fontes_dados}
 
-O corpus será construído a partir de duas fontes complementares e
-distintas por classe: dados públicos existentes para a classe
-\texttt{NDD} e dados sintetizados com auxílio de \textit{Large Language Models} (traduzidos como Modelos de Linguagem de Grande Porte, referidos pela sigla LLMs) para as classes
-\texttt{DD} e \texttt{AMB}. Essa separação reflete a disponibilidade
-assimétrica de recursos: corpora de fala espontânea em português
-brasileiro são relativamente abundantes para conversas incidentais,
-ao passo que não há corpora públicos de comandos para assistentes
-de voz em português \cite{CORAA2023}.
+O corpus será construído a partir de duas fontes complementares, dados públicos existentes para a classe \texttt{NDD} e dados gerados sinteticamente com auxílio de LLMs para as classes \texttt{DD} e \texttt{AMB}.
 
 \subsubsection{Classe NDD: datasets públicos de fala espontânea}
 
-A classe \texttt{NDD} será composta por transcrições extraídas de
-corpora públicos de fala espontânea em português brasileiro,
-selecionados por sua diversidade dialetal, de registro e de contexto.
-Três corpora serão utilizados como fontes primárias:
+A classe \texttt{NDD} será composta por transcrições de corpora públicos de fala espontânea, selecionados por sua diversidade dialetal, de registro e de contexto. Três corpora serão utilizados como fontes primárias:
 
-O \textbf{CORAA ASR} \cite{CORAA2023} é um dos maiores corpora de fala
-espontânea validados manualmente para o português brasileiro, com
-transcrições de entrevistas, apresentações e conversas informais em
-diferentes variedades regionais. Suas transcrições são ricas em
-vocabulário cotidiano e padrões conversacionais naturais, tornando-o
-especialmente adequado para representar enunciados incidentais.
+O \textbf{CORAA ASR} \cite{CORAA2023} é um dos maiores corpora de fala espontânea validados manualmente para o português brasileiro, com transcrições de entrevistas, apresentações e conversas informais em diferentes variedades regionais. Suas transcrições são ricas em vocabulário cotidiano e padrões conversacionais naturais, tornando-o adequado para representar enunciados incidentais.
 
-O \textbf{NURC-SP} \cite{NURCSP2025} contém gravações de fala
-espontânea com o sotaque paulistano em contextos formais e informais.
-Sua inclusão contribui para a representatividade do português falado
-em São Paulo, variedade amplamente presente nos contextos de uso de
-assistentes de voz.
+O \textbf{NURC-SP} \cite{NURCSP2025} contém gravações de fala espontânea paulistana em contextos formais e informais. Sua inclusão contribui para a representatividade do português falado em São Paulo, variedade amplamente presente nos contextos de uso de assistentes de voz.
 
-O \textbf{TAGARELA} \cite{Tagarela2026} é um corpus de fala extraído
-de \textit{podcasts} em português brasileiro, caracterizado por fala
-semi-espontânea em formato conversacional. Sua inclusão adiciona
-diversidade temática e de estilo ao subconjunto \texttt{NDD}.
+O \textbf{TAGARELA} \cite{Tagarela2026} é um corpus de fala extraído de \textit{podcasts} em português brasileiro, caracterizado por fala semi-espontânea em formato conversacional. Sua inclusão adiciona diversidade temática e de estilo ao subconjunto \texttt{NDD}.
 
-As transcrições extraídas desses corpora não requerem nova anotação
-para a classe \texttt{NDD}, pois por definição seu conteúdo é fala
-espontânea em contextos nos quais assistentes de voz não estão
-presentes. Uma amostragem aleatória estratificada por corpus e por
-tipo de contexto será aplicada para garantir diversidade.
+As transcrições desses corpora não requerem nova anotação para a classe \texttt{NDD}, pois por definição representam fala espontânea em contextos sem assistentes de voz. Uma amostragem aleatória estratificada por corpus e por tipo de contexto será aplicada para garantir diversidade.
 
 \subsubsection{Classes DD e AMB: geração sintética assistida por LLM}
 
-A classe \texttt{DD} não possui representação natural em corpora de
-fala espontânea, pois enunciados dirigidos a assistentes virtuais
-raramente ocorrem em contextos de conversação cotidiana não mediada
-por dispositivo. Para suprir essa lacuna em escala, este trabalho
-adotará uma abordagem de \textbf{geração sintética assistida por
-modelos de linguagem de grande escala} (LLMs), estratégia que tem
-ganho crescente respaldo na literatura de NLP para a criação de dados
-de treinamento em domínios com poucos recursos
-\cite{Møller2024}.
+A classe \texttt{DD} não possui representação natural em corpora de fala espontânea, pois enunciados dirigidos a assistentes raramente ocorrem em gravações de conversação cotidiana. Para suprir essa lacuna em escala, será adotada uma abordagem de geração sintética assistida por LLMs, estratégia com respaldo crescente na literatura de NLP para criação de dados em domínios com poucos recursos \cite{Møller2024}.
 
-A geração sintética será estruturada em três estratégias
-complementares, detalhadas a seguir.
+A geração será estruturada em três estratégias complementares:
 
-\textbf{Estratégia 1 — Expansão por paráfrase de templates
-(\textit{Template-based paraphrasing}).}
-Serão elaborados manualmente entre 200 e 300 templates de enunciados
-imperativos e interrogativos típicos de interações com assistentes de
-voz, cobrindo domínios funcionais relevantes: controle de dispositivos
-domésticos (iluminação, temperatura, eletrodomésticos), consulta de
-informações (clima, notícias, horários), entretenimento (música,
-vídeos, \textit{podcasts}), produtividade (alarmes, lembretes,
-timers) e comunicação (mensagens, chamadas). Cada template será
-fornecido a um LLM com a instrução de gerar múltiplas paráfrases
-naturais em português brasileiro, variando o nível de formalidade,
-o grau de implicitação e a estrutura sintática. Essa abordagem,
-denominada \textit{template-based paraphrasing}, é eficaz para
-garantir cobertura semântica ampla a partir de um conjunto compacto
-de intenções-semente \cite{Møller2024}.
+\textbf{Estratégia 1: Expansão por paráfrase de templates.}
+Serão elaborados manualmente entre 200 e 300 templates de enunciados imperativos e interrogativos típicos de assistentes de voz, cobrindo domínios como controle de dispositivos domésticos, consulta de informações, entretenimento, produtividade e comunicação. Cada template será fornecido a um LLM com a instrução de gerar múltiplas paráfrases naturais em português brasileiro, variando formalidade, grau de implicitação e estrutura sintática \cite{Møller2024}.
 
-\textbf{Estratégia 2 — Geração por \textit{role-playing} contextual.}
-O LLM será instruído a adotar o papel de um usuário em diferentes
-contextos domésticos e a gerar enunciados que esse usuário diria ao
-seu assistente virtual sem utilizar \textit{wake-words}. Os contextos
-serão variados sistematicamente: cozinha, sala de estar, quarto,
-banheiro, carro, escritório. Adicionalmente, o tom e o estado
-emocional do usuário serão variados (casual, apressado, educado,
-irritado, sussurrando) para capturar a diversidade de registros que
-ocorre em uso real. Essa estratégia produz enunciados mais naturais
-e contextualmente situados do que a expansão por templates.
+\textbf{Estratégia 2: Geração por \textit{role-playing} contextual.}
+O LLM será instruído a adotar o papel de um usuário em diferentes contextos domésticos (cozinha, sala, quarto, escritório, carro) e a gerar enunciados que esse usuário diria ao assistente sem \textit{wake-words}. O tom e o estado emocional também serão variados (casual, apressado, educado, irritado, sussurrando) para capturar a diversidade de registros em uso real. Essa estratégia produz enunciados mais contextualizados e naturais que a expansão por templates.
 
-\textbf{Estratégia 3 — Geração de diálogos sintéticos completos
-(\textit{Synthetic dialogues}).}
-O LLM será solicitado a gerar diálogos completos simulando uma pessoa
-em ambiente doméstico alternando entre conversas com outras pessoas
-e enunciados ao assistente. Cada turno do diálogo gerado será
-rotulado com \texttt{DD}, \texttt{NDD} ou \texttt{AMB} pelo próprio
-LLM como parte do processo de geração, sendo esse rótulo
-posteriormente validado por amostragem humana. Essa estratégia
-é especialmente útil para a geração de enunciados \texttt{AMB},
-uma vez que a ambiguidade surge naturalmente no contexto de
-diálogos mistos. Um exemplo de saída esperada para essa estratégia
-é apresentado no Quadro~\ref{quad:dialogo_sintetico}.
+\textbf{Estratégia 3: Geração de diálogos sintéticos completos.}
+O LLM gerará diálogos completos simulando uma pessoa em ambiente doméstico alternando entre conversas com outros humanos e enunciados ao assistente. Cada turno será rotulado como \texttt{DD}, \texttt{NDD} ou \texttt{AMB} pelo próprio LLM, sendo o rótulo posteriormente validado por revisão humana. Essa estratégia é especialmente útil para a classe \texttt{AMB}, pois a ambiguidade surge naturalmente em diálogos mistos. O Quadro~\ref{quad:dialogo_sintetico} apresenta um exemplo de saída esperada.
 
 \begin{table}[htb]
     \centering
     \caption{Exemplo de diálogo sintético gerado por LLM com rótulos de classe}
     \label{quad:dialogo_sintetico}
-    \begin{tabular}{p{8cm}|c}
+    \begin{tabular}{p{8cm}c}
         \toprule
         \textbf{Enunciado} & \textbf{Rótulo} \\
         \midrule
         ``Nossa, está muito quente aqui hoje.''
             & NDD \\
-        \midrule
-        ``Liga o ventilador, por favor.''
+        ``Tem como liga o ventilador, por favor.''
             & AMB \\
-        \midrule
         ``Coloca o ventilador no máximo.''
             & DD \\
-        \midrule
         ``Você foi ao mercado ontem?''
             & NDD \\
-        \midrule
         ``Qual a previsão do tempo para amanhã?''
             & DD \\
-        \midrule
         ``Me lembra de ligar para o médico às três.''
             & DD \\
-        \midrule
         ``Preciso terminar esse relatório hoje.''
             & NDD \\
         \bottomrule
@@ -1141,47 +1069,35 @@ diálogos mistos. Um exemplo de saída esperada para essa estratégia
     \legend{Fonte: Elaborado pelo autor (2026).}
 \end{table}
 
-Os LLMs utilizados na geração sintética incluirão modelos de alta
-capacidade disponíveis comercialmente ou via API, como GPT-4o, Claude
-e Gemini, bem como modelos com foco em português brasileiro, como
-o Sabiá \cite{Pires2023}, priorizando a naturalidade e a correção
-gramatical dos enunciados gerados. A qualidade das amostras geradas
-será avaliada por amostragem humana, conforme descrito na
-Seção~\ref{sec:protocolo_anotacao}.
+Os LLMs utilizados incluirão modelos de alta capacidade disponíveis via API (GPT-4o, Claude, Gemini) e modelos com foco em português brasileiro, como o Sabiá \cite{Pires2023}, priorizando a naturalidade e a correção gramatical dos enunciados gerados.
 
-Um risco metodológico inerente à geração sintética assistida por LLMs é o denominado viés de artefato linguístico (LLM-style artifact bias): amostras geradas por LLMs tendem a apresentar linguagem mais formal, sintaticamente mais regular e semanticamente mais explícita do que a fala espontânea real em português brasileiro, caracterizada por disfluências, reduções fonéticas, elipses e construções coloquiais \cite{Møller2024}. Para mitigar esse viés, serão adotadas as seguintes estratégias durante a geração: (i) instrução explícita dos LLMs para emular registros coloquiais e informais, incluindo marcadores de disfluência típicos do português falado ("né", "tipo", "então", hesitações); (ii) variação sistemática de parâmetros de temperamento e de estilo nos prompts de geração, para ampliar a diversidade linguística das amostras; (iii) comparação da distribuição estatística de características lexicais (comprimento médio de sentença, riqueza de vocabulário, frequência de marcadores informais) entre as amostras sintéticas e as transcrições extraídas dos corpora públicos, como critério adicional de controle de qualidade. Caso o viés seja detectado na análise, técnicas de pós-filtragem e re-geração com prompts corrigidos serão aplicadas antes da incorporação ao corpus final.
+Um risco inerente à geração sintética é o viés de artefato linguístico, amostras geradas por LLMs tendem a apresentar linguagem mais formal, sintaticamente regular e semanticamente explícita do que a fala espontânea real, que é marcada por disfluências, reduções fonéticas e construções coloquiais \cite{Møller2024}. Para mitigar esse viés, serão adotadas três medidas: (i) instrução explícita dos LLMs para emular registros coloquiais, incluindo marcadores de disfluência típicos do português falado (``né'', ``tipo'', ``então'', hesitações); (ii) variação sistemática de parâmetros de temperatura e de estilo nos \textit{prompts}; (iii) comparação da distribuição de características lexicais (comprimento médio de sentença, riqueza vocabular, frequência de marcadores informais) entre as amostras sintéticas e as transcrições dos corpora públicos. Caso disparidades significativas sejam detectadas, os \textit{prompts} serão refinados e as amostras problemáticas re-geradas.
 
-A Tabela~\ref{tab:corpus_fontes} resume as fontes, estratégias e
-volumes estimados de cada componente do corpus.
+A Tabela~\ref{tab:corpus_fontes} resume as fontes, estratégias e volumes estimados do corpus.
 
 \begin{table}[htb]
     \centering
     \caption{Fontes, estratégias e volumes estimados do corpus de DDSD em PT-BR}
     \label{tab:corpus_fontes}
-    \begin{tabular}{l|l|c|c}
+    \begin{tabular}{llcc}
         \toprule
         \textbf{Fonte / Estratégia}
             & \textbf{Classe}
             & \textbf{Método}
             & \textbf{Volume estimado} \\
         \midrule
-        CORAA ASR \cite{CORAA2023}
-            & NDD & Extração de transcrições & $\sim$30.000 \\
-        \midrule
-        NURC-SP \cite{NURCSP2025}
-            & NDD & Extração de transcrições & $\sim$20.000 \\
-        \midrule
-        TAGARELA \cite{Tagarela2026}
-            & NDD & Extração de transcrições & $\sim$20.000 \\
-        \midrule
+        CORAA ASR
+            & NDD & Extração de transcrições & $\sim$25.000 \\
+        NURC-SP 
+            & NDD & Extração de transcrições & $\sim$15.000 \\
+        TAGARELA 
+            & NDD & Extração de transcrições & $\sim$15.000 \\
         \textit{Template-based paraphrasing}
-            & DD & LLM (geração sintética) & $\sim$15.000 \\
-        \midrule
+            & DD & LLM (geração sintética) & $\sim$20.000 \\
         \textit{Role-playing} contextual
-            & DD & LLM (geração sintética) & $\sim$10.000 \\
-        \midrule
+            & DD & LLM (geração sintética) & $\sim$15.000 \\
         Diálogos sintéticos
-            & DD / AMB & LLM (geração sintética) & $\sim$10.000 \\
+            & DD / AMB & LLM (geração sintética) & $\sim$15.000 \\
         \midrule
         \textbf{Total estimado}
             & ---
@@ -1192,14 +1108,7 @@ volumes estimados de cada componente do corpus.
     \legend{Fonte: Elaborado pelo autor (2026).}
 \end{table}
 
-Os volumes apresentados são estimativas iniciais sujeitas a ajuste
-durante a execução do TCC2, em função da disponibilidade dos corpora
-públicos e da capacidade de geração dos LLMs utilizados. O critério
-de balanceamento entre classes \texttt{DD} e \texttt{NDD} será
-monitorado durante a construção: caso a razão entre classes supere
-3:1, serão adotadas técnicas de balanceamento durante o treinamento,
-como ponderação de classes (\textit{class weighting}) ou
-\textit{oversampling} da classe minoritária.
+Os volumes são estimativas iniciais sujeitas a ajuste durante o TCC2, em função da disponibilidade dos corpora e da capacidade de geração dos LLMs. O critério de balanceamento entre \texttt{DD} e \texttt{NDD} será monitorado, caso a razão entre classes supere 3:1, serão adotadas técnicas como ponderação de classes (\textit{class weighting}) ou \textit{oversampling} da classe minoritária.
 
 % ---------------------------------------------------------------
 \subsection{Protocolo de validação e controle de qualidade}
