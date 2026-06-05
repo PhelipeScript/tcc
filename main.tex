@@ -1,4 +1,4 @@
-% ---------------------------------------------------------------
+﻿% ---------------------------------------------------------------
 % TEMPLATE TCC1 - SENAC SANTO AMARO
 % ---------------------------------------------------------------
 % Trabalho de Conclusão de Curso 1
@@ -784,23 +784,19 @@ Em conjunto, esses diferenciais evidenciam que o presente trabalho não é uma r
 \chapter{Desenvolvimento}
 \label{cap:desenvolvimento}
 
-Este capítulo apresenta a proposta de desenvolvimento deste trabalho,
-detalhando a arquitetura do sistema, as decisões metodológicas, o
-planejamento experimental e o cronograma de execução previstos para o
-TCC2. Em consonância com a natureza de uma proposta de pesquisa,
-conforme orientado por \citeonline{Wazlawick2020}, o foco está na
-especificação precisa do que será implementado e avaliado, justificando
-cada escolha com base na literatura revisada no Capítulo~\ref{cap:revisao}.
+Este capítulo detalha a proposta de desenvolvimento deste trabalho, a arquitetura do sistema, as decisões metodológicas, o planejamento experimental e o cronograma de execução previstos para o TCC2. O foco reside na especificação precisa do que será implementado e avaliado, com cada escolha técnica fundamentada na literatura revisada no Capítulo~\ref{cap:revisao}.
 
 % ---------------------------------------------------------------
+
 \section{Visão geral da solução proposta}
 \label{sec:visao_geral}
 
-A solução proposta consiste em um sistema de Detecção de Fala Direcionada ao Dispositivo (do inglês \textit{Device-Directed Speech Detection}, referida pela sigla DDSD) para o português brasileiro, operando exclusivamente sobre o nível textual. O sistema recebe como entrada um segmento de fala capturado em ambiente controlado, processa esse sinal por meio de um módulo de \textit{Automatic Speech Recognition} (traduzido como Reconhecimento Automático de Fala, referenciado pela sigla ASR) e classifica automaticamente o enunciado resultante como dirigido ao dispositivo ou como conversa incidental, por meio de um classificador textual baseado em modelos de linguagem pré-treinados \cite{Dighe2024, Wagner2024}.
+A solução proposta consiste em um sistema de Detecção de Fala Direcionada ao Dispositivo (do inglês \textit{Device-Directed Speech Detection}, referida pela sigla DDSD) para o português brasileiro, operando exclusivamente sobre o nível textual. O sistema recebe um segmento de fala capturado em ambiente controlado, processa esse sinal por meio de um módulo \textit{Automatic Speech Recognition} (traduzido como Reconhecimento Automático de Fala, referenciado pela sigla ASR) e classifica o enunciado resultante como dirigido ao dispositivo ou como conversa incidental, utilizando um classificador baseado em modelos de linguagem pré-treinados \cite{Dighe2024, Wagner2024}.
 
-A abordagem adotada é deliberadamente modular: o módulo ASR e o módulo de classificação são componentes independentes, com interfaces bem definidas entre si. Essa modularidade facilita a substituição de qualquer componente sem alterações no restante do sistema, permitindo a comparação entre diferentes modelos ASR e diferentes classificadores de forma controlada \cite{Wazlawick2020}.
+A arquitetura é deliberadamente modular, os módulos de ASR e de classificação são componentes independentes, com interfaces bem definidas entre si. Essa separação traz duas vantagens concretas. Primeiro, permite a substituição de qualquer componente sem alteração do restante do sistema, o que viabiliza a comparação controlada entre diferentes modelos \cite{Wazlawick2020}. Segundo, favorece a reprodutibilidade e a extensibilidade, pesquisadores futuros poderão reutilizar o módulo de classificação com outros sistemas de ASR, ou vice-versa, sem necessidade de reestruturação.
 
 % ---------------------------------------------------------------
+
 \subsection{Arquitetura do pipeline}
 \label{sec:pipeline}
 
