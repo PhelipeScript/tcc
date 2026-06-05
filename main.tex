@@ -803,27 +803,18 @@ A arquitetura é deliberadamente modular, os módulos de ASR e de classificaçã
 O \textit{pipeline} completo do sistema é composto por quatro etapas sequenciais, ilustradas na Figura~\ref{fig:pipeline}:
 
 \begin{enumerate}
-    \item \textbf{Captura de áudio}: o sinal de fala é capturado em ambiente controlado e segmentado em enunciados individuais por meio de um módulo de Detecção de Atividade de Voz (conhecida por VAD, do inglês \textit{Voice Activity Detection}), que delimita os trechos de fala relevantes \cite{Li2021};
+    \item \textbf{Captura de áudio}: o sinal de fala é capturado em ambiente controlado e segmentado em enunciados individuais por um módulo de Detecção de Atividade de Voz (VAD, do inglês \textit{Voice Activity Detection}), que delimita os trechos contendo fala \cite{Li2021};
 
-    \item \textbf{Transcrição ASR}: o enunciado segmentado é processado
-    pelo modelo Whisper \cite{Radford2023}, que gera as $N$ hipóteses
-    textuais mais prováveis (\textit{n-best list}) via \textit{beam
-    search}. Essas hipóteses são ordenadas por probabilidade e
-    fornecidas como entrada ao módulo de classificação;
+    \item \textbf{Transcrição ASR}: o enunciado segmentado é processado pelo Whisper \cite{Radford2023}, que gera as $N$ hipóteses textuais mais prováveis (\textit{n-best list}) via \textit{beam search}, ordenadas por probabilidade;
 
-    \item \textbf{Classificação de intenção}: o conjunto de hipóteses
-    textuais é processado pelo classificador binário, que produz uma
-    pontuação de probabilidade para cada classe (dirigida ao dispositivo
-    \textit{versus} conversa incidental);
+    \item \textbf{Classificação de intenção}: as hipóteses textuais são processadas pelo classificador binário, que produz uma pontuação de probabilidade para cada classe (dirigida ao dispositivo \textit{versus} conversa incidental);
 
-    \item \textbf{Decisão}: com base na pontuação produzida pelo
-    classificador, o sistema emite uma decisão binária, que pode
-    acionar ou não o pipeline completo do assistente virtual.
+    \item \textbf{Decisão}: com base na pontuação do classificador, o sistema emite uma decisão binária que aciona ou não o \textit{pipeline} completo do assistente virtual.
 \end{enumerate}
 
 \begin{figure}[H]
     \centering
-    \caption{Arquitetura do pipeline proposto}
+    \caption{Arquitetura do pipeline proposto para DDSD textual}
     \label{fig:pipeline}
     \begin{tabular}{ccccccccc}
         \toprule
@@ -841,21 +832,13 @@ O \textit{pipeline} completo do sistema é composto por quatro etapas sequenciai
         Segmento &&
         \textit{n-best} textual &&
         BERTimbau &&
-        Dirigido? \\
+        DD / NDD \\
         \bottomrule
     \end{tabular}
     \fonte{Elaborado pelo autor (2026).}
 \end{figure}
 
-É importante ressaltar que o sistema opera exclusivamente sobre texto:
-o classificador não tem acesso ao sinal de áudio bruto nem às
-representações acústicas internas do Whisper. As hipóteses geradas
-pelo \textit{beam search} são tratadas como sequências de texto comuns,
-sem aproveitamento de probabilidades acústicas ou escores de confiança
-do decodificador. Essa escolha define a modalidade do sistema como
-\textbf{textual pura}, distinguindo-o das abordagens de \citeonline{Wagner2024}
-e \citeonline{Dighe2024}, que acessam representações internas do ASR
-ou sinais acústicos complementares.
+Um aspecto central distingue este sistema das abordagens de \citeonline{Wagner2024} e \citeonline{Dighe2024}: o classificador opera em modalidade \textbf{textual pura}. Isso significa que ele não tem acesso ao sinal de áudio bruto, às representações acústicas internas do Whisper, nem a probabilidades ou escores de confiança do decodificador. As hipóteses geradas pelo \textit{beam search} são tratadas estritamente como sequências de texto. Essa fronteira conceitual é mantida por design ao longo de todo o trabalho.
 
 % ---------------------------------------------------------------
 \subsection{Definição de ambiente controlado}
