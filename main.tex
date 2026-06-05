@@ -899,32 +899,11 @@ O Whisper Large V3 Turbo merece destaque, ao reduzir o número de camadas do dec
 \subsection{Estratégia de uso do \textit{n-best}}
 \label{sec:nbest}
 
-Em vez de utilizar apenas a transcrição mais provável gerada pelo ASR
-(denominada 1-best), este trabalho adotará a estratégia de \textit{n-best},
-na qual as $N$ hipóteses textuais mais prováveis geradas pelo
-\textit{beam search} do Whisper são fornecidas como entrada ao
-classificador. Essa estratégia é motivada por evidências recentes na
-literatura: \citeonline{Dighe2024} demonstraram que hipóteses
-alternativas do ASR contêm informações complementares à transcrição
-1-best e contribuem para melhorar o entendimento semântico da fala,
-especialmente em casos onde a transcrição mais provável apresenta erros.
+Em vez de utilizar apenas a transcrição mais provável (1-best), este trabalho adotará a estratégia de \textit{n-best}, na qual as $N$ hipóteses textuais mais prováveis geradas pelo \textit{beam search} do Whisper são fornecidas ao classificador. \citeonline{Dighe2024} demonstraram que hipóteses alternativas contêm informações complementares à transcrição principal e contribuem para melhorar o entendimento semântico, especialmente quando a 1-best apresenta erros.
 
-É fundamental, contudo, esclarecer a natureza dessa estratégia no
-contexto deste trabalho. As $N$ hipóteses geradas pelo Whisper são
-tratadas exclusivamente como sequências de texto: o classificador
-recebe apenas as transcrições em formato textual, sem acesso a
-probabilidades acústicas, escores de confiança do decodificador ou
-quaisquer representações internas do modelo ASR. O sistema opera,
-portanto, em modalidade \textbf{textual pura}, conforme detalhado na
-Seção~\ref{sec:pipeline}.
+As $N$ hipóteses são tratadas exclusivamente como texto, o classificador recebe apenas as transcrições, sem acesso a probabilidades acústicas ou escores de confiança do decodificador. A representação como entrada para o classificador será implementada por concatenação das $N$ transcrições, separadas pelo token especial \texttt{[SEP]} do BERTimbau \cite{Devlin2019, Souza2020}.
 
-A representação das hipóteses como entrada para o classificador será
-implementada por concatenação simples das $N$ transcrições, separadas
-por um token especial de separação compatível com a arquitetura do
-BERTimbau \cite{Devlin2019, Souza2020}. O valor de $N$ será definido
-empiricamente durante os experimentos do TCC2, com valores iniciais
-de $N \in \{1, 3, 5\}$, permitindo avaliar o impacto do número de
-hipóteses no desempenho do classificador.
+O valor de $N$ será definido empiricamente durante os experimentos do TCC2, com valores iniciais de $N \in \{1, 3, 5\}$. Essa faixa foi escolhida com base em duas considerações práticas, o valor $N = 1$ serve como referência (equivale ao uso convencional da transcrição 1-best), enquanto $N = 3$ e $N = 5$ exploram o ganho incremental de hipóteses adicionais sem ultrapassar o limite de 128 tokens do BERTimbau, enunciados típicos de assistentes de voz raramente excedem 15 palavras, de modo que 5 hipóteses concatenadas permanecem dentro da capacidade do modelo na maioria dos casos.
 
 % ---------------------------------------------------------------
 \subsection{Impacto esperado dos erros de transcrição (WER)}
