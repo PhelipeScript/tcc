@@ -838,40 +838,25 @@ O \textit{pipeline} completo do sistema é composto por quatro etapas sequenciai
     \fonte{Elaborado pelo autor (2026).}
 \end{figure}
 
-Um aspecto central distingue este sistema das abordagens de \citeonline{Wagner2024} e \citeonline{Dighe2024}: o classificador opera em modalidade \textbf{textual pura}. Isso significa que ele não tem acesso ao sinal de áudio bruto, às representações acústicas internas do Whisper, nem a probabilidades ou escores de confiança do decodificador. As hipóteses geradas pelo \textit{beam search} são tratadas estritamente como sequências de texto. Essa fronteira conceitual é mantida por design ao longo de todo o trabalho.
+Um aspecto central distingue este sistema das abordagens de \citeonline{Wagner2024} e \citeonline{Dighe2024}: o classificador opera em modalidade textual pura. Isso significa que ele não tem acesso ao sinal de áudio bruto, às representações acústicas internas do Whisper, nem a probabilidades ou escores de confiança do decodificador. As hipóteses geradas pelo \textit{beam search} são tratadas estritamente como sequências de texto. Essa fronteira conceitual é mantida por design ao longo de todo o trabalho.
 
 % ---------------------------------------------------------------
 \subsection{Definição de ambiente controlado}
 \label{sec:ambiente}
 
-Para os fins deste trabalho, um \textbf{ambiente controlado} é definido
-como um cenário de coleta e avaliação com as seguintes características:
+Para os fins deste trabalho, um ambiente controlado é definido como um cenário de coleta e avaliação com as seguintes características:
 
 \begin{itemize}
-    \item \textbf{Ruído ambiental reduzido}: as gravações são realizadas
-    em ambientes com baixo nível de ruído de fundo, sem sobreposição de
-    múltiplos falantes simultâneos e sem música ou televisão ligada
-    durante a captura;
+    \item \textbf{Ruído ambiental reduzido}: gravações em ambientes com baixo nível de ruído de fundo, sem sobreposição de múltiplos falantes simultâneos e sem música ou televisão ligada durante a captura;
 
-    \item \textbf{Proximidade ao microfone}: os enunciados são produzidos
-    a distância padronizada do dispositivo de captura, garantindo
-    qualidade acústica consistente entre as amostras;
+    \item \textbf{Proximidade ao microfone}: enunciados produzidos a distância padronizada do dispositivo de captura, garantindo qualidade acústica consistente entre as amostras;
 
-    \item \textbf{Variedade linguística controlada}: os enunciados cobrem
-    as três classes definidas no cenário motivador (Seção~\ref{sec:cenario}):
-    comandos diretos ao dispositivo, comentários incidentais e casos
-    ambíguos, sem restrição de sotaque ou variação regional do português
-    brasileiro;
+    \item \textbf{Variedade linguística preservada}: os enunciados cobrem as três classes definidas no cenário motivador (Seção~\ref{sec:cenario}), comandos diretos ao dispositivo, comentários incidentais e casos ambíguos, sem restrição de sotaque ou variação regional;
 
-    \item \textbf{Ausência de wake-word}: nenhum enunciado do corpus
-    utiliza palavras de ativação explícitas, garantindo que o
-    classificador opere exclusivamente sobre o conteúdo linguístico.
+    \item \textbf{Ausência de wake-word}: nenhum enunciado do corpus utiliza palavras de ativação explícitas, garantindo que o classificador opere exclusivamente sobre o conteúdo linguístico.
 \end{itemize}
 
-A escolha por ambiente controlado é uma limitação estratégica do escopo
-deste TCC, conforme discutido na Seção~\ref{sec:limitacoes}. Cenários
-com ruído elevado, múltiplos falantes ou condições acústicas adversas
-representam extensões naturais para trabalhos futuros \cite{CORAA2023}.
+Essa delimitação é uma escolha estratégica de escopo, conforme discutido na Seção~\ref{sec:limitacoes}. Cenários com ruído elevado, múltiplos falantes ou condições acústicas adversas representam extensões naturais para trabalhos futuros \cite{CORAA2023}.
 
 % ---------------------------------------------------------------
 \section{Módulo ASR: transcrição e geração do \textit{n-best}}
