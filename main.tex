@@ -866,26 +866,15 @@ Essa delimitação é uma escolha estratégica de escopo, conforme discutido na 
 \subsection{Escolha e configuração do Whisper}
 \label{sec:whisper_config}
 
-O módulo ASR será implementado com o modelo Whisper, desenvolvido pela
-OpenAI e descrito por \citeonline{Radford2023}. A escolha do Whisper
-justifica-se por três razões principais: (i) desempenho competitivo
-em português brasileiro mesmo sem adaptação específica ao idioma,
-evidenciado por sua arquitetura treinada em 680 mil horas de dados
-multilíngues sob supervisão fraca \cite{Radford2023}; (ii) disponibilidade
-de múltiplos tamanhos de modelo, permitindo comparações entre precisão
-e custo computacional; e (iii) suporte nativo a \textit{beam search}
-com geração de múltiplas hipóteses, essencial para a estratégia de
-\textit{n-best} adotada neste trabalho.
+O módulo ASR será implementado com o Whisper, desenvolvido pela OpenAI \cite{Radford2023}. Três razões sustentam essa escolha: (i) desempenho competitivo em português brasileiro sem adaptação específica ao idioma, graças à arquitetura treinada em 680 mil horas de dados multilíngues sob supervisão fraca; (ii) disponibilidade de múltiplos tamanhos de modelo, permitindo comparações entre precisão e custo computacional; e (iii) suporte nativo a \textit{beam search} com geração de múltiplas hipóteses, essencial para a estratégia de \textit{n-best} adotada neste trabalho.
 
-Serão avaliadas três variantes do Whisper, selecionadas para cobrir
-diferentes pontos do \textit{trade-off} entre precisão e eficiência
-computacional, conforme descrito na Tabela~\ref{tab:whisper_modelos}.
+Serão avaliadas três variantes, selecionadas para cobrir diferentes pontos do \textit{trade-off} entre precisão e eficiência, conforme a Tabela~\ref{tab:whisper_modelos}.
 
 \begin{table}[htb]
     \centering
     \caption{Variantes do Whisper avaliadas no módulo ASR}
     \label{tab:whisper_modelos}
-    \begin{tabular}{l|c|c|c}
+    \begin{tabular}{lccc}
         \toprule
         \textbf{Modelo}
             & \textbf{Parâmetros}
@@ -894,10 +883,8 @@ computacional, conforme descrito na Tabela~\ref{tab:whisper_modelos}.
         \midrule
         Whisper Medium
             & 307M & 24 & Referência intermediária \\
-        \midrule
         Whisper Large V3
             & 1,5B & 32 & Maior precisão \\
-        \midrule
         Whisper Large V3 Turbo
             & $\sim$809M & 4  & Maior velocidade \\
         \bottomrule
@@ -906,15 +893,7 @@ computacional, conforme descrito na Tabela~\ref{tab:whisper_modelos}.
     Jeffries2024, Bevilacqua2024}.}
 \end{table}
 
-O modelo Whisper Large V3 Turbo merece destaque especial: ao reduzir
-o número de camadas do decodificador de 32 para apenas 4, mantém
-desempenho próximo ao modelo completo com ganho de velocidade de
-aproximadamente 6 vezes \cite{Jeffries2024, Bevilacqua2024}, tornando-o
-particularmente adequado para cenários com restrições de latência.
-A comparação entre as três variantes permitirá analisar a relação entre
-a WER (Taxa de Erro de Palavras, do inglês \textit{Word Error Rate}) de cada modelo e o desempenho final
-do classificador de intenção, conforme previsto no terceiro objetivo
-específico (Seção~\ref{sec:objetivos}).
+O Whisper Large V3 Turbo merece destaque, ao reduzir o número de camadas do decodificador de 32 para 4, mantém desempenho próximo ao modelo completo com ganho de velocidade de aproximadamente 6 vezes \cite{Jeffries2024, Bevilacqua2024}, tornando-o particularmente adequado para cenários com restrições de latência. A comparação entre as três variantes permitirá analisar a relação entre o WER de cada modelo e o desempenho final do classificador, conforme previsto no terceiro objetivo específico (Seção~\ref{sec:objetivos}).
 
 % ---------------------------------------------------------------
 \subsection{Estratégia de uso do \textit{n-best}}
