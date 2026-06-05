@@ -1171,54 +1171,20 @@ O terceiro objetivo específico deste trabalho prevê a análise do impacto dos 
 Esse experimento é particularmente relevante para o português brasileiro, idioma com desafios específicos para ASR, alta variabilidade fonética regional, reduções vocálicas e contrações da fala informal \cite{CORAA2023, Bevilacqua2024}.
 
 % ---------------------------------------------------------------
-\subsection{Análise de interpretabilidade}
-\label{sec:interpretabilidade}
-
-Para além das métricas quantitativas, será conduzida uma análise
-qualitativa de interpretabilidade dos resultados do classificador
-BERTimbau. Essa análise tem dois objetivos: (i) identificar os padrões
-linguísticos mais discriminativos para a tarefa de DDSD em português
-brasileiro; e (ii) verificar se os erros do classificador concentram-se
-nos casos ambíguos esperados, validando a coerência dos resultados
-com a teoria.
-
-A análise de interpretabilidade será realizada por meio da técnica
-SHAP (\textit{SHapley Additive exPlanations}) aplicada aos modelos
-\textit{baseline} (TF-IDF + SVM/LR), que por sua natureza linear
-permitem identificar diretamente as \textit{features} (termos do
-vocabulário) com maior peso discriminativo. Para o BERTimbau, será
-utilizada a técnica de visualização de pesos de atenção (\textit{attention
-visualization}), que permite identificar quais tokens o modelo considera
-mais relevantes para a decisão de classificação \cite{Weld2022}.
-
-% ---------------------------------------------------------------
 \section{Critérios de validação e aceitação da hipótese}
 \label{sec:criterios_validacao}
 
-A hipótese de pesquisa formulada na Seção~\ref{sec:objetivos} será
-considerada \textbf{confirmada} se, e somente se, os seguintes critérios
-forem simultaneamente satisfeitos sobre o conjunto de teste:
+A hipótese de pesquisa formulada na Seção~\ref{sec:hipotese} será considerada confirmada se, e somente se, os seguintes critérios forem simultaneamente satisfeitos sobre o conjunto de teste:
 
 \begin{enumerate}
-    \item \textbf{Superioridade sobre os baselines clássicos}: o
-    BERTimbau com \textit{fine-tuning} deve alcançar F1-score
-    estatisticamente superior (teste t de Student com $p < 0,05$) ao
-    melhor \textit{baseline} clássico (TF-IDF + SVM ou Regressão
-    Logística).
+    \item \textbf{Superioridade sobre os baselines clássicos}: o BERTimbau com \textit{fine-tuning} deve alcançar F1-score superior ao melhor \textit{baseline} (TF-IDF + SVM ou Regressão Logística).
 
-    \item \textbf{Viabilidade técnica da abordagem textual}: o sistema proposto deve alcançar EER inferior a 30\% sobre o conjunto de teste, limiar definido como indicativo de capacidade discriminativa não trivial da abordagem textual para DDSD em português brasileiro. Esse limiar foi estabelecido com base na premissa de que um classificador sem capacidade discriminativa real convergiria para EER próximo a 50\% (equivalente à chance), e que qualquer valor substancialmente abaixo desse patamar constitui evidência de viabilidade técnica.
+    \item \textbf{Viabilidade técnica da abordagem textual}: o sistema proposto deve alcançar EER inferior a 30\% sobre o conjunto de teste. Esse limiar foi definido com base na premissa de que um classificador sem capacidade discriminativa convergiria para EER próximo a 50\% (equivalente à classificação aleatória); o valor de 30\% representa redução de 40\% em relação à chance e constitui evidência substancial de viabilidade. A título de referência, os melhores sistemas unimodais textuais de \citeonline{Wagner2024} alcançaram EER na faixa de 15--20\% em inglês; considerando que o português brasileiro dispõe de menos recursos e que o corpus é parcialmente sintético, o limiar de 30\% é conservador e realista para um primeiro estudo no idioma.
 
-    \item \textbf{Ganho mensurável do \textit{n-best} sobre o 1-best}:
-    a configuração com \textit{n-best} ($N > 1$) deve apresentar
-    F1-score igual ou superior à configuração com apenas a transcrição
-    1-best, validando a estratégia de uso de múltiplas hipóteses do ASR.
+    \item \textbf{Contribuição do \textit{n-best}}: a avaliação da estratégia \textit{n-best} será reportada em dois níveis. O critério mínimo é a não degradação: a configuração com $N > 1$ deve apresentar F1-score igual ou superior à configuração 1-best, indicando que hipóteses adicionais não prejudicam o classificador. Como critério complementar, será analisado se a utilização de múltiplas hipóteses produz ganhos consistentes de desempenho em relação à configuração 1-best.
 \end{enumerate}
 
-Caso a hipótese não seja confirmada, os resultados serão igualmente
-reportados e analisados, pois resultados negativos também contribuem
-para o avanço do conhecimento na área, especialmente no contexto de um
-\textit{baseline} inicial para DDSD em português brasileiro
-\cite{Wazlawick2020}.
+Caso a hipótese não seja confirmada, os resultados serão igualmente reportados e analisados. Resultados negativos também contribuem para o avanço do conhecimento \cite{Wazlawick2020}.
 
 % ---------------------------------------------------------------
 \section{Tecnologias e ferramentas}
