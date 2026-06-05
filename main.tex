@@ -965,29 +965,11 @@ Serão avaliadas as duas variantes disponíveis: BERTimbau Base (12 camadas, 110
 \subsection{Modelos alternativos: DeBERTinha e Albertina}
 \label{sec:modelos_alternativos}
 
-Além do BERTimbau, dois modelos alternativos serão avaliados como
-classificadores, caso os recursos computacionais e o cronograma
-permitam: a DeBERTinha \cite{Abonizio2023} e a Albertina PT-BR
-\cite{Rodrigues2023}.
+Além do BERTimbau, dois modelos alternativos serão avaliados caso os recursos computacionais e o cronograma permitam, a DeBERTinha \cite{Abonizio2023} e a Albertina PT-BR \cite{Rodrigues2023}.
 
-A DeBERTinha é uma versão compacta do DeBERTaV3 adaptada para o
-português brasileiro por \citeonline{Abonizio2023}, com
-aproximadamente 70 milhões de parâmetros. Apesar de seu tamanho
-reduzido, demonstrou desempenho competitivo ou superior ao BERTimbau
-Large em diversas tarefas de NLP para o português, com vantagem
-significativa em eficiência computacional. Sua avaliação neste trabalho
-é motivada pela possibilidade de que um modelo mais eficiente alcance
-desempenho comparável ao BERTimbau em DDSD, o que teria implicações
-práticas relevantes para cenários com recursos limitados.
+A DeBERTinha é uma versão compacta do DeBERTaV3, adaptada para o português brasileiro por \citeonline{Abonizio2023}, com aproximadamente 70 milhões de parâmetros. Apesar de seu tamanho reduzido, demonstrou desempenho competitivo ou superior ao BERTimbau Large em diversas tarefas de NLP para o português, com vantagem em eficiência computacional. Sua avaliação é motivada pela possibilidade de que um modelo mais eficiente alcance desempenho comparável ao BERTimbau em DDSD, o que teria implicações práticas para cenários com recursos limitados.
 
-A Albertina PT-BR \cite{Rodrigues2023}, por sua vez, é construída sobre
-a arquitetura DeBERTaV3 e foi pré-treinada do zero em português, com
-ênfase na qualidade dos dados de pré-treinamento. Sua avaliação
-permitirá comparar abordagens de adaptação contínua (\textit{continual
-pre-training}, como na DeBERTinha) com pré-treinamento do zero em
-português. Dado seu maior tamanho (variantes de 1,5B a 7B de
-parâmetros), sua avaliação estará condicionada à disponibilidade de
-infraestrutura computacional adequada.
+A Albertina PT-BR \cite{Rodrigues2023}, construída sobre a arquitetura DeBERTaV2, foi pré-treinada do zero em português, com ênfase na qualidade dos dados de pré-treinamento. Está disponível em variantes de diferentes escalas, desde versões compactas de aproximadamente 100 milhões até versões maiores de cerca de 900 milhões de parâmetros, o que permite selecionar o modelo mais adequado aos recursos disponíveis. Sua avaliação permitirá comparar abordagens de adaptação contínua (\textit{continual pre-training}, como na DeBERTinha) com pré-treinamento do zero em português.
 
 % ---------------------------------------------------------------
 \subsection{Baselines clássicos: TF-IDF + SVM e Regressão Logística}
