@@ -1126,28 +1126,11 @@ Amostras com comprimento inferior a 3 tokens ou superior a 50 tokens serão desc
 \subsection{Divisão treino / validação / teste}
 \label{sec:divisao}
 
-O corpus será dividido nas proporções 70\% treino, 15\% validação e
-15\% teste \cite{Manning2008}, com divisão estratificada por classe e
-por fonte de dados. A estratificação por fonte é essencial para
-garantir que cada subconjunto contenha amostras de todas as origens
-(corpora públicos e geração sintética), evitando que o conjunto de
-teste seja composto exclusivamente por um único tipo de dado.
+O corpus será dividido nas proporções 70\% treino, 15\% validação e 15\% teste \cite{Manning2008}, com estratificação por classe e por fonte de dados. A estratificação por fonte garante que cada subconjunto contenha amostras de todas as origens (corpora públicos e geração sintética), evitando que o conjunto de teste seja composto exclusivamente por um único tipo de dado.
 
-O conjunto de teste será mantido estritamente reservado durante todo
-o processo de desenvolvimento e ajuste de hiperparâmetros, sendo
-utilizado exclusivamente na avaliação final \cite{Wazlawick2020}.
-Adicionalmente, os enunciados \texttt{AMB} serão identificados por
-uma flag no corpus, permitindo análises de desempenho segmentadas
-por subconjunto: desempenho geral, desempenho em amostras
-inequívocas (\texttt{DD} e \texttt{NDD} puros) e desempenho em
-casos ambíguos.
+O conjunto de teste será mantido reservado durante todo o processo de desenvolvimento e ajuste de hiperparâmetros, sendo utilizado exclusivamente na avaliação final \cite{Wazlawick2020}. Os enunciados \texttt{AMB} serão identificados por \textit{flag}, permitindo reportar desempenho geral, desempenho em amostras inequívocas (\texttt{DD} e \texttt{NDD} puros) e desempenho nos casos ambíguos.
 
-Por fim, uma versão reduzida do conjunto de teste --- composta por
-amostras com transcrições manuais produzidas durante a fase de
-validação humana --- será utilizada no experimento
-\textit{upper-bound} descrito na Seção~\ref{sec:upper_bound},
-permitindo estimar o desempenho do classificador sobre texto sem
-ruído de transcrição ASR.
+Uma versão reduzida do conjunto de teste, composta por amostras com transcrições manuais produzidas durante a validação humana, será utilizada no experimento \textit{upper-bound} da Seção~\ref{sec:upper_bound}, permitindo estimar o desempenho do classificador sobre texto sem ruído de ASR.
 
 % ---------------------------------------------------------------
 \section{Planejamento experimental}
