@@ -1158,34 +1158,17 @@ Todos os experimentos serão avaliados sobre o conjunto de teste com as métrica
 \textit{versus} automática}
 \label{sec:upper_bound}
 
-O terceiro objetivo específico deste trabalho prevê a análise sistemática
-do impacto dos erros de transcrição ASR no desempenho do classificador
-de intenção \cite{Dighe2024}. Para isso, será conduzido um experimento
-específico denominado \textit{upper-bound}:
+O terceiro objetivo específico deste trabalho prevê a análise do impacto dos erros de transcrição no desempenho do classificador \cite{Dighe2024}. Para isso, será conduzido o experimento \textit{upper-bound}:
 
 \begin{enumerate}
-    \item O classificador BERTimbau (melhor configuração dos
-    Experimentos 1 e 2) será avaliado sobre o conjunto de teste com
-    transcrições \textbf{manuais} (sem erros de ASR), produzindo o
-    desempenho \textit{upper-bound} --- o teto teórico da abordagem
-    textual com entrada perfeita;
+    \item O classificador BERTimbau (melhor configuração dos Experimentos 1 e 2) será avaliado sobre o conjunto de teste com transcrições \textbf{manuais} (sem erros de ASR), produzindo o desempenho \textit{upper-bound}, o teto teórico da abordagem textual;
 
-    \item O mesmo classificador será avaliado sobre o conjunto de teste
-    com transcrições \textbf{automáticas} geradas pelas três variantes
-    do Whisper (Medium, Large V3 e Large V3 Turbo), produzindo os
-    desempenhos reais do sistema completo;
+    \item O mesmo classificador será avaliado sobre transcrições automáticas geradas pelas três variantes do Whisper (Medium, Large V3 e Large V3 Turbo), produzindo os desempenhos reais do sistema completo;
 
-    \item A diferença entre o desempenho \textit{upper-bound} e os
-    desempenhos com transcrições automáticas será analisada em função
-    do WER de cada variante do Whisper, verificando se existe correlação
-    entre a taxa de erro de transcrição e a degradação do classificador.
+    \item A diferença entre os desempenhos será analisada em função do WER de cada variante, verificando se existe correlação entre a taxa de erro de transcrição e a degradação do classificador.
 \end{enumerate}
 
-Esse experimento é particularmente relevante para o contexto do
-português brasileiro, idioma que apresenta desafios específicos para
-sistemas de ASR, como alta variabilidade fonética regional, reduções
-vocálicas e contrações características da fala informal
-\cite{CORAA2023, Bevilacqua2024}.
+Esse experimento é particularmente relevante para o português brasileiro, idioma com desafios específicos para ASR, alta variabilidade fonética regional, reduções vocálicas e contrações da fala informal \cite{CORAA2023, Bevilacqua2024}.
 
 % ---------------------------------------------------------------
 \subsection{Análise de interpretabilidade}
