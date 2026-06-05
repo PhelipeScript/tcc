@@ -1136,43 +1136,22 @@ Uma versão reduzida do conjunto de teste, composta por amostras com transcriç�
 \section{Planejamento experimental}
 \label{sec:planejamento}
 
-O planejamento experimental define o conjunto de experimentos que serão
-conduzidos no TCC2 para testar a hipótese de pesquisa formulada na
-Seção~\ref{sec:objetivos}. Os experimentos são organizados em três
-grupos, detalhados nas subseções a seguir.
+O planejamento experimental define os experimentos que serão conduzidos no TCC2 para testar a hipótese formulada na Seção~\ref{sec:hipotese}. Os experimentos estão organizados em três grupos, detalhados nas subseções a seguir.
 
 % ---------------------------------------------------------------
 \subsection{Configuração dos experimentos e hiperparâmetros}
 \label{sec:experimentos_config}
 
-\textbf{Experimento 1 — Baselines clássicos.}
-Os modelos TF-IDF + SVM e TF-IDF + Regressão Logística serão treinados
-e avaliados sobre o conjunto de treinamento, com hiperparâmetros
-ajustados por validação cruzada de 5 \textit{folds} sobre o conjunto
-de treino. A entrada será a transcrição 1-best gerada pelo Whisper
-Large V3 Turbo.
+\textbf{Experimento 1: Baselines clássicos.}
+Os modelos TF-IDF + SVM e TF-IDF + Regressão Logística serão treinados e avaliados com hiperparâmetros ajustados por validação cruzada de 5 \textit{folds} sobre o conjunto de treino. A entrada será a transcrição 1-best gerada pelo Whisper Large V3 Turbo.
 
-\textbf{Experimento 2 — BERTimbau com \textit{fine-tuning}.}
-O BERTimbau Base e o BERTimbau Large serão submetidos ao processo de
-\textit{fine-tuning} descrito na Seção~\ref{sec:bertimbau_finetune},
-com diferentes configurações de entrada: (a) transcrição 1-best apenas;
-e (b) \textit{n-best} com $N \in \{3, 5\}$ hipóteses concatenadas. Os
-hiperparâmetros iniciais são os descritos na Tabela~\ref{tab:hiperparametros},
-com ajuste fino por validação no conjunto de validação.
+\textbf{Experimento 2: BERTimbau com \textit{fine-tuning}.}
+O BERTimbau Base e o BERTimbau Large serão submetidos ao \textit{fine-tuning} descrito na Seção~\ref{sec:bertimbau_finetune}, com diferentes configurações de entrada: (a) transcrição 1-best; e (b) \textit{n-best} com $N \in \{3, 5\}$ hipóteses concatenadas. Os hiperparâmetros iniciais são os da Tabela~\ref{tab:hiperparametros}, com ajuste por validação no conjunto de validação.
 
-\textbf{Experimento 3 — Modelos alternativos (condicionais).}
-Caso os recursos computacionais permitam, os modelos DeBERTinha
-\cite{Abonizio2023} e Albertina \cite{Rodrigues2023} serão avaliados
-com as mesmas configurações do Experimento 2, permitindo comparação
-direta entre as diferentes famílias de modelos de linguagem para o
-português brasileiro.
+\textbf{Experimento 3: Modelos alternativos (condicionais).}
+Caso os recursos computacionais permitam, DeBERTinha \cite{Abonizio2023} e Albertina \cite{Rodrigues2023} serão avaliados com as mesmas configurações do Experimento~2, permitindo comparação direta entre as diferentes famílias de modelos.
 
-Todos os experimentos serão avaliados sobre o conjunto de teste com as
-métricas descritas na Seção~\ref{sec:metricas}: F1-score, acurácia,
-precisão, \textit{recall}, Taxa de Erro Igual (conhecida por EER, do inglês \textit{Equal Error Rate}) e ROC-AUC. Os resultados serão
-reportados com média e desvio padrão sobre 5 execuções com diferentes
-sementes aleatórias, garantindo a robustez estatística das conclusões
-\cite{Wazlawick2020}.
+Todos os experimentos serão avaliados sobre o conjunto de teste com as métricas descritas na Seção~\ref{sec:metricas}: F1-score, acurácia, precisão, sensibilidade, EER e ROC-AUC. Os resultados serão reportados com média e desvio padrão sobre 5 execuções com diferentes sementes aleatórias, garantindo robustez estatística \cite{Wazlawick2020}.
 
 % ---------------------------------------------------------------
 \subsection{Experimento \textit{upper-bound}: transcrição manual
