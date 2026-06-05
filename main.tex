@@ -1236,6 +1236,18 @@ Com base na literatura revisada no Capítulo~\ref{cap:revisao} e nas escolhas me
 \textbf{(v) Baseline textual para DDSD em PT-BR.} O conjunto de resultados produzidos: corpus, modelos, código e métricas, constituirá um \textit{baseline} documentado e reprodutível para DDSD em português brasileiro, servindo como ponto de referência para estudos futuros \cite{Wazlawick2020, Dighe2024}.
 
 % ---------------------------------------------------------------
+\section{Considerações éticas}
+\label{sec:eticas}
+
+Embora este trabalho não envolva coleta direta de dados de participantes humanos, os corpora utilizados são públicos e os dados sintéticos são gerados por LLMs, algumas considerações éticas merecem registro.
+
+Em relação aos dados públicos, os corpora CORAA ASR, NURC-SP e TAGARELA serão utilizados estritamente em conformidade com suas respectivas licenças de uso. As transcrições extraídas serão anonimizadas quando necessário, preservando apenas o conteúdo linguístico relevante para a tarefa.
+
+No que se refere aos dados sintéticos, a geração por LLMs pode introduzir vieses socioculturais presentes nos dados de pré-treinamento desses modelos. A mitigação desse risco será realizada por meio da diversificação de contextos e registros nos \textit{prompts} de geração, conforme descrito na Seção~\ref{sec:fontes_dados}, e pela revisão humana de uma amostra representativa.
+
+Por fim, cabe observar que a tecnologia de DDSD, por operar sobre fala captada continuamente, levanta questões relevantes de privacidade em cenários de implantação real. Embora esse aspecto esteja fora do escopo experimental deste trabalho (conforme delimitado na Seção~\ref{sec:limitacoes}), reconhece-se que qualquer aplicação futura da abordagem proposta deverá incorporar mecanismos de consentimento, processamento local e minimização de dados, em conformidade com a legislação vigente.
+
+% ---------------------------------------------------------------
 \section{Cronograma de trabalho}
 \label{sec:cronograma}
 
