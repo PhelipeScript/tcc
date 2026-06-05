@@ -909,24 +909,9 @@ O valor de $N$ será definido empiricamente durante os experimentos do TCC2, com
 \subsection{Impacto esperado dos erros de transcrição (WER)}
 \label{sec:wer_impacto}
 
-A qualidade das transcrições geradas pelo ASR é um fator crítico para
-o desempenho do classificador textual. Erros de transcrição, mensurados
-pela Taxa de Erro de Palavras (WER), podem corromper palavras
-semanticamente relevantes e degradar a capacidade discriminativa do
-modelo de linguagem \cite{Dighe2024}. Por exemplo, o enunciado
-``acende a luz da sala'' transcrito erroneamente como ``acendes a
-luz da sela'' pode confundir o classificador, especialmente em casos
-limítrofes.
+A qualidade das transcrições é fator crítico para o desempenho do classificador. Erros de transcrição podem corromper palavras semanticamente relevantes e degradar a capacidade discriminativa do modelo \cite{Dighe2024}. A título de exemplo, o enunciado ``acende a luz da sala'' transcrito erroneamente como ``acendes a luz da sela'' pode confundir o classificador, especialmente em casos ambíguos.
 
-Para quantificar esse impacto, este trabalho realizará o experimento
-\textit{upper-bound} detalhado na Seção~\ref{sec:upper_bound}: o
-classificador será avaliado tanto sobre transcrições manuais (sem
-erros de ASR) quanto sobre transcrições automáticas (com erros reais
-do Whisper), permitindo medir a degradação de desempenho atribuível
-exclusivamente ao módulo ASR. Espera-se que a estratégia de \textit{n-best}
-contribua para reduzir parcialmente essa degradação ao oferecer
-hipóteses alternativas que podem conter a palavra correta em casos de
-erro na transcrição 1-best \cite{Dighe2024}.
+Para quantificar esse impacto, o experimento \textit{upper-bound} detalhado na Seção~\ref{sec:upper_bound} avaliará o classificador sobre transcrições manuais (sem erros de ASR) e sobre transcrições automáticas (com erros reais do Whisper), permitindo isolar a degradação atribuível ao módulo ASR. Espera-se que a estratégia de \textit{n-best} contribua para reduzir parcialmente essa degradação ao oferecer hipóteses alternativas que contenham a palavra correta quando a 1-best apresentar erro \cite{Dighe2024}.
 
 % ---------------------------------------------------------------
 \section{Módulo de classificação de intenção}
