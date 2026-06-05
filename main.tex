@@ -1114,21 +1114,13 @@ Os volumes são estimativas iniciais sujeitas a ajuste durante o TCC2, em funç�
 \subsection{Protocolo de validação e controle de qualidade}
 \label{sec:protocolo_anotacao}
 
-Dado que a maioria das amostras \texttt{NDD} é extraída de corpora
-validados publicamente e que as amostras \texttt{DD} e \texttt{AMB}
-são geradas sinteticamente com rótulos atribuídos pelo próprio LLM,
-o protocolo de qualidade deste corpus difere do protocolo de anotação
-manual clássico. Ele é estruturado em duas etapas complementares:
+A qualidade do corpus será assegurada por um protocolo em duas etapas complementares.
 
-\textbf{Etapa 1 --- Validação por amostragem humana.}
-Uma amostra aleatória estratificada de 5\% de cada subconjunto (NDD extraído, DD sintético e AMB sintético) será revisada manualmente por dois avaliadores independentes, falantes nativos do português brasileiro. A escolha de 5\% por subconjunto corresponde, dado o volume estimado do corpus, a aproximadamente 3.500 amostras por avaliador — tamanho considerado suficiente para detectar, com margem de erro de 5\% e intervalo de confiança de 95\%, desvios de qualidade superiores a 5 pontos percentuais na taxa de acerto de rótulos \cite{Manning2008}. Para cada amostra, os avaliadores confirmarão ou corrigirão o rótulo atribuído, sem acesso ao rótulo original. A concordância entre avaliadores será medida pelo coeficiente Kappa de Cohen; amostras com discordância serão resolvidas por um terceiro avaliador. Um valor de Kappa acima de 0,70 no subconjunto amostrado será considerado indicativo de qualidade aceitável para o corpus completo; caso o Kappa obtido seja inferior a 0,60, o protocolo de geração sintética será revisado antes de prosseguir com o corpus completo.
+\textbf{Etapa 1: Revisão humana por amostragem.}
+Uma amostra aleatória estratificada de cada subconjunto (NDD extraído, DD sintético e AMB sintético) será revisada. Para cada amostra, será confirmado ou corrigido o rótulo atribuído, sem acesso ao rótulo original. Um nível satisfatório de concordância será considerado indicativo de qualidade aceitável para o corpus; caso a concordância seja insuficiente, o protocolo de geração sintética será revisado antes de prosseguir.
 
-\textbf{Etapa 2 --- Filtragem automática de qualidade.}
-Amostras com comprimento inferior a 3 tokens ou superior a 50 tokens
-serão descartadas, por fugirem do padrão típico de enunciados de
-assistentes de voz. Duplicatas exatas e duplicatas aproximadas
-(similaridade cossenoidal TF-IDF superior a 0,95) também serão
-removidas para evitar contaminação entre treino e teste \cite{Manning2008}.
+\textbf{Etapa 2: Filtragem automática.}
+Amostras com comprimento inferior a 3 tokens ou superior a 50 tokens serão descartadas, por fugirem do padrão típico de enunciados de assistentes de voz. Duplicatas exatas e duplicatas aproximadas (similaridade cossenoidal TF-IDF superior a 0,95) também serão removidas para evitar contaminação entre os conjuntos de treino e teste \cite{Manning2008}.
 
 % ---------------------------------------------------------------
 \subsection{Divisão treino / validação / teste}
