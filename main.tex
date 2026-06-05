@@ -975,29 +975,12 @@ A Albertina PT-BR \cite{Rodrigues2023}, construída sobre a arquitetura DeBERTaV
 \subsection{Baselines clássicos: TF-IDF + SVM e Regressão Logística}
 \label{sec:baselines}
 
-Para permitir a quantificação objetiva do ganho de desempenho obtido
-pelos modelos baseados em Transformers, serão implementados dois
-\textit{baselines} clássicos: TF-IDF (Frequência do Termo - Inverso da Frequência nos Documentos, do inglês \textit{Term Frequency-Inverse Document Frequency}) combinada com SVM (Máquinas de Vetores de Suporte, do inglês \textit{Support Vector Machines}) ou combinada com Regressão Logística (LR, do inglês \textit{Logistic Regression})
-\cite{Manning2008}.
+Para quantificar objetivamente o ganho dos modelos baseados em Transformers, serão implementados dois \textit{baselines} clássicos, TF-IDF combinada com SVM e TF-IDF combinada com Regressão Logística \cite{Manning2008}.
 
-Esses \textit{baselines} serão implementados com as seguintes
-configurações: (i) TF-IDF com $n$-gramas de 1 a 3 palavras, para
-capturar padrões lexicais e sintagmáticos relevantes para a tarefa;
-(ii) SVM com \textit{kernel} linear e regularização $C$ ajustada por
-validação cruzada; e (iii) Regressão Logística com regularização L2
-e otimizador LBFGS. Ambos os classificadores receberão como entrada
-a transcrição 1-best gerada pelo Whisper, representada como vetor
-TF-IDF esparso.
+As configurações previstas são: (i) TF-IDF com $n$-gramas de 1 a 3 palavras, para capturar padrões lexicais e sintagmáticos relevantes; (ii) SVM com \textit{kernel} linear e regularização $C$ ajustada por validação cruzada; e (iii) Regressão Logística com regularização L2 e otimizador LBFGS. Ambos receberão como entrada a transcrição 1-best gerada pelo Whisper, representada como vetor TF-IDF esparso.
 
-A inclusão de \textit{baselines} clássicos é uma contribuição metodológica
-deste trabalho que os três estudos relacionados não contemplaram
-\cite{Mallidi2018, Wagner2024, Dighe2024}. Ela permite determinar se a
-complexidade adicional dos modelos baseados em Transformers é
-justificada pelo ganho de desempenho em uma tarefa com corpus de
-tamanho moderado, tornando os resultados mais interpretáveis e a
-análise mais rigorosa \cite{Weld2022, Manning2008}.
+A inclusão de \textit{baselines} clássicos constitui uma contribuição metodológica deste trabalho, nenhum dos três estudos relacionados analisados no Capítulo~\ref{cap:revisao} inclui esse tipo de referência \cite{Mallidi2018, Wagner2024, Dighe2024}. Ela permite verificar se a complexidade adicional dos Transformers é de fato justificada pelo ganho de desempenho em uma tarefa com corpus de tamanho moderado, tornando os resultados mais interpretáveis \cite{Weld2022, Manning2008}.
 
-% ---------------------------------------------------------------
 % ---------------------------------------------------------------
 \section{Construção do corpus}
 \label{sec:corpus}
