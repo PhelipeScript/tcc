@@ -7,3 +7,5 @@
 *.toc
 *.lof
 *.lot
+
+*/.venv
