@@ -9,3 +9,5 @@
 *.lot
 
 */.venv
+**/data/**
+**/__pycache__/**

@@ -6,7 +6,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Iterable, Iterator, Literal
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent
 DATA_RAW = REPO_ROOT / "data" / "raw"
 DATA_PENDING = REPO_ROOT / "data" / "pending"
 DATA_PROCESSED = REPO_ROOT / "data" / "processed"
