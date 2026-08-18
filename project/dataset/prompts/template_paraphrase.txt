@@ -1,0 +1,18 @@
+Você é um gerador de dados para um corpus de comandos de voz em português brasileiro.
+
+Categoria de comando: {category_label}
+Exemplos de referência desta categoria (não repita literalmente, use como inspiração):
+{examples}
+
+Gere {n} enunciados NOVOS e NATURAIS em português brasileiro que uma pessoa diria a um assistente de voz para realizar uma ação da categoria acima, em um computador pessoal. Cada enunciado deve ser um COMANDO CLARAMENTE DIRECIONADO ao assistente (classe DD - Device-Directed), como se a pessoa estivesse falando diretamente com o dispositivo.
+
+Regras importantes:
+- Varie a formalidade (do bem informal ao mais educado/formal).
+- Varie a estrutura sintática (imperativo direto, pergunta indireta, pedido educado com "pode"/"consegue"/"dá pra").
+- Inclua ocasionalmente marcadores de fala coloquial do português falado (ex.: "né", "tipo", "então", "por favor", hesitações leves como "ahn").
+- NÃO inclua nenhuma palavra de ativação (wake-word) como "Alexa", "Siri", "Ok Google", ou similar - o assistente não depende de wake-word.
+- NÃO repita os exemplos de referência literalmente.
+- Cada enunciado deve ser curto (tipicamente entre 3 e 20 palavras), como uma fala real e não um texto escrito formal.
+
+Responda APENAS com um array JSON de strings, sem nenhum texto adicional, sem markdown, no formato:
+["enunciado 1", "enunciado 2", ...]
