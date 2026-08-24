@@ -34,7 +34,7 @@ from pathlib import Path
 import pandas as pd
 from huggingface_hub import hf_hub_download
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from common import DATA_PENDING, Sample, normalize_text, write_jsonl
 
 REPO_ID = "nilc-nlp/CORAA-NURC-SP-Audio-Corpus"

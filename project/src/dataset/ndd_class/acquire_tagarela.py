@@ -40,7 +40,7 @@ import pyarrow.parquet as pq
 import pandas as pd
 from huggingface_hub import hf_hub_download
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from common import DATA_PENDING, Sample, normalize_text, write_jsonl
 
 REPO_ID = "freds0/TAGARELA"
