@@ -11,3 +11,11 @@
 */.venv
 **/data/**
 **/__pycache__/**
+
+# Segredos
+**/.env
+
+# Artefatos de treino (checkpoints, metricas, graficos) - pesados e regeraveis
+**/outputs/**
+**/.ruff_cache/**
+**/.pytest_cache/**
