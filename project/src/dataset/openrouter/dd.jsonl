@@ -10777,3 +10777,588 @@
 {"text": "Salva uma imagem da tela.", "label": "DD"}
 {"text": "Captura esta tela, rápido.", "label": "DD"}
 {"text": "Pega print da tela.", "label": "DD"}
+{"text": "Fecha esse jogo e volta pro meu caderno", "label": "DD"}
+{"text": "Minimiza a playlist pra eu continuar estudando", "label": "DD"}
+{"text": "Troca agora da música pro dever de casa", "label": "DD"}
+{"text": "Fecha a aba do vídeo que tá me atrapalhando", "label": "DD"}
+{"text": "Mostra os programas abertos no computador", "label": "DD"}
+{"text": "Fecha o chat sem me perguntar nada", "label": "DD"}
+{"text": "Abre a lista de programas que estão rodando", "label": "DD"}
+{"text": "Volta pra planilha e deixa a música em segundo plano", "label": "DD"}
+{"text": "abre o terminal pra mim", "label": "DD"}
+{"text": "pode fechar essa aba do navegador?", "label": "DD"}
+{"text": "troca pro vscode, então", "label": "DD"}
+{"text": "dá pra abrir o calc?", "label": "DD"}
+{"text": "fica em tela cheia esse vídeo, por favor", "label": "DD"}
+{"text": "tipo, reinicia o spotify né", "label": "DD"}
+{"text": "consegue maximizar essa janela aqui?", "label": "DD"}
+{"text": "Fecha o Discord, tô estudando.", "label": "DD"}
+{"text": "Minimiza essa janela.", "label": "DD"}
+{"text": "Abre o navegador rapidinho.", "label": "DD"}
+{"text": "Pausa a música.", "label": "DD"}
+{"text": "Volta pro Excel.", "label": "DD"}
+{"text": "Troca pro Chrome.", "label": "DD"}
+{"text": "Manda o Spotify pro segundo plano.", "label": "DD"}
+{"text": "Por favor, poderia abrir o documento de texto?", "label": "DD"}
+{"text": "Gostaria de salvar este arquivo em uma nova pasta.", "label": "DD"}
+{"text": "Poderia minimizar todas as janelas abertas, por gentileza?", "label": "DD"}
+{"text": "Você poderia fechar a aba atual do navegador?", "label": "DD"}
+{"text": "Por gentileza, poderia criar um novo documento no bloco de notas?", "label": "DD"}
+{"text": "Gostaria de renomear este arquivo para relatório_final.pdf.", "label": "DD"}
+{"text": "Poderia ordenar minha área de trabalho por data de modificação?", "label": "DD"}
+{"text": "Por favor, poderia copiar este trecho selecionado para a área de transferência?", "label": "DD"}
+{"text": "Pode tocar a próxima faixa, por favor?", "label": "DD"}
+{"text": "Coloca o vídeo em pausa agora.", "label": "DD"}
+{"text": "Dá pra voltar quinze segundos?", "label": "DD"}
+{"text": "Aumenta o volume um pouco, tá baixo.", "label": "DD"}
+{"text": "Diminui o som, tá muito alto.", "label": "DD"}
+{"text": "Põe esse filme em tela cheia.", "label": "DD"}
+{"text": "Para a música, por favor.", "label": "DD"}
+{"text": "Avança dez segundos no vídeo.", "label": "DD"}
+{"text": "Pausa o filme", "label": "DD"}
+{"text": "Avança para o próximo capítulo", "label": "DD"}
+{"text": "Volta dez segundos", "label": "DD"}
+{"text": "abre outro site pra mim", "label": "DD"}
+{"text": "pode pesquisar receita de bolo?", "label": "DD"}
+{"text": "dá pra atualizar essa página?", "label": "DD"}
+{"text": "voltar pra página anterior, então", "label": "DD"}
+{"text": "fecha a aba atual, por favor", "label": "DD"}
+{"text": "tipo, abre uma janela anônima", "label": "DD"}
+{"text": "consegue trocar pra próxima aba?", "label": "DD"}
+{"text": "marca esse site aí, né", "label": "DD"}
+{"text": "Por favor, faça uma captura de tela desta página.", "label": "DD"}
+{"text": "Gentileza, capte a imagem que está aparecendo agora.", "label": "DD"}
+{"text": "Seria possível fazer uma captura de tela deste conteúdo?", "label": "DD"}
+{"text": "Por favor, tire um screenshot desta página que estou vendo.", "label": "DD"}
+{"text": "Desejo salvar uma imagem desta tela, por gentileza.", "label": "DD"}
+{"text": "Você poderia fazer uma captura desta parte da página?", "label": "DD"}
+{"text": "Peço gentilmente que tire uma captura de tela agora.", "label": "DD"}
+{"text": "Escreva o texto que eu vou ditar agora", "label": "DD"}
+{"text": "Digite isso que vou falar", "label": "DD"}
+{"text": "Transcreva esta parte em letras", "label": "DD"}
+{"text": "Pode registrar o que eu disser?", "label": "DD"}
+{"text": "Anote o que vou dizer", "label": "DD"}
+{"text": "Transforme minha fala em texto, por favor", "label": "DD"}
+{"text": "Vou ditado, então coloque no documento", "label": "DD"}
+{"text": "Captura o trecho que vou falar", "label": "DD"}
+{"text": "Fechar a janela do documento.", "label": "DD"}
+{"text": "Salvar alterações agora.", "label": "DD"}
+{"text": "Imprimir esta planilha.", "label": "DD"}
+{"text": "Abrir nova planilha em branco.", "label": "DD"}
+{"text": "Desfazer último erro.", "label": "DD"}
+{"text": "Redimensionar fonte maior.", "label": "DD"}
+{"text": "Rolar para cima rapidamente.", "label": "DD"}
+{"text": "Mudar para modo de tela cheia.", "label": "DD"}
+{"text": "captura a tela do computador, por favor", "label": "DD"}
+{"text": "tira uma foto da tela aqui", "label": "DD"}
+{"text": "salva uma imagem dessa área do monitor", "label": "DD"}
+{"text": "consegue capturar o que eu estou vendo?", "label": "DD"}
+{"text": "dá pra fazer print dessa janela?", "label": "DD"}
+{"text": "eu quero salvar uma captura desta tela", "label": "DD"}
+{"text": "registrar agora o que aparece no monitor", "label": "DD"}
+{"text": "mostra a área do lado direito e tira print", "label": "DD"}
+{"text": "Minimiza a janela do navegador, por favor.", "label": "DD"}
+{"text": "Abre o Excel pra eu continuar trabalhando.", "label": "DD"}
+{"text": "Troca pra próxima aba, rapidinho.", "label": "DD"}
+{"text": "Fecha esse programa, tá ouvindo?", "label": "DD"}
+{"text": "Pode maximizar a tela do Word agora.", "label": "DD"}
+{"text": "Reinicia o Chrome, tá travando tudo.", "label": "DD"}
+{"text": "Muda pro PowerPoint, tô precisando.", "label": "DD"}
+{"text": "Abre o bloco de notas, devagar.", "label": "DD"}
+{"text": "Faz um print da tela, por favor, bem baixinho.", "label": "DD"}
+{"text": "Tira captura de tela aí, shhh...", "label": "DD"}
+{"text": "Print da página atual, sem fazer barulho.", "label": "DD"}
+{"text": "Captura essa tela, rapidinho...", "label": "DD"}
+{"text": "Faz um screenshot, baixinho...", "label": "DD"}
+{"text": "Print daqui, por gentileza, bem suave.", "label": "DD"}
+{"text": "Tira print, faz de leve...", "label": "DD"}
+{"text": "Salva imagem da tela, sussurrando...", "label": "DD"}
+{"text": "Baixinho, feche a aba do navegador que estou usando.", "label": "DD"}
+{"text": "Abra a pasta de documentos na área de trabalho.", "label": "DD"}
+{"text": "Localize o arquivo de contas e mostre ele para mim.", "label": "DD"}
+{"text": "Minimize todas as janelas e deixe só o editor.", "label": "DD"}
+{"text": "Organize os downloads por data de modificação.", "label": "DD"}
+{"text": "Feche o e-mail e volte para a planilha.", "label": "DD"}
+{"text": "Procure a apresentação de metas e abra-a.", "label": "DD"}
+{"text": "Renomeie o arquivo rascunho para relatorio-final.", "label": "DD"}
+{"text": "Muda pra aba do Stack Overflow", "label": "DD"}
+{"text": "Volta uma página no browser", "label": "DD"}
+{"text": "Busca a documentação do React", "label": "DD"}
+{"text": "Abre o GitHub no navegador", "label": "DD"}
+{"text": "Maximiza essa janela do Chrome", "label": "DD"}
+{"text": "Fecha essa aba que não serve", "label": "DD"}
+{"text": "Cola esse link na barra de endereço", "label": "DD"}
+{"text": "abre o minecraft pra eu jogar", "label": "DD"}
+{"text": "muda pro zoom, tá?", "label": "DD"}
+{"text": "consegue abrir o Excel pra mim?", "label": "DD"}
+{"text": "dá pra minimizar o Word?", "label": "DD"}
+{"text": "então, maximiza o terminal", "label": "DD"}
+{"text": "tô com pressa, sai do Instagram", "label": "DD"}
+{"text": "tipo, alterna pro Discord", "label": "DD"}
+{"text": "Abra o documento do relatório agora.", "label": "DD"}
+{"text": "Salve esta apresentação na pasta clientes.", "label": "DD"}
+{"text": "Crie uma pasta chamada estudos segunda.", "label": "DD"}
+{"text": "Compacte esses arquivos para envio.", "label": "DD"}
+{"text": "Renomeie este arquivo para resumo final.", "label": "DD"}
+{"text": "Feche as abas antigas do navegador.", "label": "DD"}
+{"text": "Procure o PDF sobre orçamento.", "label": "DD"}
+{"text": "Agende uma reunião para amanhã cedo.", "label": "DD"}
+{"text": "Fecha esse jogo logo, tá travado.", "label": "DD"}
+{"text": "Minimiza o jogo pra eu mexer no navegador.", "label": "DD"}
+{"text": "Troca pra Steam, essa porra não abre.", "label": "DD"}
+{"text": "Fecha o Discord que tá enchendo meu saco.", "label": "DD"}
+{"text": "Traz o jogo de volta pra tela.", "label": "DD"}
+{"text": "Reinicia esse aplicativo que ficou completamente travado.", "label": "DD"}
+{"text": "Minimiza o OBS e deixa eu jogar.", "label": "DD"}
+{"text": "Abre o launcher do jogo agora.", "label": "DD"}
+{"text": "Screenshot da janela atual", "label": "DD"}
+{"text": "Captura tela inteira", "label": "DD"}
+{"text": "Printa isso aqui", "label": "DD"}
+{"text": "Screenshot área selecionada", "label": "DD"}
+{"text": "Salva captura de tela", "label": "DD"}
+{"text": "Print da tela, rapidinho", "label": "DD"}
+{"text": "Captura e salva screenshot", "label": "DD"}
+{"text": "Fecha essa janela do terminal, por favor, que já perdi tempo demais.", "label": "DD"}
+{"text": "Minimiza essa janela do navegador e volta pro VS Code.", "label": "DD"}
+{"text": "Fecha esta aba duplicada do Chrome, sem fazer pergunta.", "label": "DD"}
+{"text": "Minimiza todas as janelas e mostra a área de trabalho.", "label": "DD"}
+{"text": "Vai para a janela do servidor que está aberta.", "label": "DD"}
+{"text": "Fecha essa janela do Git sem executar nenhum comando.", "label": "DD"}
+{"text": "Fecha a janela do log que ficou por cima de tudo.", "label": "DD"}
+{"text": "Muda para a janela do editor e esconde as outras.", "label": "DD"}
+{"text": "Dita esse trecho agora, por favor", "label": "DD"}
+{"text": "Copie o que eu acabei de falar", "label": "DD"}
+{"text": "Apaga a última frase dita", "label": "DD"}
+{"text": "Formata o texto em negrito, pode?", "label": "DD"}
+{"text": "Insere um parágrafo sobre clima", "label": "DD"}
+{"text": "Salva o documento que eu estou ouvindo", "label": "DD"}
+{"text": "Manda esse texto pro Word", "label": "DD"}
+{"text": "Alinha o texto à direita, né?", "label": "DD"}
+{"text": "Vamos lá, diminui esse som primeiro!", "label": "DD"}
+{"text": "Não aguento mais essa lentidão, atualiza já!", "label": "DD"}
+{"text": "Preciso fechar tudo agora, não adianta esperar.", "label": "DD"}
+{"text": "Cara, pode desativar essa notificação?", "label": "DD"}
+{"text": "Vai com calma, mas eu quero que salve tudo agora.", "label": "DD"}
+{"text": "Não estou com paciência hoje, encerra essa aba!", "label": "DD"}
+{"text": "Pode aumentar o brilho da tela? Estou cegasco aqui.", "label": "DD"}
+{"text": "Deixa de notificação, estou tentando trabalhar.", "label": "DD"}
+{"text": "Muda o volume, coloca mais alto já!", "label": "DD"}
+{"text": "Pausa a música, foco na study!", "label": "DD"}
+{"text": "Abre o Spotify, bora escutar hit!", "label": "DD"}
+{"text": "Fecha o Chrome, liberar memória, muta!", "label": "DD"}
+{"text": "Ativa o modo foco, desliga notif, já!", "label": "DD"}
+{"text": "Desligar o PC, salva o jogo, tchau!", "label": "DD"}
+{"text": "Limpa a cache, acelera o PC, por favor!", "label": "DD"}
+{"text": "Muda pro tema escuro, menos brilho, valeu!", "label": "DD"}
+{"text": "tira um print dessa tela aqui", "label": "DD"}
+{"text": "pode capturar essa janela pra mim?", "label": "DD"}
+{"text": "grava a tela agora, então", "label": "DD"}
+{"text": "dá pra fazer um print disso aqui?", "label": "DD"}
+{"text": "consegue salvar o que tá na tela?", "label": "DD"}
+{"text": "captura essa área pra mim, né", "label": "DD"}
+{"text": "por favor, faz um screenshot dessa página", "label": "DD"}
+{"text": "tipo, tira um print e salva aqui", "label": "DD"}
+{"text": "Por favor, captura a tela agora.", "label": "DD"}
+{"text": "Você poderia tirar um print pra mim?", "label": "DD"}
+{"text": "Faz um screenshot rápido, por favor.", "label": "DD"}
+{"text": "Captura essa janela, por favor.", "label": "DD"}
+{"text": "Salva a tela como imagem, obrigado.", "label": "DD"}
+{"text": "Tirar print agora, por favor.", "label": "DD"}
+{"text": "Faça um screenshot da tela inteira.", "label": "DD"}
+{"text": "Abre aba nova, preciso pesquisar", "label": "DD"}
+{"text": "Puxa o YouTube aí, muta", "label": "DD"}
+{"text": "Vai direto pro Discord", "label": "DD"}
+{"text": "Busca como faz backup no PC", "label": "DD"}
+{"text": "Me traz a aba do estudo", "label": "DD"}
+{"text": "Atualiza essa página, tá lenta", "label": "DD"}
+{"text": "Abre o Google pra eu ver", "label": "DD"}
+{"text": "Coloca Spotify no navegador, bota", "label": "DD"}
+{"text": "Ativa o ditado logo, tô com pressa", "label": "DD"}
+{"text": "Transforma isso em texto, rápido", "label": "DD"}
+{"text": "Manda esse áudio como texto, porra", "label": "DD"}
+{"text": "Abre o ditado, preciso escrever uma mensagem", "label": "DD"}
+{"text": "Escreve isso pra mim, tô jogando", "label": "DD"}
+{"text": "Dita tudo isso rapidinho, tô atrasado", "label": "DD"}
+{"text": "Cria um texto com o que eu falei", "label": "DD"}
+{"text": "Passa pra texto antes que o jogo comece", "label": "DD"}
+{"text": "Transcreva minha fala para o editor.", "label": "DD"}
+{"text": "Abrir novo documento de texto.", "label": "DD"}
+{"text": "Colar conteúdo da área de transferência.", "label": "DD"}
+{"text": "Copiar linha selecionada.", "label": "DD"}
+{"text": "Selecionar todo o texto.", "label": "DD"}
+{"text": "Desfazer última ação.", "label": "DD"}
+{"text": "Refazer ação anulada.", "label": "DD"}
+{"text": "Salvar arquivo como rascunho.", "label": "DD"}
+{"text": "põe o som mais alto", "label": "DD"}
+{"text": "tipo, silencia o áudio rápido", "label": "DD"}
+{"text": "pode passar a próxima música?", "label": "DD"}
+{"text": "pausa o vídeo agora", "label": "DD"}
+{"text": "avança uns vinte segundos no vídeo", "label": "DD"}
+{"text": "dá pra baixar um pouquinho o volume", "label": "DD"}
+{"text": "então, coloca em tela cheia", "label": "DD"}
+{"text": "volta a faixa que tava passando", "label": "DD"}
+{"text": "Pause o jogo aí, preciso pausar", "label": "DD"}
+{"text": "Bota a música mais alto", "label": "DD"}
+{"text": "Dá play na trilha, vai", "label": "DD"}
+{"text": "Pula essa cutscene", "label": "DD"}
+{"text": "Volta o vídeo uns dez segundos", "label": "DD"}
+{"text": "Stop a música, tô jogando", "label": "DD"}
+{"text": "Próxima música, muta", "label": "DD"}
+{"text": "Por gentileza, inicie o ditado neste documento.", "label": "DD"}
+{"text": "Por favor, transcreva o que eu disser a seguir.", "label": "DD"}
+{"text": "Poderia ativar o reconhecimento de voz para editar o texto?", "label": "DD"}
+{"text": "Com licença, gostaria de inserir texto pelo ditado.", "label": "DD"}
+{"text": "Por gentileza, copie este parágrafo para a planilha.", "label": "DD"}
+{"text": "Por favor, substitua a palavra reunião por encontro.", "label": "DD"}
+{"text": "Poderia abrir o teclado virtual para digitarmos o texto?", "label": "DD"}
+{"text": "Com licença, formate este parágrafo em negrito.", "label": "DD"}
+{"text": "Escreve o texto que eu vou ditar", "label": "DD"}
+{"text": "Consegue copiar o trecho selecionado?", "label": "DD"}
+{"text": "Cola esse conteúdo no documento", "label": "DD"}
+{"text": "Apaga o último parágrafo, por favor", "label": "DD"}
+{"text": "Transcreve o áudio em texto", "label": "DD"}
+{"text": "Dá pra colar isso aqui?", "label": "DD"}
+{"text": "Mantém o ditado ligado", "label": "DD"}
+{"text": "Inclui a próxima palavra", "label": "DD"}
+{"text": "pausa a música que eu quero ouvir o professor", "label": "DD"}
+{"text": "baixa o volume que tá muito alto", "label": "DD"}
+{"text": "sobe um pouquinho o volume, por favor", "label": "DD"}
+{"text": "fecha essa aba, eu quero estudar", "label": "DD"}
+{"text": "coloca a música de novo, eu parei sem querer", "label": "DD"}
+{"text": "silencia tudo, preciso focar nos estudos", "label": "DD"}
+{"text": "aumenta o volume, eu não estou conseguindo ouvir", "label": "DD"}
+{"text": "desliga o computador, hora de dormir", "label": "DD"}
+{"text": "Muta aí, abre a aba do navegador", "label": "DD"}
+{"text": "Bota mais alto o zoom da página", "label": "DD"}
+{"text": "Mexe aqui, próxima aba", "label": "DD"}
+{"text": "Fechando essa aba agora", "label": "DD"}
+{"text": "Voltar pra página anterior", "label": "DD"}
+{"text": "Muda a aba pro GitHub", "label": "DD"}
+{"text": "Aumenta a fonte aqui", "label": "DD"}
+{"text": "Mexe no scroll pra baixo", "label": "DD"}
+{"text": "tipo, grava a tela aí", "label": "DD"}
+{"text": "você consegue tirar um screenshot dessa aba?", "label": "DD"}
+{"text": "por favor, salva o vídeo que tava gravando", "label": "DD"}
+{"text": "né, faz um print dessa parte", "label": "DD"}
+{"text": "para a gravação e guarda o arquivo", "label": "DD"}
+{"text": "Você poderia fechar o PowerPoint, por favor?", "label": "DD"}
+{"text": "Poderia minimizar o Excel agora?", "label": "DD"}
+{"text": "Você poderia alternar para o Chrome, por favor?", "label": "DD"}
+{"text": "Seria possível fechar o navegador?", "label": "DD"}
+{"text": "Poderia redimensionar a janela do Word para maior?", "label": "DD"}
+{"text": "Você poderia mover o Excel para a segunda tela?", "label": "DD"}
+{"text": "Poderia ocultar o Spotify, por favor?", "label": "DD"}
+{"text": "Seria possível ativar o modo de tela cheia no Word?", "label": "DD"}
+{"text": "Muta essa janela de novo, por favor!", "label": "DD"}
+{"text": "Abre o VS Code agora, pfv!", "label": "DD"}
+{"text": "Sai do Discord agora!", "label": "DD"}
+{"text": "Muda para o terminal, rápido!", "label": "DD"}
+{"text": "Fecha essa aba irritante!", "label": "DD"}
+{"text": "Me deixa ver só a tela cheia, agora!", "label": "DD"}
+{"text": "Muda para o Firefox, dá logo!", "label": "DD"}
+{"text": "Para de piscar esse popup, desliga!", "label": "DD"}
+{"text": "Muta o microfone.", "label": "DD"}
+{"text": "Abaixa o volume.", "label": "DD"}
+{"text": "Sobe o som.", "label": "DD"}
+{"text": "Toca de novo.", "label": "DD"}
+{"text": "Para o vídeo.", "label": "DD"}
+{"text": "Aumenta o áudio.", "label": "DD"}
+{"text": "Silencia tudo.", "label": "DD"}
+{"text": "Me tira do mudo, por favor", "label": "DD"}
+{"text": "Troca para a câmera frontal", "label": "DD"}
+{"text": "Compartilha minha tela agora", "label": "DD"}
+{"text": "Coloca o vídeo em tela cheia", "label": "DD"}
+{"text": "Me passa a foto da câmera", "label": "DD"}
+{"text": "fecha o firefox", "label": "DD"}
+{"text": "pode abrir o paint pra mim?", "label": "DD"}
+{"text": "tipo, muda pro teams tá?", "label": "DD"}
+{"text": "por favor, minimize a pasta de downloads", "label": "DD"}
+{"text": "consegue trocar pro excel?", "label": "DD"}
+{"text": "dá uma atualizada na página", "label": "DD"}
+{"text": "abre o zoom, né", "label": "DD"}
+{"text": "Copie o texto selecionado", "label": "DD"}
+{"text": "Localize a palavra orçamento", "label": "DD"}
+{"text": "Suba o documento para a nuvem", "label": "DD"}
+{"text": "Aplique negrito a este trecho", "label": "DD"}
+{"text": "Duplique esta planilha", "label": "DD"}
+{"text": "Fecha esse app agora.", "label": "DD"}
+{"text": "Minimiza a janela, rápido.", "label": "DD"}
+{"text": "Muda pra aba anterior.", "label": "DD"}
+{"text": "Para esse programa travado.", "label": "DD"}
+{"text": "Maximiza a janela do jogo.", "label": "DD"}
+{"text": "Volta pro último aplicativo.", "label": "DD"}
+{"text": "Desliga essa notificação chata.", "label": "DD"}
+{"text": "Você poderia fechar a aba atual, por favor?", "label": "DD"}
+{"text": "Por favor, recarregue esta página da web.", "label": "DD"}
+{"text": "Poderia ir até o site www.example.com, por gentileza?", "label": "DD"}
+{"text": "Por favor, marque esta página como favorita.", "label": "DD"}
+{"text": "Você poderia rolar a página para baixo, por favor?", "label": "DD"}
+{"text": "Por gentileza, pesquise por notícias de hoje no buscador.", "label": "DD"}
+{"text": "Você poderia abrir o histórico de navegação, por favor?", "label": "DD"}
+{"text": "pode fechar essa aba aqui?", "label": "DD"}
+{"text": "volta para a página anterior", "label": "DD"}
+{"text": "pesquisa a previsão do tempo agora", "label": "DD"}
+{"text": "abre o YouTube em modo tela cheia", "label": "DD"}
+{"text": "rola a página pra baixo, né", "label": "DD"}
+{"text": "vai pro topo da página, dá pra?", "label": "DD"}
+{"text": "abre navegação anônima, consegue?", "label": "DD"}
+{"text": "Cola isso aqui no chat", "label": "DD"}
+{"text": "Transcreve esse áudio rapidinho", "label": "DD"}
+{"text": "Escreve no doc rapidão", "label": "DD"}
+{"text": "Converte isso tudo em texto", "label": "DD"}
+{"text": "Dita aí, preciso desse texto", "label": "DD"}
+{"text": "Manda esse texto pro chat", "label": "DD"}
+{"text": "Faz transcrição dessa mensagem aí", "label": "DD"}
+{"text": "Muta o Spotify, tô estudando", "label": "DD"}
+{"text": "Bota a próxima", "label": "DD"}
+{"text": "Fecha o Discord, muta", "label": "DD"}
+{"text": "Sobe o volume do Chrome", "label": "DD"}
+{"text": "Vai pro YouTube, bota o vídeo", "label": "DD"}
+{"text": "escreve o que eu tô pensando", "label": "DD"}
+{"text": "pode colar o texto ali?", "label": "DD"}
+{"text": "apaga tudo que eu acabei de digitar", "label": "DD"}
+{"text": "dá pra copiar esse parágrafo inteiro?", "label": "DD"}
+{"text": "transcreve esse áudio pra texto", "label": "DD"}
+{"text": "cola o que tá na memória aqui", "label": "DD"}
+{"text": "consegue reescrever isso de forma mais clara?", "label": "DD"}
+{"text": "então, apaga a linha e recomeça", "label": "DD"}
+{"text": "Modo ditado, por favor", "label": "DD"}
+{"text": "Transcreve o que eu acabei de falar", "label": "DD"}
+{"text": "Vou falar, você escreve", "label": "DD"}
+{"text": "Anota esse texto ditado", "label": "DD"}
+{"text": "Escreve o email que eu disse", "label": "DD"}
+{"text": "Transforma minha voz em texto", "label": "DD"}
+{"text": "Pode digitar o que eu falei", "label": "DD"}
+{"text": "Tira uma foto da tela", "label": "DD"}
+{"text": "Pega a área selecionada", "label": "DD"}
+{"text": "Mostra a tela atual", "label": "DD"}
+{"text": "ScreenShot aqui", "label": "DD"}
+{"text": "maximiza a tela pra mim, por favor", "label": "DD"}
+{"text": "apaga tudo e reinicia o PC", "label": "DD"}
+{"text": "tá com muita coisa aberta, minimiza essas janelas", "label": "DD"}
+{"text": "consegue trocar de área de trabalho?", "label": "DD"}
+{"text": "tira o som do microfone, tá atrapalhando né", "label": "DD"}
+{"text": "dá pra mudar o papel de parede?", "label": "DD"}
+{"text": "Por favor, poderia pausar o vídeo agora?", "label": "DD"}
+{"text": "Você poderia aumentar um pouco o volume, por gentileza?", "label": "DD"}
+{"text": "Por favor, diminua o brilho da tela.", "label": "DD"}
+{"text": "Será possível colocar o filme em tela cheia?", "label": "DD"}
+{"text": "Você poderia mutar o som por um momento?", "label": "DD"}
+{"text": "Por gentileza, retroceda 10 segundos do vídeo.", "label": "DD"}
+{"text": "Você poderia fechar esta aba do navegador, por favor?", "label": "DD"}
+{"text": "Será possível abrir as configurações de legendas?", "label": "DD"}
+{"text": "Escreve o que eu acabei de dizer", "label": "DD"}
+{"text": "Dicta essa frase no documento", "label": "DD"}
+{"text": "Transcreve minha voz agora", "label": "DD"}
+{"text": "Cola o que eu falei lá", "label": "DD"}
+{"text": "Vamos lá, anota o que eu digo", "label": "DD"}
+{"text": "Ouve aqui e escreve", "label": "DD"}
+{"text": "Fala o texto devagarinho", "label": "DD"}
+{"text": "Escreve minha mensagem por favor", "label": "DD"}
+{"text": "Abre uma aba nova no navegador", "label": "DD"}
+{"text": "Pesquisa sobre jogos no Google", "label": "DD"}
+{"text": "Busca exercícios de programação na internet", "label": "DD"}
+{"text": "Coloca essa página nos favoritos", "label": "DD"}
+{"text": "Fecha essa janela, cara", "label": "DD"}
+{"text": "Silencia o microfone, raivoso", "label": "DD"}
+{"text": "Minimiza essa janela, porra", "label": "DD"}
+{"text": "Aumenta o volume do PC", "label": "DD"}
+{"text": "Abre o Discord rapidão", "label": "DD"}
+{"text": "Trava a tela já", "label": "DD"}
+{"text": "Dá um restart no PC", "label": "DD"}
+{"text": "Escreve aí o que eu vou ditar", "label": "DD"}
+{"text": "Pode registrar o que eu estou falando?", "label": "DD"}
+{"text": "Cola o texto que copiei, por favor", "label": "DD"}
+{"text": "Consegues apagar essa última frase?", "label": "DD"}
+{"text": "Apaga o trecho selecionado", "label": "DD"}
+{"text": "Dá pra inserir o texto aqui?", "label": "DD"}
+{"text": "Tipo, digita o que eu dizer", "label": "DD"}
+{"text": "Então, copia esse trecho", "label": "DD"}
+{"text": "Poderia fechar o Chrome, por favor?", "label": "DD"}
+{"text": "Mude para o Microsoft Edge, por favor.", "label": "DD"}
+{"text": "Feche o bloco de notas, por favor.", "label": "DD"}
+{"text": "Abra o Slack, por favor.", "label": "DD"}
+{"text": "Minimiza o Excel, por favor.", "label": "DD"}
+{"text": "Reabri a última aba, por favor.", "label": "DD"}
+{"text": "Salve este arquivo, por favor.", "label": "DD"}
+{"text": "Feche o email, por favor.", "label": "DD"}
+{"text": "Por gentileza, transcreva o diálogo deste filme.", "label": "DD"}
+{"text": "Por favor, abra um campo para eu ditar uma mensagem.", "label": "DD"}
+{"text": "Você poderia escrever o que eu disser neste momento?", "label": "DD"}
+{"text": "Inicie a ditagem e registre minhas palavras.", "label": "DD"}
+{"text": "Por gentileza, cole o texto que eu ditarei agora.", "label": "DD"}
+{"text": "Ative o teclado virtual para eu inserir este texto.", "label": "DD"}
+{"text": "Por favor, transcreva as falas deste vídeo automaticamente.", "label": "DD"}
+{"text": "Quero ditado ativado para escrever uma mensagem, por gentileza.", "label": "DD"}
+{"text": "PC, salva uma imagem da tela agora, por favor.", "label": "DD"}
+{"text": "Consegue tirar um print só dessa janela?", "label": "DD"}
+{"text": "Registra essa área da tela pra mim.", "label": "DD"}
+{"text": "Inicia a gravação da tela, né?", "label": "DD"}
+{"text": "Pode pausar o vídeo da tela um instante?", "label": "DD"}
+{"text": "Finaliza a gravação e guarda o arquivo.", "label": "DD"}
+{"text": "Faz uma captura da tela inteira, consegue?", "label": "DD"}
+{"text": "Então, para de gravar e salva o vídeo.", "label": "DD"}
+{"text": "Toma essa, tira uma print aqui rápido", "label": "DD"}
+{"text": "Pô, tira print agora, tô precisando", "label": "DD"}
+{"text": "Tira uma print dessa tela aí, faz favor", "label": "DD"}
+{"text": "Printa essa aqui, tô numa missão", "label": "DD"}
+{"text": "Cara, tira print dessa parte da tela", "label": "DD"}
+{"text": "Faz um screenshot desse pedaço aí, por favor", "label": "DD"}
+{"text": "Printa a tela toda essa aí, tá urgente", "label": "DD"}
+{"text": "Tira um print dessa janela aí agora", "label": "DD"}
+{"text": "Baixinho, diminui o volume da música.", "label": "DD"}
+{"text": "Pausa essa música, preciso estudar.", "label": "DD"}
+{"text": "Aumenta um pouquinho, tá baixo.", "label": "DD"}
+{"text": "Pula pra próxima faixa, por favor.", "label": "DD"}
+{"text": "Volta uns dez segundos dessa música.", "label": "DD"}
+{"text": "Deixa a música mais baixa.", "label": "DD"}
+{"text": "Fecha a música e volta pros estudos.", "label": "DD"}
+{"text": "Toca a próxima, sem aumentar o volume.", "label": "DD"}
+{"text": "Por favor, poderia minimizar todas as janelas abertas?", "label": "DD"}
+{"text": "Gostaria de bloquear a tela, se possível.", "label": "DD"}
+{"text": "Por gentileza, abra o painel de controle para mim.", "label": "DD"}
+{"text": "Poderia aumentar o volume do sistema, por favor?", "label": "DD"}
+{"text": "Por favor, feche este programa que está aberto.", "label": "DD"}
+{"text": "Gostaria de reiniciar o computador, se não for muito inconveniente.", "label": "DD"}
+{"text": "Poderia abrir o gerenciador de tarefas, por gentileza?", "label": "DD"}
+{"text": "Por favor, tire uma captura de tela da tela atual.", "label": "DD"}
+{"text": "abre a planilha de vendas", "label": "DD"}
+{"text": "dá pra fechar a aba do navegador?", "label": "DD"}
+{"text": "manda esse arquivo pro e-mail, né", "label": "DD"}
+{"text": "tipo, acha o PDF que eu baixei hoje", "label": "DD"}
+{"text": "por favor, organize a pasta de projetos", "label": "DD"}
+{"text": "consegue converter essa imagem em Word?", "label": "DD"}
+{"text": "sobe aquele arquivo pro Google Drive, então", "label": "DD"}
+{"text": "Tira um print baixinho da tela atual.", "label": "DD"}
+{"text": "Captura só esta janela de código, por favor.", "label": "DD"}
+{"text": "Faz uma captura da área do terminal.", "label": "DD"}
+{"text": "Print da tela inteira, sem notificações.", "label": "DD"}
+{"text": "Captura a janela do editor, quietinho.", "label": "DD"}
+{"text": "Me faz um print só do navegador.", "label": "DD"}
+{"text": "Salva uma captura dessa área selecionada.", "label": "DD"}
+{"text": "Print rápido das duas telas, por favor.", "label": "DD"}
+{"text": "Ativa o modo avião no meu PC", "label": "DD"}
+{"text": "Fecha todos os programas abertos", "label": "DD"}
+{"text": "Ativa o modo escuro", "label": "DD"}
+{"text": "Desativa o Bluetooth do notebook", "label": "DD"}
+{"text": "Abre as configurações de rede", "label": "DD"}
+{"text": "Fecha só esse programa travado", "label": "DD"}
+{"text": "Ativa o Wi-Fi do PC", "label": "DD"}
+{"text": "Pausa a música aí, por favor", "label": "DD"}
+{"text": "Baixa o volume, tá muito alto", "label": "DD"}
+{"text": "Coloca a próxima música", "label": "DD"}
+{"text": "Silencia aí", "label": "DD"}
+{"text": "Toca de novo essa música", "label": "DD"}
+{"text": "Para o vídeo", "label": "DD"}
+{"text": "Aumenta um pouquinho o volume", "label": "DD"}
+{"text": "Volta a música anterior", "label": "DD"}
+{"text": "Por gentileza, minimize o reprodutor de música.", "label": "DD"}
+{"text": "Você poderia abrir o editor de texto, por favor?", "label": "DD"}
+{"text": "Feche este aplicativo que não estou utilizando.", "label": "DD"}
+{"text": "Poderia maximizar a janela do caderno de estudos?", "label": "DD"}
+{"text": "Minimize o Spotify para eu ver a área de trabalho.", "label": "DD"}
+{"text": "Feche a janela do navegador, por obséquio.", "label": "DD"}
+{"text": "Abra o aplicativo de anotações, se não for incômodo.", "label": "DD"}
+{"text": "Abre o YouTube para mim.", "label": "DD"}
+{"text": "Procura o site do Minecraft.", "label": "DD"}
+{"text": "Vai para o Google, por favor.", "label": "DD"}
+{"text": "Abre o site dos dinossauros.", "label": "DD"}
+{"text": "Muda para a página do carrinho.", "label": "DD"}
+{"text": "Procura o vídeo do Bob Esponja.", "label": "DD"}
+{"text": "Abre um novo navegador para o site dos brinquedos.", "label": "DD"}
+{"text": "Computador, muta aí, muta aí", "label": "DD"}
+{"text": "Toca a música, por favor", "label": "DD"}
+{"text": "Pula a faixa, por favor", "label": "DD"}
+{"text": "Para o vídeo, por favor", "label": "DD"}
+{"text": "Roda de novo, por favor", "label": "DD"}
+{"text": "Muda para a música seguinte", "label": "DD"}
+{"text": "Ajusta o brilho para cima", "label": "DD"}
+{"text": "abre uma nova guia", "label": "DD"}
+{"text": "pesquisa notícias sobre inteligência artificial", "label": "DD"}
+{"text": "aumenta o zoom nessa página", "label": "DD"}
+{"text": "salva esse link nos favoritos", "label": "DD"}
+{"text": "Fecha essa aba, cara.", "label": "DD"}
+{"text": "Abre uma nova janela, por favor.", "label": "DD"}
+{"text": "Me leva para docs.google.com.", "label": "DD"}
+{"text": "Salva esta página.", "label": "DD"}
+{"text": "Fecha o pop-up, já!", "label": "DD"}
+{"text": "Rola a página pra baixo rápido.", "label": "DD"}
+{"text": "Meça a aba atual.", "label": "DD"}
+{"text": "fecha a janela do navegador", "label": "DD"}
+{"text": "muta o som do vídeo", "label": "DD"}
+{"text": "desliga o computador agora", "label": "DD"}
+{"text": "abre o paint e desenha um gato", "label": "DD"}
+{"text": "procuro um meme engraçado", "label": "DD"}
+{"text": "reinicia o sistema rapidinho", "label": "DD"}
+{"text": "aumenta a brilhante da tela", "label": "DD"}
+{"text": "traz o chrome pra eu pesquisar", "label": "DD"}
+{"text": "transcreve o que eu acabei de falar", "label": "DD"}
+{"text": "dá pra selecionar tudo aqui?", "label": "DD"}
+{"text": "copia isso pra mim, por favor", "label": "DD"}
+{"text": "apaga esse trecho inteiro", "label": "DD"}
+{"text": "pode colocar em negrito?", "label": "DD"}
+{"text": "digita aí o que eu mandei, né", "label": "DD"}
+{"text": "formata esse texto, tá?", "label": "DD"}
+{"text": "duplica essa frase aqui", "label": "DD"}
+{"text": "Por gentileza, tire uma captura de tela desta página.", "label": "DD"}
+{"text": "Você poderia capturar a tela que estou estudando agora?", "label": "DD"}
+{"text": "Por favor, registre uma imagem desta tela para mim.", "label": "DD"}
+{"text": "Poderia fazer uma captura de tela do que aparece aqui?", "label": "DD"}
+{"text": "Por gentileza, salve uma imagem desta tela.", "label": "DD"}
+{"text": "Você poderia registrar esta tela enquanto a música toca?", "label": "DD"}
+{"text": "Por favor, tire uma foto da tela do computador.", "label": "DD"}
+{"text": "Poderia capturar a área da tela que estou vendo?", "label": "DD"}
+{"text": "tira um print rápido dessa tela, por favor", "label": "DD"}
+{"text": "consegue capturar a janela ativa pra mim?", "label": "DD"}
+{"text": "inicia a gravação de tela agora", "label": "DD"}
+{"text": "para de gravar e salva o arquivo, tá", "label": "DD"}
+{"text": "dá um print da área de trabalho inteira", "label": "DD"}
+{"text": "pausa a captura de vídeo um instante", "label": "DD"}
+{"text": "grava o que tô fazendo na tela, por gentileza", "label": "DD"}
+{"text": "salva esse print direto na área de trabalho", "label": "DD"}
+{"text": "Fecha o Discord, bota o foco na call", "label": "DD"}
+{"text": "Abre o Chrome rapidão", "label": "DD"}
+{"text": "Minimiza essa aba e coloca o Zoom em tela cheia", "label": "DD"}
+{"text": "Fecha o jogo aí, tô na call", "label": "DD"}
+{"text": "Pausa a música do Spotify", "label": "DD"}
+{"text": "Muda pro Teams rápido", "label": "DD"}
+{"text": "Tira o som do Zoom", "label": "DD"}
+{"text": "Abre o OBS e liga a gravação", "label": "DD"}
+{"text": "Abrir gerenciador de tarefas", "label": "DD"}
+{"text": "Fechar janela atual", "label": "DD"}
+{"text": "Aumentar volume do sistema", "label": "DD"}
+{"text": "Diminuir brilho da tela", "label": "DD"}
+{"text": "Desligar computador agora", "label": "DD"}
+{"text": "Reiniciar sistema imediatamente", "label": "DD"}
+{"text": "Bloquear tela do computador", "label": "DD"}
+{"text": "Feche tudo agora, por favor", "label": "DD"}
+{"text": "Salva logo esse arquivo, pelo amor de Deus", "label": "DD"}
+{"text": "Para de travar, abre o gerenciador de tarefas", "label": "DD"}
+{"text": "Onde foi parar meu download? Acha agora", "label": "DD"}
+{"text": "Desfaz essa merda que eu apaguei sem querer", "label": "DD"}
+{"text": "Minimiza tudo, preciso ver a área de trabalho", "label": "DD"}
+{"text": "Renomeia esse arquivo direito, chega de lixo", "label": "DD"}
+{"text": "Corta a notificação, tô tentando trabalhar aqui", "label": "DD"}
+{"text": "abre a planilha que editei na última reunião", "label": "DD"}
+{"text": "pode salvar o documento como versão final, por favor?", "label": "DD"}
+{"text": "procura os anexos do e-mail da gerente", "label": "DD"}
+{"text": "cria uma pasta para os arquivos da viagem, né", "label": "DD"}
+{"text": "move a apresentação para a área de trabalho", "label": "DD"}
+{"text": "consegue excluir a cópia antiga do orçamento?", "label": "DD"}
+{"text": "abre os documentos recentes, então", "label": "DD"}
+{"text": "envia o arquivo de orçamento por e-mail", "label": "DD"}
+{"text": "Coloca mais alto que não tô ouvindo", "label": "DD"}
+{"text": "Para a música, a professora tá falando", "label": "DD"}
+{"text": "Volta um pouquinho, perdi a parte", "label": "DD"}
+{"text": "Muda pro próximo episódio", "label": "DD"}
+{"text": "Diminui o som, o microfone tá ligado", "label": "DD"}
+{"text": "Bota em tela cheia, quero ver melhor", "label": "DD"}
+{"text": "Para tudo, vou sair da chamada", "label": "DD"}
+{"text": "Abra o Excel imediatamente.", "label": "DD"}
+{"text": "Feche o Chrome agora.", "label": "DD"}
+{"text": "Minimize a janela do PowerPoint.", "label": "DD"}
+{"text": "Maximize o Outlook, por favor.", "label": "DD"}
+{"text": "Troque para o Zoom.", "label": "DD"}
+{"text": "Desligue a câmera do Teams.", "label": "DD"}
+{"text": "Restaure o Visual Studio Code.", "label": "DD"}
+{"text": "Desative o microfone do Teams.", "label": "DD"}
