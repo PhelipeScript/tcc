@@ -1,0 +1,54 @@
+[project]
+name = "tcc"
+version = "0.1.0"
+description = "Detecção de Intenção Implícita para Ativação de Assistentes de Voz em Ambientes Controlados"
+readme = "README.md"
+authors = [
+    { name = "Phelipe Pereira", email = "phelipe.psouza@senacsp.edu.br" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.0.0",
+    "huggingface-hub>=0.25.0",
+    "pandas>=2.2.0",
+    "scikit-learn>=1.5.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.32.0",
+    "tqdm>=4.66.0",
+    "pyyaml>=6.0.0",
+    "google-genai>=0.3.0",
+    "mistralai>=1.2.0",
+    "tenacity>=9.0.0",
+    "ollama>=0.6.2",
+    "groq>=1.7.0",
+    "cerebras>=0.0.1",
+    "nlpaug>=1.1.11",
+    "nltk>=3.10.3",
+    # --- fine-tuning dos encoders (BERTimbau, Albertina, DeBERTinha) ---
+    "torch>=2.8,<3",
+    "transformers>=5.17,<6",
+    "accelerate>=1.10,<2",
+    "safetensors>=0.6",
+    "matplotlib>=3.9",
+]
+
+[tool.uv]
+package = false
+
+# O PyPI publica apenas wheels CPU do torch para Windows; as builds com CUDA
+# ficam no indice do proprio PyTorch. `explicit = true` registra o indice mas
+# proibe o uv de usa-lo para qualquer pacote que nao esteja em [tool.uv.sources],
+# evitando que outra dependencia resolva por ali sem intencao.
+#
+# CUDA 12.6 e o alvo: tem wheels cp313/win_amd64 ate o torch 2.14 e a menor
+# exigencia de driver entre cu126/cu128/cu130. A RTX A2000 e Ampere (sm_86),
+# suportada por todos eles.
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+]

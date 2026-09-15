@@ -1,0 +1,86 @@
+# Cada categoria alimenta as estratégias de geração sintética 
+# (paráfrase de template, role-play contextual e diálogos sintéticos).
+
+categories:
+  app_control:
+    label: "Controle de aplicativos"
+    examples:
+      - "abre o navegador"
+      - "fecha o spotify"
+      - "muda para o whatsapp"
+      - "minimiza essa janela"
+      - "maximiza o editor de código"
+      - "alterna para a última janela"
+
+  screen_capture:
+    label: "Captura de tela"
+    examples:
+      - "tira um print da tela"
+      - "captura essa janela"
+      - "começa a gravar a tela"
+      - "pausa a gravação de tela"
+      - "para a gravação e salva o vídeo"
+
+  media_control:
+    label: "Controle de mídia"
+    examples:
+      - "toca essa música"
+      - "pausa o vídeo"
+      - "passa pra próxima faixa"
+      - "volta a música anterior"
+      - "aumenta o volume"
+      - "avança dez segundos"
+      - "coloca em tela cheia"
+
+  system_control:
+    label: "Controle de sistema"
+    examples:
+      - "diminui o brilho da tela"
+      - "coloca no modo silencioso"
+      - "bloqueia a tela"
+      - "coloca o computador pra dormir"
+      - "desliga o wifi"
+
+  browser_web:
+    label: "Navegador e web"
+    examples:
+      - "abre uma nova aba"
+      - "pesquisa a previsão do tempo"
+      - "fecha essa aba"
+      - "vai para a página anterior"
+
+  productivity_files:
+    label: "Produtividade e arquivos"
+    examples:
+      - "abre o arquivo de ontem"
+      - "procura a apresentação do projeto"
+      - "cria uma nota nova"
+      - "me lembra de enviar o relatório às três"
+
+  dictation_text:
+    label: "Ditado e texto"
+    examples:
+      - "escreve isso que eu vou falar"
+      - "copia esse trecho"
+      - "cola aqui"
+      - "apaga a última frase"
+
+contexts:
+  # Contextos de uso típicos de uso de computador pessoal.
+  - "trabalhando na mesa, focado em uma tarefa"
+  - "programando, com várias janelas abertas"
+  - "assistindo a um vídeo ou filme"
+  - "ouvindo música enquanto estuda"
+  - "em uma chamada de vídeo com colegas"
+  - "navegando na internet sem pressa"
+  - "jogando um jogo no computador"
+  - "editando um documento ou planilha"
+
+tones:
+  # Tons de voz que podem ser usados para gerar respostas sintéticas.
+  - "casual"
+  - "apressado"
+  - "educado"
+  - "irritado/frustrado"
+  - "sussurrando (ambiente compartilhado)"
+  - "cansado no fim do dia"
