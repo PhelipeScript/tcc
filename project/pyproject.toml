@@ -30,6 +30,9 @@ dependencies = [
     "accelerate>=1.10,<2",
     "safetensors>=0.6",
     "matplotlib>=3.9",
+    # --- validação real: transcrição de áudio do YouTube (Análise de Podcast) ---
+    "yt-dlp>=2024.0",
+    "faster-whisper>=1.0",
 ]
 
 [tool.uv]

@@ -6,7 +6,7 @@ SENAC Santo Amaro · São Paulo · 2026
 **Autor:** Phelipe Pereira de Souza
 **Orientador:** Prof. Thyago Conchado Quintas
 
-> **Entrega parcial — 15/09/2026.** Este documento é atualizado conforme o trabalho avança.
+> **Entrega parcial — atualizado em 16/09/2026.** Este documento é atualizado conforme o trabalho avança.
 
 ---
 
@@ -34,24 +34,24 @@ começo de agosto de 2026, o que situa esta entrega por volta da **semana 7 de 1
 
 | Fase | Semanas previstas | Situação |
 |---|---|---|
-| **F1 — Corpus** | 1–5 | ✅ **Concluída** — corpus de 225.045 enunciados gerado e validado |
+| **F1 — Corpus** | 1–5 | ✅ **Concluída** — corpus de 237.468 enunciados gerado e validado |
 | **F2 — Implementação** | 4–9 | 🔶 **Parcial** (ver detalhe abaixo) |
-| ├ Módulo ASR (Whisper) | 4–6 | ⬜ Não iniciado — **em atraso** |
-| ├ Baselines clássicos (TF-IDF + SVM/LR) | 5–7 | ⬜ Não iniciado — vence esta semana |
-| └ Fine-tuning BERTimbau | 6–9 | 🔵 **Em andamento** — treinando |
-| **F3 — Experimentos** | 8–13 | 🔵 **Antecipada parcialmente** |
-| └ Modelos alternativos (Albertina, DeBERTinha) | 11–13 | 🔵 **Adiantado ~5 semanas** — implementados e em treino |
-| **F4 — Análise** | 12–14 | ⬜ Não iniciado |
+| ├ Módulo ASR (Whisper) | 4–6 | ⬜ Não iniciado — **em atraso**; será feito como pipeline simulado TTS→Whisper (sem áudio real disponível) |
+| ├ Baselines clássicos (TF-IDF + SVM/LR) | 5–7 | ⬜ Não iniciado — **próxima prioridade** |
+| └ Fine-tuning BERTimbau | 6–9 | ✅ **Concluído** |
+| **F3 — Experimentos** | 8–13 | 🔵 **Adiantada** |
+| └ Modelos alternativos (Albertina, DeBERTinha) | 11–13 | ✅ **Concluído, ~5 semanas adiantado** |
+| **F4 — Análise** | 12–14 | 🔵 **Iniciando** — overfitting de calibração identificado (Seção 5.5), validação externa planejada |
 | **F5 — Escrita** | 1–15 | 🔵 Contínua |
 | **F6 — Entrega** | 15–16 | ⬜ Não iniciado |
 
 **Leitura honesta do quadro:** a construção do corpus foi concluída no prazo e a parte
 de Transformers está adiantada — os três modelos (BERTimbau, Albertina e DeBERTinha)
-já estão implementados e em treinamento, sendo que os dois alternativos estavam
-previstos apenas para as semanas 11–13 e eram condicionados a "caso o cronograma
-permita". Em contrapartida, **duas atividades da F2 não foram iniciadas**: o módulo
-ASR com Whisper (previsto para as semanas 4–6) e os baselines clássicos (5–7). São
-as duas prioridades imediatas, detalhadas na Seção 6.
+já foram treinados e avaliados no conjunto de teste (Seção 5.4), sendo que os dois
+alternativos estavam previstos apenas para as semanas 11–13 e eram condicionados a
+"caso o cronograma permita". Em contrapartida, **duas atividades da F2 não foram
+iniciadas**: o módulo ASR com Whisper (previsto para as semanas 4–6) e os baselines
+clássicos (5–7). São as duas prioridades imediatas, detalhadas na Seção 6.
 
 ---
 
@@ -113,24 +113,24 @@ domínio estritamente em computador pessoal.
 
 ### 3.3 Volume por fonte
 
-Snapshot de 10/09/2026, que é o corpus efetivamente usado no treinamento em curso:
+Snapshot de 15/09/2026, usado na reexecução do pipeline que gerou o corpus e os
+modelos atuais (Seção 5):
 
 | Fonte | DD | NDD | Total |
 |---|---|---|---|
-| qwen | 40.009 | 20.900 | 60.909 |
+| qwen | 40.014 | 40.016 | 80.030 |
+| glm | 15.082 | 15.172 | 30.254 |
+| groq | 15.009 | 14.513 | 29.522 |
 | lmstudio | 15.004 | 15.003 | 30.007 |
 | sonnet | 15.000 | 15.000 | 30.000 |
-| glm | 15.033 | 7.646 | 22.679 |
-| groq | 15.009 | 5.517 | 20.526 |
-| openrouter | 10.537 | 9.133 | 19.670 |
+| openrouter | 11.364 | 9.133 | 20.497 |
 | nvidia | 10.002 | 9.057 | 19.059 |
 | opencode | 6.067 | 6.152 | 12.219 |
 | mistral | 4.974 | 5.002 | 9.976 |
-| **Total** | **131.635** | **93.410** | **225.045** |
+| **Total** | **132.516** | **129.048** | **261.564** |
 
-A geração seguiu após esse snapshot: as pastas de origem somam hoje **261.917**
-enunciados. O aumento será incorporado em uma reexecução do pipeline após a conclusão
-do treinamento atual.
+Este é o volume bruto por trás do funil da Seção 4.3; a geração continua e novos
+lotes serão incorporados em execuções futuras do pipeline.
 
 ---
 
@@ -178,35 +178,36 @@ acento" sem reprocessar nada.
 
 | Estágio | DD | NDD | Observação |
 |---|---|---|---|
-| 1. Snapshot | 131.635 | 93.410 | corpus bruto |
-| 2. Normalização | 131.581 | 93.382 | −82 (39 por tamanho, 43 por script estrangeiro) |
-| 3. Dedup por arquivo | 123.814 | 93.243 | −7.767 DD, −139 NDD |
-| 5. Dedup global + conflitos | 118.056 | 93.216 | −5.758 DD, −27 NDD; **23 conflitos de rótulo** |
-| 6. Balanceamento 1:1 | **93.216** | **93.216** | −24.840 da classe majoritária |
-| 7. Split | 149.145 / 18.643 / 18.644 | | treino / validação / teste |
+| 1. Snapshot | 132.516 | 129.048 | corpus bruto |
+| 2. Normalização | 132.462 | 129.012 | −90 (39 por tamanho, 51 por script estrangeiro) |
+| 3. Dedup por arquivo | 124.642 | 128.682 | −7.820 DD, −330 NDD |
+| 5. Dedup global + conflitos | 118.734 | 128.634 | −5.908 DD, −48 NDD; **43 conflitos de rótulo** |
+| 6. Balanceamento 1:1 | **118.734** | **118.734** | −9.900 da classe majoritária (NDD) |
+| 7. Split | 189.974 / 23.747 / 23.747 | | treino / validação / teste |
 
-**Dataset final: 186.432 enunciados**, perfeitamente balanceado — 4,7× o volume mínimo
+**Dataset final: 237.468 enunciados**, perfeitamente balanceado — 5,9× o volume mínimo
 de 40.000 previsto na metodologia.
 
 ### 4.4 Achados relevantes para a análise
 
 Três resultados do pipeline que valem discussão no texto do TCC:
 
-1. **A duplicação se concentra quase toda na classe DD.** DD perde 13.525 registros
-   entre os estágios 2 e 5; NDD perde apenas 166. Comandos imperativos gerados por LLM
-   têm variedade lexical muito menor que conversa fiada. O desbalanceamento de 1,27:1
+1. **A duplicação se concentra quase toda na classe DD.** DD perde 13.728 registros
+   entre os estágios 2 e 5; NDD perde apenas 378. Comandos imperativos gerados por LLM
+   têm variedade lexical muito menor que conversa fiada. O desbalanceamento de 1,08:1
    antes do balanceamento é consequência disso, e não uma escolha de amostragem.
 
-2. **23 enunciados receberam rótulos contraditórios** entre fontes — por exemplo
-   `"fecha essa aba por favor"`, gerado como DD por seis fontes e como NDD por uma.
-   São casos genuinamente ambíguos, correspondentes à classe AMB da taxonomia. Foram
-   removidos de **ambas** as classes e registrados em `conflicts.jsonl`, servindo como
-   material qualitativo sobre a fronteira DD/NDD.
+2. **43 enunciados receberam rótulos contraditórios** entre fontes — por exemplo
+   `"fecha essa aba por favor"`, gerado como DD por seis fontes (glm, groq, lmstudio,
+   nvidia, openrouter, qwen) e como NDD pela qwen. São casos genuinamente ambíguos,
+   correspondentes à classe AMB da taxonomia. Foram removidos de **ambas** as classes
+   e registrados em `conflicts.jsonl`, servindo como material qualitativo sobre a
+   fronteira DD/NDD.
 
-3. **43 enunciados continham script estrangeiro vazado pelos geradores** — chinês,
-   cirílico, árabe e coreano dentro de frases em português, como
-   `"vou abrir meu e mail depois do almoco pra ver那些 noticias"`. São defeitos de
-   geração e foram descartados.
+3. **51 enunciados continham script estrangeiro vazado pelos geradores** — chinês e
+   outros idiomas dentro de frases em português, como `"juntamente com o colega调试
+   系统时，nós notamos que a configuração do agregador de logs talvez precise ser
+   atualizada"`. São defeitos de geração e foram descartados.
 
 ### 4.5 Garantias verificadas
 
@@ -278,8 +279,36 @@ hardware, versões e SHA do commit.
 
 ### 5.4 Situação
 
-🔵 **Treinamento em execução** na máquina de GPU. Os resultados serão incorporados a
-este documento e ao Capítulo de Resultados assim que a bateria concluir.
+✅ **Treinamento concluído** para os três modelos. Resultado no conjunto de teste
+(23.747 exemplos, avaliado uma única vez, limiar calibrado apenas na validação):
+
+| modelo | accuracy | f1_dd | f1_macro | roc_auc | eer |
+|---|---|---|---|---|---|
+| bertimbau | 0,9898 | 0,9898 | 0,9898 | 0,9988 | 0,0109 |
+| albertina | 0,9889 | 0,9889 | 0,9889 | 0,9987 | 0,0117 |
+| debertinha | 0,9883 | 0,9883 | 0,9883 | 0,9987 | 0,0125 |
+
+Os três modelos ficam muito acima do critério de aceite (EER < 30%) e muito próximos
+entre si — a diferença de ~0,001–0,002 entre eles ainda precisa de um teste de
+significância (bootstrap pareado, ver Seção 5.5) para saber se é real ou ruído de
+amostragem.
+
+### 5.5 Overfitting de calibração — achado a investigar
+
+A leitura do histórico de treino (`trainer_state.json`) de cada modelo mostra o mesmo
+padrão nos três: o `eval_loss` atinge o mínimo na época 2–3 e volta a subir depois
+(+15% a +24%), enquanto o `train_loss` cai para perto de zero. As métricas discretas de
+validação (accuracy, f1_macro) **não** degradam junto — continuam estáveis ou melhoram
+ligeiramente, porque o critério de seleção do melhor checkpoint é `f1_macro`, não
+`eval_loss`, e por isso o *early stopping* (paciência 2) nunca chegou a disparar.
+
+Isso é overfitting de **confiança/calibração**, não (ainda) de generalização
+discreta: o modelo fica cada vez mais confiante nos exemplos de treino sem que isso
+piore accuracy/F1 na validação/teste. É um ponto real a documentar e ilustrar
+(curvas de loss por época, diagrama de calibração) no capítulo de Resultados, e reforça
+a preocupação da limitação abaixo — métricas de ~0,99 num corpus 100% sintético exigem
+uma validação externa para confirmar que não é apenas o classificador aprendendo o
+estilo dos LLMs geradores.
 
 ---
 
@@ -287,20 +316,31 @@ este documento e ao Capítulo de Resultados assim que a bateria concluir.
 
 Em ordem de prioridade:
 
-1. **Baselines clássicos** (F2, semanas 5–7) — TF-IDF com n-gramas 1–3 + SVM linear e
-   Regressão Logística. É a comparação que a hipótese do trabalho exige: o BERTimbau
-   precisa superar o melhor baseline clássico. Depende apenas de scikit-learn, já
-   instalado.
-2. **Módulo ASR com Whisper** (F2, semanas 4–6) — atualmente a atividade mais atrasada.
-   Necessária para os experimentos com transcrição 1-best e n-best.
-3. **Concluir o treinamento** dos três modelos e consolidar a tabela comparativa.
-4. **Ablação de normalização** — treinar com `text_raw` (acento e pontuação preservados)
+1. **Baselines clássicos** (F2, semanas 5–7) — TF-IDF com n-gramas 1–3 + SVM linear
+   (`LinearSVC` calibrado) e Regressão Logística. É a comparação que a hipótese do
+   trabalho exige: o BERTimbau precisa superar o melhor baseline clássico. Depende
+   apenas de scikit-learn, já instalado.
+2. **Análise de overfitting e significância estatística** (F4) — curvas de loss por
+   época, diagrama de calibração e bootstrap pareado sobre o conjunto de teste para
+   comparar os 3 modelos (e, em seguida, os baselines) com intervalo de confiança —
+   substitui as "5 execuções com sementes diferentes" da metodologia original. Não
+   depende de retreinar nada.
+3. **Pipeline ASR simulado via TTS → Whisper** (F2, semanas 4–6) — como não há áudio
+   real gravado para as frases sintéticas, sintetiza-se áudio de uma amostra do
+   conjunto de teste via TTS, transcreve-se com `faster-whisper` (já instalado) e
+   mede-se a degradação do classificador em função do WER, testando também hipóteses
+   n-best (N=1,3,5).
+4. **Validação externa** contra corpora de fala real (CORAA, NURC-SP, TAGARELA,
+   disponíveis via Hugging Face Hub) — ver limitação abaixo.
+5. **Ablação de normalização** — treinar com `text_raw` (acento e pontuação preservados)
    e comparar. Remover acentos afasta o texto do que os tokenizadores *cased* viram no
    pré-treino e desfaz pares mínimos do português (`está`/`esta`, `é`/`e`); por outro
    lado, aproxima da saída real de um ASR. Os dois números juntos são um resultado, e
    não uma suposição escondida.
-5. **Análise por fonte geradora** — variação grande entre fontes indicaria que o modelo
-   aprendeu o estilo de um gerador em vez da distinção DD/NDD.
+6. **Análise por fonte geradora** — os arquivos `metrics_by_source_test.json` já
+   existem para os 3 modelos; falta visualizar essa quebra para checar se alguma fonte
+   é sistematicamente mais fácil/difícil, o que indicaria viés de estilo de um gerador
+   específico em vez da distinção semântica DD/NDD.
 
 ### Limitação conhecida
 
