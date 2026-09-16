@@ -144,6 +144,48 @@ de ativações" — quanto do áudio faria o assistente disparar. Salva `transcr
 validação qualitativa em fala real, não um substituto da validação externa formal
 (Seção "Limitação conhecida" do README raiz).
 
+## Baselines clássicos (`src/baseline/`)
+
+```bash
+uv run python -m src.baseline.train_baselines              # SVM + Regressão Logística
+uv run python -m src.baseline.train_baselines --only svm
+uv run python -m src.baseline.build_full_comparison         # tabela com os 3 Transformers + os 2 baselines
+```
+
+TF-IDF (n-gramas 1-3, vocabulário limitado a `max_features`) + `LinearSVC` calibrado
+(`CalibratedClassifierCV`, já que `LinearSVC` não expõe `predict_proba`) e Regressão
+Logística, ambos com `C` escolhido por `GridSearchCV` (5-fold estratificado) sobre o
+treino. Segue a mesma disciplina do treino dos Transformers: limiar de decisão calibrado
+só na validação (`src.training.metrics.best_threshold`), teste avaliado uma única vez.
+Reaproveita `src.training.metrics` e `src.training.reporting` sem alterá-los — os
+artefatos gravados em `outputs/baseline_svm/` e `outputs/baseline_logreg/` têm o mesmo
+layout dos modelos Transformer.
+
+`build_full_comparison.py` não treina nada: só lê `metrics_test.json` dos 5 modelos já
+treinados e grava `outputs/comparison_full.{md,tex,json}`.
+
+## Análise de overfitting e significância (`src/analysis/`)
+
+```bash
+uv run python -m src.analysis.run_analysis
+```
+
+Não treina nada — lê os artefatos que `src.training` e `src.baseline` já gravaram em
+`outputs/` e gera, em `outputs/analysis/`:
+
+| Subpasta | Conteúdo |
+|---|---|
+| `loss_curves/` | train_loss vs eval_loss por época (extraído do `trainer_state.json` do checkpoint de **maior step**, não o "melhor" — é o único que tem o histórico completo) + overlay dos 3 Transformers |
+| `per_source/` | Gráfico de barras agrupadas de uma métrica por fonte geradora, para todos os modelos treinados |
+| `calibration/` | Diagrama de confiabilidade (reliability diagram) sobre `predictions_test.jsonl`, ilustrando o overfitting de confiança |
+| `bootstrap/` | Bootstrap pareado (2.000 reamostragens) entre todos os pares de modelos, com IC 95% e `prob_a_maior_que_b` por métrica |
+
+O bootstrap pareado (`bootstrap.py`) reamostra o mesmo conjunto de índices do teste para
+os dois modelos comparados a cada iteração — isso só é válido se as duas listas de
+`predictions_test.jsonl` estiverem na mesma ordem de exemplos. `check_alignment()` valida
+isso automaticamente (compara rótulo linha a linha) e aborta com erro claro se detectar
+desalinhamento, em vez de produzir um IC silenciosamente inválido.
+
 ## Convenções do código
 
 - Sem loggers externos (wandb/tensorboard/mlflow) — tudo grava em disco via

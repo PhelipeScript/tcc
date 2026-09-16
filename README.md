@@ -36,12 +36,12 @@ começo de agosto de 2026, o que situa esta entrega por volta da **semana 7 de 1
 |---|---|---|
 | **F1 — Corpus** | 1–5 | ✅ **Concluída** — corpus de 237.468 enunciados gerado e validado |
 | **F2 — Implementação** | 4–9 | 🔶 **Parcial** (ver detalhe abaixo) |
-| ├ Módulo ASR (Whisper) | 4–6 | ⬜ Não iniciado — **em atraso**; será feito como pipeline simulado TTS→Whisper (sem áudio real disponível) |
-| ├ Baselines clássicos (TF-IDF + SVM/LR) | 5–7 | ⬜ Não iniciado — **próxima prioridade** |
+| ├ Módulo ASR (Whisper) | 4–6 | ⬜ Não iniciado — **em atraso**; será feito como pipeline simulado TTS→Whisper (sem áudio real disponível), viabilidade técnica já confirmada |
+| ├ Baselines clássicos (TF-IDF + SVM/LR) | 5–7 | ✅ **Concluído** (Seção 5.6) |
 | └ Fine-tuning BERTimbau | 6–9 | ✅ **Concluído** |
 | **F3 — Experimentos** | 8–13 | 🔵 **Adiantada** |
 | └ Modelos alternativos (Albertina, DeBERTinha) | 11–13 | ✅ **Concluído, ~5 semanas adiantado** |
-| **F4 — Análise** | 12–14 | 🔵 **Iniciando** — overfitting de calibração identificado (Seção 5.5), validação externa planejada |
+| **F4 — Análise** | 12–14 | 🔶 **Parcial** — overfitting de calibração e significância estatística concluídos (Seções 5.5–5.6); validação externa ainda pendente |
 | **F5 — Escrita** | 1–15 | 🔵 Contínua |
 | **F6 — Entrega** | 15–16 | ⬜ Não iniciado |
 
@@ -310,26 +310,58 @@ a preocupação da limitação abaixo — métricas de ~0,99 num corpus 100% sin
 uma validação externa para confirmar que não é apenas o classificador aprendendo o
 estilo dos LLMs geradores.
 
+### 5.6 Baselines clássicos e significância estatística
+
+Implementados em `project/src/baseline/` — TF-IDF (n-gramas 1-3, vocabulário de 50 mil
+termos) com `LinearSVC` calibrado e Regressão Logística, ambos com `C` escolhido por
+validação cruzada 5-fold no treino, seguindo a mesma disciplina de limiar (calibrado só
+na validação, teste avaliado uma única vez):
+
+| modelo | accuracy | f1_dd | f1_macro | roc_auc | eer |
+|---|---|---|---|---|---|
+| bertimbau | 0,9898 | 0,9898 | 0,9898 | 0,9988 | 0,0109 |
+| albertina | 0,9889 | 0,9889 | 0,9889 | 0,9987 | 0,0117 |
+| debertinha | 0,9883 | 0,9883 | 0,9883 | 0,9987 | 0,0125 |
+| baseline TF-IDF + SVM | 0,9768 | 0,9768 | 0,9768 | 0,9962 | 0,0233 |
+| baseline TF-IDF + LogReg | 0,9760 | 0,9760 | 0,9760 | 0,9962 | 0,0239 |
+
+Um bootstrap pareado (`project/src/analysis/bootstrap.py`, 2.000 reamostragens sobre o
+teste fixo, substituindo as "5 execuções com sementes diferentes" da metodologia
+original — decisão registrada por não haver orçamento de tempo para retreinar)
+confirma que a diferença é estatisticamente robusta: **os três Transformers superam os
+dois baselines em todas as comparações par-a-par com P(Transformer melhor) = 1,000 em
+accuracy/F1/ROC-AUC e 0,000 em EER** (ou seja, em 2.000/2.000 reamostragens o Transformer
+venceu). Entre os três Transformers, a diferença já não é tão nítida: BERTimbau supera
+DeBERTinha de forma consistente (P = 0,99 em F1, 0,007 em EER), mas BERTimbau vs Albertina
+e Albertina vs DeBERTinha não têm diferença estatisticamente confiável (P entre 0,17 e 0,93,
+IC cruzando zero) — a hipótese central do TCC1 (Transformer supera baseline linear) fica
+confirmada com evidência forte; a escolha entre os três Transformers específicos, não.
+
+Resultado completo em `outputs/comparison_full.md` e `outputs/analysis/bootstrap/pairwise_bootstrap.md`.
+
 ---
 
 ## 6. Próximos passos
 
 Em ordem de prioridade:
 
-1. **Baselines clássicos** (F2, semanas 5–7) — TF-IDF com n-gramas 1–3 + SVM linear
-   (`LinearSVC` calibrado) e Regressão Logística. É a comparação que a hipótese do
-   trabalho exige: o BERTimbau precisa superar o melhor baseline clássico. Depende
-   apenas de scikit-learn, já instalado.
-2. **Análise de overfitting e significância estatística** (F4) — curvas de loss por
-   época, diagrama de calibração e bootstrap pareado sobre o conjunto de teste para
-   comparar os 3 modelos (e, em seguida, os baselines) com intervalo de confiança —
-   substitui as "5 execuções com sementes diferentes" da metodologia original. Não
-   depende de retreinar nada.
-3. **Pipeline ASR simulado via TTS → Whisper** (F2, semanas 4–6) — como não há áudio
-   real gravado para as frases sintéticas, sintetiza-se áudio de uma amostra do
-   conjunto de teste via TTS, transcreve-se com `faster-whisper` (já instalado) e
-   mede-se a degradação do classificador em função do WER, testando também hipóteses
-   n-best (N=1,3,5).
+1. ✅ **Baselines clássicos** (F2, semanas 5–7) — concluído, ver Seção 5.6.
+2. ✅ **Análise de overfitting e significância estatística** (F4) — concluído, ver
+   Seções 5.5 e 5.6. Curvas de loss por época
+   (`outputs/analysis/loss_curves/`), gráfico por fonte geradora
+   (`outputs/analysis/per_source/`), diagrama de confiabilidade
+   (`outputs/analysis/calibration/`) e bootstrap pareado
+   (`outputs/analysis/bootstrap/`) já gerados a partir dos artefatos existentes, sem
+   retreinar nada.
+3. **Pipeline ASR simulado via TTS → Whisper** (F2, semanas 4–6) — próxima prioridade.
+   Como não há áudio real gravado para as frases sintéticas, sintetiza-se áudio de uma
+   amostra do conjunto de teste via TTS, transcreve-se com `faster-whisper` (já
+   instalado) e mede-se a degradação do classificador em função do WER, testando também
+   hipóteses n-best (N=1,3,5). **Confirmado viável**: o `ctranslate2` por trás do
+   `faster-whisper` expõe n-best real via beam search nativo (parâmetro
+   `num_hypotheses` de `Whisper.generate`), só não pela API de alto nível
+   `WhisperModel.transcribe()` — não será necessário o fallback por amostragem de
+   temperatura.
 4. **Validação externa** contra corpora de fala real (CORAA, NURC-SP, TAGARELA,
    disponíveis via Hugging Face Hub) — ver limitação abaixo.
 5. **Ablação de normalização** — treinar com `text_raw` (acento e pontuação preservados)
@@ -337,10 +369,6 @@ Em ordem de prioridade:
    pré-treino e desfaz pares mínimos do português (`está`/`esta`, `é`/`e`); por outro
    lado, aproxima da saída real de um ASR. Os dois números juntos são um resultado, e
    não uma suposição escondida.
-6. **Análise por fonte geradora** — os arquivos `metrics_by_source_test.json` já
-   existem para os 3 modelos; falta visualizar essa quebra para checar se alguma fonte
-   é sistematicamente mais fácil/difícil, o que indicaria viés de estilo de um gerador
-   específico em vez da distinção semântica DD/NDD.
 
 ### Limitação conhecida
 
