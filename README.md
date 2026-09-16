@@ -35,8 +35,8 @@ começo de agosto de 2026, o que situa esta entrega por volta da **semana 7 de 1
 | Fase | Semanas previstas | Situação |
 |---|---|---|
 | **F1 — Corpus** | 1–5 | ✅ **Concluída** — corpus de 237.468 enunciados gerado e validado |
-| **F2 — Implementação** | 4–9 | 🔶 **Parcial** (ver detalhe abaixo) |
-| ├ Módulo ASR (Whisper) | 4–6 | ⬜ Não iniciado — **em atraso**; será feito como pipeline simulado TTS→Whisper (sem áudio real disponível), viabilidade técnica já confirmada |
+| **F2 — Implementação** | 4–9 | ✅ **Concluída** (ver detalhe abaixo) |
+| ├ Módulo ASR (Whisper) | 4–6 | ✅ **Concluído como pipeline simulado TTS→Whisper** (Seção 5.7) — sem áudio real disponível, n-best real via beam search do `ctranslate2` |
 | ├ Baselines clássicos (TF-IDF + SVM/LR) | 5–7 | ✅ **Concluído** (Seção 5.6) |
 | └ Fine-tuning BERTimbau | 6–9 | ✅ **Concluído** |
 | **F3 — Experimentos** | 8–13 | 🔵 **Adiantada** |
@@ -49,9 +49,10 @@ começo de agosto de 2026, o que situa esta entrega por volta da **semana 7 de 1
 de Transformers está adiantada — os três modelos (BERTimbau, Albertina e DeBERTinha)
 já foram treinados e avaliados no conjunto de teste (Seção 5.4), sendo que os dois
 alternativos estavam previstos apenas para as semanas 11–13 e eram condicionados a
-"caso o cronograma permita". Em contrapartida, **duas atividades da F2 não foram
-iniciadas**: o módulo ASR com Whisper (previsto para as semanas 4–6) e os baselines
-clássicos (5–7). São as duas prioridades imediatas, detalhadas na Seção 6.
+"caso o cronograma permita". As duas atividades da F2 que estavam atrasadas — baselines
+clássicos e módulo ASR — foram concluídas (Seções 5.6 e 5.7); a prioridade agora é a
+validação externa contra fala real (F4, Seção 6) e a redação dos capítulos de
+Resultados e Conclusão.
 
 ---
 
@@ -339,6 +340,48 @@ confirmada com evidência forte; a escolha entre os três Transformers específi
 
 Resultado completo em `outputs/comparison_full.md` e `outputs/analysis/bootstrap/pairwise_bootstrap.md`.
 
+### 5.7 ASR simulado via TTS → Whisper (objetivos 2 e 3)
+
+Como não existe áudio real gravado para as frases sintéticas do corpus, os objetivos 2
+(estratégia n-best) e 3 (impacto do WER) do TCC1 foram cumpridos com um pipeline
+simulado, implementado em `project/src/asr_eval/`: sintetiza-se áudio de uma amostra
+estratificada de 750 exemplos do conjunto de teste via TTS (`edge-tts`), transcreve-se
+com `faster-whisper` (n-best **real** via beam search do `ctranslate2`, não uma
+aproximação) e roda-se os 3 classificadores sobre 4 condições — texto original (upper
+bound), transcrição 1-best e concatenações n-best (N=3, N=5, separadas pelo token de
+separação de cada tokenizador).
+
+WER médio da amostra: **0,058** (mediana 0, 66% dos exemplos com transcrição perfeita) —
+esperado no "ambiente controlado" que a metodologia define (áudio limpo, sem ruído de
+fundo).
+
+| condição | bertimbau | albertina | debertinha |
+|---|---|---|---|
+| upper bound (texto original) | 0,9880 | 0,9920 | 0,9880 |
+| ASR 1-best | 0,9853 | 0,9933 | 0,9853 |
+| ASR n-best N=3 | 0,9867 | 0,9840 | 0,9853 |
+| ASR n-best N=5 | 0,9880 | 0,9773 | 0,9907 |
+
+(accuracy no conjunto amostrado; tabela completa com f1_macro/ROC-AUC/EER em
+`outputs/asr_eval/summary.md`)
+
+**Achados:**
+
+1. A degradação de texto original para ASR 1-best é pequena e inconsistente entre
+   modelos (BERTimbau/DeBERTinha caem ~0,3pp, Albertina sobe ~0,1pp) — dentro da faixa de
+   ruído de amostragem para N=750.
+2. A concatenação n-best **não** traz ganho consistente: ajuda a DeBERTinha em N=5
+   (0,9907, seu melhor resultado) mas prejudica a Albertina no mesmo N (0,9773, seu
+   pior resultado). O critério mínimo do TCC1 ("n-best não deve degradar o F1 em relação
+   a 1-best") se sustenta para BERTimbau e DeBERTinha, mas é violado pela Albertina em
+   N=5 — resultado a discutir com honestidade no texto, não a esconder.
+3. Quebra por faixa de WER (`outputs/asr_eval/wer_impact.md`) mostra o classificador
+   robusto mesmo em exemplos com WER > 0,30 (accuracy ainda ≥ 0,96, embora com poucos
+   exemplos nessa faixa, n=25) — sugere que o sinal DD/NDD está mais em padrões de
+   fraseado do que em palavras exatas, hipótese a explorar na análise qualitativa.
+
+Resultado completo em `outputs/asr_eval/{summary.md,wer_impact.md,metrics.json}`.
+
 ---
 
 ## 6. Próximos passos
@@ -353,17 +396,10 @@ Em ordem de prioridade:
    (`outputs/analysis/calibration/`) e bootstrap pareado
    (`outputs/analysis/bootstrap/`) já gerados a partir dos artefatos existentes, sem
    retreinar nada.
-3. **Pipeline ASR simulado via TTS → Whisper** (F2, semanas 4–6) — próxima prioridade.
-   Como não há áudio real gravado para as frases sintéticas, sintetiza-se áudio de uma
-   amostra do conjunto de teste via TTS, transcreve-se com `faster-whisper` (já
-   instalado) e mede-se a degradação do classificador em função do WER, testando também
-   hipóteses n-best (N=1,3,5). **Confirmado viável**: o `ctranslate2` por trás do
-   `faster-whisper` expõe n-best real via beam search nativo (parâmetro
-   `num_hypotheses` de `Whisper.generate`), só não pela API de alto nível
-   `WhisperModel.transcribe()` — não será necessário o fallback por amostragem de
-   temperatura.
+3. ✅ **Pipeline ASR simulado via TTS → Whisper** (F2, semanas 4–6) — concluído, ver
+   Seção 5.7.
 4. **Validação externa** contra corpora de fala real (CORAA, NURC-SP, TAGARELA,
-   disponíveis via Hugging Face Hub) — ver limitação abaixo.
+   disponíveis via Hugging Face Hub) — **próxima prioridade**. Ver limitação abaixo.
 5. **Ablação de normalização** — treinar com `text_raw` (acento e pontuação preservados)
    e comparar. Remover acentos afasta o texto do que os tokenizadores *cased* viram no
    pré-treino e desfaz pares mínimos do português (`está`/`esta`, `é`/`e`); por outro

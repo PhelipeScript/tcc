@@ -186,6 +186,39 @@ os dois modelos comparados a cada iteração — isso só é válido se as duas 
 isso automaticamente (compara rótulo linha a linha) e aborta com erro claro se detectar
 desalinhamento, em vez de produzir um IC silenciosamente inválido.
 
+## ASR simulado via TTS → Whisper (`src/asr_eval/`)
+
+```bash
+uv run python -m src.asr_eval.run_asr_eval                                  # 750 exemplos, N=1,3,5
+uv run python -m src.asr_eval.run_asr_eval --sample-size 100 --n-values 1 3  # execução menor
+uv run python -m src.asr_eval.wer_impact                                    # acurácia por faixa de WER
+```
+
+Não existe áudio real gravado para as frases sintéticas do corpus (só texto), então os
+objetivos 2 (n-best) e 3 (impacto do WER) do TCC1 são cumpridos com um pipeline
+simulado: sintetiza-se áudio de uma amostra do conjunto de teste via TTS, transcreve-se
+com `faster-whisper` e roda-se os 3 classificadores já treinados sobre 4 condições —
+texto original (upper bound), transcrição 1-best, e concatenações n-best (N=3, N=5).
+
+| Módulo | Função |
+|---|---|
+| `sampling.py` | Amostra estratificada por `label + source` do `test.jsonl` |
+| `synth.py` | TTS via `edge-tts`, com cache em disco (`outputs/asr_eval/audio/`) |
+| `transcribe_nbest.py` | N-best **real** via beam search do `ctranslate2` (não uma aproximação por temperatura) |
+| `wer.py` | WER via `jiwer`, texto normalizado dos dois lados |
+| `classify.py` | Roda os 3 `ModelSession` sobre cada condição, com o separador correto do tokenizador de cada modelo na concatenação n-best |
+| `engine.py` | Orquestra tudo e grava `outputs/asr_eval/{records.jsonl,metrics.json,summary.md}` |
+
+**`transcribe_nbest.py` depende de internals do `faster-whisper`** (`WhisperModel.encode`,
+`WhisperModel.get_prompt`, `Tokenizer`, `get_suppressed_tokens`, `pad_or_trim`), não da
+API pública `WhisperModel.transcribe()` — que só devolve a melhor hipótese por segmento.
+O `ctranslate2.models.Whisper.generate()` interno aceita `num_hypotheses`, confirmado por
+`help(ctranslate2.models.Whisper.generate)`. Validado manualmente: para
+`"Fecha essa aba, por favor!"`, N=3 devolveu três variações plausíveis de pontuação/
+conjugação do beam search real. Se uma versão futura do `faster-whisper` mudar essa API
+interna, o fallback documentado é aproximar n-best por amostragem de temperatura
+(`best_of` na API pública).
+
 ## Convenções do código
 
 - Sem loggers externos (wandb/tensorboard/mlflow) — tudo grava em disco via
