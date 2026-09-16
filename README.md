@@ -41,7 +41,7 @@ começo de agosto de 2026, o que situa esta entrega por volta da **semana 7 de 1
 | └ Fine-tuning BERTimbau | 6–9 | ✅ **Concluído** |
 | **F3 — Experimentos** | 8–13 | 🔵 **Adiantada** |
 | └ Modelos alternativos (Albertina, DeBERTinha) | 11–13 | ✅ **Concluído, ~5 semanas adiantado** |
-| **F4 — Análise** | 12–14 | 🔶 **Parcial** — overfitting de calibração e significância estatística concluídos (Seções 5.5–5.6); validação externa ainda pendente |
+| **F4 — Análise** | 12–14 | ✅ **Concluída** — overfitting, significância estatística, ASR simulado e validação externa (Seções 5.5–5.8) |
 | **F5 — Escrita** | 1–15 | 🔵 Contínua |
 | **F6 — Entrega** | 15–16 | ⬜ Não iniciado |
 
@@ -382,6 +382,52 @@ fundo).
 
 Resultado completo em `outputs/asr_eval/{summary.md,wer_impact.md,metrics.json}`.
 
+### 5.8 Validação externa contra fala real — viés de estilo sintético confirmado
+
+Implementada em `project/src/external_eval/`, contra três corpora públicos de fala
+espontânea em PT-BR disponíveis no Hugging Face Hub: **CORAA** (`gabrielrstan/CORAA-v1.1`,
+split de teste, subconjunto `speech_style == "Spontaneous Speech"`), **NURC-SP**
+(`nilc-nlp/CORAA-NURC-SP-Audio-Corpus`, split de teste) e **TAGARELA**
+(`freds0/TAGARELA`, split de teste, parágrafos quebrados em sentenças). Só a transcrição
+textual é usada — nenhum áudio é decodificado. Como nenhum dos três corpora foi anotado
+para DDSD, o rótulo **NDD é assumido por suposição de domínio** (é fala espontânea entre
+humanos, não comando de voz); não há corpus público de comandos DD reais, então a
+validação mede apenas a **taxa de falso positivo** (quantas vezes o assistente "acordaria
+à toa" ouvindo conversa real).
+
+| corpus | n | bertimbau | albertina | debertinha |
+|---|---|---|---|---|
+| CORAA | 938 | 0,3028 | 0,3060 | 0,3486 |
+| NURC-SP | 973 | 0,1963 | 0,2179 | 0,2343 |
+| TAGARELA | 916 | 0,2260 | 0,2511 | 0,2587 |
+
+(taxa de falso positivo — fração classificada como DD; tabela completa e exemplos em
+`outputs/external_eval/{summary.md,<corpus>/result.json}`)
+
+**Este é o achado mais importante da análise crítica do trabalho.** Apesar de ~99% de
+acurácia no split de teste sintético, os três modelos classificam **20% a 35% da fala
+espontânea real como DD** — uma taxa de falso positivo muito acima do que qualquer
+sistema de ativação por voz toleraria em produção. A inspeção qualitativa dos falsos
+positivos (`falsos_positivos` em cada `result.json`) mostra o motivo: são majoritariamente
+**fragmentos curtos** de fala real, recortes de turno de conversa cortados pela
+segmentação dos corpora (ex.: `"da o leite"`, `"vai em frente"`, `"ajuda ne"`, `"pegar de
+volta"`), não comandos completos. Isso é evidência concreta de que os classificadores
+aprenderam, em algum grau, a associar **brevidade da frase** a DD — um atalho estrutural
+válido dentro do corpus sintético (onde DD são sempre comandos curtos e completos, e NDD
+tende a ser mais longo e discursivo) que não se sustenta em fala real, na qual fragmentos
+curtos e incompletos são comuns e não indicam intenção de comando.
+
+Isso qualifica, sem invalidar, os resultados das Seções 5.4–5.7: a **comparação interna**
+entre Transformers e baselines (Seção 5.6) continua válida — ambos são treinados e
+avaliados no mesmo corpus, então o viés de estilo afeta os dois igualmente e a
+superioridade relativa do Transformer se sustenta. O que fica claramente limitado é a
+**generalização para deployment real**: o desempenho de ~99% no corpus sintético não deve
+ser lido como desempenho esperado em produção. É a confirmação empírica, com evidência
+estatística robusta (n≈900-1000 por corpus), da limitação que o README já antecipava
+antes desta validação ser executada — e um ponto de partida honesto para trabalhos
+futuros (ex.: incorporar fragmentos curtos de fala real como exemplos NDD adicionais no
+treino, ou balancear o corpus sintético por comprimento de frase entre as duas classes).
+
 ---
 
 ## 6. Próximos passos
@@ -398,21 +444,31 @@ Em ordem de prioridade:
    retreinar nada.
 3. ✅ **Pipeline ASR simulado via TTS → Whisper** (F2, semanas 4–6) — concluído, ver
    Seção 5.7.
-4. **Validação externa** contra corpora de fala real (CORAA, NURC-SP, TAGARELA,
-   disponíveis via Hugging Face Hub) — **próxima prioridade**. Ver limitação abaixo.
-5. **Ablação de normalização** — treinar com `text_raw` (acento e pontuação preservados)
+4. ✅ **Validação externa** contra corpora de fala real — concluído, ver Seção 5.8.
+   Achado central: 20-35% de falso positivo em fala espontânea real, concentrado em
+   fragmentos curtos — viés de comprimento de frase herdado do corpus sintético.
+5. **Próxima prioridade — mitigar o viés de comprimento identificado na Seção 5.8**:
+   avaliar se adicionar fragmentos curtos reais como exemplos NDD adicionais (ex.: uma
+   fração do CORAA/NURC-SP incorporada ao treino, não só ao teste externo) reduz a taxa
+   de falso positivo sem comprometer o desempenho no corpus sintético. Escopo a decidir
+   dado o tempo restante — pode ficar só como "trabalho futuro" documentado se não
+   houver tempo para retreinar.
+6. **Ablação de normalização** — treinar com `text_raw` (acento e pontuação preservados)
    e comparar. Remover acentos afasta o texto do que os tokenizadores *cased* viram no
    pré-treino e desfaz pares mínimos do português (`está`/`esta`, `é`/`e`); por outro
    lado, aproxima da saída real de um ASR. Os dois números juntos são um resultado, e
    não uma suposição escondida.
 
-### Limitação conhecida
+### Limitação conhecida — confirmada empiricamente
 
 O corpus é **integralmente sintético**. A hipótese do trabalho trata de transcrições de
 fala humana, e um classificador pode atingir desempenho alto neste corpus e falhar em
-fala real. A mitigação prevista é avaliar os modelos sobre corpora de fala espontânea em
-português (CORAA, NURC-SP, TAGARELA) como conjunto de teste externo da classe NDD,
-nunca em treino. Essa avaliação ainda não foi executada.
+fala real. A mitigação prevista — avaliar os modelos sobre corpora de fala espontânea em
+português (CORAA, NURC-SP, TAGARELA) como conjunto de teste externo da classe NDD, nunca
+em treino — foi executada (Seção 5.8) e **confirmou o risco**: 20% a 35% de falso
+positivo em fala real, concentrado em fragmentos curtos de conversa, contra ~1% no teste
+sintético. Não é mais uma limitação hipotética a mencionar; é um resultado a discutir
+com profundidade nos capítulos de Resultados e Conclusão.
 
 ---
 

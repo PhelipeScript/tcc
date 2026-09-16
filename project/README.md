@@ -219,6 +219,26 @@ conjugação do beam search real. Se uma versão futura do `faster-whisper` muda
 interna, o fallback documentado é aproximar n-best por amostragem de temperatura
 (`best_of` na API pública).
 
+## Validação externa (`src/external_eval/`)
+
+```bash
+uv run python -m src.external_eval.run_external_eval                              # os 3 corpora, 1000 exemplos cada
+uv run python -m src.external_eval.run_external_eval --corpora coraa --sample-size 100
+```
+
+Testa os 3 classificadores contra fala real (não sintética) de três corpora públicos no
+Hugging Face Hub — CORAA, NURC-SP, TAGARELA — lendo só a transcrição textual (nenhum
+áudio é decodificado; ver docstring de `fetch.py` para o schema de cada corpus e por que
+TAGARELA é lido via `pyarrow` direto em vez de `datasets`, evitando a dependência de
+decodificação de áudio `torchcodec`). Como nenhum dos três tem anotação DD/NDD, o rótulo
+NDD é assumido por suposição de domínio e a métrica é a taxa de falso positivo.
+
+**Resultado**: 20% a 35% de falso positivo em fala real, concentrado em fragmentos
+curtos de conversa — evidência de que o classificador usa brevidade da frase como atalho
+para DD, um padrão válido no corpus sintético (DD é sempre comando curto) mas que não se
+sustenta em fala real (fragmentos curtos e incompletos são comuns e não indicam intenção
+de comando). Ver Seção 5.8 do README raiz para a análise completa.
+
 ## Convenções do código
 
 - Sem loggers externos (wandb/tensorboard/mlflow) — tudo grava em disco via
