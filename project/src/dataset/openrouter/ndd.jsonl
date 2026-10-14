@@ -9131,3 +9131,1671 @@
 {"text": "você já sentiu como a meta de passos influencia a sua rotina?", "label": "NDD"}
 {"text": "eu tento ignorar a meta de passos, mas o app não me deixa em paz", "label": "NDD"}
 {"text": "a meta de passos do meu amigo é mais baixa, e eu fico me comparando", "label": "NDD"}
+{"text": "você chegou a ver o status do backup depois que o sistema reiniciou?", "label": "NDD"}
+{"text": "o status do backup de ontem tava com erro, mas o de hoje já passou.", "label": "NDD"}
+{"text": "a gente precisa acompanhar o backup com mais frequência, sério.", "label": "NDD"}
+{"text": "será que o backup noturno terminou sem avisar ninguém?", "label": "NDD"}
+{"text": "no relatório do backup, aparece que a última cópia foi feita há três dias.", "label": "NDD"}
+{"text": "se o backup falhar de novo, a gente perde os arquivos do mês inteiro.", "label": "NDD"}
+{"text": "o pessoal de TI comentou que o backup da filial tá desatualizado.", "label": "NDD"}
+{"text": "fico monitorando o backup o tempo todo e nunca dá problema, graças a Deus.", "label": "NDD"}
+{"text": "o áudio do canal de voz tá péssimo hoje, parece que tão falando de dentro d'água", "label": "NDD"}
+{"text": "você viu que o Carlos saiu do canal de voz no meio da reunião?", "label": "NDD"}
+{"text": "todo mundo saiu do canal de voz pra ir jantar", "label": "NDD"}
+{"text": "a gente ficou no canal de voz até umas duas da manhã conversando besteira", "label": "NDD"}
+{"text": "o pessoal prefere ficar no canal de voz do que no chat escrito", "label": "NDD"}
+{"text": "acho que caiu minha internet de novo, saí do canal de voz sem querer", "label": "NDD"}
+{"text": "ela falou que entra no canal de voz depois das nove, mas até agora nada", "label": "NDD"}
+{"text": "no nosso grupo, o canal de voz é o lugar mais animado da casa", "label": "NDD"}
+{"text": "Você viu aquele comando que a gente rodou ontem? Tava lá no histórico do terminal, mas não lembro qual era.", "label": "NDD"}
+{"text": "Eu sempre esqueço de salvar os comandos, aí o histórico do terminal fica uma bagunça.", "label": "NDD"}
+{"text": "O problema é que o terminal só guarda uns mil comandos, depois o histórico antigo some.", "label": "NDD"}
+{"text": "Ontem eu tava fuçando o histórico do terminal e achei um comando que nem sei como fui parar lá.", "label": "NDD"}
+{"text": "Se eu não achar aquele comando no histórico, vou ter que pesquisar tudo de novo.", "label": "NDD"}
+{"text": "O histórico do terminal aqui tá enorme, cheio de comando repetido que eu digito sem querer.", "label": "NDD"}
+{"text": "Será que o histórico de comandos do terminal tem como recuperar o que eu usei semana passada?", "label": "NDD"}
+{"text": "Minha memória é péssima, por isso vivo olhando o histórico do terminal pra lembrar os comandos.", "label": "NDD"}
+{"text": "Eu tava contando que gravei o trecho da partida de ontem, mas apaguei sem querer.", "label": "NDD"}
+{"text": "Você viu aquele trecho da partida que todo mundo comentou? Ficou gravado na memória.", "label": "NDD"}
+{"text": "A gente pode rever o trecho da partida mais tarde, se ainda tiver gravado.", "label": "NDD"}
+{"text": "O trecho da partida que ela gravou ficou melhor que o da televisão.", "label": "NDD"}
+{"text": "Ele ficou o tempo todo falando do trecho do jogo, parecia que tinha gravado na cabeça.", "label": "NDD"}
+{"text": "A câmera travou bem no trecho da partida, então não deu pra registrar o lance.", "label": "NDD"}
+{"text": "Lembra que a gente gravou o trecho da partida na festa? Hoje eu queria ver de novo.", "label": "NDD"}
+{"text": "Dizem que o juiz nem percebeu que aquele trecho do jogo tinha sido gravado.", "label": "NDD"}
+{"text": "você viu como o pessoal avaliou o resultado do modelo ontem?", "label": "NDD"}
+{"text": "o resultado do modelo foi super mal avaliado na reunião", "label": "NDD"}
+{"text": "aquele resultado do modelo que o time avaliou ficou ótimo", "label": "NDD"}
+{"text": "ainda não avaliaram o resultado do modelo que a gente treinou", "label": "NDD"}
+{"text": "o chefe pediu pra gente avaliar o resultado do modelo de novo", "label": "NDD"}
+{"text": "a avaliação do resultado do modelo mostrou que ele errou feio", "label": "NDD"}
+{"text": "será que o resultado do modelo passou na avaliação de hoje?", "label": "NDD"}
+{"text": "a gente precisa discutir o resultado do modelo que vieram avaliar", "label": "NDD"}
+{"text": "Ontem eu passei a tarde toda tentando configurar aquele synth rítmico novo.", "label": "NDD"}
+{"text": "Esse tecladista entende muito de synth rítmico, foi ele que programou o som da banda.", "label": "NDD"}
+{"text": "O synth rítmico ficou com um timbre estranho depois que alguém mexeu na configuração.", "label": "NDD"}
+{"text": "A gente usou o synth rítmico na gravação, mas o ritmo ficou meio escondido na mixagem.", "label": "NDD"}
+{"text": "Eu acho que o synth rítmico tá precisando de mais ataque pra sobressair na música.", "label": "NDD"}
+{"text": "O show só funcionou porque o synth rítmico estava muito bem sacado, né?", "label": "NDD"}
+{"text": "Ele passou a noite ajustando o synth rítmico e no final ainda não curtiu o resultado.", "label": "NDD"}
+{"text": "Essa batida de synth rítmico me lembrou uma trilha de videogame antigo, muito boa.", "label": "NDD"}
+{"text": "o extrato da conta no banco veio cheio de taxas que eu nem lembrava de ter pago", "label": "NDD"}
+{"text": "você viu que o extrato do banco acusou um débito que eu não reconheço?", "label": "NDD"}
+{"text": "minha mãe guarda todo extrato do banco em uma pasta separada em casa", "label": "NDD"}
+{"text": "o extrato da minha conta tá com um monte de compra pequena que eu não anotei", "label": "NDD"}
+{"text": "esqueci de conferir o extrato do banco hoje, mas amanhã eu vejo", "label": "NDD"}
+{"text": "o atendente do banco disse que o extrato sai na hora, mas nunca sai", "label": "NDD"}
+{"text": "aquele lançamento no extrato da conta é do pagamento que o joão me fez", "label": "NDD"}
+{"text": "olha aqui, o extrato do banco mostra que o saldo fechou certinho esse mês", "label": "NDD"}
+{"text": "Eu preciso configurar o duplo clique do meu mouse porque ele tá abrindo pasta sozinho.", "label": "NDD"}
+{"text": "Você viu como reduz a velocidade do duplo clique nas configurações de acessibilidade?", "label": "NDD"}
+{"text": "O pessoal do suporte falou que o duplo clique fica mais fácil depois que você ajusta a sensibilidade.", "label": "NDD"}
+{"text": "Anda reclamando que o duplo clique do touchpad é lento demais pra abrir os arquivos.", "label": "NDD"}
+{"text": "Será que dá pra mudar o duplo clique pra clicar uma vez só? Achei isso em um fórum.", "label": "NDD"}
+{"text": "O duplo clique do mouse aqui tá tão rápido que eu não consigo selecionar o texto.", "label": "NDD"}
+{"text": "Meu primo passou a noite tentando configurar aquele negócio de duplo clique no computador dele.", "label": "NDD"}
+{"text": "Quando o duplo clique não funciona, costumo desligar e ligar o mouse e resolve.", "label": "NDD"}
+{"text": "no show de ontem o som tava tão baixo que no final o povo pediu pra dar um gás", "label": "NDD"}
+{"text": "essa música nova pede um som mais alto, tô até pensando em montar um sistema melhor", "label": "NDD"}
+{"text": "nossa, o som da festa aqui de casa tá tão baixo que eu nem consigo dançar direito", "label": "NDD"}
+{"text": "aquele rapaz do vizinho põe o som no talo todo dia", "label": "NDD"}
+{"text": "eu acho que o som do show passou do ponto, tava estourando", "label": "NDD"}
+{"text": "se o som continuar baixo assim, o pessoal vai começar a ir embora", "label": "NDD"}
+{"text": "o DJ deu uma aumentada no som quando o público começou a gritar", "label": "NDD"}
+{"text": "ontem eu fiquei com dor de cabeça de tanto que estava alto o som da academia", "label": "NDD"}
+{"text": "Nossa, eu ia comentar isso no post dela, mas nem lembrava minha senha.", "label": "NDD"}
+{"text": "Você viu o comentário que ela deixou na foto? Era tão carinhoso.", "label": "NDD"}
+{"text": "Ele pediu pra adicionar um comentário no documento, mas não sei o que escrever.", "label": "NDD"}
+{"text": "Eu sempre comento nos vídeos dele, mas ele nunca responde.", "label": "NDD"}
+{"text": "Vou deixar uma opinião ali nos comentários, já aproveito e marco você.", "label": "NDD"}
+{"text": "O pessoal tá comentando muito aquele assunto aqui no grupo.", "label": "NDD"}
+{"text": "Se eu fosse você, eu comentava agora antes que esqueça.", "label": "NDD"}
+{"text": "Adicionaram um comentário no arquivo que você compartilhou, acho que é sobre a reunião.", "label": "NDD"}
+{"text": "eu sempre deixo a primeira aba aberta com o e-mail", "label": "NDD"}
+{"text": "nossa, quantas abas abertas, a primeira é a do banco", "label": "NDD"}
+{"text": "a primeira aba que eu abri hoje era de receita", "label": "NDD"}
+{"text": "ele pediu pra mim olhar na primeira aba, mas não achei nada", "label": "NDD"}
+{"text": "quando você abre o navegador, a primeira aba costuma ser a de notícias", "label": "NDD"}
+{"text": "minha irmã fecha a primeira aba sem querer toda hora", "label": "NDD"}
+{"text": "aquele site abriu na primeira aba, mas eu tava na outra", "label": "NDD"}
+{"text": "primeira aba é a de menos, o problema é as outras vinte", "label": "NDD"}
+{"text": "aquele cronômetro de contagem regressiva que a professora usou na prova foi salvo no grupo", "label": "NDD"}
+{"text": "meu filho vive pedindo pra eu cronometrar quanto tempo ele demora pra arrumar o quarto", "label": "NDD"}
+{"text": "tinha um cronômetro regressivo no painel da academia, mas ninguém olhava a hora", "label": "NDD"}
+{"text": "a contagem regressiva antes da largada me deu mais ansiedade do que a corrida em si", "label": "NDD"}
+{"text": "não acredito que esqueci de marcar o tempo do bolo, mas o cronômetro daqui de casa tocou mesmo assim", "label": "NDD"}
+{"text": "quando o juiz falou que ia ter contagem regressiva pra sair de casa, eu nem levei a sério", "label": "NDD"}
+{"text": "o aplicativo de receitas tem um cronômetro que fica em cima da receita, muito bom", "label": "NDD"}
+{"text": "no treino de hoje a gente fez aquele circuito com contagem regressiva no final e eu quase morri", "label": "NDD"}
+{"text": "eu ia cancelar a reunião, mas desisti porque todo mundo já estava no corredor", "label": "NDD"}
+{"text": "minha reunião foi cancelada e eu nem fiquei triste", "label": "NDD"}
+{"text": "cancelei a reunião de ontem e fui tomar um café com a Ana", "label": "NDD"}
+{"text": "o povo não aprende: marcou reunião e cancelou tudo depois", "label": "NDD"}
+{"text": "vou atrasar porque cancelaram a reunião que eu tinha às três", "label": "NDD"}
+{"text": "ela fala que vai cancelar a reunião e depois esquece", "label": "NDD"}
+{"text": "se cancelarem a reunião de novo, eu juro que vou embora", "label": "NDD"}
+{"text": "aquela reunião foi cancelada sem avisar, né? cheguei lá sozinho", "label": "NDD"}
+{"text": "aquele painel de síntese de fala que o pessoal usa pra dublagem tá com cada voz estranha", "label": "NDD"}
+{"text": "eu tentei abrir o painel de síntese de fala aqui e travou tudo", "label": "NDD"}
+{"text": "não entendo como a síntese de fala consegue errar tão feio um nome simples", "label": "NDD"}
+{"text": "vi um vídeo mostrando o painel de síntese de fala novo, parece bem mais natural", "label": "NDD"}
+{"text": "minha irmã vive reclamando que a síntese de fala do aplicativo dela ficou robótica depois da atualização", "label": "NDD"}
+{"text": "ele passou a tarde inteira mexendo no painel de síntese de fala e não conseguiu deixar a voz agradável", "label": "NDD"}
+{"text": "será que o painel de síntese de fala desse sistema aceita voz personalizada? acho que não", "label": "NDD"}
+{"text": "a síntese de fala do computador antigo aqui da faculdade era muito engraçada, parecia robô de filme", "label": "NDD"}
+{"text": "O painel do monitor cardíaco do quarto 3 está com umas linhas estranhas.", "label": "NDD"}
+{"text": "A enfermeira abriu o painel do monitor cardíaco e pôs pra imprimir o laço.", "label": "NDD"}
+{"text": "Achei que o alarme daquele monitor cardíaco ia tocar a noite inteira.", "label": "NDD"}
+{"text": "A médica pediu pra anotar os números do painel antes do plantão começar.", "label": "NDD"}
+{"text": "O monitor cardíaco dele mostrou umas variações esquisitas durante a visita.", "label": "NDD"}
+{"text": "A gente consegue ver o painel do monitor cardíaco lá da central de enfermagem?", "label": "NDD"}
+{"text": "O paciente perguntou se o gráfico do monitor cardíaco estava normal, mas eu não soube responder.", "label": "NDD"}
+{"text": "Ela comentou que o monitor cardíaco captou uma arritmia leve agora de manhã.", "label": "NDD"}
+{"text": "Aquela aula de infraestrutura como código ontem foi muito confusa pro resto do time.", "label": "NDD"}
+{"text": "Você viu que o pessoal criou um repositório pra infraestrutura como código? Achei que ficou bem organizado.", "label": "NDD"}
+{"text": "Eu tava lendo sobre o gerenciador de infraestrutura como código e ainda não entendi a vantagem.", "label": "NDD"}
+{"text": "Nosso gerenciador de infraestrutura como código não tá achando os recursos que a gente subiu na última sprint.", "label": "NDD"}
+{"text": "Depois que migraram pra infraestrutura como código, o trabalho manual caiu muito.", "label": "NDD"}
+{"text": "O cara da outra equipe falou que o segredo é tratar a infraestrutura como código, versionando tudo.", "label": "NDD"}
+{"text": "Esse gerenciador aqui parece que foi feito pra quem já tem infraestrutura como código montada.", "label": "NDD"}
+{"text": "Eles passaram a tarde inteira discutindo se é melhor abrir o gerenciador ou editar o código direto.", "label": "NDD"}
+{"text": "Eu fiquei meia hora nas configurações da rede ontem e não achei onde troca a senha do wi-fi.", "label": "NDD"}
+{"text": "O técnico pediu pra abrir as configurações da rede, mas eu não entendi nada.", "label": "NDD"}
+{"text": "Quando fui ver as configurações da rede, o wi-fi sumiu do nada.", "label": "NDD"}
+{"text": "Aquele aplicativo insiste em mudar as configurações da rede sem avisar.", "label": "NDD"}
+{"text": "Você viu se as configurações da rede do celular da minha mãe estão certas?", "label": "NDD"}
+{"text": "Meu irmão mexeu nas configurações da rede e agora o computador não conecta mais.", "label": "NDD"}
+{"text": "A internet caiu de novo, acho que vou dar uma olhada nas configurações da rede aqui.", "label": "NDD"}
+{"text": "Ela falou que o problema era nas configurações da rede, mas pra mim era o roteador.", "label": "NDD"}
+{"text": "Você lembrou que a gente precisa configurar aquele lembrete de revisão pro dentista?", "label": "NDD"}
+{"text": "Eu odeio quando esqueço de configurar o lembrete de revisão antes da prova.", "label": "NDD"}
+{"text": "Amanhã eu configuro o lembrete de revisão, hoje tô sem cabeça.", "label": "NDD"}
+{"text": "Ela configurou o lembrete de revisão do carro, mas mesmo assim esqueceu.", "label": "NDD"}
+{"text": "Se você tivesse configurado o lembrete de revisão, não tinha perdido o prazo.", "label": "NDD"}
+{"text": "O problema é que meu celular não salva o lembrete de revisão que eu crio.", "label": "NDD"}
+{"text": "Vou pedir pra ela configurar o lembrete de revisão de novo, porque o outro não notificou.", "label": "NDD"}
+{"text": "Configurar o lembrete de revisão é fácil, difícil é lembrar de olhar o celular.", "label": "NDD"}
+{"text": "O scanner do escritório tá com problema pra reconhecer as letras do documento.", "label": "NDD"}
+{"text": "Fiz a digitalização do contrato e o OCR saiu cheio de erro.", "label": "NDD"}
+{"text": "Você já tentou converter a foto daquele recibo em texto? Não sai nem a pau.", "label": "NDD"}
+{"text": "Achei que tinha escaneado o currículo, mas virei um PDF sem texto nenhum.", "label": "NDD"}
+{"text": "Digitalizar esse livro antigo pra editar depois vai dar um trabalhão.", "label": "NDD"}
+{"text": "Será que esse scanner consegue extrair o texto do papel amassado?", "label": "NDD"}
+{"text": "Eu precisava de uma cópia em texto do documento, mas o scanner só fez imagem.", "label": "NDD"}
+{"text": "Ainda bem que o reconhecimento de caracteres melhorou, senão eu tava perdido.", "label": "NDD"}
+{"text": "Ontem eu abri o programa de composição de DJ aqui em casa e o bicho não quis abrir de jeito nenhum.", "label": "NDD"}
+{"text": "Você já usou aquele programa de composição de DJ que todo mundo vive falando?", "label": "NDD"}
+{"text": "Eu tava tentando montar um set e o programa de composição de DJ ficou lento do nada.", "label": "NDD"}
+{"text": "Ela me disse que o programa de composição de DJ dela corrompeu todos os arquivos.", "label": "NDD"}
+{"text": "Cara, esse programa de composição de DJ tem cada atualização chata, não aguento mais.", "label": "NDD"}
+{"text": "Minha dupla prefere gravar no estúdio, mas eu gosto de treinar em casa com o programa de composição de DJ.", "label": "NDD"}
+{"text": "Achei que o curso ensinava produção, mas só ensinava a abrir o programa de composição de DJ.", "label": "NDD"}
+{"text": "O DJ foi embora e deixou o programa de composição de DJ aberto na tela cheia.", "label": "NDD"}
+{"text": "Nossa, o compartilhamento de tela do meeting travou de novo.", "label": "NDD"}
+{"text": "Quando eu clico em compartilhar, ele não mostra minhas janelas.", "label": "NDD"}
+{"text": "O pessoal da TI passou meia hora comigo mexendo nas configurações de compartilhamento.", "label": "NDD"}
+{"text": "Será que o cliente consegue ver minha área de trabalho do outro lado?", "label": "NDD"}
+{"text": "Eu odeio quando preciso dividir a tela e aparece só o papel de parede.", "label": "NDD"}
+{"text": "Aquele programa de acesso remoto não deixa o pessoal enxergar as abas que eu abro.", "label": "NDD"}
+{"text": "Minha apresentação estava visível pra todo mundo, mas aí o compartilhamento de áudio falhou.", "label": "NDD"}
+{"text": "Ele pediu pra eu habilitar a opção de permitir controle remoto, mas não achei onde fica.", "label": "NDD"}
+{"text": "nossa, a chamada de vídeo do time hoje atrasou porque ninguém conseguia entrar", "label": "NDD"}
+{"text": "a cada chamada de vídeo do time eu descubro uma função nova no aplicativo", "label": "NDD"}
+{"text": "eu odeio quando o pessoal do time fica sem abrir a câmera na chamada de vídeo", "label": "NDD"}
+{"text": "a chamada de vídeo do time acabou virando aquele fofocatório, ninguém queria sair", "label": "NDD"}
+{"text": "será que alguém gravou a chamada de vídeo do time de ontem? eu perdi o começo", "label": "NDD"}
+{"text": "a chamada de vídeo do time foi tão longa que minha internet caiu no meio", "label": "NDD"}
+{"text": "o assunto da chamada de vídeo do time era sério, mas o gato do fulano apareceu", "label": "NDD"}
+{"text": "Aquele slide no fundo ficou tremendo durante a reunião toda.", "label": "NDD"}
+{"text": "Ela deixou a apresentação de slides passando em loop no projetor.", "label": "NDD"}
+{"text": "O pessoal nem percebeu que os slides estavam no fundo da tela.", "label": "NDD"}
+{"text": "Eu reparei que a foto do slide estava desbotada no fundo.", "label": "NDD"}
+{"text": "A apresentação de slides do casamento ficou rodando a noite inteira.", "label": "NDD"}
+{"text": "Ele ficou ajustando o slide de fundo enquanto a gente conversava.", "label": "NDD"}
+{"text": "Os slides passavam ao fundo e ninguém prestava atenção.", "label": "NDD"}
+{"text": "A fonte do slide no fundo estava pequena demais para ler.", "label": "NDD"}
+{"text": "Eu ia excluir aquela planilha, mas ainda não tinha selecionado as células certas.", "label": "NDD"}
+{"text": "Você viu que ele excluiu a planilha que a gente tinha selecionado ontem?", "label": "NDD"}
+{"text": "Se você apagar essa planilha selecionada, vai perder todos os dados.", "label": "NDD"}
+{"text": "Aquela planilha que a gente selecionou foi parar na lixeira sem querer, nem sei como.", "label": "NDD"}
+{"text": "Depois que eu excluí a planilha, fiquei horas procurando uma versão anterior.", "label": "NDD"}
+{"text": "Cê acha que eu devia excluir a planilha que está selecionada ou guardar uma cópia?", "label": "NDD"}
+{"text": "A planilha selecionada ali na pasta é justamente a que eu excluí sem querer mês passado.", "label": "NDD"}
+{"text": "Não acredito que você excluiu a planilha sem mostrar quais abas estavam selecionadas.", "label": "NDD"}
+{"text": "Minha tela de bloqueio tá com uma foto antiga minha, nem lembrava dessa época.", "label": "NDD"}
+{"text": "Toda vez que pego o celular do meu irmão, ele fica bravo porque eu fico vendo as notificações na tela de bloqueio.", "label": "NDD"}
+{"text": "A tela de bloqueio do meu notebook pisca toda hora, acho que é problema no Windows.", "label": "NDD"}
+{"text": "Eu mudei a senha, mas a tela de bloqueio continua aparecendo do nada, tá me deixando louca.", "label": "NDD"}
+{"text": "Você viu que dava pra colocar relógio na tela de bloqueio? Eu achei bem prático.", "label": "NDD"}
+{"text": "O pessoal fala que a tela de bloqueio atrapalha, mas eu gosto porque esconde as mensagens quando estou no trabalho.", "label": "NDD"}
+{"text": "Meu filho ficou me pedindo pra desbloquear o celular, mas eu falei que a tela de bloqueio era segredo.", "label": "NDD"}
+{"text": "Eu nunca entendi porque o pessoal reclama de tela de bloqueio, se é só deslizar e acabou.", "label": "NDD"}
+{"text": "Cara, que jogada de mestre você fez no tabuleiro ontem.", "label": "NDD"}
+{"text": "A jogada que ela planejou no tabuleiro deixou todo mundo impressionado.", "label": "NDD"}
+{"text": "Eu sempre erro a mesma jogada no tabuleiro, que raiva.", "label": "NDD"}
+{"text": "Se você tivesse visto a jogada no tabuleiro, não ia acreditar.", "label": "NDD"}
+{"text": "Minha jogada no tabuleiro foi péssima, mas pelo menos a gente riu muito.", "label": "NDD"}
+{"text": "Ele ficou me zoando pela jogada que fiz no tabuleiro até agora.", "label": "NDD"}
+{"text": "A gente discutiu meia hora por causa de uma jogada no tabuleiro.", "label": "NDD"}
+{"text": "Preciso treinar minhas jogadas no tabuleiro antes do próximo encontro.", "label": "NDD"}
+{"text": "Eu tentei abrir o painel de ligação de vídeo aqui e a tela travou.", "label": "NDD"}
+{"text": "O link da chamada de vídeo caiu bem na hora que eu fui abrir.", "label": "NDD"}
+{"text": "Você viu se o convite da videochamada tem algum painel pra configurar câmera?", "label": "NDD"}
+{"text": "Minha conexão caiu quando eu fui clicar no botão de ligar a câmera.", "label": "NDD"}
+{"text": "Ele ficou me passando o link da ligação de vídeo, mas deu erro no navegador.", "label": "NDD"}
+{"text": "O painel de configuração de vídeo do Google Meet abre bem devagar no meu notebook.", "label": "NDD"}
+{"text": "Será que o pessoal tá vendo minha imagem? Não consigo nem achar o painel de vídeo.", "label": "NDD"}
+{"text": "A reunião ia ter painel de vídeo, mas no fim foi só áudio mesmo.", "label": "NDD"}
+{"text": "não consegui ver direito o que tava na tela quando passou rápido", "label": "NDD"}
+{"text": "meu filho tirou print do que tava na tela e me mandou no grupo", "label": "NDD"}
+{"text": "essa parte da tela tá com reflexo, não dá pra ler o que tá escrito", "label": "NDD"}
+{"text": "ela ficou falando o que via na tela durante o filme inteiro, que agonia", "label": "NDD"}
+{"text": "o apresentador repetiu várias vezes o que a gente já tinha lido na tela", "label": "NDD"}
+{"text": "não entendi o que apareceu na tela agora, deu pra anotar?", "label": "NDD"}
+{"text": "a tela do note tava congelada, então o que tava nela ficou preso", "label": "NDD"}
+{"text": "tava eu e o João tentando adivinhar o que ia aparecer na tela do sorteio", "label": "NDD"}
+{"text": "Você viu que eu marquei um bookmark naquele trecho do relatório?", "label": "NDD"}
+{"text": "Eu sempre esqueço de criar um bookmark antes de fechar o documento.", "label": "NDD"}
+{"text": "Se você rolar até o bookmark, acha a parte que interessa no contrato.", "label": "NDD"}
+{"text": "O bookmark que a gente adicionou no arquivo não aparece mais.", "label": "NDD"}
+{"text": "Depois que você inseriu o bookmark, ficou muito mais rápido navegar pelo texto.", "label": "NDD"}
+{"text": "Será que o bookmark fica salvo se eu converter o documento em PDF?", "label": "NDD"}
+{"text": "Ele tinha colocado um bookmark na página certa, mas aí salvou por cima.", "label": "NDD"}
+{"text": "Esses bookmarks no manual estão todos desatualizados, precisamos conferir.", "label": "NDD"}
+{"text": "vou fazer um ponto de restauração antes de mexer no driver", "label": "NDD"}
+{"text": "aquele ponto de restauração antigo não salvou meu computador", "label": "NDD"}
+{"text": "se eu tivesse criado um ponto de restauração ontem, não teria perdido tudo", "label": "NDD"}
+{"text": "o ponto de restauração que eu tinha feito foi pro espaço quando formatei o PC", "label": "NDD"}
+{"text": "meu irmão fez um ponto de restauração hoje de manhã, que mania", "label": "NDD"}
+{"text": "a restauração do sistema resolveu o problema do notebook", "label": "NDD"}
+{"text": "será que o ponto de restauração vai ocupar muito espaço?", "label": "NDD"}
+{"text": "depois que ativei a proteção do sistema, ele criou um ponto de restauração sozinho", "label": "NDD"}
+{"text": "eu nunca sei se devo arquivar aqueles e-mails antigos do trabalho", "label": "NDD"}
+{"text": "nossa, eu precisava arquivar uns e-mails antigos, mas a caixa de entrada tá um caos", "label": "NDD"}
+{"text": "você viu que ele arquivou aquele e-mail antigo que a gente procurava?", "label": "NDD"}
+{"text": "eu sempre arquivo os e-mails antigos do grupo da família, senão lota o celular", "label": "NDD"}
+{"text": "o problema é que eu arquivei o e-mail antigo e depois não achei mais", "label": "NDD"}
+{"text": "ela pediu pra eu arquivar os e-mails antigos, mas eu não tenho tempo", "label": "NDD"}
+{"text": "aquele e-mail antigo do pessoal da faculdade eu acho que arquivei sem querer", "label": "NDD"}
+{"text": "depois que eu arquivo os e-mails antigos, fica até mais fácil achar as coisas", "label": "NDD"}
+{"text": "nossa, esse cursor invertido tá difícil de enxergar", "label": "NDD"}
+{"text": "eu preferia quando o cursor era preto normal, essa cor invertida me confunde", "label": "NDD"}
+{"text": "será que dá pra deixar o cursor com cor invertida só na apresentação?", "label": "NDD"}
+{"text": "o cursor do meu notebook tá com aquela cor invertida de novo", "label": "NDD"}
+{"text": "você viu como o cursor fica quando passa por cima do link? fica invertido", "label": "NDD"}
+{"text": "eu mudei o cursor pra cor invertida e agora não acho mais ele na tela", "label": "NDD"}
+{"text": "o cursor de cor invertida fica bom no modo escuro, né?", "label": "NDD"}
+{"text": "cada hora o cursor aparece invertido e eu perco ele no fundo da tela", "label": "NDD"}
+{"text": "Eu sempre filtro as notícias por assunto quando vou ler, senão perco tempo.", "label": "NDD"}
+{"text": "Acho que esse aplicativo filtra as notícias por tema, mas ainda assim aparece muita política.", "label": "NDD"}
+{"text": "Você viu como ela filtra as notícias por tema? Prefiro separar por editoria.", "label": "NDD"}
+{"text": "Hoje eu tava tentando filtrar as notícias por tema e o site travou no meio.", "label": "NDD"}
+{"text": "Se a gente filtrasse as notícias por assunto, ficava mais fácil achar aquela reportagem.", "label": "NDD"}
+{"text": "Minha mãe filtra as notícias por tema no celular dela, mas reclama que some com o que interessa.", "label": "NDD"}
+{"text": "Filtrar notícia por tema é bom, mas tem que lembrar de tirar o filtro depois.", "label": "NDD"}
+{"text": "Eu não filtrei as notícias por tema ainda, mas acho que tem muita manchete de esporte hoje.", "label": "NDD"}
+{"text": "eu sempre muto o telefone quando entro na sala de aula, mas esqueço de desmutar depois", "label": "NDD"}
+{"text": "o celular dela tava no mudo e por isso ela perdeu a ligação do médico", "label": "NDD"}
+{"text": "hoje de manhã o telefone tocou alto no meio da videoconferência porque eu não tinha mutado", "label": "NDD"}
+{"text": "ele pediu pra todo mundo deixar o telefone no mudo antes de começar a palestra", "label": "NDD"}
+{"text": "não adianta ligar pra ela agora, o telefone deve estar no mudo", "label": "NDD"}
+{"text": "o toque do meu celular é tão alto que eu precisei mutar ele na reunião", "label": "NDD"}
+{"text": "o pessoal do escritório sempre esquece de silenciar o celular no salão aberto", "label": "NDD"}
+{"text": "vi que o telefone dele tava no silencioso e mesmo assim ele não atendeu", "label": "NDD"}
+{"text": "vivo apertando sem querer nessa tecla que troca o idioma do teclado", "label": "NDD"}
+{"text": "não consigo configurar o atalho pra mudar o idioma no meu teclado", "label": "NDD"}
+{"text": "a tecla de alternância aqui do note vive atrapalhando quando digito", "label": "NDD"}
+{"text": "esse teclado tem uma tecla pra trocar idioma, mas eu nunca uso", "label": "NDD"}
+{"text": "o problema é quando você esbarra na tecla e o idioma muda sozinho", "label": "NDD"}
+{"text": "será que dá pra desativar essa tecla de troca de idioma?", "label": "NDD"}
+{"text": "eu passei meia hora tentando achar onde muda o atalho de idioma", "label": "NDD"}
+{"text": "a cada dois minutos aperto sem querer naquela tecla de idioma", "label": "NDD"}
+{"text": "O serviço de banco de dados caiu ontem de novo, que saco.", "label": "NDD"}
+{"text": "O banco de dados subiu sozinho depois daquela pancada.", "label": "NDD"}
+{"text": "A moça da equipe falou que o serviço de banco de dados estava fora do ar.", "label": "NDD"}
+{"text": "Quando o banco de dados cai, o app inteiro morre.", "label": "NDD"}
+{"text": "O serviço de banco de dados demorou, mas subiu antes da reunião.", "label": "NDD"}
+{"text": "Não sei por que o banco de dados não sobe; já tentei de tudo.", "label": "NDD"}
+{"text": "O banco de dados está de novo com lentidão; acho que o serviço vai cair.", "label": "NDD"}
+{"text": "Subir serviço de banco de dados na mão é a última opção.", "label": "NDD"}
+{"text": "Eu ia desmarcar o envio da mensagem, mas o app fechou na hora.", "label": "NDD"}
+{"text": "Você viu que ela conseguiu desfazer o envio depois que eu reclamei?", "label": "NDD"}
+{"text": "Nossa, enviei a mensagem pro grupo errado e ainda não deu tempo de desmarcar.", "label": "NDD"}
+{"text": "Esse recurso de desfazer envio salvou minha vida ontem.", "label": "NDD"}
+{"text": "Ele ficou puto porque o envio da mensagem foi sem querer e não tinha como desmarcar.", "label": "NDD"}
+{"text": "Se tivesse como cancelar o envio, eu não teria passado vergonha.", "label": "NDD"}
+{"text": "Desmarcar o envio só funciona se você for rápido, né?", "label": "NDD"}
+{"text": "A mensagem já apareceu como enviada, então não adianta tentar desfazer.", "label": "NDD"}
+{"text": "será que o arquivo de dependências travadas vai atualizar sozinho ou a gente precisa rodar o comando?", "label": "NDD"}
+{"text": "quando eu gero o arquivo de dependências travadas, ele sobrescreve o antigo sem avisar", "label": "NDD"}
+{"text": "o problema é que o arquivo de dependências travadas não foi gerado na última build, por isso o deploy quebrou", "label": "NDD"}
+{"text": "fulano falou que o arquivo de dependências travadas precisa estar no repositório pra todo mundo usar as mesmas versões", "label": "NDD"}
+{"text": "não entendo por que o arquivo de dependências travadas aparece como modificado se eu não mudei nada", "label": "NDD"}
+{"text": "a gente perdeu uma hora porque o arquivo de dependências travadas estava desatualizado", "label": "NDD"}
+{"text": "se o arquivo de dependências travadas sumir, o pessoal vai ficar maluco tentando instalar as coisas", "label": "NDD"}
+{"text": "depois que eu atualizei o pacote, o arquivo de dependências travadas gerou um conflito gigante no merge", "label": "NDD"}
+{"text": "essa faixa é tão boa que eu quero ouvir de novo desde o começo", "label": "NDD"}
+{"text": "não vou cansar de repetir essa música, ela é demais", "label": "NDD"}
+{"text": "toda vez que essa faixa toca, eu dou replay na hora", "label": "NDD"}
+{"text": "aquela música ali merece ser ouvida em loop", "label": "NDD"}
+{"text": "eu fico repetindo essa canção o dia inteiro sem perceber", "label": "NDD"}
+{"text": "nossa, tocou essa de novo, eu até cantei junto", "label": "NDD"}
+{"text": "essa aqui é daquelas que a gente ouve várias vezes seguidas", "label": "NDD"}
+{"text": "se depender de mim, essa faixa fica no repeat o dia todo", "label": "NDD"}
+{"text": "nossa, ele pediu pra eu tirar um print da conversa e eu nem salvei", "label": "NDD"}
+{"text": "o print que ela mandou ficou todo borrado", "label": "NDD"}
+{"text": "eu sempre tiro print dos prints pra não esquecer", "label": "NDD"}
+{"text": "essa notícia merece um print, vou salvar aqui", "label": "NDD"}
+{"text": "cê viu o print que vazaram no grupo?", "label": "NDD"}
+{"text": "quando eu vi a promoção, na hora tirei um print", "label": "NDD"}
+{"text": "o print da tela do celular ocupou um espaço danado", "label": "NDD"}
+{"text": "manda o print pra mim depois que eu não consigo anotar", "label": "NDD"}
+{"text": "Cê viu que o painel de embeddings abriu com tudo separadinho ontem?", "label": "NDD"}
+{"text": "O pessoal passou a tarde inteira analisando o painel de embeddings.", "label": "NDD"}
+{"text": "Achei estranho como os embeddings ficaram agrupados no painel.", "label": "NDD"}
+{"text": "Eu subi umas imagens e o painel de embeddings mostrou uns agrupamentos bem legais.", "label": "NDD"}
+{"text": "Será que o painel de embeddings atualiza sozinho ou precisa rodar de novo?", "label": "NDD"}
+{"text": "Esse painel de embeddings aqui tá muito poluído, não dá pra ver nada.", "label": "NDD"}
+{"text": "Na reunião, a gente viu o painel de embeddings com os clusters de palavras.", "label": "NDD"}
+{"text": "O código travou justo quando eu fui abrir o painel de embeddings.", "label": "NDD"}
+{"text": "A luz de fundo desse teclado gamer tá tão forte que incomoda até no escuro.", "label": "NDD"}
+{"text": "Eu achei que a cor da luz do teclado dele fosse vermelha, mas hoje tá roxa.", "label": "NDD"}
+{"text": "Meu irmão passa horas mexendo na cor da luz do teclado gamer dele.", "label": "NDD"}
+{"text": "Aquele teclado gamer tem uma luz de fundo azul muito bonita, combina com o setup todo.", "label": "NDD"}
+{"text": "Eu gosto mais quando a luz do teclado fica num tom de verde suave.", "label": "NDD"}
+{"text": "A cor da luz de fundo do teclado gamer dela combinava com o fone, ficou ótimo.", "label": "NDD"}
+{"text": "O teclado gamer daqui do trabalho tá com uma luz meio laranja, parece até pôr do sol.", "label": "NDD"}
+{"text": "Não sei por que a luz de fundo do teclado gamer fica piscando do nada, será que é efeito?", "label": "NDD"}
+{"text": "esses arquivos tão fora da nuvem, tem que subir eles depois", "label": "NDD"}
+{"text": "você viu que o Pedro deixou tudo fora da nuvem de novo?", "label": "NDD"}
+{"text": "nossa, os arquivos que tão fora da nuvem são os que mais ocupam espaço", "label": "NDD"}
+{"text": "se for olhar, os arquivos fora da nuvem tão bagunçados", "label": "NDD"}
+{"text": "eu acho que alguns arquivos ficaram fora da nuvem quando transferi", "label": "NDD"}
+{"text": "aqui no computador tem uns arquivos fora da nuvem, mas não são meus", "label": "NDD"}
+{"text": "ele pediu pra mostrar os arquivos que tão fora da nuvem, mas eu não sei onde tá", "label": "NDD"}
+{"text": "será que os arquivos fora da nuvem vão se perder?", "label": "NDD"}
+{"text": "Eu tava aqui pensando como a gente faz pra converter a quantidade do estoque sem perder valor.", "label": "NDD"}
+{"text": "A conversão de quantidade do estoque ficou estranha depois que atualizaram o sistema.", "label": "NDD"}
+{"text": "Você viu que o setor de estoque converteu tudo errado de novo? Agora vai dar trabalho.", "label": "NDD"}
+{"text": "Será que essa conversão de quantidade no estoque considera as unidades que já saíram?", "label": "NDD"}
+{"text": "Quando eu trabalhava lá, a gente configurava a conversão de estoque toda semana.", "label": "NDD"}
+{"text": "O pessoal esqueceu de ajustar a conversão de quantidade no inventário, por isso deu diferença.", "label": "NDD"}
+{"text": "Se a gente não definir direitinho essa conversão de estoque, vai ter muita perda.", "label": "NDD"}
+{"text": "Ontem o gerente comentou que a conversão de quantidade do estoque está com problema.", "label": "NDD"}
+{"text": "O relatório ficou ótimo depois que eu formatei os valores em reais.", "label": "NDD"}
+{"text": "Nossa, esse preço aí tá sem vírgula, devia ser R$ 1.200,00 né?", "label": "NDD"}
+{"text": "Eu sempre esqueço de colocar o cifrão quando anoto as despesas.", "label": "NDD"}
+{"text": "Aquele total no extrato está com três casas decimais, estranho.", "label": "NDD"}
+{"text": "Se você converter pra moeda brasileira, fica mais fácil comparar.", "label": "NDD"}
+{"text": "O padrão aqui em casa é escrever os preços com centavos.", "label": "NDD"}
+{"text": "A fatura mostra os valores com dois dígitos depois da vírgula.", "label": "NDD"}
+{"text": "Quando eu lancei o saldo, ele pediu pra escolher o formato da moeda.", "label": "NDD"}
+{"text": "esse app novo tava dando erro direto, acho que o limite de memória dele tá baixo demais", "label": "NDD"}
+{"text": "ontem eu fui nas configurações do aplicativo e aumentei o limite de memória, mas não resolveu", "label": "NDD"}
+{"text": "meu irmão falou que dá pra definir um limite de memória pra cada app no celular", "label": "NDD"}
+{"text": "o problema é que o app fechava sozinho quando passava do limite de memória", "label": "NDD"}
+{"text": "será que se eu aumentar o limite de memória do app ele deixa de travar?", "label": "NDD"}
+{"text": "eu li que o limite de memória do app influencia muito na bateria, né?", "label": "NDD"}
+{"text": "a config de memória desse app só tem um controle de limite, mas eu não entendi", "label": "NDD"}
+{"text": "você lembra quanto de memória o app tava usando? porque o limite era pequeno", "label": "NDD"}
+{"text": "O pessoal do grupo ainda não conseguiu editar o arquivo, só o admin pode liberar.", "label": "NDD"}
+{"text": "Eu já pedi pro professor dar acesso de edição no documento pra gente.", "label": "NDD"}
+{"text": "Será que o administrador vai liberar a escrita pra todo mundo? Tô esperando aqui.", "label": "NDD"}
+{"text": "No grupo da empresa, só quem tem permissão pode alterar as planilhas.", "label": "NDD"}
+{"text": "Ela reclamou que não consegue comentar, imagina se derem acesso de edição.", "label": "NDD"}
+{"text": "Vou ter que pedir pro dono do grupo liberar a edição senão ninguém mexe.", "label": "NDD"}
+{"text": "Hoje eu tentei salvar as alterações e deu erro de permissão, chato.", "label": "NDD"}
+{"text": "O pessoal do time pediu acesso de escrita no relatório, mas o coordenador não respondeu.", "label": "NDD"}
+{"text": "todo ano a gente discute se o almoço de natal é na casa da minha avó ou na minha", "label": "NDD"}
+{"text": "o natal esse ano vai cair numa segunda, então o feriado vai ser uma mão na roda", "label": "NDD"}
+{"text": "minha irmã já perguntou se o natal vai ser no sábado pra ela viajar", "label": "NDD"}
+{"text": "não sei como a gente vai fazer pro natal esse ano, se todo mundo vai na sua casa", "label": "NDD"}
+{"text": "eu achei que o natal desse ano fosse em dezenove, mas é dia vinte e cinco", "label": "NDD"}
+{"text": "dezembro tá tão corrido que eu quase esqueci que o natal vem antes do ano novo", "label": "NDD"}
+{"text": "se o natal cair no meio da semana, a gente marca a confraternização no sábado", "label": "NDD"}
+{"text": "a loja já tá cheia de enfeite de natal sendo que falta um tempão", "label": "NDD"}
+{"text": "aquele painel de visualização do arquivo não atualizou ainda", "label": "NDD"}
+{"text": "vi aqui que o painel de visualização do arquivo tá mostrando errado", "label": "NDD"}
+{"text": "o pessoal reclamou da visualização do arquivo no painel novo", "label": "NDD"}
+{"text": "a visualização do arquivo ficou boa depois que ajustei o painel", "label": "NDD"}
+{"text": "você viu o painel de visualização do arquivo que eu te falei?", "label": "NDD"}
+{"text": "o painel de visualização do arquivo sumiu da tela de novo", "label": "NDD"}
+{"text": "não consegui entender o que o painel mostrou do arquivo", "label": "NDD"}
+{"text": "aquela visualização de arquivo ali no painel tá confusa", "label": "NDD"}
+{"text": "Ontem fiquei na dúvida na hora de escrever 'exceção', acho que errei a grafia.", "label": "NDD"}
+{"text": "O corretor do celular dele mudou um monte de palavras que estavam certas.", "label": "NDD"}
+{"text": "A professora devolveu a redação cheia de marcas vermelhas de ortografia.", "label": "NDD"}
+{"text": "Preciso mesmo treinar a escrita dessas palavras com s e ss.", "label": "NDD"}
+{"text": "Você reparou que o cardápio tá escrito 'açai' sem acento? Que agonia.", "label": "NDD"}
+{"text": "Meu chefe pediu pra revisar o relatório e eu foquei mais na ortografia que no conteúdo.", "label": "NDD"}
+{"text": "Ela sempre pergunta como escreve 'paralisar' porque confunde com 'analisar'.", "label": "NDD"}
+{"text": "Na hora de digitar, eu troquei o 'mau' pelo 'mal' e ninguém percebeu.", "label": "NDD"}
+{"text": "eu passei a tarde tentando entender como o namespace do projeto foi configurado.", "label": "NDD"}
+{"text": "o namespace desse projeto tá uma bagunça, ninguém sabe qual é o certo.", "label": "NDD"}
+{"text": "será que a gente devia ter definido o namespace antes de começar o projeto?", "label": "NDD"}
+{"text": "vi no pull request que mudaram o namespace do projeto de novo.", "label": "NDD"}
+{"text": "esse negócio de configurar namespace é sempre um saco, ainda mais em projeto grande.", "label": "NDD"}
+{"text": "a documentação explica que o namespace do projeto precisa ser único, mas ninguém segue.", "label": "NDD"}
+{"text": "o pessoal esqueceu de ajustar o namespace quando clonou o projeto.", "label": "NDD"}
+{"text": "depois que você configura o namespace, o projeto compila numa boa.", "label": "NDD"}
+{"text": "eu precisava mesmo é limitar o tempo de uso do perfil do meu filho, ele fica horas no tablet", "label": "NDD"}
+{"text": "esse negócio de restringir o tempo de uso do perfil é complicado, porque cada conta tem uma senha", "label": "NDD"}
+{"text": "será que o perfil da minha irmã tem limite de tempo de uso? ela vive reclamando que sai do jogo do nada", "label": "NDD"}
+{"text": "ontem configurei o tempo de uso do perfil aqui e agora o pessoal daqui de casa fica bravo comigo", "label": "NDD"}
+{"text": "o tempo de uso do perfil da TV acabou no meio do filme, que ódio", "label": "NDD"}
+{"text": "o perfil do meu irmão estourou o tempo de uso no videogame, ele não percebeu ainda", "label": "NDD"}
+{"text": "minha mãe pediu pra reduzir o tempo de uso dos perfis das crianças, mas eu esqueci como faz", "label": "NDD"}
+{"text": "você sabia que dá pra colocar um aviso antes de acabar o tempo de uso do perfil? acho bem útil", "label": "NDD"}
+{"text": "Eu configurei o contraste da foto e agora ela ficou muito melhor.", "label": "NDD"}
+{"text": "O ajuste de contraste dessa foto tá alto demais, não tá?", "label": "NDD"}
+{"text": "Você viu como o contraste da foto do casamento ficou bonito?", "label": "NDD"}
+{"text": "Eu sempre mexo no contraste antes de compartilhar qualquer foto.", "label": "NDD"}
+{"text": "Depois que ele ajustou o contraste, a foto ganhou outra cara.", "label": "NDD"}
+{"text": "Essa função de ajuste de contraste salvou minhas fotos antigas.", "label": "NDD"}
+{"text": "O contraste das fotos do passeio ficou tão forte que parece dia.", "label": "NDD"}
+{"text": "Será que eu exagerei no contraste dessa foto do pôr do sol?", "label": "NDD"}
+{"text": "Aquela gravação de voz que a gente fez na reunião ficou boa demais, deu pra entender tudo.", "label": "NDD"}
+{"text": "Eu sempre esqueço de desligar a gravação de voz quando saio da sala, aí fica um monte de ruído.", "label": "NDD"}
+{"text": "O celular novo capta a voz tão limpa que até parece estúdio, nem precisa de gravador.", "label": "NDD"}
+{"text": "Escuta essa parte da gravação, o vento abafou a fala da gente.", "label": "NDD"}
+{"text": "A professora pediu pra gente gravar a apresentação, mas a minha voz ficou fininha no áudio.", "label": "NDD"}
+{"text": "Nossa, o microfone do notebook pegou a minha voz e a do Pedro ao mesmo tempo, ficou engraçado.", "label": "NDD"}
+{"text": "Eu tava testando o app de gravação e sem querer falei um monte de besteira, mas depois apaguei.", "label": "NDD"}
+{"text": "Essa palestra tinha tanta informação que eu preferi fazer uma gravação de voz pra não perder nada.", "label": "NDD"}
+{"text": "meu ouvido ainda tá zumbindo depois daquele som alto ontem", "label": "NDD"}
+{"text": "você viu aquela apresentação? no final eu tava com o ouvido coçando de tão alto que tava", "label": "NDD"}
+{"text": "o som da casa do lado tá tão alto que acho que vou perder a audição", "label": "NDD"}
+{"text": "cuidado com o fone no último volume, isso fura o ouvido de verdade", "label": "NDD"}
+{"text": "aquele alarme tocou tão perto do meu ouvido que eu levei um susto", "label": "NDD"}
+{"text": "depois do show eu fiquei com aquele apito constante no ouvido", "label": "NDD"}
+{"text": "a menina falou tão alto no meu ouvido que até doeu", "label": "NDD"}
+{"text": "ele não usa protetor em ensaio de bateria, vai acabar ficando surdo", "label": "NDD"}
+{"text": "Acho que o nível de tinta da minha impressora já era, borrou tudo no final da página.", "label": "NDD"}
+{"text": "Meia hora tentando imprimir e só depois eu vejo que o cartucho de tinta tá no osso.", "label": "NDD"}
+{"text": "Você viu se a impressora da faculdade tem tinta? Preciso imprimir um documento urgente.", "label": "NDD"}
+{"text": "O nível de tinta colorida deve estar baixo, porque saiu tudo meio apagado.", "label": "NDD"}
+{"text": "Vou ter que comprar cartucho, a tinta preta acabou bem no meio do relatório.", "label": "NDD"}
+{"text": "Essa impressora vive dizendo que o nível de tinta é baixo, mas ainda imprimi um monte.", "label": "NDD"}
+{"text": "Meu irmão imprimiu as fotos e reclamou que o nível de tinta do cartucho amarelo foi pro espaço.", "label": "NDD"}
+{"text": "Pelo jeito a tinta da impressora aqui de casa secou, nem o teste da página saiu direito.", "label": "NDD"}
+{"text": "Eu estava com umas vinte abas abertas e precisei fechar todas de uma vez, mas esqueci qual era a importante.", "label": "NDD"}
+{"text": "Você consegue acreditar que ele fechou todas as abas do navegador sem salvar os links que a gente precisava?", "label": "NDD"}
+{"text": "Nossa, eu sempre deixo uma aba separada só pra coisa importante, aí fecho todas as outras sem dó.", "label": "NDD"}
+{"text": "Se eu fechar todas as abas agora, perco o lugar que tava assistindo a série.", "label": "NDD"}
+{"text": "Cuidado pra não fechar todas as abas de novo, igual ontem, eu preciso achar aquele e-mail.", "label": "NDD"}
+{"text": "Eu odeio quando o computador trava e preciso fechar todas as abas, mas aí perco o que estava lendo.", "label": "NDD"}
+{"text": "Ela pediu pra eu fechar todas as abas menos a do formulário, mas acabei fechando essa também.", "label": "NDD"}
+{"text": "No próximo trabalho eu vou anotar em um papel o que cada aba faz, porque fechar todas de uma vez é um risco.", "label": "NDD"}
+{"text": "eu fiquei até tarde ontem criando um documento novo pro TCC", "label": "NDD"}
+{"text": "não acredito que preciso criar outro documento pra isso", "label": "NDD"}
+{"text": "a Júlia criou um documento com o passo a passo da mudança", "label": "NDD"}
+{"text": "criar um documento do zero é mais rápido do que formatar um modelo antigo", "label": "NDD"}
+{"text": "será que ele já terminou de criar aquele documento que a gente pediu?", "label": "NDD"}
+{"text": "quando eu crio um documento digital, eu sempre salvo no drive na hora", "label": "NDD"}
+{"text": "o povo aqui cria um documento novo pra qualquer coisa, é incrível", "label": "NDD"}
+{"text": "ela passou a tarde inteira criando um documento com os dados da pesquisa", "label": "NDD"}
+{"text": "aquele vídeo mostrando como configurar o gesto de pinça é muito confuso", "label": "NDD"}
+{"text": "eu sempre esqueço se o gesto de pinça é com dois dedos ou três", "label": "NDD"}
+{"text": "ela reclamou que o gesto de pinça não funciona direito no celular dela", "label": "NDD"}
+{"text": "será que dá pra ajustar a sensibilidade do gesto de pinça nesse notebook?", "label": "NDD"}
+{"text": "o gesto de pinça pra mim é mais natural que o de arrastar", "label": "NDD"}
+{"text": "aprendi ontem que o gesto de pinça pode ser configurado de tantos jeitos", "label": "NDD"}
+{"text": "meu irmão configurou o gesto de pinça no tablet, ficou bom", "label": "NDD"}
+{"text": "você viu o tutorial de configurar o gesto de pinça? é rapidinho", "label": "NDD"}
+{"text": "eu copiei o texto e ele já apareceu no computador, essa sincronização é rápida", "label": "NDD"}
+{"text": "a área de transferência do meu celular tá sempre sincronizando com a do notebook", "label": "NDD"}
+{"text": "nossa, copiei a senha aqui e fui colar lá e tava tudo certinho", "label": "NDD"}
+{"text": "cada vez que eu copio algo no celular, sincroniza na hora no PC", "label": "NDD"}
+{"text": "a área de transferência compartilhada devia ter funcionado, mas o texto não colou", "label": "NDD"}
+{"text": "esse negócio de sincronizar o clipboard entre os aparelhos é muito útil", "label": "NDD"}
+{"text": "vou ver se a sincronização da área de transferência tá ativada nas configurações", "label": "NDD"}
+{"text": "ontem testei copiar um link no tablet e ele apareceu direto aqui no desktop", "label": "NDD"}
+{"text": "nossa, o contraste dessa foto tá tão forte que parece que pintaram as nuvens de branco", "label": "NDD"}
+{"text": "o contraste entre as cores do pôster ficou ótimo pra ler de longe", "label": "NDD"}
+{"text": "será que deu pra perceber o contraste na tela quando você mudou o brilho?", "label": "NDD"}
+{"text": "esse texto tá com um contraste péssimo, mal consigo ver as letras", "label": "NDD"}
+{"text": "preciso ajustar o contraste aqui, mas depois te explico direito", "label": "NDD"}
+{"text": "o contraste da TV na casa dele é sempre alto demais, mas ele gosta", "label": "NDD"}
+{"text": "pelo visto o contraste no projetor tá desregulado, as imagens tão estranhas", "label": "NDD"}
+{"text": "gosto de contraste alto nos vídeos, mas o meu irmão acha cansativo", "label": "NDD"}
+{"text": "vou ter que revisar esse documento em inglês, meu chefe pediu pra eu conferir a gramática", "label": "NDD"}
+{"text": "aquele relatório ficou cheio de erro de concordância, esqueci de trocar o idioma antes de revisar", "label": "NDD"}
+{"text": "você viu que o documento saiu em espanhol? preciso revisar tudo de novo", "label": "NDD"}
+{"text": "na revisão final eu sempre confiro se o idioma do documento está certo", "label": "NDD"}
+{"text": "o corretor tava marcando tudo em inglês, aí percebi que o idioma do texto tava errado", "label": "NDD"}
+{"text": "essa revisão de documento tá demorando porque o texto mistura português e francês", "label": "NDD"}
+{"text": "será que o Word tem como configurar o idioma de revisão? tem que olhar depois", "label": "NDD"}
+{"text": "eu passo o documento no corretor antes de mandar, mas às vezes ele marca palavra certa como errada", "label": "NDD"}
+{"text": "eu apliquei o rótulo em lote ontem e funcionou bem", "label": "NDD"}
+{"text": "aplicar rótulo em lote é melhor do que um por um, né?", "label": "NDD"}
+{"text": "será que o sistema aplica o rótulo em lote sozinho?", "label": "NDD"}
+{"text": "na hora que eu aplico o rótulo em lote, demora um pouco", "label": "NDD"}
+{"text": "o pessoal da equipe aplica o rótulo em lote sem revisar", "label": "NDD"}
+{"text": "eu prefiro aplicar o rótulo em lote depois que os dados estão prontos", "label": "NDD"}
+{"text": "se você aplicar o rótulo em lote, o processo acaba rápido", "label": "NDD"}
+{"text": "a gente aplicou o rótulo em lote e ficou tudo certo", "label": "NDD"}
+{"text": "nossa, esse layout de título ficou tão bom que eu repeti nos outros slides", "label": "NDD"}
+{"text": "você viu que o título da apresentação ficou igual ao modelo antigo?", "label": "NDD"}
+{"text": "eu copiei o layout do título pra usar no relatório, espero que não se importe", "label": "NDD"}
+{"text": "o pessoal pediu pra duplicar o layout do título na nova identidade visual", "label": "NDD"}
+{"text": "cada vez que eu tento mudar o título, ele volta pro mesmo layout", "label": "NDD"}
+{"text": "será que dá pra aproveitar esse layout de título pro convite também?", "label": "NDD"}
+{"text": "o layout do título tá repetido em todas as páginas, ficou chique", "label": "NDD"}
+{"text": "eu dupliquei o modelo de título sem querer e agora não sei qual apagar", "label": "NDD"}
+{"text": "ele gravou minha fala e depois pediu pra destacar as respostas em negrito.", "label": "NDD"}
+{"text": "a entrevista foi transcrita, mas nenhuma parte saiu em negrito, então perdeu o destaque.", "label": "NDD"}
+{"text": "eu sempre esqueço que pra converter fala em texto tem que falar pausadamente.", "label": "NDD"}
+{"text": "essa ferramenta até converte a fala, mas não adianta pedir negrito por voz.", "label": "NDD"}
+{"text": "no texto que o sistema gerou, minha fala ficou sem pontuação e sem um único negrito.", "label": "NDD"}
+{"text": "ela pediu pra revisar a transcrição e deixar em negrito os nomes dos clientes.", "label": "NDD"}
+{"text": "se a gente falar devagar, o aplicativo consegue transcrever e ainda marca negrito.", "label": "NDD"}
+{"text": "o relatório dela tem trechos em negrito que não batem com o que eu falei na reunião.", "label": "NDD"}
+{"text": "nossa, eu tinha esquecido como era boa essa música que a gente tava ouvindo ontem", "label": "NDD"}
+{"text": "aquele episódio que você tava ouvindo antes, eu parei no meio também", "label": "NDD"}
+{"text": "eu sempre volto pra aquele som que eu tava ouvindo na viagem", "label": "NDD"}
+{"text": "cê lembra aquela playlist que a gente tava ouvindo? preciso achar de novo", "label": "NDD"}
+{"text": "o que você tava ouvindo agora pouco? parecia interessante", "label": "NDD"}
+{"text": "eu tava ouvindo um áudio da minha irmã e acabei sem querer te contando isso", "label": "NDD"}
+{"text": "tava tão bom aquele podcast, aí o celular tocou e perdi o fio da meada", "label": "NDD"}
+{"text": "não acredito que você mudou de música, eu tava gostando daquela", "label": "NDD"}
+{"text": "não esquece que eu configurei o timer pra dezoito minutos, acho que falta pouco.", "label": "NDD"}
+{"text": "a contagem regressiva do forno já deve estar no final, vou verificar.", "label": "NDD"}
+{"text": "que bom que o timer do celular tocou, senão eu ia deixar a água ferver demais.", "label": "NDD"}
+{"text": "você viu quanto tempo falta no timer? eu perdi a noção.", "label": "NDD"}
+{"text": "minha avó usava um timer de cozinha que fazia um barulhão de despertador.", "label": "NDD"}
+{"text": "essa receita pede vinte minutos de forno, mas meu timer parou de funcionar.", "label": "NDD"}
+{"text": "o alarme do relógio de pulso tem contagem regressiva, dá pra usar de timer.", "label": "NDD"}
+{"text": "eu sempre erro a comida porque não ouço o toque do timer quando estou no quintal.", "label": "NDD"}
+{"text": "Gente, acho que a gente esqueceu de adicionar o objetivo à aula de hoje.", "label": "NDD"}
+{"text": "Você viu se alguém já adicionou o objetivo à aula? Porque eu não achei no material.", "label": "NDD"}
+{"text": "Eu adicionei o objetivo à aula, mas a professora pediu pra resumir mais.", "label": "NDD"}
+{"text": "Será que adicionar o objetivo à aula de amanhã ajuda na hora de estudar? Acho que sim.", "label": "NDD"}
+{"text": "O pessoal da reunião falou que é obrigatório adicionar o objetivo à aula, mas ninguém fez.", "label": "NDD"}
+{"text": "Eu sempre confundo a ordem: primeiro adiciono o objetivo à aula ou primeiro escrevo o sumário?", "label": "NDD"}
+{"text": "Olha, se a gente tivesse adicionado o objetivo à aula desde o começo, não tava nessa confusão.", "label": "NDD"}
+{"text": "Vou falar com o Pedro pra ele adicionar o objetivo à aula depois, porque agora ele tá ocupado.", "label": "NDD"}
+{"text": "Eu passei o texto naquele extrator e ele achou os nomes das pessoas na hora.", "label": "NDD"}
+{"text": "A extração de entidades aqui ficou meio estranha, reconheceu até a marca do carro.", "label": "NDD"}
+{"text": "O texto menciona tantas entidades que nem sei como vou classificar tudo.", "label": "NDD"}
+{"text": "Será que ele considera nomes de lugares como entidade também?", "label": "NDD"}
+{"text": "Depois que a gente extrair os nomes próprios, aí sim dá pra organizar o relatório.", "label": "NDD"}
+{"text": "O problema é que o texto tem um monte de siglas e o extrator não identifica nenhuma.", "label": "NDD"}
+{"text": "Eu tava vendo aqui, as entidades do texto são praticamente todas de localização.", "label": "NDD"}
+{"text": "Ele extraiu umas entidades esquisitas do texto, tipo nome de remédio.", "label": "NDD"}
+{"text": "Eu tava olhando aqui e minha lista de assinaturas ativas tá enorme, preciso cancelar umas.", "label": "NDD"}
+{"text": "Você viu quantas assinaturas ativas a gente tem? Nem uso metade.", "label": "NDD"}
+{"text": "O problema é que esqueço de checar as assinaturas ativas, aí fica pagando à toa.", "label": "NDD"}
+{"text": "Minha irmã ficou surpresa com as assinaturas ativas que apareceram no cartão dela.", "label": "NDD"}
+{"text": "Essas assinaturas ativas do streaming tão ficando caras, acho que vou dividir com você.", "label": "NDD"}
+{"text": "Não sabia que a assinatura ativa do jornal ainda tava cobrando todo mês.", "label": "NDD"}
+{"text": "A gente devia anotar num papel quais assinaturas tão ativas, porque no celular ninguém acha.", "label": "NDD"}
+{"text": "Cada vez que vejo a fatura, descubro uma assinatura ativa que nem lembrava de ter feito.", "label": "NDD"}
+{"text": "Eu passei a tarde inteira tentando definir a categoria de uns gastos que tava confusa no extrato.", "label": "NDD"}
+{"text": "Agora que eu mudei a categoria daquelas compras do mercado, o relatório ficou certinho.", "label": "NDD"}
+{"text": "Você viu que ele colocou os gastos de viagem na categoria errada de novo?", "label": "NDD"}
+{"text": "Pra mim, separar os gastos por categoria é o jeito mais fácil de entender pra onde vai o dinheiro.", "label": "NDD"}
+{"text": "Esse aplicativo do banco podia permitir renomear as categorias de gastos, né?", "label": "NDD"}
+{"text": "Minha planilha tem umas categorias de gastos que eu nunca usei, mas não sei como remover.", "label": "NDD"}
+{"text": "Não acredito que o lanche foi parar na categoria 'presentes' no controle de gastos dele.", "label": "NDD"}
+{"text": "O jeito que eu organizo é sempre conferir a categoria dos gastos antes de fechar o mês.", "label": "NDD"}
+{"text": "Quando eu abro o painel do curso de programação, trava tudo aqui no notebook.", "label": "NDD"}
+{"text": "Você já viu que o painel do curso de programação tem um monte de vídeo novo?", "label": "NDD"}
+{"text": "O pessoal reclamou que o painel do curso de programação está difícil de navegar.", "label": "NDD"}
+{"text": "Eu abri o painel do curso de programação e não achei nem a apostila.", "label": "NDD"}
+{"text": "Será que o painel do curso de programação mostra quantas atividades faltam?", "label": "NDD"}
+{"text": "O painel do curso de programação parece que foi feito por outra equipe, tá mal organizado.", "label": "NDD"}
+{"text": "Ontem eu fiquei meia hora olhando o painel do curso de programação sem saber por onde começar.", "label": "NDD"}
+{"text": "Ela me mostrou o painel do curso de programação e pediu pra explicar os exercícios.", "label": "NDD"}
+{"text": "Meu deus, quantos arquivos duplicados tem na pasta de downloads, não consigo achar nada.", "label": "NDD"}
+{"text": "Vou ter que organizar minhas fotos, estão cheias de repetidas que eu nem lembro de ter salvo.", "label": "NDD"}
+{"text": "O HD daqui de casa tá cheio de cópias de documentos, dá até preguiça de limpar.", "label": "NDD"}
+{"text": "Cada vez que eu baixo um anexo, ele vem com outro igual, aí fica aquele monte de duplicata no computador.", "label": "NDD"}
+{"text": "Vi que o backup duplicou vários arquivos, depois eu separo as cópias antigas.", "label": "NDD"}
+{"text": "Essa mania de salvar tudo com \"(1)\" no nome faz a pasta ficar um caos de repetidos.", "label": "NDD"}
+{"text": "Meu irmão mandou o mesmo arquivo três vezes no grupo, aí falei pra ele parar de duplicar as coisas.", "label": "NDD"}
+{"text": "Preciso passar um fim de semana apagando as versões antigas que tão sobrando na nuvem.", "label": "NDD"}
+{"text": "nossa, eu deixei o jogo rodando em segundo plano e o computador quase travou", "label": "NDD"}
+{"text": "aquele jogo tá rodando em segundo plano aqui, mas eu nem tô prestando atenção", "label": "NDD"}
+{"text": "vixi, esqueci que o jogo tá aberto em segundo plano, por isso ficou lento", "label": "NDD"}
+{"text": "o jogo fica rodando em segundo plano e o pessoal nem percebe que é pesado", "label": "NDD"}
+{"text": "deixei o jogo rodando em segundo plano enquanto baixava a atualização, aí travou tudo", "label": "NDD"}
+{"text": "se o jogo ficar rodando em segundo plano, vai gastar a bateria toda", "label": "NDD"}
+{"text": "meu filho vive com jogo rodando em segundo plano, aí o notebook esquenta demais", "label": "NDD"}
+{"text": "não aguento quando o jogo fica em segundo plano e o áudio mistura com o que eu tô vendo", "label": "NDD"}
+{"text": "Eu ia usar aquele cronômetro de volta, mas acabou a pilha.", "label": "NDD"}
+{"text": "Me lembra de comprar um cronômetro desses de volta pra cozinha?", "label": "NDD"}
+{"text": "O pessoal da corrida usa cronômetro de volta pra marcar as voltas, né?", "label": "NDD"}
+{"text": "Achei que o cronômetro de volta ia descontar o tempo errado, mas funcionou.", "label": "NDD"}
+{"text": "Preciso aprender a apertar o cronômetro de volta sem errar.", "label": "NDD"}
+{"text": "Ele ficou o treino inteiro olhando o cronômetro de volta, parava toda hora.", "label": "NDD"}
+{"text": "Meu cronômetro de volta faz a contagem regressiva e depois apita alto.", "label": "NDD"}
+{"text": "Você viu se o cronômetro de volta zerou sozinho?", "label": "NDD"}
+{"text": "Você viu que ela mandou um áudio gigante no grupo ontem?", "label": "NDD"}
+{"text": "Nossa, ele gravou um áudio agora pouco explicando tudo direitinho.", "label": "NDD"}
+{"text": "Eu prefiro digitar do que ficar mandando áudio, todo mundo odeia ouvir.", "label": "NDD"}
+{"text": "Aquele áudio que você mandou na conversa do trabalho saiu com um chiado danado.", "label": "NDD"}
+{"text": "Minha mãe só manda áudio, e eu tenho que ouvir tudo no fone.", "label": "NDD"}
+{"text": "Ele pediu pra eu mandar um áudio na conversa, mas eu tava no meio da reunião.", "label": "NDD"}
+{"text": "O áudio que a Mariana enviou no grupo era tão longo que ninguém respondeu.", "label": "NDD"}
+{"text": "Não consigo ouvir áudio agora, me manda por texto aí na conversa.", "label": "NDD"}
+{"text": "Eu iniciei o aplicativo de notas, mas esqueci de salvar a lista.", "label": "NDD"}
+{"text": "Esse aplicativo de notas fica iniciando sozinho no meu celular.", "label": "NDD"}
+{"text": "Você viu se o aplicativo de notas atualizou as anotações?", "label": "NDD"}
+{"text": "Minha mãe não sabe usar o aplicativo de notas, precisa de ajuda.", "label": "NDD"}
+{"text": "O aplicativo de notas da aula passada sumiu daqui.", "label": "NDD"}
+{"text": "Eu ia anotar no aplicativo de notas, mas ele fechou na hora.", "label": "NDD"}
+{"text": "O Paulo disse que o aplicativo de notas consumiu toda a memória do celular.", "label": "NDD"}
+{"text": "No trabalho, todo mundo usa o mesmo aplicativo de notas para organizar as tarefas.", "label": "NDD"}
+{"text": "nossa, fechei a aba do site das promoções sem querer, que raiva", "label": "NDD"}
+{"text": "o navegador aqui tá cheio de aba aberta e ele não fecha nenhuma", "label": "NDD"}
+{"text": "aquela aba do e-mail travou, tive que recarregar o navegador", "label": "NDD"}
+{"text": "minha mãe não entende que a aba não é um aplicativo separado", "label": "NDD"}
+{"text": "cada vez que o computador reinicia eu perco todas as abas que tinha aberto", "label": "NDD"}
+{"text": "ele tava com a aba de currículo aberta na hora da entrevista online", "label": "NDD"}
+{"text": "essa mania de deixar a rede social em aba aberta o dia inteiro me irrita", "label": "NDD"}
+{"text": "depois que eu atualizei o navegador, minhas abas voltaram sozinhas", "label": "NDD"}
+{"text": "na prova de amanhã a gente vai ter que transformar polar em retangular, tô perdida", "label": "NDD"}
+{"text": "o professor explicou polar e retangular mil vezes, mas eu ainda confundo os dois", "label": "NDD"}
+{"text": "pra mim converter polar em retangular é a parte mais difícil de números complexos", "label": "NDD"}
+{"text": "eu lembro que a gente usava calculadora pra passar de polar pra retangular na aula de física", "label": "NDD"}
+{"text": "cê viu que a lista de exercícios tem uns três problemas de polar pra retangular?", "label": "NDD"}
+{"text": "se o ângulo for em grau, a conversão pra retangular fica mais chata ainda", "label": "NDD"}
+{"text": "na engenharia eles vivem convertendo polar pra retangular, por isso a gente aprende isso", "label": "NDD"}
+{"text": "eu prefiro deixar em polar, mas a resposta tem que vir em retangular pro professor aceitar", "label": "NDD"}
+{"text": "vou marcar vinte minutos no relógio pra massa não passar do ponto", "label": "NDD"}
+{"text": "ele disse que chegava em vinte minutos, mas já faz meia hora", "label": "NDD"}
+{"text": "vinte minutos é pouco pra eu terminar esse relatório", "label": "NDD"}
+{"text": "esse cronômetro aí de vinte minutos tocou e eu nem percebi", "label": "NDD"}
+{"text": "deixa eu ver quanto falta pro meu intervalo de vinte minutos acabar", "label": "NDD"}
+{"text": "a gente combina de se falar daqui a vinte minutos, pode ser?", "label": "NDD"}
+{"text": "nossa, vinte minutos voaram nessa conversa", "label": "NDD"}
+{"text": "programei o celular pra me lembrar em vinte minutos, mas esqueci do quê", "label": "NDD"}
+{"text": "Esse conflito de merge no branch de desenvolvimento está impossível de resolver.", "label": "NDD"}
+{"text": "Aquele conflito de merge que você comentou continua aparecendo pra todo mundo.", "label": "NDD"}
+{"text": "Se a gente tivesse atualizado a branch antes, o merge não teria dado conflito.", "label": "NDD"}
+{"text": "O conflito de merge que o João deixou pra lá voltou a atrapalhar o time inteiro.", "label": "NDD"}
+{"text": "Cada vez que eu puxo a main, dá um conflito de merge chato no arquivo de configuração.", "label": "NDD"}
+{"text": "O pessoal passou a manhã toda brigando com conflito de merge e ninguém se entendeu.", "label": "NDD"}
+{"text": "Esse conflito de merge tá tão grande que nem sei por onde começar a organizar.", "label": "NDD"}
+{"text": "Depois do almoço a gente olha aquele conflito de merge com calma, sem pressa.", "label": "NDD"}
+{"text": "Eu abri a página no celular pra você ver, mas carregou tão rápido que nem li nada.", "label": "NDD"}
+{"text": "Quando você abre uma página no celular, ela às vezes fica em inglês, né?", "label": "NDD"}
+{"text": "Ontem tentei abrir a página no celular e o app fechou na hora.", "label": "NDD"}
+{"text": "A página que eu abri no celular aqui sumiu, você tá vendo?", "label": "NDD"}
+{"text": "Ele passou o dia inteiro abrindo página no celular e não respondeu ninguém.", "label": "NDD"}
+{"text": "Se eu abrir essa página no celular, será que pega bem no sinal da rua?", "label": "NDD"}
+{"text": "Aqui no meu celular não abre essa página, mas no da Mariana abre.", "label": "NDD"}
+{"text": "Falei pra ele que não sabia abrir página no celular, mas ele não me ouviu.", "label": "NDD"}
+{"text": "não esquece de pôr a assinatura no final do contrato", "label": "NDD"}
+{"text": "eu tava vendo aqui, a assinatura do documento saiu torta na impressão", "label": "NDD"}
+{"text": "será que precisa assinar todas as vias ou só a última?", "label": "NDD"}
+{"text": "aquele documento voltou do cliente sem a rubrica na última página", "label": "NDD"}
+{"text": "minha caneta falhou na hora de assinar o recibo, que raiva", "label": "NDD"}
+{"text": "vou levar os contratos pro setor e já aproveito pra assinar todos", "label": "NDD"}
+{"text": "é impressionante como a gente gasta tempo com assinatura de papel", "label": "NDD"}
+{"text": "meu chefe pediu pra eu refazer a assinatura do arquivo antes de enviar", "label": "NDD"}
+{"text": "Eu separei as imagens dos documentos ontem, mas ficaram todas misturadas de novo.", "label": "NDD"}
+{"text": "Será que ele separou as imagens que eu mandei ou vai deixar tudo na mesma pasta?", "label": "NDD"}
+{"text": "Não acredito que juntaram as fotos com os contratos na pasta compartilhada.", "label": "NDD"}
+{"text": "Se você separar as imagens dos documentos, fica mais fácil de achar o contrato.", "label": "NDD"}
+{"text": "A pasta do projeto tá um caos, tenho que separar as imagens dos PDFs hoje.", "label": "NDD"}
+{"text": "Quando eu separo as imagens dos documentos, eu uso uma subpasta pra cada um.", "label": "NDD"}
+{"text": "Você viu que as imagens dos documentos vieram todas embaralhadas no e-mail?", "label": "NDD"}
+{"text": "Vou ter que separar as imagens dos documentos aqui, senão não acho as notas fiscais.", "label": "NDD"}
+{"text": "não acredito que imprimi o e-mail anexado sem querer", "label": "NDD"}
+{"text": "o anexo daquele e-mail de ontem não saiu direito na impressora", "label": "NDD"}
+{"text": "você viu que ela mandou o e-mail com o anexo? ainda bem que não imprimi", "label": "NDD"}
+{"text": "preciso imprimir um e-mail pro meu pai, mas o anexo tá corrompido", "label": "NDD"}
+{"text": "aquele e-mail anexado que cê me encaminhou eu imprimi pra te mostrar", "label": "NDD"}
+{"text": "o e-mail do cliente tinha o contrato anexado, mas eu não ia dar print naquilo tudo", "label": "NDD"}
+{"text": "quando eu abro um e-mail com anexo e clico em imprimir, ele imprime tudo torto", "label": "NDD"}
+{"text": "teve um e-mail anexado que eu imprimi sem querer e era uma folha de rosto enorme", "label": "NDD"}
+{"text": "aquela explicação do trecho ficou boa, mas ele explana devagar demais pra turma acompanhar.", "label": "NDD"}
+{"text": "não sei se entendi o trecho direito, a explicação dela me deixou mais perdido ainda.", "label": "NDD"}
+{"text": "a forma como o professor explana o trecho parece que ele tá falando com ele mesmo, não com a gente.", "label": "NDD"}
+{"text": "você consegue resumir a explicação do trecho? eu perdi o começo da aula.", "label": "NDD"}
+{"text": "o trecho é difícil, mas a explanação da Carla ajudou bastante na hora de estudar.", "label": "NDD"}
+{"text": "ele sempre explana o mesmo trecho com um exemplo diferente, por isso a explicação faz sentido.", "label": "NDD"}
+{"text": "a explicação do trecho vai cair na prova? preciso rever aquela parte que você explana.", "label": "NDD"}
+{"text": "nossa, essa explanação do trecho na aula passada foi tão enrolada que ninguém prestou atenção.", "label": "NDD"}
+{"text": "eu agendei um backup pro final do dia, mas acho que não vai terminar antes das seis.", "label": "NDD"}
+{"text": "o backup automático da minha pasta de fotos tá rodando agora, né?", "label": "NDD"}
+{"text": "se o backup automático tivesse sido feito ontem, a gente não tinha perdido quase tudo.", "label": "NDD"}
+{"text": "meu irmão sempre reclama que o backup automático enche o HD dele.", "label": "NDD"}
+{"text": "você já viu se o backup automático daquele projeto antigo salvou direito?", "label": "NDD"}
+{"text": "eu preciso agendar uma rotina de backup aqui, porque esses arquivos são importantes demais.", "label": "NDD"}
+{"text": "o pessoal de TI pediu pra todo mundo agendar backup antes da manutenção.", "label": "NDD"}
+{"text": "será que o backup que eu agendei pra hoje vai rodar com o note na bateria?", "label": "NDD"}
+{"text": "Eu passei a tarde tentando definir a nota de rodapé comum a todos os relatórios, mas ainda não entendi.", "label": "NDD"}
+{"text": "A nota de rodapé comum a todos os capítulos ficou com fonte diferente, acho que precisa ajustar.", "label": "NDD"}
+{"text": "Será que a nota de rodapé comum a todos os documentos tem que ter o mesmo número? Acho que não.", "label": "NDD"}
+{"text": "Esse negócio de nota de rodapé comum a todos é chato, prefiro fazer cada um de um jeito.", "label": "NDD"}
+{"text": "Ele me pediu pra definir a nota de rodapé comum a todos, mas eu acho que é só nas páginas pares.", "label": "NDD"}
+{"text": "A gente esqueceu de colocar a nota de rodapé comum a todos no manual novo.", "label": "NDD"}
+{"text": "Se a nota de rodapé comum a todos for muito longa, ela acaba poluindo a página.", "label": "NDD"}
+{"text": "No trabalho, a nota de rodapé comum a todos os contratos tem que ser padronizada.", "label": "NDD"}
+{"text": "Meu irmão passou a tarde inteira tentando montar aquele pen drive velho e não conseguiu.", "label": "NDD"}
+{"text": "Quando eu montei o pen drive no Linux, ele apareceu como dispositivo bloqueado.", "label": "NDD"}
+{"text": "Você lembra como a gente montava o pen drive pra instalar o Windows?", "label": "NDD"}
+{"text": "Eu acho que montei errado, porque o computador não reconheceu o pen drive depois.", "label": "NDD"}
+{"text": "O pen drive que você me emprestou está com problema, não montei nem o primeiro arquivo.", "label": "NDD"}
+{"text": "Ela explicou que pra montar o pen drive tem que desativar a proteção de escrita.", "label": "NDD"}
+{"text": "Preciso achar um tutorial de montar pen drive bootável pro meu novo sistema.", "label": "NDD"}
+{"text": "Nunca consegui montar esse pen drive aqui, vive pedindo pra formatar.", "label": "NDD"}
+{"text": "O leitor de código de barras aqui da loja só funciona se encostar bem na etiqueta.", "label": "NDD"}
+{"text": "Esse aplicativo do leitor de código de barras não tá reconhecendo o código da promoção.", "label": "NDD"}
+{"text": "Você lembra onde o pessoal guardou o leitor de código de barras que usava no estoque?", "label": "NDD"}
+{"text": "Eu tentei abrir o leitor de código de barras no celular, mas a câmera ficou embaçada.", "label": "NDD"}
+{"text": "O leitor de código de barras do caixa tá com um risco na tela, acho que caiu.", "label": "NDD"}
+{"text": "Se o código não lê, eu anoto na mão e depois passo no leitor de código de barras lá na frente.", "label": "NDD"}
+{"text": "Me enganei achando que o leitor de código de barras era sem fio, mas tem fio escondido.", "label": "NDD"}
+{"text": "No mercado novo, cada funcionário tem um leitor de código de barras pendurado no uniforme.", "label": "NDD"}
+{"text": "eu marquei a mensagem dela como importante, mas nem vi que já tinha respondido", "label": "NDD"}
+{"text": "você marcou aquele áudio como importante? eu preciso ouvir de novo", "label": "NDD"}
+{"text": "será que ele marcou a mensagem como importante por engano? era só um print", "label": "NDD"}
+{"text": "minha nossa, essa mensagem tá marcada como importante desde o ano passado", "label": "NDD"}
+{"text": "se você marcar as mensagens do grupo como importante, a gente acha fácil depois", "label": "NDD"}
+{"text": "ela sempre marca as mensagens do trabalho como importante, mas nunca olha de novo", "label": "NDD"}
+{"text": "por que tem tanta mensagem marcada como importante aqui? acho que alguém foi sem querer", "label": "NDD"}
+{"text": "não esquece de marcar a mensagem do endereço como importante pra achar amanhã", "label": "NDD"}
+{"text": "nossa, o cache do navegador encheu de novo, por isso a página não carrega", "label": "NDD"}
+{"text": "será que limpar o cache resolve esse problema de carregamento?", "label": "NDD"}
+{"text": "esse navegador tá tão lento, acho que o cache tá gigante", "label": "NDD"}
+{"text": "eu sempre limpo o cache quando começa a travar, mas hoje não resolveu", "label": "NDD"}
+{"text": "o pessoal esquece de limpar o cache do navegador e depois reclama que o site tá bugado", "label": "NDD"}
+{"text": "se você limpar o cache, talvez atualize as imagens do site", "label": "NDD"}
+{"text": "vi um tutorial ensinando a configurar o cache do navegador pra acelerar", "label": "NDD"}
+{"text": "o cache do navegador pode estar corrompido, por isso o site abre errado", "label": "NDD"}
+{"text": "não sei por que o pessoal reclama de ler documento, eu gosto de descobrir o que vem na próxima página", "label": "NDD"}
+{"text": "esse documento tá com umas quebras de página esquisitas, deu até vontade de editar", "label": "NDD"}
+{"text": "a próxima página do relatório vai ter os dados que a gente discutiu ontem", "label": "NDD"}
+{"text": "cê viu que ele mandou o documento inteiro porém sem numerar a página? complica achar as coisas", "label": "NDD"}
+{"text": "ficou bom aquele resumo na página anterior, mas a próxima parece que foi escrita com pressa", "label": "NDD"}
+{"text": "eu sempre dou um jeito de adiantar a leitura lendo só o final do documento, mas aí perco a próxima página", "label": "NDD"}
+{"text": "cada vez que eu rolo o documento, a tela pula duas páginas em vez de uma, uma loucura", "label": "NDD"}
+{"text": "a página que eu preciso tá no meio do documento, mas o arquivo não abre direito", "label": "NDD"}
+{"text": "ontem a gente tava assistindo filme e o volume tava no talo, quase explodiu minha caixa", "label": "NDD"}
+{"text": "não aguento mais esse vizinho deixando a música no último volume", "label": "NDD"}
+{"text": "se você aumentar mais esse som eu vou ter que sair da sala", "label": "NDD"}
+{"text": "aumentei o som do celular pra máximo e ainda assim não ouvi a mensagem", "label": "NDD"}
+{"text": "nossa, o volume daquele show tava absurdo, saí de lá com zumbido no ouvido", "label": "NDD"}
+{"text": "o pessoal aqui de casa reclamou que eu tava escutando podcast alto demais", "label": "NDD"}
+{"text": "deixa o som assim mesmo, do jeitinho que tá dá pra ouvir tudo", "label": "NDD"}
+{"text": "aquela playlist ficou perfeita no último volume dentro do carro", "label": "NDD"}
+{"text": "Acho que a sincronização com a nuvem travou de novo, nem sei o que fazer.", "label": "NDD"}
+{"text": "Você viu se os arquivos já subiram pra nuvem? Tô preocupado com o backup.", "label": "NDD"}
+{"text": "Aquele negócio de sincronizar as fotos tá consumindo toda a internet daqui.", "label": "NDD"}
+{"text": "Quando eu cheguei no escritório, o status da nuvem tava todo desatualizado, nem sei.", "label": "NDD"}
+{"text": "Minha irmã vive reclamando que a sincronização do celular dela nunca funciona direito.", "label": "NDD"}
+{"text": "Será que a nuvem vai conseguir sincronizar isso antes da reunião? Tô meio ansiosa.", "label": "NDD"}
+{"text": "O pessoal da TI falou que o status da sincronização tava mostrando erro, mas pra mim pareceu normal.", "label": "NDD"}
+{"text": "Eu desativei a sincronização automática porque tava gastando muita bateria.", "label": "NDD"}
+{"text": "Nossa, quando você acelera a reprodução em dois, a voz fica fina demais pra mim.", "label": "NDD"}
+{"text": "Ele sempre assiste as aulas em velocidade dois pra terminar logo, eu não sei como aguenta.", "label": "NDD"}
+{"text": "Essa palestra tá tão arrastada que eu queria que desse pra ouvir em dois, mas é ruim.", "label": "NDD"}
+{"text": "Você já reparou que em dois até o narrador parece que tá bebendo café?", "label": "NDD"}
+{"text": "Eu tentei ver o filme em dois, mas aí desisti porque perdia toda a emoção.", "label": "NDD"}
+{"text": "Meu irmão falou que em velocidade dois o áudio do jogo fica parecendo um esquilo.", "label": "NDD"}
+{"text": "Aí eu pus a reprodução em dois sem querer e não entendi por que todo mundo tava falando rápido.", "label": "NDD"}
+{"text": "Pra você ver, eu assisti a série inteira em dois e mesmo assim achei lenta.", "label": "NDD"}
+{"text": "Eu acho que a gente deveria ter adicionado aquela cláusula no contrato antes de assinar.", "label": "NDD"}
+{"text": "O advogado falou que adicionar essa cláusula vai nos proteger de processos.", "label": "NDD"}
+{"text": "Eles adicionaram uma cláusula de confidencialidade no contrato e a gente nem percebeu.", "label": "NDD"}
+{"text": "Se a gente adicionar essa cláusula agora, o contrato vai precisar ser revisto inteiro.", "label": "NDD"}
+{"text": "O pessoal do jurídico pediu pra adicionar uma cláusula sobre rescisão no contrato.", "label": "NDD"}
+{"text": "Lembra que a gente não adicionou a cláusula de reajuste? Pois é.", "label": "NDD"}
+{"text": "Essa cláusula que adicionaram no contrato tá tão mal escrita que não dá pra entender nada.", "label": "NDD"}
+{"text": "Me ligaram pedindo pra adicionar uma cláusula de exclusividade no contrato, que dor de cabeça.", "label": "NDD"}
+{"text": "eu preciso lembrar de fazer o backup do computador todo dia, mas sempre esqueço", "label": "NDD"}
+{"text": "o backup diário aqui da empresa roda às três da manhã, graças a Deus", "label": "NDD"}
+{"text": "você já viu se o backup de ontem foi concluído? tô com medo de perder tudo", "label": "NDD"}
+{"text": "minha agenda tá tão corrida que ainda não parei pra organizar o backup das fotos", "label": "NDD"}
+{"text": "todo dia é a mesma coisa: esperar o backup acabar pra poder desligar o notebook", "label": "NDD"}
+{"text": "o pessoal da TI falou que o backup é automático, mas eu não confio muito", "label": "NDD"}
+{"text": "se eu não anotar na agenda, esqueço completamente de atualizar o backup", "label": "NDD"}
+{"text": "eles mudaram o horário do backup pra quando ninguém está usando o sistema", "label": "NDD"}
+{"text": "aquele site converte desenho em imagem, lembra?", "label": "NDD"}
+{"text": "meu irmão passou o dia convertendo os rabiscos dele em imagem", "label": "NDD"}
+{"text": "se você escanear esse desenho, ele vira imagem no computador", "label": "NDD"}
+{"text": "eu tentei converter o desenho do meu filho em imagem, mas ficou torto", "label": "NDD"}
+{"text": "diz que dá pra converter desenho em imagem direto no celular", "label": "NDD"}
+{"text": "o professor pediu pra gente transformar os desenhos em imagem pra apresentar", "label": "NDD"}
+{"text": "com esse programa dá pra salvar desenho como imagem, né?", "label": "NDD"}
+{"text": "eu vi um tutorial de como converter desenho em imagem sem perder qualidade", "label": "NDD"}
+{"text": "Essa interface do sistema é tão pequena que eu preciso apertar os olhos pra ler qualquer coisa.", "label": "NDD"}
+{"text": "Quando eu aumento a escala no computador daqui, as letras ficam gigantes, mas pelo menos dá pra enxergar.", "label": "NDD"}
+{"text": "O pessoal reclamou que a interface do sistema devia ter uma opção de escala maior, né?", "label": "NDD"}
+{"text": "Mudei a escala da interface ontem sem querer e agora não acho mais nada na tela.", "label": "NDD"}
+{"text": "Será que dá pra configurar o sistema pra aumentar a interface? Meu olho tá cansando.", "label": "NDD"}
+{"text": "A escala padrão desse sistema é pequena demais pra tela que eu uso, vou ter que me acostumar.", "label": "NDD"}
+{"text": "Só consegui aumentar a interface depois que reiniciei o programa, que raiva.", "label": "NDD"}
+{"text": "Quando eu aumento a escala no sistema, metade das opções ficam escondidas, impossível.", "label": "NDD"}
+{"text": "você viu que tem um anexo no fim do documento?", "label": "NDD"}
+{"text": "eu fui até o final e não achei a assinatura", "label": "NDD"}
+{"text": "a última folha do documento está em branco", "label": "NDD"}
+{"text": "será que a data de validade está no fim do contrato?", "label": "NDD"}
+{"text": "o pessoal sempre esquece de ler o que vem depois da última página", "label": "NDD"}
+{"text": "preciso conferir uma informação lá na parte final do arquivo", "label": "NDD"}
+{"text": "ele disse que o resumo fica no fim, não no começo", "label": "NDD"}
+{"text": "no final do documento tinha um carimbo de recebido", "label": "NDD"}
+{"text": "Aquele tom de notificação do canal tá me irritando, né?", "label": "NDD"}
+{"text": "Eu preferia que o aviso do canal tivesse um som mais suave.", "label": "NDD"}
+{"text": "O barulho que esse canal faz quando chega notificação é muito agudo.", "label": "NDD"}
+{"text": "Será que dá pra escolher outro som pra notificação do canal?", "label": "NDD"}
+{"text": "Hoje o tom da notificação do canal me assustou de tanto que eu me distraí.", "label": "NDD"}
+{"text": "O pessoal reclamou que o alerta do canal estava muito alto.", "label": "NDD"}
+{"text": "Eu mudei o toque do canal pra não confundir com o celular.", "label": "NDD"}
+{"text": "Quando ele configurou, o som da notificação do canal ficou estranho.", "label": "NDD"}
+{"text": "será que a compressão de arquivos antigos tá mesmo configurada direito?", "label": "NDD"}
+{"text": "eu acho que a compressão automática dos arquivos antigos não foi configurada ainda", "label": "NDD"}
+{"text": "o pessoal comentou que os arquivos antigos vão passar por uma compressão nova", "label": "NDD"}
+{"text": "não consigo lembrar onde fica a opção de compressão para arquivos antigos", "label": "NDD"}
+{"text": "os arquivos antigos tão ocupando espaço, talvez a compressão ajude", "label": "NDD"}
+{"text": "a configuração de compressão que você fez nos arquivos antigos parece boa", "label": "NDD"}
+{"text": "esse sistema comprime os arquivos antigos de forma estranha, nem parece que foi configurado", "label": "NDD"}
+{"text": "se a compressão dos arquivos antigos tiver pronta, a gente ganha um tempão", "label": "NDD"}
+{"text": "Depois que terminamos, precisei esconder todas as fotos dela pra ver se a lembrança sumia junto.", "label": "NDD"}
+{"text": "Você já tentou esquecer alguém, mas cada música traz a pessoa de volta na mesma hora?", "label": "NDD"}
+{"text": "Eu queria tanto apagar aquele rosto da minha memória, mas é impossível.", "label": "NDD"}
+{"text": "Toda vez que volto a este lugar, as lembranças dela aparecem sem eu chamar.", "label": "NDD"}
+{"text": "Minha avó diz que o tempo apaga as pessoas, mas acho que ela estava enganada.", "label": "NDD"}
+{"text": "Ela sumiu da minha vida, mas continua em todos os lugares que eu frequento.", "label": "NDD"}
+{"text": "Não adianta se mudar; as lembranças daquela pessoa insistem em te seguir.", "label": "NDD"}
+{"text": "Fico remoendo as recordações tentando entender onde foi que errei, mas não consigo apagar a presença dela.", "label": "NDD"}
+{"text": "nossa, a tela bloqueou bem no meio da escrita ativa", "label": "NDD"}
+{"text": "sempre que eu bloqueio a tela, perco o que tava digitando", "label": "NDD"}
+{"text": "essa escrita ativa fica travada quando a tela bloqueia", "label": "NDD"}
+{"text": "vi que ele bloqueou a tela sem querer enquanto escrevia", "label": "NDD"}
+{"text": "se a tela bloqueia, a escrita ativa não salva nada", "label": "NDD"}
+{"text": "odeio quando a tela bloqueia no meio de um texto", "label": "NDD"}
+{"text": "a tela dele bloqueou na hora que ele ia ativar a escrita", "label": "NDD"}
+{"text": "depois que a tela bloqueou, a escrita ativa não volta mais", "label": "NDD"}
+{"text": "A enquete tá mostrando o resultado errado, acho que atrasou um pouco.", "label": "NDD"}
+{"text": "Você viu como o resultado da enquete muda o tempo todo? Incrível.", "label": "NDD"}
+{"text": "Eu tentei configurar as opções da enquete, mas não sei onde mexer.", "label": "NDD"}
+{"text": "O pessoal fica acompanhando a enquete em tempo real, né? Ansiedade.", "label": "NDD"}
+{"text": "Aquele resultado parcial da enquete não bate com o que eu votei.", "label": "NDD"}
+{"text": "Será que dá pra ajustar a atualização do resultado da enquete? Tá lento.", "label": "NDD"}
+{"text": "A cada minuto o resultado da enquete muda, doido.", "label": "NDD"}
+{"text": "Esquece, eu me atrapalhei toda pra configurar o painel da enquete.", "label": "NDD"}
+{"text": "Eu passei a tarde separando os arquivos pela extensão, ficou bem mais simples de achar o que precisava.", "label": "NDD"}
+{"text": "O pessoal aqui do escritório costuma organizar os documentos por categoria, mas eu acho que por tipo fica melhor.", "label": "NDD"}
+{"text": "Você viu que ele juntou todos os PDFs num lugar só? Ficou muito mais fácil.", "label": "NDD"}
+{"text": "Se a gente separar os arquivos por tipo, depois não precisa ficar procurando em cada pasta.", "label": "NDD"}
+{"text": "Na hora de salvar, eu sempre escolho o tipo do arquivo, assim a pasta já se organiza sozinha.", "label": "NDD"}
+{"text": "Ele perguntou se eu preferia deixar as planilhas separadas das imagens, aí eu falei que tanto faz.", "label": "NDD"}
+{"text": "Eu não entendi por que você não separa os downloads por formato, ia facilitar bastante a nossa vida.", "label": "NDD"}
+{"text": "A professora pediu pra gente classificar os materiais pelo tipo, mas ninguém sabia onde colocava cada um.", "label": "NDD"}
+{"text": "comprei um SSD novo e ainda não abri o painel do gabinete pra instalar", "label": "NDD"}
+{"text": "aquele painel de SSD aqui do serviço tá cheio de parafuso, péssimo pra fazer upgrade", "label": "NDD"}
+{"text": "minha atualização de firmware do SSD travou no meio, que ódio", "label": "NDD"}
+{"text": "você viu que o painel frontal do note nem encaixa direito depois que mexi no SSD?", "label": "NDD"}
+{"text": "o pessoal esqueceu de abrir o painel de acesso ao SSD antes de formatar, aí deu problema", "label": "NDD"}
+{"text": "esse gabinete tem um sistema de encaixe pro painel de SSD, muito mais fácil que parafuso", "label": "NDD"}
+{"text": "toda vez que atualizo o driver, o SSD some do painel de dispositivos", "label": "NDD"}
+{"text": "será que dá pra fazer a atualização sem abrir o painel do notebook? tô com medo de quebrar", "label": "NDD"}
+{"text": "Eu preciso lembrar de colocar o título no vídeo antes de mandar pro cliente.", "label": "NDD"}
+{"text": "O texto do título no vídeo ficou pequeno demais pra aparecer no celular.", "label": "NDD"}
+{"text": "Quando eu edito, sempre deixo o título aparecendo bem no começo.", "label": "NDD"}
+{"text": "Achei que o título no vídeo estava legível, mas na TV ficou cortado.", "label": "NDD"}
+{"text": "Você pode dar uma olhada se o título do vídeo está com a fonte certa?", "label": "NDD"}
+{"text": "Ela pediu pra adicionar o nome do canal no título do vídeo, mas eu esqueci.", "label": "NDD"}
+{"text": "O título que a gente colocou no vídeo sumiu depois que exportou.", "label": "NDD"}
+{"text": "Eu vou ajustar a posição do título no vídeo porque ficou sobre o rosto dela.", "label": "NDD"}
+{"text": "hoje eu abri uma aba anônima sem querer e fiquei perdido sem achar a página.", "label": "NDD"}
+{"text": "minha irmã vive com um monte de aba anônima aberta no computador.", "label": "NDD"}
+{"text": "não sabia que dava pra abrir uma aba anônima pelo atalho no teclado.", "label": "NDD"}
+{"text": "a aba anônima aqui do meu navegador já fechou sozinha umas três vezes.", "label": "NDD"}
+{"text": "descobri que a aba anônima não aparece no histórico, mas o provedor vê tudo.", "label": "NDD"}
+{"text": "vou lembrar de abrir uma aba anônima na hora de consultar aquilo.", "label": "NDD"}
+{"text": "a tela do meu notebook rachou e a aba anônima abriu em tela cheia.", "label": "NDD"}
+{"text": "ele me mostrou no celular dele uma aba anônima e a gente riu dos vídeos.", "label": "NDD"}
+{"text": "aquele scan agendado do sistema vai rodar de madrugada de novo, espero que não derrube o servidor", "label": "NDD"}
+{"text": "eu sempre esqueço como configura o scan agendado, por isso anotei num post-it", "label": "NDD"}
+{"text": "o pessoal da TI pediu pra rodar um scan agendado na pasta compartilhada antes do backup", "label": "NDD"}
+{"text": "não entendi por que o scan agendado não disparou ontem, teve algum conflito de horário?", "label": "NDD"}
+{"text": "se o scan agendado começar agora, vai atrasar minha reunião, melhor cancelar", "label": "NDD"}
+{"text": "aqui no trabalho a gente programa um scan agendado toda sexta, mas ninguém avisa a gente", "label": "NDD"}
+{"text": "será que o scan agendado daquele diretório tá incluso no relatório mensal?", "label": "NDD"}
+{"text": "meu computador vive travando depois que adicionei um scan agendado no antivírus", "label": "NDD"}
+{"text": "Eu vi no painel de custos que a gente estourou o orçamento de novo.", "label": "NDD"}
+{"text": "O painel de custos da semana passada sumiu da minha planilha, você chegou a salvar?", "label": "NDD"}
+{"text": "Aquele painel de custos que o pessoal apresentou ontem estava bem confuso.", "label": "NDD"}
+{"text": "Preciso atualizar os custos antes de mostrar pro gerente, mas tô sem paciência.", "label": "NDD"}
+{"text": "Você viu como o painel de custos ficou depois que mudaram a fórmula?", "label": "NDD"}
+{"text": "O custo da matéria-prima aumentou tanto que o painel vai ficar todo vermelho.", "label": "NDD"}
+{"text": "Me manda o painel de custos depois, quero comparar com o do mês passado.", "label": "NDD"}
+{"text": "Eu tentei abrir o painel de custos agora há pouco, mas travou.", "label": "NDD"}
+{"text": "Ontem fui abrir o painel do drive externo e travou tudo.", "label": "NDD"}
+{"text": "O painel do drive externo da minha irmã está meio estranho, ela reclamou.", "label": "NDD"}
+{"text": "Você viu onde coloquei o drive externo? O painel dele está solto.", "label": "NDD"}
+{"text": "Meu drive externo tem um painel que vive caindo, preciso levar pra assistência.", "label": "NDD"}
+{"text": "Quando conectei o drive externo, o painel apareceu sozinho na tela.", "label": "NDD"}
+{"text": "Aquele drive externo meu está com o painel quebrado, o plástico rachou.", "label": "NDD"}
+{"text": "Ela falou que o painel do drive externo não reconhece, mas comigo funcionou.", "label": "NDD"}
+{"text": "Se a gente precisar abrir o painel do drive externo, melhor chamar alguém.", "label": "NDD"}
+{"text": "Nossa, esse microfone tá com um eco horrível, acho que o cancelamento não tá funcionando.", "label": "NDD"}
+{"text": "Quando eu testei o fone, o pessoal disse que tava dando eco do meu próprio áudio.", "label": "NDD"}
+{"text": "O pessoal da reunião reclamou que o microfone tava ecoando minha voz.", "label": "NDD"}
+{"text": "Será que dá pra ajustar o cancelamento de eco aqui? Não, deixa quieto.", "label": "NDD"}
+{"text": "O eco no microfone daquele vídeo estava tão alto que nem dava pra entender a entrevista.", "label": "NDD"}
+{"text": "Meu microfone capta o som da caixa de som e fica um eco chato, preciso mexer nas configurações.", "label": "NDD"}
+{"text": "Lembra que o cancelamento de eco do microfone do notebook parou de funcionar? Achei que era fone, mas era o microfone.", "label": "NDD"}
+{"text": "Você viu que o microfone novo tem cancelamento de eco? Ficou ótimo pra gravar voz.", "label": "NDD"}
+{"text": "Esse painel de widgets só fica aparecendo quando eu tô no meio de uma reunião.", "label": "NDD"}
+{"text": "Você reparou que dá pra ocultar os widgets sem precisar desligar o sistema?", "label": "NDD"}
+{"text": "O painel de widgets do meu computador antigo era cheio de coisinha inútil.", "label": "NDD"}
+{"text": "Eu acho que os widgets ocupam espaço demais na tela, prefiro o fundo limpo.", "label": "NDD"}
+{"text": "Toda vez que eu aperto sem querer, o painel de widgets abre e fecha sozinho.", "label": "NDD"}
+{"text": "Será que esse painel de widgets tem alguma função prática ou é só enfeite?", "label": "NDD"}
+{"text": "Hoje cedo o painel de widgets sumiu sozinho, acho que deu algum bug.", "label": "NDD"}
+{"text": "Você viu como ele configurou o agrupamento dos elementos ontem?", "label": "NDD"}
+{"text": "O agrupamento dos elementos aqui ficou meio estranho depois que você mudou.", "label": "NDD"}
+{"text": "Eu passei um tempão tentando arrumar o agrupamento dos elementos naquela tela.", "label": "NDD"}
+{"text": "Se a gente agrupar os elementos, fica mais fácil de mover tudo junto.", "label": "NDD"}
+{"text": "O problema é que o agrupamento dos elementos desconfigurou quando eu salvei o arquivo.", "label": "NDD"}
+{"text": "Ele comentou que o agrupamento dos elementos da apresentação precisava ser revisado.", "label": "NDD"}
+{"text": "Essa opção de agrupamento dos elementos é boa, mas eu prefiro organizar manualmente.", "label": "NDD"}
+{"text": "Não entendi por que o agrupamento dos elementos ficou tão bagunçado no projeto.", "label": "NDD"}
+{"text": "Eu sempre esqueço em qual área de trabalho virtual está cada janela.", "label": "NDD"}
+{"text": "Depois que criei uma segunda área de trabalho virtual, ficou mais fácil separar o pessoal do trabalho.", "label": "NDD"}
+{"text": "Você viu se a minha área de trabalho virtual ao lado tem algum arquivo aberto?", "label": "NDD"}
+{"text": "Essa bagunça de janelas me faz falta quando eu uso várias áreas de trabalho virtuais ao mesmo tempo.", "label": "NDD"}
+{"text": "Quando apertei aquele atalho, ele me jogou pra área de trabalho virtual do lado errado.", "label": "NDD"}
+{"text": "Achei que tinha mais uma área de trabalho virtual ali do lado, mas era só a mesma janela minimizada.", "label": "NDD"}
+{"text": "Eu organizo as áreas de trabalho virtuais por assunto: uma pro dia a dia e outra pra programação.", "label": "NDD"}
+{"text": "Ele passou o dia inteiro alternando entre as áreas de trabalho virtuais sem achar o que precisava.", "label": "NDD"}
+{"text": "eu passei a tarde tentando lembrar como aplica a fórmula de busca vertical", "label": "NDD"}
+{"text": "aquela planilha aqui não tem nenhuma busca vertical, só um procv simples", "label": "NDD"}
+{"text": "o pessoal do financeiro vive usando busca vertical, mas eu nunca entendi bem", "label": "NDD"}
+{"text": "se você arrastasse a fórmula de busca vertical até embaixo já tinha resolvido", "label": "NDD"}
+{"text": "não é tão difícil, é só uma busca vertical que procura o código na outra aba", "label": "NDD"}
+{"text": "meu chefe pediu pra aplicar a fórmula de busca vertical e eu travei na hora", "label": "NDD"}
+{"text": "a fórmula que ele usou ali é uma busca vertical, mas tá retornando erro", "label": "NDD"}
+{"text": "eu acho que essa função é de busca vertical, não horizontal, porque procura na primeira coluna", "label": "NDD"}
+{"text": "O resultado da enquete não abriu direito quando eu exportei o arquivo.", "label": "NDD"}
+{"text": "Acho que o pessoal vai gostar de ver a enquete depois que a gente exportar os resultados.", "label": "NDD"}
+{"text": "Eu falei pra ela que o resultado da pesquisa estava todo bagunçado na exportação.", "label": "NDD"}
+{"text": "Aquela enquete de ontem, o resultado final eu consegui exportar sem problemas.", "label": "NDD"}
+{"text": "Você lembra se a gente já exportou o resultado da votação? Não tô achando aqui.", "label": "NDD"}
+{"text": "O sistema travou na hora de gerar o relatório da enquete, que ódio.", "label": "NDD"}
+{"text": "Depois que o resultado da enquete for exportado, a gente divulga pra equipe.", "label": "NDD"}
+{"text": "O arquivo com o resultado da enquete, ele exporta sozinho, mas hoje deu erro.", "label": "NDD"}
+{"text": "Meu primo falou que é só reiniciar no modo seguro, mas eu não entendi nada.", "label": "NDD"}
+{"text": "Quando o computador reinicia em modo seguro, ele fica com umas telas esquisitas.", "label": "NDD"}
+{"text": "Eu passei a tarde tentando reiniciar no modo seguro e não consegui nem abrir as configurações.", "label": "NDD"}
+{"text": "Será que reiniciando no modo seguro resolve esse problema de lentidão?", "label": "NDD"}
+{"text": "O analista da empresa reiniciou a máquina em modo seguro e sumiu por dez minutos.", "label": "NDD"}
+{"text": "Na aula de informática, o professor ensinou a reiniciar no modo seguro, mas eu esqueci.", "label": "NDD"}
+{"text": "Se eu reiniciar no modo seguro agora, vou perder o texto que não salvei.", "label": "NDD"}
+{"text": "Ela reiniciou o notebook no modo seguro e apareceu um monte de coisa que ela nunca tinha visto.", "label": "NDD"}
+{"text": "essa entrevista tá tão devagar que eu costumo acelerar em vez e meia quando vou ouvir", "label": "NDD"}
+{"text": "prefiro ouvir entrevista acelerada, mas uma vez e meia deixa a voz muito fina", "label": "NDD"}
+{"text": "eu acelerei a entrevista ontem pra caber no intervalo do almoço", "label": "NDD"}
+{"text": "dá pra perceber que o entrevistador fala super devagar; no meu fone eu aumento a velocidade", "label": "NDD"}
+{"text": "aquela entrevista do podcast ficou ótima depois que eu apertei o 1.5", "label": "NDD"}
+{"text": "ele falou tão pausado que eu pus a entrevista em velocidade acelerada", "label": "NDD"}
+{"text": "não gosto de acelerar entrevista porque perco as piadas, mas o pessoal adora", "label": "NDD"}
+{"text": "no último episódio eu fiz a entrevista rodar em vez e meia pra terminar rápido", "label": "NDD"}
+{"text": "Eu abri um terminal novo ontem e a tela ficou toda preta.", "label": "NDD"}
+{"text": "Quando você vai abrir um terminal novo, lembra de dar um reset no prompt.", "label": "NDD"}
+{"text": "O pessoal da faculdade abriu um terminal novo pra testar o sistema.", "label": "NDD"}
+{"text": "Ele abriu um terminal novo e já saiu digitando uns comandos estranhos.", "label": "NDD"}
+{"text": "Se eu abrir um terminal novo agora, será que consigo ver os logs?", "label": "NDD"}
+{"text": "Aquele terminal novo que o Pedro abriu deu um erro estranho.", "label": "NDD"}
+{"text": "Abro um terminal novo toda vez que preciso rodar o script, mas hoje tô com preguiça.", "label": "NDD"}
+{"text": "O terminal novo que abri aqui na empresa não reconhece o Python.", "label": "NDD"}
+{"text": "você viu o e-mail novo que eu compus ontem?", "label": "NDD"}
+{"text": "eu passei a manhã inteira tentando escrever esse e-mail novo", "label": "NDD"}
+{"text": "o chefe pediu pra mim compor um e-mail novo sobre a reunião", "label": "NDD"}
+{"text": "ela não gostou do e-mail novo que eu mandei", "label": "NDD"}
+{"text": "eu tenho que responder um e-mail novo ainda hoje", "label": "NDD"}
+{"text": "aquele e-mail novo que você escreveu ficou muito bom", "label": "NDD"}
+{"text": "meu irmão queria que eu ajudasse com um e-mail novo", "label": "NDD"}
+{"text": "não acredito que ainda não terminei de escrever esse e-mail novo", "label": "NDD"}
+{"text": "a ventoinha da CPU tá fazendo um barulho danado hoje", "label": "NDD"}
+{"text": "no meu PC eu ajusto a velocidade do cooler pela BIOS", "label": "NDD"}
+{"text": "o cooler do processador parou de girar de vez agora", "label": "NDD"}
+{"text": "a ventoinha fica acelerando e desacelerando sozinha do nada", "label": "NDD"}
+{"text": "será que é normal a ventoinha da CPU ficar em rotação máxima?", "label": "NDD"}
+{"text": "configurei a curva do cooler pra ele rodar mais devagar em idle", "label": "NDD"}
+{"text": "quando o processador esquenta, a ventoinha vai pro talo", "label": "NDD"}
+{"text": "preciso lembrar de dar uma olhada na velocidade da ventoinha ali no programa", "label": "NDD"}
+{"text": "eu me inscrevi ontem pra aula remota de matemática mas não consegui entrar no link", "label": "NDD"}
+{"text": "a professora falou que quem não se inscreveu até hoje vai ficar sem nota", "label": "NDD"}
+{"text": "nossa, essa aula remota tá com inscrição aberta ainda? achei que já tinha fechado", "label": "NDD"}
+{"text": "fulano se inscreveu na aula remota de história, diz que é bem tranquila", "label": "NDD"}
+{"text": "teve um problema na hora de se inscrever na aula online, o sistema caiu", "label": "NDD"}
+{"text": "se a gente não se inscrever logo, perde a vaga na aula remota", "label": "NDD"}
+{"text": "eu tava em dúvida se me inscrevo na aula remota de inglês ou na presencial", "label": "NDD"}
+{"text": "minha irmã se inscreveu na aula remota e o microfone dela tava desligado o tempo todo", "label": "NDD"}
+{"text": "nossa, quando imprime esse relatório, o cabeçalho da tabela deveria repetir em toda página, senão ninguém entende as colunas", "label": "NDD"}
+{"text": "eu odeio quando o cabeçalho da tabela só aparece na primeira página e o resto fica sem referência nenhuma", "label": "NDD"}
+{"text": "no trabalho, o pessoal sempre reclama que a impressão sai sem o cabeçalho repetido em cada página", "label": "NDD"}
+{"text": "se não repetir o cabeçalho em toda página impressa, a gente vai ter que folhear tudo pra lembrar o que cada coluna significa", "label": "NDD"}
+{"text": "aquela planilha gigante que o chefe imprimiu ficou impossível de ler porque não repetiu o cabeçalho nas outras páginas", "label": "NDD"}
+{"text": "eu sempre configuro pra repetir as linhas do cabeçalho em todas as páginas antes de imprimir, evita confusão", "label": "NDD"}
+{"text": "você viu que o relatório saiu com o cabeçalho da tabela só na primeira folha? que raiva", "label": "NDD"}
+{"text": "o pessoal esquece que o cabeçalho da tabela tem que acompanhar cada página impressa, senão perde o sentido", "label": "NDD"}
+{"text": "Quem abriu o diagrama de arquitetura no drive? Preciso dar uma olhada.", "label": "NDD"}
+{"text": "O diagrama de arquitetura que a gente revisou ontem ficou muito bom.", "label": "NDD"}
+{"text": "Eu salvei o diagrama de arquitetura no PDF, quer que eu te mande?", "label": "NDD"}
+{"text": "O pessoal da reunião ficou discutindo o diagrama de arquitetura por meia hora.", "label": "NDD"}
+{"text": "Esse diagrama de arquitetura não reflete mais o sistema atual, né?", "label": "NDD"}
+{"text": "Achei uma versão antiga do diagrama de arquitetura aqui no meu e-mail.", "label": "NDD"}
+{"text": "O diagrama de arquitetura estava tão poluído que ninguém entendeu a apresentação.", "label": "NDD"}
+{"text": "Será que o João pode explicar o diagrama de arquitetura pra gente depois do almoço?", "label": "NDD"}
+{"text": "nossa, eu clico em voltar e a página anterior não carrega, fica tudo branco", "label": "NDD"}
+{"text": "o botão de voltar do navegador não funciona nesse site, tenho que apertar de novo", "label": "NDD"}
+{"text": "eu sempre esqueço de abrir os links em aba nova, aí tenho que voltar no site toda hora", "label": "NDD"}
+{"text": "vi um post ontem, mas quando voltei a página anterior o site já tinha atualizado", "label": "NDD"}
+{"text": "meu irmão falou que dá pra voltar com o botão direito do mouse, mas aqui não aparece", "label": "NDD"}
+{"text": "voltei pra página anterior e o formulário que eu tinha preenchido sumiu, que raiva", "label": "NDD"}
+{"text": "a setinha de voltar do site fica no canto superior esquerdo, mas é muito pequena", "label": "NDD"}
+{"text": "se você clicar aqui, ele volta pro começo, não pra página que você tava antes", "label": "NDD"}
+{"text": "o cofre na nuvem já tá cheio de fotos antigas.", "label": "NDD"}
+{"text": "ele falou que o cofre na nuvem travou durante a cópia.", "label": "NDD"}
+{"text": "não confio muito no cofre na nuvem depois daquele erro.", "label": "NDD"}
+{"text": "o cofre na nuvem demora um pouco pra acessar os arquivos.", "label": "NDD"}
+{"text": "vou aumentar o tamanho do cofre na nuvem hoje.", "label": "NDD"}
+{"text": "o cofre na nuvem tem um desempenho ruim no fim de semana.", "label": "NDD"}
+{"text": "ela atualizou o cofre na nuvem sem avisar ninguém.", "label": "NDD"}
+{"text": "o cofre na nuvem é essencial pra manter os projetos seguros.", "label": "NDD"}
+{"text": "esse e-mail aqui precisa de uma etiqueta, tá muito misturado", "label": "NDD"}
+{"text": "eu botei etiqueta em todo mundo que recebeu ontem", "label": "NDD"}
+{"text": "tu não bota etiqueta nos e-mails? eu sempre faço isso", "label": "NDD"}
+{"text": "aquele e-mail que eu te mandei tá sem etiqueta ainda", "label": "NDD"}
+{"text": "sério, etiquetar e-mail é a única forma de eu achar coisa depois", "label": "NDD"}
+{"text": "olha esse e-mail aqui, tá pedindo uma etiqueta diferente das outras", "label": "NDD"}
+{"text": "eu passei a manhã separando e-mails e colocando etiqueta em cada um", "label": "NDD"}
+{"text": "não entendo por que ninguém aqui bota etiqueta nos e-mails recebidos", "label": "NDD"}
+{"text": "aquela branch que o pessoal criou ontem já deu conflito na hora do merge", "label": "NDD"}
+{"text": "se eu fosse você, não criava uma branch nova agora não, melhor esperar a sprint", "label": "NDD"}
+{"text": "o chefe pediu pra eu criar uma branch separada pra testar essa funcionalidade", "label": "NDD"}
+{"text": "não entendo por que todo mundo cria branch com nome tão aleatório", "label": "NDD"}
+{"text": "vou aproveitar e criar uma branch nova aqui, mas só depois que o almoço assentar", "label": "NDD"}
+{"text": "ele passou a manhã inteira brigando com a branch de trabalho e no final era o cache", "label": "NDD"}
+{"text": "nossa, essa branch ficou tão antiga que nem sei mais o que tinha feito nela", "label": "NDD"}
+{"text": "quando eu crio uma branch nova, sempre esqueço de voltar pra main depois", "label": "NDD"}
+{"text": "eu precisei atualizar o repositório local hoje porque o time tinha mexido em tudo.", "label": "NDD"}
+{"text": "vi que o teu repositório local está umas versões atrás do que está no servidor.", "label": "NDD"}
+{"text": "depois que eu sincronizei o repositório local, o código parou de compilar.", "label": "NDD"}
+{"text": "o pessoal costuma dar um pull no repositório local toda manhã antes de começar.", "label": "NDD"}
+{"text": "será que o repositório local da sua máquina já está com o último commit?", "label": "NDD"}
+{"text": "essa mudança só funciona se o repositório local estiver no estado certo.", "label": "NDD"}
+{"text": "ele ficou o dia inteiro tentando desfazer um merge no repositório local.", "label": "NDD"}
+{"text": "quando eu rodei o status do repositório local, estava cheio de arquivo modificado.", "label": "NDD"}
+{"text": "Esse zoom da apresentação tá tão fechado que quase nada cabe na tela.", "label": "NDD"}
+{"text": "Conversei com ela sobre o vídeo, mas o zoom deixou a tabela fora da tela.", "label": "NDD"}
+{"text": "Não entendi por que o zoom diminuiu tanto e a tela ficou toda escura.", "label": "NDD"}
+{"text": "A tela ficou apertada depois que mudaram o zoom durante a chamada.", "label": "NDD"}
+{"text": "Meu zoom da tela sempre muda sozinho quando eu tento ampliar o texto.", "label": "NDD"}
+{"text": "Na foto, o zoom estava exagerado, então só coube uma parte pequena na tela.", "label": "NDD"}
+{"text": "Ele comentou que o zoom da tela deveria ser menor para caber tudo.", "label": "NDD"}
+{"text": "Quando abri o documento, o zoom veio tão grande que metade sumiu da tela.", "label": "NDD"}
+{"text": "o contêiner travou e não para de jeito nenhum", "label": "NDD"}
+{"text": "preciso derrubar aquele contêiner que tá consumindo tudo", "label": "NDD"}
+{"text": "o deploy falhou porque o contêiner antigo não parou", "label": "NDD"}
+{"text": "tem um contêiner zumbi rodando desde ontem à noite", "label": "NDD"}
+{"text": "vou ter que matar o processo manualmente no terminal", "label": "NDD"}
+{"text": "esse contêiner em execução tá segurando a porta errada", "label": "NDD"}
+{"text": "não consigo subir o novo enquanto o outro não para", "label": "NDD"}
+{"text": "o script de parada não funcionou pro contêiner principal", "label": "NDD"}
+{"text": "Eu esqueci de gerar a folha de pagamento do mês, e agora o financeiro está correndo atrás.", "label": "NDD"}
+{"text": "Quem ficou responsável por gerar a folha de pagamento do mês? O fechamento não apareceu ainda.", "label": "NDD"}
+{"text": "Ontem eu revisei a folha de pagamento do mês antes de enviar para a contabilidade.", "label": "NDD"}
+{"text": "Se você tiver um minuto, olha a folha de pagamento do mês; alguns descontos estão estranhos.", "label": "NDD"}
+{"text": "A folha de pagamento do mês passou por uma correção depois da reunião com recursos humanos.", "label": "NDD"}
+{"text": "Não consigo encontrar o relatório da folha de pagamento do mês que foi gerado ontem.", "label": "NDD"}
+{"text": "Quando eu gerei a folha de pagamento do mês, faltaram horas do vale-transporte.", "label": "NDD"}
+{"text": "O pessoal do financeiro ainda está conferindo a folha de pagamento do mês antes do pagamento.", "label": "NDD"}
+{"text": "Eu dupliquei a aba do sistema pra comparar os relatórios.", "label": "NDD"}
+{"text": "Quando duplica a aba do sistema, o histórico fica igual.", "label": "NDD"}
+{"text": "Ontem precisei duplicar a aba do sistema pra testar outra configuração.", "label": "NDD"}
+{"text": "Se você duplica a aba do sistema, as duas abas compartilham a sessão.", "label": "NDD"}
+{"text": "Não sei como duplicar a aba do sistema nesse navegador novo.", "label": "NDD"}
+{"text": "Ele pediu pra duplicar a aba do sistema antes de fechar a janela.", "label": "NDD"}
+{"text": "Duplicar a aba do sistema facilita quando você quer manter o original aberto.", "label": "NDD"}
+{"text": "Achei mais rápido duplicar a aba do sistema do que abrir tudo de novo.", "label": "NDD"}
+{"text": "Eu sempre criptografo os arquivos antes de enviar por email", "label": "NDD"}
+{"text": "Você sabia que esse arquivo tá todo criptografado?", "label": "NDD"}
+{"text": "Meu chefe pediu pra eu aplicar criptografia em tudo", "label": "NDD"}
+{"text": "Os arquivos ficam mais seguros quando a criptografia é bem feita", "label": "NDD"}
+{"text": "Eu não entendo nada de criptografia de arquivo, é complicado", "label": "NDD"}
+{"text": "Fiz a criptografia daquele arquivo ontem e deu tudo certo", "label": "NDD"}
+{"text": "A criptografia do arquivo demorou um pouco pra processar", "label": "NDD"}
+{"text": "Ele esqueceu de aplicar a criptografia e o arquivo vazou", "label": "NDD"}
+{"text": "preciso ler o resumo desse artigo antes da reunião", "label": "NDD"}
+{"text": "o resumo do artigo tá confuso, não entendi nada", "label": "NDD"}
+{"text": "alguém leu o resumo daquele artigo que mandei ontem?", "label": "NDD"}
+{"text": "vou só dar uma olhada no resumo do artigo rapidinho", "label": "NDD"}
+{"text": "o artigo é longo, mas o resumo ajuda bastante", "label": "NDD"}
+{"text": "esqueci de mandar o resumo do artigo pro grupo", "label": "NDD"}
+{"text": "esse resumo do artigo não condiz com o texto completo", "label": "NDD"}
+{"text": "depois eu leio o resumo do artigo com calma", "label": "NDD"}
+{"text": "Minha irmã vive reclamando que o navegador abre numa página estranha toda vez.", "label": "NDD"}
+{"text": "Eu acho mais prático deixar a homepage com o site que uso no trabalho.", "label": "NDD"}
+{"text": "Ontem, depois da atualização, meu navegador voltou para uma página cheia de anúncios.", "label": "NDD"}
+{"text": "Você lembra qual site a gente colocava como primeira página naquele computador antigo?", "label": "NDD"}
+{"text": "Às vezes eu nem percebo que troquei a página de abertura do navegador.", "label": "NDD"}
+{"text": "Esse navegador novo começa com uma tela de notícias que fica me distraindo.", "label": "NDD"}
+{"text": "O estagiário perguntou se dava para deixar o buscador abrindo direto no portal da empresa.", "label": "NDD"}
+{"text": "Não sei qual página inicial combina mais com quem só usa o navegador pra estudar.", "label": "NDD"}
+{"text": "Eu devia anotar o peso de hoje, senão perco a linha da dieta.", "label": "NDD"}
+{"text": "Se eu não marcar o peso de hoje, depois não lembro se baixou.", "label": "NDD"}
+{"text": "Meu peso de hoje não mudou muito, só meio quilinho.", "label": "NDD"}
+{"text": "Vou registrar por conta própria o peso de hoje, sem criar rotina.", "label": "NDD"}
+{"text": "Ontem pesei depois do banho, hoje quero ver se o número melhora.", "label": "NDD"}
+{"text": "O peso de hoje veio mais ou menos igual, nada demais.", "label": "NDD"}
+{"text": "Essa semana eu tento olhar só o peso do dia, sem me cobrar.", "label": "NDD"}
+{"text": "Eu fiquei curiosa com o peso de hoje, mas não vou me desesperar.", "label": "NDD"}
+{"text": "Eu tô cansado de ouvir essa mesma playlist toda ordenadinha, preciso embaralhar", "label": "NDD"}
+{"text": "Sera que a playlist tá toda desconfigurada, parece que não embaralha direito", "label": "NDD"}
+{"text": "Ontem eu estava ouvindo aquelas músicas e toquei de novo sem querer", "label": "NDD"}
+{"text": "Adoro quando o algoritmo embaralha as músicas, fica mais dinâmico o set", "label": "NDD"}
+{"text": "Essa playlist tá velha, eu queria algo diferente, tipo tocar tudo misturado de novo", "label": "NDD"}
+{"text": "Você percebeu que sempre tocam as mesmas músicas na mesma ordem, deveria ter uma opção de tocar de novo aleatório", "label": "NDD"}
+{"text": "Eu prefiro quando a rádio embaralha as músicas, assim não fica repetitivo", "label": "NDD"}
+{"text": "Tocar de novo aquelas músicas da viagem foi uma boa ideia", "label": "NDD"}
+{"text": "Preciso adicionar uma senha ao PDF antes de enviar, senão qualquer um pode ver", "label": "NDD"}
+{"text": "O cara me mandou um PDF sem senha, acho que ele esqueceu de configurar", "label": "NDD"}
+{"text": "A senha do PDF que eu enviei ontem expirou, vou ter que reenviar com uma nova", "label": "NDD"}
+{"text": "Não consigo abrir o PDF, será que falta senha? Tem que adicionar", "label": "NDD"}
+{"text": "Foi complicado adicionar a senha ao PDF, o programa travou três vezes", "label": "NDD"}
+{"text": "Minha chefe pediu para colocar senha no PDF do relatório, senão vaza informação", "label": "NDD"}
+{"text": "O PDF que recebi não tem senha, mas o conteúdo é confidencial. Vou pedir para adicionar", "label": "NDD"}
+{"text": "Adicionar senha ao PDF é trabalho manual, da próxima vez vou automatizar", "label": "NDD"}
+{"text": "as configurações de bluetooth tão desligadas no notebook", "label": "NDD"}
+{"text": "não consigo parear o fone, o bluetooth tá buggy", "label": "NDD"}
+{"text": "vê se nas configurações o bluetooth tá ativado", "label": "NDD"}
+{"text": "o bluetooth sumiu das configurações depois da atualização", "label": "NDD"}
+{"text": "tu desliga o bluetooth quando não tá usando", "label": "NDD"}
+{"text": "tinha uma opção de bluetooth lá nas configurações", "label": "NDD"}
+{"text": "esqueço de ativar o bluetooth e não conecta nada", "label": "NDD"}
+{"text": "nas configurações do celular o bluetooth fica piscando", "label": "NDD"}
+{"text": "essa música é tão boa que vou deixar no repeat o dia todo", "label": "NDD"}
+{"text": "já ouvi essa faixa umas dez vezes seguidas, viciei", "label": "NDD"}
+{"text": "coloca pra tocar de novo que eu não enjoo", "label": "NDD"}
+{"text": "minha playlist tá só essa música em loop há horas", "label": "NDD"}
+{"text": "vou botar no repeat e deixar rolando enquanto trabalho", "label": "NDD"}
+{"text": "não consigo parar de ouvir esse refrão, vicia demais", "label": "NDD"}
+{"text": "deixa ela repetindo que depois eu troco", "label": "NDD"}
+{"text": "esse single novo não sai do repeat no meu fone", "label": "NDD"}
+{"text": "a configuração do mouse tá toda bugada, não tá respondendo direito", "label": "NDD"}
+{"text": "você já viu a tela do mouse? parece que tem um ícone novo lá", "label": "NDD"}
+{"text": "ontem eu abri as configurações do mouse pra mudar a velocidade do cursor", "label": "NDD"}
+{"text": "o mouse aqui tá com botão direito travado, tem que ir nas configurações pra resetar", "label": "NDD"}
+{"text": "não consigo ajustar o clique duplo no mouse, as configurações não estão salvando", "label": "NDD"}
+{"text": "o ponteiro do mouse tá muito lento, tem que aumentar a velocidade nas configurações", "label": "NDD"}
+{"text": "eu tô tentando configurar o mouse aqui mas não acho a opção de rolagem", "label": "NDD"}
+{"text": "tem um ícone estranho aparecendo quando abro as configurações do mouse", "label": "NDD"}
+{"text": "preciso transformar essa nota em tarefa antes que eu esqueça", "label": "NDD"}
+{"text": "a reunião rendeu tanto que vou transformar a nota em tarefa pro trello", "label": "NDD"}
+{"text": "deixa eu ver se consigo transformar a nota em tarefa direto pelo app", "label": "NDD"}
+{"text": "essa nota tá grande demais, melhor transformar em tarefa e dividir em subtarefas", "label": "NDD"}
+{"text": "lembrei que tinha que transformar a nota da call em tarefa pro time", "label": "NDD"}
+{"text": "vou transformar essa nota em tarefa agora senão vira bagunça no final da sprint", "label": "NDD"}
+{"text": "o atalho pra transformar nota em tarefa quebrou de novo depois da atualização", "label": "NDD"}
+{"text": "já transformei a nota em tarefa e mandei pro quadro do kanban", "label": "NDD"}
+{"text": "se possível, me manda esse link pelo navegador do celular, não pelo app", "label": "NDD"}
+{"text": "eu tentei abrir o navegador, mas ele ficou carregando uma eternidade", "label": "NDD"}
+{"text": "esse navegador novo abriu várias abas e agora não sei qual era o site", "label": "NDD"}
+{"text": "ontem o navegador travou justo quando eu tava pagando a conta", "label": "NDD"}
+{"text": "se possível, vê se esse site abre no navegador dele também", "label": "NDD"}
+{"text": "o navegador do trabalho vive fechando sozinho, que coisa chata", "label": "NDD"}
+{"text": "minha mãe chamou qualquer internet de navegador, eu nem corrigi", "label": "NDD"}
+{"text": "quando eu cliquei no atalho, abriu o navegador por engano", "label": "NDD"}
+{"text": "Eu tentei corrigir as vulnerabilidades automáticamente, mas o sistema travou", "label": "NDD"}
+{"text": "A atualização de segurança já corrigiu as vulnerabilidades automáticas, graças a Deus", "label": "NDD"}
+{"text": "Ninguém tem conseguido corrigir as vulnerabilidades automaticamente sem reiniciar", "label": "NDD"}
+{"text": "Quando o script roda, ele corrige as vulnerabilidades automáticas e tudo volta ao normal", "label": "NDD"}
+{"text": "Hoje eu vi o relatório dizendo que as vulnerabilidades automáticas foram corrigidas, mas ainda há pendências", "label": "NDD"}
+{"text": "O time de TI acabou de corrigir as vulnerabilidades automáticas, alívio total", "label": "NDD"}
+{"text": "Se a gente não corrigir as vulnerabilidades automaticamente, o hacker vai ter campo aberto", "label": "NDD"}
+{"text": "Passo a tarde revisando o código para corrigir as vulnerabilidades automaticamente", "label": "NDD"}
+{"text": "os tópicos principais daquele texto eram bem interessantes, viu", "label": "NDD"}
+{"text": "eu li o texto e os pontos mais importantes são três", "label": "NDD"}
+{"text": "a discussão lá no grupo foi sobre os temas principais do artigo", "label": "NDD"}
+{"text": "meu professor pediu pra destacar os tópicos mais relevantes do texto", "label": "NDD"}
+{"text": "aquele texto longo tem muitos assuntos, mas o principal é outro", "label": "NDD"}
+{"text": "a gente precisa conversar sobre os pontos centrais daquele material", "label": "NDD"}
+{"text": "os tópicos do texto me lembraram aquela discussão que a gente teve", "label": "NDD"}
+{"text": "eu destaquei os três principais tópicos do texto pra facilitar a leitura", "label": "NDD"}
+{"text": "Esse vídeo tá muito melhor com o áudio saindo pelo fone de ouvido.", "label": "NDD"}
+{"text": "Eu estava tentando ouvir o podcast, mas o som ainda vinha no alto-falante.", "label": "NDD"}
+{"text": "Quando a chamada começa, meu áudio sempre vai pro fone errado.", "label": "NDD"}
+{"text": "Na reunião de ontem, eu percebi que o áudio não estava no fone.", "label": "NDD"}
+{"text": "Esse filme fica melhor quando o áudio vai todo pro fone de ouvido.", "label": "NDD"}
+{"text": "Minha pessoa deixou o áudio do jogo no computador, aí o fone não pegou.", "label": "NDD"}
+{"text": "Eu troquei o áudio pro fone sem querer e quase não ouvi a música.", "label": "NDD"}
+{"text": "O áudio do vídeo travou no fone, mas estava perfeito no computador.", "label": "NDD"}
+{"text": "esse ponto de âncora da AR tá deslocado no canto", "label": "NDD"}
+{"text": "preciso ajustar o ponto de âncora antes de gravar", "label": "NDD"}
+{"text": "o ponto de âncora da AR não fixa no chão direito", "label": "NDD"}
+{"text": "alguém sabe travar o ponto de âncora na cena?", "label": "NDD"}
+{"text": "esse modelo perde o ponto de âncora quando gira", "label": "NDD"}
+{"text": "vou testar outro ponto de âncora pro objeto 3D", "label": "NDD"}
+{"text": "o ponto de âncora da AR flutuou quando mudei de iluminação", "label": "NDD"}
+{"text": "configurar ponto de âncora manual dá menos dor de cabeça", "label": "NDD"}
+{"text": "Eu precisei contar as palavras do relatório para ver se cabia no limite.", "label": "NDD"}
+{"text": "Você já contou quantas palavras tem esse artigo?", "label": "NDD"}
+{"text": "Estou tentando ver se o resumo tem menos de duzentas palavras.", "label": "NDD"}
+{"text": "O professor pediu para contar as palavras do trabalho antes de entregar.", "label": "NDD"}
+{"text": "Acabei de contar as palavras do e-mail e ficou bem curto.", "label": "NDD"}
+{"text": "Não sei quantas palavras tem esse capítulo, vou verificar no word.", "label": "NDD"}
+{"text": "Ele ficou preocupado porque o texto tinha mais palavras do que o permitido.", "label": "NDD"}
+{"text": "Quando eu reviso, sempre conto as palavras para manter o padrão.", "label": "NDD"}
+{"text": "Achei estranho o ambiente virtual do projeto estar desligado depois de toda aquela instalação.", "label": "NDD"}
+{"text": "Se eu não iniciar o ambiente virtual do projeto hoje, o teste vai atrasar de novo.", "label": "NDD"}
+{"text": "O ambiente virtual do projeto fica melhor quando já vem pronto antes da reunião.", "label": "NDD"}
+{"text": "Tava falando que o ambiente virtual do projeto ainda precisa de uns pacotes a mais.", "label": "NDD"}
+{"text": "Quem abriu o projeto esqueceu de ativar o ambiente virtual, mas ninguém percebeu.", "label": "NDD"}
+{"text": "Não adianta abrir o código se o ambiente virtual do projeto não estiver configurado.", "label": "NDD"}
+{"text": "O ambiente virtual do projeto demorou, mas pelo menos agora roda direito.", "label": "NDD"}
+{"text": "Eu disse que era melhor iniciar o ambiente virtual do projeto antes de mostrar o demo.", "label": "NDD"}
+{"text": "preciso filtrar esses dados antes de mandar pro relatório", "label": "NDD"}
+{"text": "ela filtrou os dados do último mês e achou uma incrível tendência", "label": "NDD"}
+{"text": "o sistema de filtragem tá lento hoje, tá demorando pra carregar", "label": "NDD"}
+{"text": "você filtrou os dados antigos ou quer incluir tudo?", "label": "NDD"}
+{"text": "comentaram que o algoritmo de filtragem tá bem impreciso ultimamente", "label": "NDD"}
+{"text": "vou filtrar os dados manualmente pq o programa travou de novo", "label": "NDD"}
+{"text": "ele falou que ia filtrar os dados mas esqueceu de salvar", "label": "NDD"}
+{"text": "a planilha tá cheia de informações, dá pra filtrar só o essencial?", "label": "NDD"}
+{"text": "não consigo achar o modo de estrutura dos slides nesse programa", "label": "NDD"}
+{"text": "a visão de estrutura dos slides bagunçou tudo aqui", "label": "NDD"}
+{"text": "quando você muda pra visão de estrutura, os slides aparecem todos na esquerda", "label": "NDD"}
+{"text": "essa visão de estrutura dos slides ajuda a reorganizar a apresentação", "label": "NDD"}
+{"text": "eu cliquei na visão de estrutura dos slides sem querer no meio da reunião", "label": "NDD"}
+{"text": "a estrutura dos slides tá com uns tópicos desalinhados, olha isso", "label": "NDD"}
+{"text": "parece que na visão de estrutura tem um slide que ficou fora da ordem", "label": "NDD"}
+{"text": "o apresentador usou a visão de estrutura dos slides pra mostrar o roteiro", "label": "NDD"}
+{"text": "Ainda não adicionei os documentos ao índice, ando tão atrasada...", "label": "NDD"}
+{"text": "O sistema pede pra adicionar os documentos ao índice toda semana.", "label": "NDD"}
+{"text": "Se você adicionar os documentos ao índice agora, fica mais fácil achar depois.", "label": "NDD"}
+{"text": "Eu passei a tarde inteira adicionando os documentos ao índice e nem terminei.", "label": "NDD"}
+{"text": "Será que alguém já adicionou os documentos ao índice? Preciso conferir.", "label": "NDD"}
+{"text": "Adicionar esses documentos ao índice vai levar um tempão.", "label": "NDD"}
+{"text": "Achei que você já tinha adicionado os documentos ao índice, mas tudo bem.", "label": "NDD"}
+{"text": "Depois que adicionam os documentos ao índice, a busca fica muito melhor.", "label": "NDD"}
+{"text": "Eu já ia configurar o backup fora do local, mas o pessoal da filial não mandou os dados ainda.", "label": "NDD"}
+{"text": "O backup fora do local salvou nossa pele naquele incêndio, imagina se estivesse tudo no mesmo prédio.", "label": "NDD"}
+{"text": "Ele vive reclamando que o backup externo que a gente faz é lento, mas nunca ofereceu uma alternativa melhor.", "label": "NDD"}
+{"text": "Se você tivesse configurado o backup fora do local, não teria perdido o relatório do semestre.", "label": "NDD"}
+{"text": "O chefe pediu pra revisar a política de backup fora do local antes da auditoria.", "label": "NDD"}
+{"text": "Meu medo é depender só do backup local; se roubarem o notebook, adeus tudo.", "label": "NDD"}
+{"text": "A gente precisa conversar sério sobre esse negócio de backup remoto, porque a pasta mal sincroniza.", "label": "NDD"}
+{"text": "Ele falou que o backup fora do local é automático, mas eu duvido que tenha sido testado alguma vez.", "label": "NDD"}
+{"text": "esqueci a senha do cofre e agora não consigo ver minhas outras senhas", "label": "NDD"}
+{"text": "o pessoal do trabalho usa um gerenciador de senhas, eu ainda anoto tudo no caderno", "label": "NDD"}
+{"text": "aquele aplicativo guarda minhas senhas num cofre digital, achei muito prático", "label": "NDD"}
+{"text": "meu chefe pediu pra eu trocar a senha do cofre hoje, mas tô enrolando", "label": "NDD"}
+{"text": "será que é seguro deixar todas as senhas no gerenciador do navegador?", "label": "NDD"}
+{"text": "a senha mestra do cofre é a única que eu decorei, as outras ficam todas lá", "label": "NDD"}
+{"text": "vi um tutorial de como organizar o cofre de senhas, mas achei complicado", "label": "NDD"}
+{"text": "quando eu mudo de celular, o gerenciador de senhas sincroniza tudo na nuvem", "label": "NDD"}
+{"text": "a imagem da câmera do meu notebook tá tão escura que a gente mal aparece na reunião", "label": "NDD"}
+{"text": "ontem eu tava mexendo nas configurações da câmera e o brilho tava lá em cima, por isso queimou a foto", "label": "NDD"}
+{"text": "esse brilho da imagem da câmera aqui tá estranho, fica tudo muito branco", "label": "NDD"}
+{"text": "você viu que a câmera do celular fica com a imagem clara demais quando o sol bate?", "label": "NDD"}
+{"text": "a imagem da câmera daqui de casa tá tão apagada que nem dá pra ver quem tá no portão", "label": "NDD"}
+{"text": "eu acho que o brilho da câmera do computador mudou sozinho depois daquela atualização", "label": "NDD"}
+{"text": "será que o brilho da imagem da câmera tá igual ao da televisão? pra mim parece que tá fraco", "label": "NDD"}
+{"text": "você já rodou o linter nesse código? tá cheio de aviso", "label": "NDD"}
+{"text": "o linter acusou um erro bobo de ponto e vírgula de novo", "label": "NDD"}
+{"text": "esquece, eu rodei o linter aqui e não passou", "label": "NDD"}
+{"text": "será que o linter vai reclamar dessa linha aí?", "label": "NDD"}
+{"text": "vou rodar o linter antes de subir o commit, né", "label": "NDD"}
+{"text": "o linter tá reclamando de espaçamento, que ódio", "label": "NDD"}
+{"text": "quando você rodar o linter, me avisa o resultado", "label": "NDD"}
+{"text": "a última vez que rodei o linter deu conflito com a formatação", "label": "NDD"}
+{"text": "Meu contador de degraus vive errando a contagem quando ando devagar.", "label": "NDD"}
+{"text": "A precisão do pedômetro dele é péssima, marca passo que não dei.", "label": "NDD"}
+{"text": "Você reparou que o contador de passos do celular desliga quando guardo no bolso?", "label": "NDD"}
+{"text": "Aquela pulseira conta degrau a mais quando gesticulo conversando.", "label": "NDD"}
+{"text": "O aplicativo de caminhada tá com uma margem de erro enorme hoje.", "label": "NDD"}
+{"text": "Eu acho que o sensor de passos do meu relógio não foi calibrado direito.", "label": "NDD"}
+{"text": "Andei a distância inteira e o contador marcou só a metade dos degraus.", "label": "NDD"}
+{"text": "Pro meu irmão, o contador de passos é só enfeite, de tão impreciso.", "label": "NDD"}
+{"text": "Eu filtrei as linhas da tabela ontem e ficou muito mais fácil de analisar.", "label": "NDD"}
+{"text": "Será que ele já aplicou o filtro nas linhas da planilha?", "label": "NDD"}
+{"text": "Essa tabela tá com tanta linha que eu nem sei como filtrar direito.", "label": "NDD"}
+{"text": "Quando você filtra as linhas, some um monte de informação que a gente nem usa.", "label": "NDD"}
+{"text": "Eu passei a tarde tentando filtrar as linhas daquela tabela enorme.", "label": "NDD"}
+{"text": "O filtro que a gente usou na reunião selecionou só as linhas que interessavam.", "label": "NDD"}
+{"text": "Se a gente filtrar as linhas por mês, o relatório fica bem melhor.", "label": "NDD"}
+{"text": "Eu acho que o filtro da tabela bagunçou as linhas que eu tinha organizado.", "label": "NDD"}
+{"text": "Eu não consegui configurar o desafio diário de código hoje, estava sem tempo.", "label": "NDD"}
+{"text": "Meu amigo falou que o desafio diário de código é ótimo pra praticar lógica.", "label": "NDD"}
+{"text": "Você viu que o desafio diário de código de hoje envolve ordenação?", "label": "NDD"}
+{"text": "Eu esqueci de configurar o desafio diário de código na plataforma, agora perdi o progresso.", "label": "NDD"}
+{"text": "O desafio diário de código tá cada dia mais difícil, mas a gente aprende bastante.", "label": "NDD"}
+{"text": "Será que vale a pena pagar pra ter mais desafios diários de código?", "label": "NDD"}
+{"text": "Eu tô adorando o desafio diário de código, apesar de travar no começo.", "label": "NDD"}
+{"text": "Quando eu configuro o desafio diário de código, costumo fazer de manhã.", "label": "NDD"}
+{"text": "aquele painel não tá mostrando as contas do sistema direito", "label": "NDD"}
+{"text": "você chegou a ver as contas do sistema naquele painel?", "label": "NDD"}
+{"text": "as contas do sistema tão todas desorganizadas no painel, né?", "label": "NDD"}
+{"text": "eu mostrei as contas do sistema no painel e ninguém comentou nada", "label": "NDD"}
+{"text": "o pessoal reclamou que o painel ficou lento pra carregar as contas do sistema", "label": "NDD"}
+{"text": "será que o painel atualizou as contas do sistema desde ontem?", "label": "NDD"}
+{"text": "o painel aqui mostra umas contas do sistema que eu não reconheço", "label": "NDD"}
+{"text": "a gente precisa conferir as contas do sistema antes de publicar o painel", "label": "NDD"}
+{"text": "essa lista tá toda bagunçada, se a gente ordenasse por data ficava bem mais fácil de ver.", "label": "NDD"}
+{"text": "eu passo o fim de semana ordenando as listas por data, senão perco os prazos.", "label": "NDD"}
+{"text": "a lista de aniversários aqui de casa a gente mantém ordenada por data, senão esquece.", "label": "NDD"}
+{"text": "será que ele já ordenou a lista por data? ele falou que fazia isso hoje.", "label": "NDD"}
+{"text": "não precisa correr, depois a gente ordena a lista por data e te envio.", "label": "NDD"}
+{"text": "minha lista de compromissos tá tão grande, mas eu gosto de deixar tudo em ordem de data.", "label": "NDD"}
+{"text": "aqui no trabalho, quem cuida da lista costuma ordenar por data, mas hoje não tô com paciência.", "label": "NDD"}
+{"text": "eu conferi aqui e a lista não está ordenada por data, tem umas coisas de março no meio.", "label": "NDD"}
+{"text": "o monitor de tráfego ali da avenida tá mostrando um engarrafamento enorme", "label": "NDD"}
+{"text": "vi no monitor de tráfego que a ponte tá lenta por causa de um acidente", "label": "NDD"}
+{"text": "o pessoal da sala ficou olhando o monitor de tráfego pra decidir a rota", "label": "NDD"}
+{"text": "o monitor de tráfego da portaria tava com imagem tremendo hoje cedo", "label": "NDD"}
+{"text": "o monitor de tráfego atualiza tão rápido que parece tempo real", "label": "NDD"}
+{"text": "alguém reparou que o monitor de tráfego tá com um risco vermelho na tela?", "label": "NDD"}
+{"text": "o monitor de tráfego mostrou a via expressa livre só depois das nove", "label": "NDD"}
+{"text": "aquela imagem do monitor de tráfego parecia um mapa colorido de tão cheio", "label": "NDD"}
+{"text": "nossa, o app do banco tá pedindo atualização toda hora", "label": "NDD"}
+{"text": "ontem tentei abrir o aplicativo do banco e deu aquele erro chato", "label": "NDD"}
+{"text": "o aplicativo do banco caiu bem na hora que eu ia fazer o pix", "label": "NDD"}
+{"text": "meu celular tá demorando muito pra abrir o app do banco hoje", "label": "NDD"}
+{"text": "aquele aplicativo de banco é muito travado, não aguento mais", "label": "NDD"}
+{"text": "preciso lembrar de atualizar o app do banco antes de viajar", "label": "NDD"}
+{"text": "o banco notificou que o aplicativo vai sair do ar de madrugada", "label": "NDD"}
+{"text": "vi um vídeo ensinando a acessar a conta pelo banco sem digitar a senha", "label": "NDD"}
+{"text": "Eu precisava exportar meu histórico de batimentos pra mostrar pro cardiologista, mas não achei onde faz isso.", "label": "NDD"}
+{"text": "O treinador pediu pra eu mandar o histórico de batimentos da semana, será que ele quer ver meu desempenho?", "label": "NDD"}
+{"text": "Reparei que meu histórico de batimentos ontem à noite tá estranho, acho que o relógio desregulou.", "label": "NDD"}
+{"text": "Quando eu exporto o histórico de batimentos, o arquivo vem enorme cheio de gráfico complicado.", "label": "NDD"}
+{"text": "Essa atualização do app finalmente deixou o histórico de batimentos mais fácil de ler, tô gostando.", "label": "NDD"}
+{"text": "Você viu como o histórico de batimentos dela mostrou um pico durante a corrida? Impressionante.", "label": "NDD"}
+{"text": "Meu médico vive pedindo o histórico de batimentos, mas eu sempre esqueço de exportar antes da consulta.", "label": "NDD"}
+{"text": "Se a gente fosse exportar o histórico de batimentos de todo mundo, ia travar a planilha no meio do relatório.", "label": "NDD"}
+{"text": "ontem eu tentei espelhar a tela no projetor e o cabo HDMI estava com problema", "label": "NDD"}
+{"text": "toda vez que vou apresentar, o projetor atrasa um pouco a imagem da tela", "label": "NDD"}
+{"text": "não sei por que o pessoal insiste em usar o telão, a imagem fica esticada", "label": "NDD"}
+{"text": "meu notebook só consegue exibir no projetor depois que reinicio o driver de vídeo", "label": "NDD"}
+{"text": "a reunião começou e ninguém conseguiu ver a apresentação porque o projetor estava com a imagem preta", "label": "NDD"}
+{"text": "ele clicou em estender a tela em vez de duplicar e a plateia viu a área de trabalho", "label": "NDD"}
+{"text": "será que o projetor da sala tem resolução pra tela do teu notebook?", "label": "NDD"}
+{"text": "o aluno esqueceu de desligar o espelhamento e a foto do cachorro apareceu no telão", "label": "NDD"}
+{"text": "nossa, o volume desse vídeo tá tão baixo que não dá pra ouvir nada", "label": "NDD"}
+{"text": "o volume do vídeo que ela mandou ontem tava baixo demais pro meu gosto", "label": "NDD"}
+{"text": "se o volume do vídeo ficar estourando, a gente perde o áudio na hora", "label": "NDD"}
+{"text": "eu percebi que o volume do vídeo muda sozinho no meio da gravação", "label": "NDD"}
+{"text": "aquele vídeo tava com o volume alto demais, acordei a vizinhaça toda", "label": "NDD"}
+{"text": "o pessoal reclamou que o volume do vídeo variava demais na reunião online", "label": "NDD"}
+{"text": "será que dá pra aumentar o volume do vídeo agora? ele tá quase mudo", "label": "NDD"}
+{"text": "sempre que eu vou assistir, o volume do vídeo tá baixo e eu preciso me aproximar", "label": "NDD"}
+{"text": "eu fui testar a conexão com o site e demorou tanto que desisti", "label": "NDD"}
+{"text": "aquele site caiu? a minha conexão tá normal aqui em casa", "label": "NDD"}
+{"text": "não consigo acessar o site, mas a internet tá funcionando", "label": "NDD"}
+{"text": "a conexão com o site caiu no meio da reunião, que raiva", "label": "NDD"}
+{"text": "o técnico falou pra reiniciar o modem quando o site não abrir", "label": "NDD"}
+{"text": "será que o problema é no site ou na minha conexão?", "label": "NDD"}
+{"text": "tentei entrar no site uma hora dessas e a conexão falhou", "label": "NDD"}
+{"text": "minha internet caiu quando eu ia testar aquele site de vídeo", "label": "NDD"}
+{"text": "Andei olhando aqui e as pastas de vídeo ocupam um espaço danado no computador.", "label": "NDD"}
+{"text": "Cada pasta dessa de instalação tem uns arquivos enormes, por isso o disco tá cheio.", "label": "NDD"}
+{"text": "Você viu quanto espaço aquelas pastas de download tão ocupando? Tá absurdo.", "label": "NDD"}
+{"text": "Minha pasta de fotos ficou tão pesada que até travou o Explorer quando tentei abrir.", "label": "NDD"}
+{"text": "Eu ia limpar a máquina, mas fiquei com medo de mexer nas pastas de trabalho sem saber o que apagar.", "label": "NDD"}
+{"text": "Achei uma pasta antiga com vários backups duplicados, dá pra liberar bastante espaço apagando isso.", "label": "NDD"}
+{"text": "No meu notebook, as pastas de série ocupam quase tudo; por isso não sobra espaço pra mais nada.", "label": "NDD"}
+{"text": "Pelo que eu vi, a pasta de jogos é a maior do disco, deve ter uns trezentos gigas.", "label": "NDD"}
+{"text": "Eu não teria tirado aquela música da playlist se você tivesse falado que gostava dela.", "label": "NDD"}
+{"text": "A gente precisa parar de ficar removendo música de playlist alheia, né?", "label": "NDD"}
+{"text": "Lembra que você removeu aquela canção daquela pasta? Eu achei triste.", "label": "NDD"}
+{"text": "Toda vez que alguém remove uma música da playlist, o clima do churrasco muda.", "label": "NDD"}
+{"text": "Minha irmã passou a tarde inteira limpando a playlist e tirou umas dez músicas.", "label": "NDD"}
+{"text": "Se você for remover uma música da playlist, avisa antes pra eu ouvir de novo.", "label": "NDD"}
+{"text": "Ontem fui mexer na playlist e sem querer apaguei uma música que eu amava.", "label": "NDD"}
+{"text": "A playlist tinha umas músicas repetidas, então eu fui removendo até ficar só as boas.", "label": "NDD"}
+{"text": "nossa, o compartilhamento de tela da chamada ficou todo bagunçado, você viu?", "label": "NDD"}
+{"text": "eu sempre esqueço como faz pra compartilhar a tela na chamada do trabalho", "label": "NDD"}
+{"text": "aí o Pedro ativou o compartilhamento de tela sem querer na reunião", "label": "NDD"}
+{"text": "o compartilhamento de tela da chamada tava mostrando uma aba errada", "label": "NDD"}
+{"text": "será que dá pra ver meu slide se eu colocar o compartilhamento de tela na chamada?", "label": "NDD"}
+{"text": "no final da chamada ela pediu pra eu compartilhar a tela, mas eu travei", "label": "NDD"}
+{"text": "o compartilhamento de tela da chamada consumiu toda a internet aqui", "label": "NDD"}
+{"text": "ficou ótimo o compartilhamento de tela que você fez na chamada de ontem", "label": "NDD"}
+{"text": "Essa imagem que você postou dá pra descrever até o cheiro do bolo.", "label": "NDD"}
+{"text": "Me impressiona como ele consegue descrever cada imagem tão rápido.", "label": "NDD"}
+{"text": "Eu tentei descrever a imagem do filme mas não achei as palavras certas.", "label": "NDD"}
+{"text": "Na aula de arte, a professora pediu pra descrever aquela imagem antiga.", "label": "NDD"}
+{"text": "A legenda que ela escreveu descreve a imagem melhor que qualquer texto.", "label": "NDD"}
+{"text": "Você viu a cena? Difícil descrever a imagem depois daquele susto.", "label": "NDD"}
+{"text": "Ele descreveu a imagem do mapa com tanta precisão que a gente achou o caminho.", "label": "NDD"}
+{"text": "A gente ficou descrevendo a imagem do álbum de férias até tarde.", "label": "NDD"}
+{"text": "Eu ativei o modo foco ontem à noite pra terminar o relatório, mas mesmo assim me distraí.", "label": "NDD"}
+{"text": "Você viu que ele pôs o celular no modo foco? Ele tava muito concentrado.", "label": "NDD"}
+{"text": "Quando eu estudo em casa, esqueço de ligar o modo foco e aí atrapalha tudo.", "label": "NDD"}
+{"text": "O modo foco do notebook dele vive ativado, por isso ele não responde as mensagens na hora.", "label": "NDD"}
+{"text": "Será que ela consegue estudar sem colocar o modo foco? Eu não consigo.", "label": "NDD"}
+{"text": "Hoje eu tentei estudar com aquele modo foco, mas o pessoal aqui em casa não colabora.", "label": "NDD"}
+{"text": "Meu irmão fica falando que o modo foco é essencial, mas eu acho que é só desculpa.", "label": "NDD"}
+{"text": "A gente devia combinar de ativar o modo foco sempre que for estudar junto, né? Tipo, sem celular.", "label": "NDD"}
+{"text": "eu coloco marcador de capítulo em todo vídeo que vou rever", "label": "NDD"}
+{"text": "o vídeo da aula tava tão longo que eu fiquei com vontade de marcar cada capítulo", "label": "NDD"}
+{"text": "seria mais fácil se desse pra adicionar um marcador nesse trecho do vídeo", "label": "NDD"}
+{"text": "você viu que ela marcou o capítulo do vídeo bem na hora daquele susto?", "label": "NDD"}
+{"text": "eu sempre esqueço de pôr marcador de capítulo quando edito os vídeos", "label": "NDD"}
+{"text": "esse vídeo tem uns capítulos tão mal marcados que a gente se perde", "label": "NDD"}
+{"text": "na hora da reunião gravada, eu anotei o tempo exato pra depois adicionar o marcador", "label": "NDD"}
+{"text": "o marcador de capítulo que ele adicionou no vídeo ficou perfeito pro resumo", "label": "NDD"}
+{"text": "eu fechei o jogo aqui sem querer e perdi a partida", "label": "NDD"}
+{"text": "aquele jogo ficou aberto o dia inteiro na casa do meu irmão", "label": "NDD"}
+{"text": "se você fechar o jogo agora vai perder o progresso", "label": "NDD"}
+{"text": "nossa, esqueci o jogo aberto no computador lá de casa", "label": "NDD"}
+{"text": "ele fechou o jogo na hora que a gente ia jogar", "label": "NDD"}
+{"text": "o jogo tá aberto ainda, mas a gente pode fechar depois", "label": "NDD"}
+{"text": "você viu que eu fechei o jogo antes de salvar? que raiva", "label": "NDD"}
+{"text": "meu filho deixa o jogo aberto e o computador trava", "label": "NDD"}
+{"text": "no meu notebook, o perfil de energia tava no equilibrado e o jogo travava", "label": "NDD"}
+{"text": "você chegou a ver aquele tutorial de configurar a CPU pra renderização?", "label": "NDD"}
+{"text": "o processador aqui tá tão lento porque o plano de energia tá no econômico", "label": "NDD"}
+{"text": "depois que mudei o desempenho do processador pro modo máximo, o note até esquenta mais", "label": "NDD"}
+{"text": "eu não entendo nada dessas opções de energia do computador, só clico em recomendar", "label": "NDD"}
+{"text": "a bateria do meu PC descarrega rápido, aí eu reduzi o consumo da CPU e melhorou", "label": "NDD"}
+{"text": "no trabalho, o TI configurou o perfil de energia de todos por causa do calor", "label": "NDD"}
+{"text": "será que usar o modo desempenho desgasta o processador? fiquei com essa dúvida", "label": "NDD"}
+{"text": "vive aparecendo aquele protetor de tela no computador da sala", "label": "NDD"}
+{"text": "o descanso de tela do notebook fica ligando toda hora atrapalhando", "label": "NDD"}
+{"text": "toda hora a tela escurece enquanto eu leio um artigo, que saco", "label": "NDD"}
+{"text": "eu desliguei o protetor de tela daqui porque não aguentava mais esperar", "label": "NDD"}
+{"text": "aquele monitor antigo tem um descanso de tela cheio de bolhas", "label": "NDD"}
+{"text": "minha tela fica com umas imagens passando quando fico longe do teclado", "label": "NDD"}
+{"text": "ontem configurei o plano de fundo e o protetor de tela sumiu sozinho", "label": "NDD"}
+{"text": "o computador aqui vive apagando a tela do nada, mesmo comigo mexendo", "label": "NDD"}
+{"text": "o calendário do sistema da minha máquina tá mostrando uma data errada de novo", "label": "NDD"}
+{"text": "você lembrou de ajustar o calendário do sistema depois que a gente mudou de sala?", "label": "NDD"}
+{"text": "esse bug do calendário do sistema já me fez perder uma reunião virtual", "label": "NDD"}
+{"text": "eu acho que o calendário do sistema desregulou com a viagem, né?", "label": "NDD"}
+{"text": "o pessoal da TI passou o dia inteiro acertando o calendário do sistema", "label": "NDD"}
+{"text": "se o calendário do sistema estivesse certo, o lembrete teria disparado ontem", "label": "NDD"}
+{"text": "não confio naquele ajuste automático do calendário do sistema, sempre atrasa", "label": "NDD"}
+{"text": "o calendário do sistema aqui está um mês adiantado, imagina a bagunça", "label": "NDD"}
+{"text": "pra mim, essa escala de avaliação ficou boa, mas eu mudaria o número de pontos", "label": "NDD"}
+{"text": "a gente precisa decidir a escala de avaliação antes de começar a aplicar o questionário", "label": "NDD"}
+{"text": "o professor pediu pra gente criar uma escala de avaliação pros seminários, será que cinco níveis são suficientes?", "label": "NDD"}
+{"text": "essa escala de avaliação é confusa, tem opção demais e o cliente não sabe o que escolher", "label": "NDD"}
+{"text": "na reunião, a gente passou vinte minutos discutindo a escala de avaliação do novo formulário", "label": "NDD"}
+{"text": "se a escala de avaliação for de zero a dez, o que a gente considera seis? aí complica", "label": "NDD"}
+{"text": "eu acho que a escala de avaliação deveria ter descrições em cada nível, fica mais objetiva", "label": "NDD"}
+{"text": "a configuração da escala de avaliação que a gente fez ontem ficou salva? preciso revisar os critérios", "label": "NDD"}
+{"text": "Eu odeio quando site fica pedindo pra liberar notificação; bloqueei todos.", "label": "NDD"}
+{"text": "O bloqueio de notificação desse site sumiu depois da atualização, né?", "label": "NDD"}
+{"text": "Você reparou que as notificações do site voltaram? Achei que tinha configurado.", "label": "NDD"}
+{"text": "Esse site tem umas notificações chatas, mas eu desativo na hora.", "label": "NDD"}
+{"text": "Meu navegador vive perguntando se pode notificar; tem que bloquear em todo lugar.", "label": "NDD"}
+{"text": "A gente configurou o bloqueio de notificação ali na semana passada, mas hoje aparece de novo.", "label": "NDD"}
+{"text": "Cada site que eu abro quer ativar notificação; cansa, né?", "label": "NDD"}
+{"text": "Será que dá pra bloquear notificação de site no navegador do celular? Nunca mexi nisso.", "label": "NDD"}
+{"text": "Eu fui olhar o gerenciador de tarefas e tava cheio de coisa duplicada.", "label": "NDD"}
+{"text": "Você já reparou quantas tarefas duplicadas aparecem no gerenciador?", "label": "NDD"}
+{"text": "O gerenciador de tarefas aqui tá mostrando umas duplicatas sem sentido.", "label": "NDD"}
+{"text": "Toda vez que abro o gerenciador, os mesmos itens aparecem duas vezes.", "label": "NDD"}
+{"text": "Essa lista de tarefas duplicadas no gerenciador tá me deixando confuso.", "label": "NDD"}
+{"text": "Achei umas duplicações no gerenciador de tarefas, dá até raiva.", "label": "NDD"}
+{"text": "O povo não aprende, vive duplicando tarefa no gerenciador.", "label": "NDD"}
+{"text": "Depois eu te mostro como o gerenciador de tarefas duplica os itens sozinho.", "label": "NDD"}
+{"text": "Tem cada processo maluco rodando aqui que eu nem sei o que é.", "label": "NDD"}
+{"text": "Meu computador tá tão lento que eu abri o gerenciador de tarefas e vi um monte de processo em execução.", "label": "NDD"}
+{"text": "O que será que é aquele processo que fica rodando em segundo plano?", "label": "NDD"}
+{"text": "Nossa, quantos processos em execução, e olha que eu nem abri nada.", "label": "NDD"}
+{"text": "O pessoal da TI falou pra sempre olhar quais processos estão rodando antes de instalar qualquer coisa.", "label": "NDD"}
+{"text": "Eu tava vendo os processos aqui e tinha um que consumia 100% do processador.", "label": "NDD"}
+{"text": "Será que é normal esse tanto de processo aberto sem eu ter clicado em nada?", "label": "NDD"}
+{"text": "Ele disse que o computador dele tava com problema, aí fechou todos os processos e resolveu.", "label": "NDD"}
+{"text": "Eu acho que a voz do narrador desse documentário é perfeita.", "label": "NDD"}
+{"text": "Você reparou como a voz do narrador muda de tom no final?", "label": "NDD"}
+{"text": "Ontem eu tava pensando em como escolher bem a voz do narrador pros vídeos.", "label": "NDD"}
+{"text": "A voz do narrador do jogo é muito melhor que a do filme.", "label": "NDD"}
+{"text": "Se eu fosse editar, selecionava outra voz pro narrador, essa tá cansada.", "label": "NDD"}
+{"text": "O pessoal reclamou da voz do narrador, acharam sem emoção.", "label": "NDD"}
+{"text": "Você viu aquele teste de voz? O narrador pareceu mais solto dessa vez.", "label": "NDD"}
+{"text": "Minha avó até que gosta da voz do narrador, mas ela acha que fala rápido demais.", "label": "NDD"}
+{"text": "Vou precisar adicionar mais um destinatário nesse e-mail antes de mandar.", "label": "NDD"}
+{"text": "Acho que ela adicionou o destinatário errado na lista de transmissão, por isso ninguém recebeu.", "label": "NDD"}
+{"text": "Eu sempre esqueço de incluir o João como destinatário quando mando a lista.", "label": "NDD"}
+{"text": "O destinatário dessa mensagem apareceu duas vezes, acho que foi sem querer.", "label": "NDD"}
+{"text": "Já reparou que o campo de destinatário fica logo ali em cima? Eu demoro pra achar toda vez.", "label": "NDD"}
+{"text": "A gente adicionou tanta gente no e-mail que o destinatário ficou tipo umas vinte pessoas.", "label": "NDD"}
+{"text": "Eu tava vendo aqui e o destinatário do recibo ficou com o nome da empresa errada.", "label": "NDD"}
+{"text": "Se fosse eu, adicionava o destinatário de novo, mas agora conferia o endereço antes.", "label": "NDD"}
+{"text": "minha irmã vive com dor no pescoço e o médico mandou ela alongar antes de dormir", "label": "NDD"}
+{"text": "eu precisei parar de fazer aquele alongamento de pescoço no meio do expediente porque o pessoal achou estranho", "label": "NDD"}
+{"text": "dizem que alongar o pescoço ajuda muito pra quem fica olhando celular o dia inteiro", "label": "NDD"}
+{"text": "aquele exercício de olhar pro lado e segurar por trinta segundos destrava o pescoço na hora", "label": "NDD"}
+{"text": "minha colega de trabalho faz uma rotina de alongamento de pescoço toda manhã e vive dizendo que mudou a vida dela", "label": "NDD"}
+{"text": "fico horas no computador, mas nunca lembro de alongar o pescoço, só lembro quando já tá doendo", "label": "NDD"}
+{"text": "o personal falou que alongar o pescoço antes do treino não é tão importante quanto alongar depois", "label": "NDD"}
+{"text": "se eu não fizer aquele alongamento no pescoço antes de dirigir, chego no trabalho toda travada", "label": "NDD"}
+{"text": "depois que apaguei o e-mail sem querer, fiquei desesperada até achar ele na lixeira", "label": "NDD"}
+{"text": "aquele e-mail antigo que você queria tá na lixeira, dá pra restaurar numa boa", "label": "NDD"}
+{"text": "eu tinha um e-mail importante, mas fui ver e ele estava marcado como excluído na lixeira", "label": "NDD"}
+{"text": "restaurar e-mail da lixeira é mais fácil do que pedir pro suporte reenviar", "label": "NDD"}
+{"text": "minha caixa de entrada lotou e acabei excluindo uns e-mails, depois recuperei tudo pela lixeira", "label": "NDD"}
+{"text": "ele me mandou o comprovante por e-mail, mas eu tinha apagado; aí fui na lixeira e recuperei", "label": "NDD"}
+{"text": "nem sabia que dava pra recuperar e-mail excluído, achei que era pra sempre", "label": "NDD"}
+{"text": "se você apagou sem querer, dá pra recuperar ali na lixeira numa boa", "label": "NDD"}
+{"text": "Nossa, esse site aí vive pedindo pra usar o microfone, eu já bloqueei na hora.", "label": "NDD"}
+{"text": "Aquele site de reunião pediu acesso ao microfone, mas eu neguei porque tava com barulho.", "label": "NDD"}
+{"text": "Quando o site pediu o microfone, o pessoal aqui ficou em pânico, achando que ia vazar áudio.", "label": "NDD"}
+{"text": "Eu não lembro se bloqueei o microfone daquele site, acho que o navegador salvou minha escolha.", "label": "NDD"}
+{"text": "O problema é que todo site novo aparece aquele aviso de microfone; na maioria eu bloqueio.", "label": "NDD"}
+{"text": "Minha irmã falou que o site gravou ela sem querer, mas ela tinha liberado o acesso.", "label": "NDD"}
+{"text": "Se o site não precisa do microfone, melhor deixar tudo bloqueado pra evitar constrangimento.", "label": "NDD"}
+{"text": "Você viu que o site de música queria usar o microfone? Eu deixei bloqueado, óbvio.", "label": "NDD"}
+{"text": "A trilha de áudio desse vídeo ficou toda dessincronizada, nem parece que eles revisaram antes de publicar.", "label": "NDD"}
+{"text": "Quando você vai assistir a um filme, prefere a trilha de áudio original ou a dublada?", "label": "NDD"}
+{"text": "O áudio do vídeo está tão baixo que eu preciso aumentar o volume do fone.", "label": "NDD"}
+{"text": "Eu achei que a trilha de áudio do documentário estava mais alta que o narrador, né?", "label": "NDD"}
+{"text": "Será que dá pra trocar a trilha de áudio desse vídeo sem precisar baixar de novo?", "label": "NDD"}
+{"text": "Aquele vídeo da aula ficou com o áudio péssimo, o professor parecia um robô.", "label": "NDD"}
+{"text": "No final do vídeo, a trilha de áudio corta do nada, bem na hora do anúncio.", "label": "NDD"}
+{"text": "O pessoal reclamou tanto que o YouTube até corrigiu o problema de sincronia do áudio.", "label": "NDD"}
+{"text": "Meu HD tá com vários setores realocados, acho que ele tá morrendo.", "label": "NDD"}
+{"text": "O monitoramento do meu notebook mostrou setores reallocated ontem.", "label": "NDD"}
+{"text": "Você viu como tá o SMART desse HD? Tem reallocated sectors demais.", "label": "NDD"}
+{"text": "Esses setores reallocated aí já eram, melhor fazer backup.", "label": "NDD"}
+{"text": "O programa de monitoramento acusou um monte de setores realocados no meu disco.", "label": "NDD"}
+{"text": "Será que dá pra recuperar um HD que já tem reallocated sectors? Tô desconfiado.", "label": "NDD"}
+{"text": "Meu irmão falou que o HD dele piorou de um dia pro outro, os setores reallocated aumentaram.", "label": "NDD"}
+{"text": "Tava olhando a saúde do HD aqui e tem reallocated sectors já, mas ainda funciona.", "label": "NDD"}
+{"text": "Eu não entendo por que esse aplicativo quer acesso à câmera o tempo todo.", "label": "NDD"}
+{"text": "A gente devia mesmo ter mais cuidado com o que os aplicativos gravam.", "label": "NDD"}
+{"text": "O sistema perguntou se eu podia usar a câmera e eu cliquei em não.", "label": "NDD"}
+{"text": "Esses aplicativos ficam pedindo acesso à câmera sem necessidade nenhuma.", "label": "NDD"}
+{"text": "Minha irmã bloqueou a câmera no aplicativo por causa da privacidade.", "label": "NDD"}
+{"text": "Será que esse aplicativo grava a gente mesmo com a câmera desligada?", "label": "NDD"}
+{"text": "Eu sempre deixo o acesso à câmera bloqueado até precisar de verdade.", "label": "NDD"}
+{"text": "A câmera do celular fica aparecendo no topo da tela quando um aplicativo usa.", "label": "NDD"}
+{"text": "o container do banco caiu de novo, nem sei por quê", "label": "NDD"}
+{"text": "aquele container de banco vive caindo quando menos espera", "label": "NDD"}
+{"text": "vi ali no log que o container do banco reiniciou sozinho", "label": "NDD"}
+{"text": "se derrubar esse container de banco agora, perde tudo que a gente gravou", "label": "NDD"}
+{"text": "o pessoal reclamou que o container de banco estava fora do ar", "label": "NDD"}
+{"text": "será que foi o deploy que derrubou o container de banco?", "label": "NDD"}
+{"text": "não acredito que derrubaram o container de banco durante a madrugada", "label": "NDD"}
+{"text": "o container de banco consumiu memória demais e travou", "label": "NDD"}
+{"text": "Eu tava tentando configurar a redução de ruído aqui no fone, mas não sei se deixei certo.", "label": "NDD"}
+{"text": "Esse efeito de redução de ruído deixa a voz muito mais limpa nas chamadas.", "label": "NDD"}
+{"text": "Ontem eu mexi nas configurações de áudio e ativei o cancelamento de ruído sem querer.", "label": "NDD"}
+{"text": "Acho que a redução de ruído tá pegando muito forte e corta minha voz às vezes.", "label": "NDD"}
+{"text": "Você viu que o áudio da reunião melhorou depois que eu liguei o filtro ali?", "label": "NDD"}
+{"text": "Preciso descobrir como deixar o efeito de redução de ruído mais suave, mas hoje não dá.", "label": "NDD"}
+{"text": "O pessoal falou que meu áudio tava abafado por causa do ruído de fundo, aí mexi no efeito.", "label": "NDD"}
+{"text": "esse teclado na tela do meu notebook é horrível de usar sem mouse", "label": "NDD"}
+{"text": "quando eu conecto o tablet na TV, aparece até teclado na tela pra digitar a senha do Netflix", "label": "NDD"}
+{"text": "você sabia que dá pra aumentar o tamanho do teclado na tela nas configurações de acessibilidade?", "label": "NDD"}
+{"text": "minha mãe vive reclamando que o teclado na tela some quando ela mais precisa", "label": "NDD"}
+{"text": "toda vez que atualiza o sistema, o teclado na tela aparece do nada na minha frente", "label": "NDD"}
+{"text": "no curso, o instrutor mostrou como mover a janelinha do teclado na tela pra onde quiser", "label": "NDD"}
+{"text": "não aguento mais digitar no teclado na tela do celular com a tela quebrada", "label": "NDD"}
+{"text": "aí você vai no campo de busca, o teclado na tela abre sozinho, mas ele atrapalha de ver a tela", "label": "NDD"}
+{"text": "será que alguém já pensou em medir o impacto desse experimento?", "label": "NDD"}
+{"text": "o impacto do experimento foi tão grande que ninguém conseguiu medir direito", "label": "NDD"}
+{"text": "cê viu como eles mediram o impacto do experimento naquela escola?", "label": "NDD"}
+{"text": "eu acho que o impacto do experimento deu pra medir pelos depoimentos", "label": "NDD"}
+{"text": "medir o impacto de um experimento assim não é tarefa fácil, hein", "label": "NDD"}
+{"text": "eles passaram dias tentando medir o impacto do experimento nas vendas", "label": "NDD"}
+{"text": "o impacto do experimento foi medido antes e depois, né?", "label": "NDD"}
+{"text": "ainda bem que a gente não precisa medir o impacto desse experimento sozinho", "label": "NDD"}
+{"text": "Eu configurei o ponteiro pra destacar quando mexe, mas achei meio exagerado.", "label": "NDD"}
+{"text": "O ponteiro do note tá com aquela função de destacar ao mover, nem percebi quando ligou.", "label": "NDD"}
+{"text": "Tem como deixar o cursor mais visível quando a gente move, né? O meu some na tela.", "label": "NDD"}
+{"text": "Vi uma dica pra destacar o ponteiro toda vez que arrasta o mouse, mas nunca testei.", "label": "NDD"}
+{"text": "Aquela opção de realçar o ponteiro ao mover é boa pra quem usa apresentação.", "label": "NDD"}
+{"text": "O mouse aqui tá tão doido que o ponteiro fica destacando sozinho sem eu mover nada.", "label": "NDD"}
+{"text": "Eu prefiro que o ponteiro apareça mais claro quando eu mexo rápido, mas o pessoal acha frescura.", "label": "NDD"}
+{"text": "No computador do meu pai, o ponteiro fica piscando nessa configuração de destacar ao mover.", "label": "NDD"}
+{"text": "Eu tentei configurar a geração de resumo aqui no trabalho, mas ficou confusa.", "label": "NDD"}
+{"text": "O sistema novo tem uma opção de geração de resumo que ele não aprende a configurar.", "label": "NDD"}
+{"text": "A geração de resumo automática tá demorando muito pra rodar no meu computador.", "label": "NDD"}
+{"text": "Você viu como faz pra configurar a geração de resumo? Tô perdida.", "label": "NDD"}
+{"text": "Essa geração de resumo que o pessoal configurou ficou boa demais.", "label": "NDD"}
+{"text": "Meu chefe pediu pra eu configurar a geração de resumo, mas não entendi nada.", "label": "NDD"}
+{"text": "Se a gente configurar a geração de resumo agora, perdemos o resto da reunião.", "label": "NDD"}
+{"text": "A geração de resumo do relatório ontem veio toda bagunçada.", "label": "NDD"}
+{"text": "Eu removi o áudio do slide porque tava muito ruim.", "label": "NDD"}
+{"text": "O áudio do slide antigo ainda estava lá, tive que apagar.", "label": "NDD"}
+{"text": "Se você remover o áudio do slide, a apresentação fica melhor.", "label": "NDD"}
+{"text": "Acho que o problema é o áudio que ficou no slide.", "label": "NDD"}
+{"text": "O pessoal pediu pra tirar o áudio do slide antes da reunião.", "label": "NDD"}
+{"text": "Quando eu fui apresentar, tinha um áudio no slide que ninguém sabia de onde vinha.", "label": "NDD"}
+{"text": "Ele passou meia hora tentando remover aquele áudio do slide.", "label": "NDD"}
+{"text": "O áudio do slide era o barulho da sala, né? Removi pra não passar vergonha.", "label": "NDD"}
+{"text": "eu reduzi o movimento da tela do meu celular e minha visão melhorou", "label": "NDD"}
+{"text": "ontem eu fiquei com dor de cabeça por causa do movimento excessivo da tela", "label": "NDD"}
+{"text": "reduzir o movimento na tela é essencial pra quem tem enjoo", "label": "NDD"}
+{"text": "o movimento da tela desse jogo tá tão alto que eu não consigo jogar", "label": "NDD"}
+{"text": "a configuração de redução de movimento fica no acessibilidade, sabia?", "label": "NDD"}
+{"text": "minha tela tem um movimento de rolagem que me distrai demais", "label": "NDD"}
+{"text": "eu preciso aprender a diminuir o movimento dos ícones na tela", "label": "NDD"}
+{"text": "aquele aplicativo reduz o movimento da tela automaticamente", "label": "NDD"}
+{"text": "nossa, o sinal da rede aqui tá horrível hoje, não carrega nem mensagem direito", "label": "NDD"}
+{"text": "minha internet tá com uma setinha só no celular, impossível ver um vídeo", "label": "NDD"}
+{"text": "a força do roteador parece boa, mas mesmo assim o streaming trava", "label": "NDD"}
+{"text": "o wi-fi da sala chega cheio no quarto, já no banheiro dropa tudo", "label": "NDD"}
+{"text": "esse lugar tem um sinal de celular péssimo, só fica uma barrinha e olhe lá", "label": "NDD"}
+{"text": "o provedor falou que o sinal da rede tá estável, mas minha chamada caiu duas vezes", "label": "NDD"}
+{"text": "vi que o sinal do modem tá no máximo e ainda assim o jogo lagou", "label": "NDD"}
+{"text": "a conexão aqui do prédio é tão fraca que o celular alterna pro 3G sozinho", "label": "NDD"}
+{"text": "nossa, a calculadora tá mostrando o seno em radiano, preciso passar pra graus pra conferir a conta.", "label": "NDD"}
+{"text": "as vezes eu esqueço de configurar os graus na calculadora antes da prova de trigonometria.", "label": "NDD"}
+{"text": "esse modo de graus da calculadora me confunde, sempre uso radiano sem querer.", "label": "NDD"}
+{"text": "será que a calculadora do celular também tem esse negócio de graus e radianos?", "label": "NDD"}
+{"text": "eu não sei se o resultado deu certo porque a calculadora tá no modo errado.", "label": "NDD"}
+{"text": "na aula de física a professora falou pra deixar a calculadora em graus, mas a minha tava em radiano.", "label": "NDD"}
+{"text": "se você trocar a calculadora pra graus, o seno de trinta fica meio, né?", "label": "NDD"}
+{"text": "a calculadora veio com o modo de graus ativado, mas eu prefiro radiano pra calcular derivada.", "label": "NDD"}
+{"text": "eu segui aquele guia de meditação ontem e acabei dormindo no meio", "label": "NDD"}
+{"text": "ela sempre fala que o guia de meditação dela é o melhor que já ouviu", "label": "NDD"}
+{"text": "esse guia de meditação tem umas vozes muito calmas, né?", "label": "NDD"}
+{"text": "comecei a fazer meditação guiada por causa da minha irmã", "label": "NDD"}
+{"text": "o aplicativo de meditação que eu uso tem um guia de respiração bem legal", "label": "NDD"}
+{"text": "você já tentou meditar com aquela narração de dez minutos?", "label": "NDD"}
+{"text": "eu não consigo me concentrar quando o guia fala muito devagar", "label": "NDD"}
+{"text": "a professora de ioga recomendou um guia de meditação pra ansiedade", "label": "NDD"}
+{"text": "eu tava procurando um arquivo recente aqui e não achei em lugar nenhum", "label": "NDD"}
+{"text": "esses arquivos recentes ficam todos bagunçados depois que o sistema atualiza", "label": "NDD"}
+{"text": "você viu o que eu salvei ontem? deve estar na lista de recentes", "label": "NDD"}
+{"text": "não consigo lembrar o nome do arquivo, mas aparecia ali naquela lista de recentes", "label": "NDD"}
+{"text": "nossa, os arquivos recentes do drive encheram de versão antiga", "label": "NDD"}
+{"text": "o pessoal pediu pra eu abrir a última versão, mas sumiu dos recentes", "label": "NDD"}
+{"text": "aí ele pediu pra ver os arquivos recentes e tava tudo criptografado", "label": "NDD"}
+{"text": "preciso organizar os arquivos recentes antes de apresentar, mas que preguiça", "label": "NDD"}
+{"text": "quando eu dobrei aquele bloco de código gigante, o editor travou", "label": "NDD"}
+{"text": "não acredito que você esqueceu de dobrar o bloco de código antes de mandar o commit", "label": "NDD"}
+{"text": "eu sempre dobro os blocos de função pra enxergar o que importa na tela", "label": "NDD"}
+{"text": "dá pra ver que o Júlio passou um tempão dobrando os blocos de código ontem, ficou tudo organizado", "label": "NDD"}
+{"text": "se você tivesse dobrado o bloco de código, a gente não precisava rolar a tela até achar o método", "label": "NDD"}
+{"text": "aquela dobra de bloco de código no final do arquivo sumiu do nada", "label": "NDD"}
+{"text": "não sei por que o visual studio fica recolhendo meus blocos de código sem eu pedir", "label": "NDD"}
+{"text": "o atalho pra dobrar bloco de código aqui é diferente do que eu usava no outro editor", "label": "NDD"}
+{"text": "eu ainda não entendi aquela história de seno do ângulo lá da aula de hoje", "label": "NDD"}
+{"text": "o seno do ângulo de trinta graus eu decorei, mas o de quarenta e cinco eu sempre esqueço", "label": "NDD"}
+{"text": "você viu a cara dele quando ela pediu pra calcular o seno na prova?", "label": "NDD"}
+{"text": "seno do ângulo oposto é a mesma coisa que cosseno do complemento, não é?", "label": "NDD"}
+{"text": "na minha época a gente fazia seno na mão usando a tabela", "label": "NDD"}
+{"text": "ele passou a aula inteira falando de seno e cosseno, mas eu tava viajando", "label": "NDD"}
+{"text": "o seno de um ângulo não pode ser maior que um, isso eu lembro", "label": "NDD"}
+{"text": "será que cai seno do ângulo no vestibular?", "label": "NDD"}
+{"text": "Eu passei um tempão mexendo no filtro de gênero do streaming ontem.", "label": "NDD"}
+{"text": "Esse filtro de gênero musical aqui só me recomenda as mesmas bandas.", "label": "NDD"}
+{"text": "Você já percebeu como o filtro de gênero da playlist às vezes erra feio?", "label": "NDD"}
+{"text": "Prefiro separar as músicas por gênero na minha lista do que deixar tudo misturado.", "label": "NDD"}
+{"text": "Aquele filtro de gênero novo é bom, mas esquece de incluir um monte de coisa.", "label": "NDD"}
+{"text": "O filtro de gênero aqui tá deixando passar umas músicas muito estranhas.", "label": "NDD"}
+{"text": "Eu tava lembrando que dava pra escolher o gênero musical nas configurações, mas não achei onde.", "label": "NDD"}
+{"text": "Será que dá pra confiar nesse filtro de gênero pra montar a trilha da festa?", "label": "NDD"}
+{"text": "não sei se essa cor de texto ficou boa, tá muito clara", "label": "NDD"}
+{"text": "esse texto aqui tá tão vermelho que parece que tá gritando", "label": "NDD"}
+{"text": "será que deixo esse título em azul ou verde?", "label": "NDD"}
+{"text": "pra mim, texto sublinhado cansa menos que colorido", "label": "NDD"}
+{"text": "não dá pra ler isso nessa cor, tava de noite quando escrevi", "label": "NDD"}
+{"text": "vou destacar as palavras principais de outra cor", "label": "NDD"}
+{"text": "que cor de fonte combina com esse fundo escuro?", "label": "NDD"}
+{"text": "o texto tá preto, mas o fundo escuro também, aí não dá", "label": "NDD"}
