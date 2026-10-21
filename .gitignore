@@ -7,6 +7,11 @@
 *.toc
 *.lof
 *.lot
+*.fdb_latexmk
+*.fls
+*.ilg
+*.ind
+*.synctex*
 
 */.venv
 **/data/**
