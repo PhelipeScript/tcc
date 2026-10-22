@@ -589,86 +589,49 @@ Com base nesses critérios, três trabalhos foram selecionados como relacionados
 
 \subsection{Mallidi et al. (2018)}
 
-O trabalho de \citeonline{Mallidi2018}, intitulado \textit{Device-directed Utterance Detection}, é considerado o estudo pioneiro na área de DDSD. Publicado nos anais do \textit{Interspeech} em 2018, foi o primeiro a formalizar o problema como tarefa independente de classificação binária, estabelecendo a terminologia, o protocolo experimental e as métricas adotados por estudos posteriores \cite{Mallidi2018, Wagner2024}.
+O trabalho de \citeonline{Mallidi2018}, intitulado \textit{Device-directed Utterance Detection}, foi publicado por pesquisadores da Amazon nos anais do \textit{*Interspeech*} em 2018. Os autores mencionam pesquisas anteriores que utilizavam características prosódicas e escores de confiança do ASR para identificar falas direcionadas ao dispositivo. O estudo se destaca por aplicar redes neurais profundas à DDSD no contexto de assistentes de voz comerciais. Além disso, os autores utilizaram a classificação binária e a taxa de erro igual (EER) para avaliar o desempenho do sistema, uma abordagem também adotada em trabalhos posteriores \cite{Wagner2024}.
 
-O problema parte de uma constatação prática: em ambientes domésticos com assistentes sempre ligados, parcela significativa das falas captadas não é dirigida ao dispositivo. Ativar o \textit{pipeline} completo (ASR, NLU e geração de resposta) para cada trecho de fala detectado pelo VAD resultaria em alto consumo computacional, degradação da privacidade e comprometimento da experiência do usuário \cite{Mallidi2018}. A proposta foi inserir um módulo intermediário entre VAD e ASR, capaz de filtrar automaticamente as falas não dirigidas ao dispositivo.
+O estudo parte de um problema comum no uso de assistentes de voz. Dispositivos como Amazon Echo e Google Home podem captar falas de várias pessoas e sons de televisores, especialmente em ambientes como salas de estar. Por isso, precisam distinguir os comandos direcionados a eles das conversas e dos demais sons do ambiente. \citeonline{Mallidi2018} destacam duas aplicações para esse tipo de classificador: evitar ativações acidentais e permitir que o usuário faça pedidos de continuação sem precisar repetir a \textit{wake-word}. Por exemplo, após dizer ``Computador, tocar música'', o usuário poderia simplesmente pedir ``abaixar o volume'' \cite{Mallidi2018}.
 
-A abordagem é inteiramente baseada em características acústicas extraídas do sinal de áudio, sem depender de transcrições textuais. Os autores utilizaram coeficientes cepstrais de frequência de Mel (MFCCs), \textit{pitch}, energia e características prosódicas como duração de pausas e velocidade de fala, alimentando um modelo de classificação baseado em Redes Neurais \textit{Feed-Forward} treinado de forma supervisionada \cite{Mallidi2018}.
+O modelo utiliza três fontes de informação para classificar os enunciados. A primeira é uma representação do áudio (\textit{embedding} acústico), gerada por uma rede LSTM a partir de energias de bancos de filtros em escala logarítmica (LFBEs). A segunda é uma representação textual da transcrição mais provável do ASR (1-best), obtida por uma LSTM em nível de caracteres (\textit{Char LSTM}). Essa rede recebe a sequência de vetores de palavras da transcrição, gerados a partir de representações pré-treinadas com GloVe. A terceira fonte corresponde a características extraídas do decodificador do ASR. Por fim, as três representações são concatenadas e enviadas a uma rede neural \textit{feed-forward}, que produz a classificação final do enunciado \cite{Mallidi2018}.
 
-Os experimentos foram conduzidos em um corpus interno, coletado em cenários reais de uso doméstico em inglês. Os autores reportaram uma EER de aproximadamente 12\% em condições controladas. Um achado relevante foi que características prosódicas, entonação e duração de pausas, exercem papel discriminativo importante para separar comandos intencionais de comentários incidentais \cite{Mallidi2018}.
+Os experimentos foram realizados com gravações reais de interações com dispositivos de campo distante, em inglês. O conjunto de dados continha 350 mil enunciados (250 horas de áudio) para treinamento e 50 mil enunciados (30 horas) para teste. Quando avaliadas separadamente, as características do decodificador do ASR apresentaram EER de 9,3\%, o \textit{embedding} acústico obteve 10,9\% e o \textit{embedding} da transcrição alcançou 20,1\%. Ao combinar as três fontes de informação, os autores reduziram o EER para 5,2\%, uma melhora relativa de 44\% em comparação com o melhor resultado individual \cite{Mallidi2018}.
 
-Além da contribuição técnica, \citeonline{Mallidi2018} argumentaram que a dependência de \textit{wake-words} impõe sobrecarga cognitiva artificial ao usuário, fundamentando a necessidade de sistemas capazes de detectar intenção implícita. Esse argumento tornou-se referência recorrente em trabalhos posteriores \cite{Nie2021, Wagner2024}.
+Ao analisar as transcrições, \citeonline{Mallidi2018} observaram que os comandos direcionados ao dispositivo tendem a ser mais curtos e estruturados, enquanto as conversas entre pessoas costumam ser mais espontâneas e apresentar construções menos formais. Os autores também verificaram que essas diferenças podem ser percebidas nas transcrições geradas pelo ASR \cite{Mallidi2018}. Essa constatação reforça a ideia de que o próprio texto pode fornecer informações úteis para identificar se uma fala é direcionada ao dispositivo.
 
-Apesar do pioneirismo, o trabalho apresenta limitações à luz do estado da arte atual. A abordagem puramente acústica não explora informações textuais ou semânticas, restringindo sua capacidade discriminativa em cenários onde a distinção entre comando e comentário depende do conteúdo linguístico. Os enunciados ``acende a luz'' e ``nossa, está escuro aqui'', por exemplo, podem apresentar padrões prosódicos semelhantes, mas são semanticamente distintos. Adicionalmente, os experimentos foram realizados exclusivamente em inglês e com corpus proprietário \cite{Wagner2024, Dighe2024}.
+Apesar da contribuição do estudo, a abordagem baseada apenas em texto apresentou o pior resultado entre as fontes de informação avaliadas individualmente. O modelo utilizado era uma LSTM em nível de caracteres, baseada em representações estáticas, desenvolvidas antes da popularização dos Transformers pré-treinados, como o BERT \cite{Devlin2019}. Modelos dessa família trouxeram avanços em tarefas de classificação de texto \cite{Weld2022}, o que abre espaçopara investigar seu desempenho na DDSD. Além disso, os experimentos de \citeonline{Mallidi2018} foram realizados apenas em inglês e utilizaram dados proprietários, o que limita a avaliação dos resultados em outros idiomas, como o português brasileiro.
 
-Para este trabalho, a contribuição de \citeonline{Mallidi2018} é fundamental do ponto de vista conceitual, a formalização do problema como classificação binária, a definição das classes (DD \textit{versus} NDD) e o uso do EER como métrica principal são elementos diretamente adotados nesta pesquisa. A abordagem técnica, contudo, segue direção oposta, enquanto \citeonline{Mallidi2018} operam no domínio acústico, este trabalho opera exclusivamente no domínio textual.
+O trabalho de \citeonline{Mallidi2018} contribui para esta pesquisa ao apresentar a DDSD como um problema de classificação binária entre enunciados direcionados ao dispositivo (DD) e não direcionados (NDD), utilizar o EER como métrica de avaliação e mostrar que as transcrições contêm informações úteis para essa tarefa. A principal diferença está na abordagem adotada: enquanto os autores combinam informações de áudio, do texto e do decodificador do ASR, este trabalho utiliza apenas o texto das transcrições e investiga o desempenho de modelos pré-treinados para o português brasileiro.
 
 % ---------------------------------------------------------------
 
 \subsection{Wagner et al. (2024)}
 
-O trabalho de \citeonline{Wagner2024}, intitulado \textit{A Multimodal Approach to Device-Directed Speech Detection with Large Language Models}, publicado no IEEE \textit{International Conference on Acoustics, Speech and Signal Processing} (ICASSP) em 2024, constitui um exemplo representativo das abordagens multimodais recentes para DDSD. O estudo propõe uma arquitetura que integra características acústicas do sinal de áudio, hipóteses intermediárias geradas pelo decodificador ASR e representações semânticas produzidas por LLMs.
+O trabalho de \citeonline{Wagner2024}, intitulado \textit{A Multimodal Approach to Device-Directed Speech Detection with Large Language Models}, foi publicado em 2024 no IEEE \textit{International Conference on Acoustics, Speech and Signal Processing} (ICASSP), por pesquisadores da Apple e da Technische Hochschule Nürnberg. O estudo investiga como permitir que assistentes virtuais reconheçam comandos direcionados a eles sem exigir que o usuário diga uma palavra ou frase de ativação antes de cada interação.
 
-A motivação parte de uma crítica às abordagens unimodais: sistemas baseados
-em áudio capturam informações prosódicas, mas carecem de compreensão
-semântica; sistemas baseados em texto capturam a semântica, mas ignoram
-pistas acústicas como entonação e ritmo. A fusão de modalidades permite
-explorar o sinal discriminativo presente em cada domínio de forma
-complementar \cite{Wagner2024}.
+Os autores comparam três abordagens para detectar falas direcionadas ao dispositivo: modelos que utilizam apenas informações acústicas, LLMs que recebem transcrições e sinais do decodificador do ASR e um modelo multimodal que combina essas informações em um único LLM. Na abordagem multimodal, o áudio é representado por um \textit{embedding} extraído do \textit{encoder} do Whisper ou do CLAP. Além disso, são utilizados quatro sinais do decodificador do ASR: custo do grafo, custo acústico, confiança média por palavra e número médio de alternativas por palavra. Pequenas redes neurais \textit{feed-forward} transformam essas informações em vetores, que são combinados com a transcrição mais provável (1-best) e enviados ao GPT-2. O modelo, então, classifica o enunciado com uma resposta ``sim'' ou ``não'' \cite{Wagner2024}.
 
-O sistema adota fusão tardia (\textit{late fusion}), cada modalidade é
-processada por um \textit{encoder} independente, e as representações são
-combinadas para a classificação final. O componente textual utiliza
-representações geradas por um LLM a partir da transcrição 1-best do ASR.
-Um terceiro componente explora as hipóteses intermediárias do
-\textit{beam search} do decodificador, a \textit{n-best list} com
-respectivos escores de confiança, informação que carrega a incerteza
-do modelo ASR e mostrou-se altamente informativa \cite{Wagner2024}.
+A maior parte dos experimentos utilizou o GPT-2 \textit{small}, com 124 milhões de parâmetros, escolhido por ser mais leve e adequado à execução em dispositivos com recursos limitados, como \textit{smartphones}. Nos experimentos finais, os autores também avaliaram uma versão do GPT-2 com 1,5 bilhão de parâmetro, ajustada por meio do LoRA (\textit{Low-Rank Adaptation}).
 
-Os resultados são expressivos, o modelo multimodal alcançou redução de
-até 61\% na EER em comparação com as melhores abordagens unimodais,
-demonstrando o valor da integração de modalidades. Os experimentos foram
-conduzidos em corpus interno de grande escala em inglês. Os autores
-demonstraram ainda que o componente textual, isoladamente, já contribui
-de forma significativa, evidência direta de que informações semânticas
-de transcrições ASR constituem sinal discriminativo relevante
-\cite{Wagner2024}.
+O treinamento utilizou cerca de 80 mil enunciados, divididos igualmente entre falas direcionadas e não direcionadas ao dispositivo. Em parte dos experimentos, os autores também incluíram transcrições adicionais sem o áudio correspondente. A avaliação foi realizada com aproximadamente 37 mil enunciados de bases de dados internas. Entre os modelos avaliados individualmente, a abordagem baseada apenas em texto obteve EER de 12,15\%, enquanto os modelos acústicos alcançaram 10,98\% com o Whisper e 19,13\% com o CLAP. Ao combinar as diferentes fontes de informação e ajustar completamente o GPT-2 \textit{small}, o melhor sistema multimodal, baseado no CLAP, atingiu EER de 7,45\%. Esse resultado representa um redução relativa de até 39\% em relação ao modelo textual e de até 61\% em relação ao modelo acústico. No caso do modelo GPT-2 com 1,5 bilhão de parâmetros, o sistema multimodal baseado no Whisper reduziu o EER de 7,95\% para 6,53\%, uma melhora relativa de aproximadamente 18\% e o melhor resultado geral do estudo \cite{Wagner2024}.
 
-Embora os resultados sejam notáveis, a arquitetura multimodal exige alto
-poder computacional e sincronização precisa entre componentes. O uso de
-LLMs de grande escala impõe restrições de latência e custo operacional,
-dificultando a implantação em dispositivos com recursos limitados
-\cite{Xu2024}. A abordagem foi desenvolvida e avaliada exclusivamente em
-inglês, com corpus proprietário \cite{Wagner2024}.
+Os resultados mostram que a transcrição, por si só, já permite identificar muitos dos enunciados direcionados ao dispositivo, com um EER próximo ao do melhor modelo baseado apenas em áudio. No entanto, a combinação com informações acústicas e sinais do decodificador melhora o desempenho. Apesar desses resultados, a abordagem multimodal depende de recursos que podem dificultar sua reprodução em outros ambientes, como um \textit{encoder} de áudio, informações internas do decodificador do ASR e grandes volumes de áudio rotulados, disponíveis em bases privadas da empresa. Além disso, o artigo não especifica o idioma dos dados utilizados nem apresenta medições de latência ou consumo de memória \cite{Wagner2024}.
 
-Para este trabalho, o estudo cumpre dois papéis. Primeiro, fornece a
-evidência empírica mais robusta disponível de que representações textuais
-de hipóteses ASR contêm sinal discriminativo suficiente para a DDSD, evidência que fundamenta diretamente a hipótese de pesquisa deste TCC.
-Segundo, estabelece o referencial de EER com o qual abordagens futuras
-poderão ser comparadas em caráter aproximado, respeitando diferenças de
-idioma, corpus e modalidade. A abordagem puramente textual proposta neste
-TCC pode ser entendida como a investigação isolada do componente que
-\citeonline{Wagner2024} identificaram como altamente discriminativo,
-aplicada ao português brasileiro com um modelo de linguagem adaptado ao
-idioma.
+Neste trabalho, o estudo contribui de duas formas. A primeira é apresentar evidências recentes de que a transcrição gerada pelo ASR contém informações relevantes para a DDSD quando analisadas por um modelo de linguagem, o que dá suporte à hipótese de pesquisa deste TCC. A segunda é fornecer valores de EER que podem ser usados como referência aproximada, considerando as diferenças de idioma, corpus e modalidade entre os estudos. Assim, a abordagem proposta neste trabalho se aproxima do componente textual de \citeonline{Wagner2024}, mas é aplicada ao português brasileiro, utiliza dos modelos pré-treinados nesse idioma e não depende de sinais internos do ASR. 
 
 % ---------------------------------------------------------------
 
 \subsection{Dighe et al. (2024)}
 
-O trabalho de \citeonline{Dighe2024}, entitulado \textit{Leveraging Large Language Models for Exploiting ASR Uncertainty} também publicado no IEEE ICASSP em 2024, é o estudo metodologicamente mais próximo desta proposta. O artigo investiga o uso de LLMs para explorar a incerteza inerente às saídas de ASR em tarefas de \textit{Spoken Language Understanding} (SLU), com ênfase na detecção de intenção.
+O trabalho de \citeonline{Dighe2024}, intitulado \textit{Leveraging Large Language Models for Exploiting ASR Uncertainty}, também foi publicado no IEEE ICASSP em 2024 e é o estudo metodologicamente mais próximo desta proposta. Os autores investigam como LLMs podem lidar com os erros do ASR em tarefas de classificação sobre fala, e uma das tarefas avaliadas é a própria DDSD.
 
-A premissa central é que \textit{pipelines} tradicionais de SLU tratam a saída do ASR como determinística, utilizando apenas a transcrição mais provável (1-best) como entrada para os módulos semânticos. Essa abordagem descarta informações valiosas geradas pelo \textit{beam search}, particularmente as hipóteses alternativas que carregam a incerteza do reconhecedor de forma explícita. Os autores argumentam que LLMs são adequados para explorar essa incerteza, por possuírem a capacidade de raciocinar sobre múltiplas hipóteses textuais e selecionar a interpretação semanticamente mais plausível \cite{Dighe2024}.
+A proposta parte da observação de que os \textit{pipelines} tradicionais utilizam apenas a transcrição mais provável do ASR (1-best), descartando as hipóteses alternativas geradas pelo \textit{beam search}, que ajudam a representar a incerteza do reconhecimento. Como o WER dificilmente é zero em condições reais, os erros presentes na transcrição podem comprometer a classificação realizada pelo LLM \cite{Dighe2024}. Para reduzir esse problema, os autores fornecem ao modelo uma lista com hipóteses de transcrição mais prováveis (\textit{n-best-list}), acompanhada de um \textit{prompt} que explica como essas alternativas devem ser interpretadas. Além disso, ajustam o LLM por meio da técnica LoRA.
 
-A metodologia consiste em fornecer ao LLM não apenas a transcrição 1-best, mas um conjunto de hipóteses ASR (\textit{n-best list}) ordenadas por probabilidade. O LLM processa essas hipóteses e produz representação semântica que leva em conta a incerteza do ASR ao classificar a intenção. Os experimentos demonstram ganhos consistentes em métricas de entendimento de intenção quando comparados a \textit{pipelines} que utilizam apenas a transcrição 1-best \cite{Dighe2024}.
+Os autores utilizaram o Vicuna-7B e avaliaram seu desempenho em duas tarefas: DDSD, com um base interna em inglês, e \textit{keyword spotting}, utilizando a base pública do Google Speech Commands. Na DDSD, o uso de uma lista com oito hipóteses de transcrição reduziu a taxa de falsos positivos de 8,3\% para 4,7\%, em comparação com a abordagem baseada apenas na transcrição mais provável (1-best). A taxa de verdadeiros positivos também aumentou ligeiramente, passando de 90,5\% para 91,8\%. Ao adaptar o modelo para gerar um escore de classificação, os autores obtiveram um EER de 7,4\% com 16 hipóteses. Esse resultado, porém, ficou acima dos 6,4\% alcançados pelo \textit{baseline} especializado LatticeRNN, que utiliza os reticulados do ASR. Na tarefa de \textit{keyword spotting}, a acurácia aumentou de 97,0\% para 97,5\% \cite{Dighe2024}.
 
-Uma contribuição técnica relevante é demonstrar que modelos de linguagem pré-treinados atuam como segundo estágio de refinamento semântico após o ASR, compensando parcialmente erros de transcrição ao considerar a plausibilidade das hipóteses alternativas. Os autores sugerem, como direção futura, a análise sistemática da correlação entre o WER do ASR e a degradação do classificador de intenção, investigação que este TCC incorpora explicitamente como objetivo específico.
+O estudo demonstra que a combinação de ASR com um modelo de linguagem em uma arquitetura em cascata é viável para a DDSD e destaca a influência da qualidade da transcrição no desempenho da classificação. No entanto, os autores não apresentam uma avaliação do WER dos dados utilizados nem quantificam a relação entre os erros de transcrição e o desempenho do classificador. Essa lacuna fundamenta o terceiro objetivo específico deste TCC, que busca analisar a correlação entre o WER e a queda de desempenho do classificador no português brasileiro.
 
-O estudo valida a viabilidade de arquiteturas em cascata (ASR~$\rightarrow$~LLM) para compreensão de intenção em fala. Embora os experimentos tenham sido conduzidos em inglês, a metodologia é transferível para outros idiomas mediante modelos pré-treinados no idioma-alvo, que é precisamente a contribuição central deste TCC, ao aplicar uma arquitetura análoga com o BERTimbau \cite{Souza2020} para o português brasileiro.
-
-Cabe observar que \citeonline{Dighe2024} utilizam LLMs de grande escala, o que implica custo computacional elevado e dependência de infraestrutura de nuvem. Este trabalho se diferencia ao propor o BERTimbau, modelo de menor escala, especificamente pré-treinado para o português brasileiro e viável para execução local, como classificador, tornando a abordagem mais acessível a cenários com recursos restritos \cite{Souza2020, Xu2024}.
-
-O trabalho de \citeonline{Dighe2024} cumpre papel duplo e fundamental para esta pesquisa. Primeiro, valida empiricamente que abordagens baseadas em texto extraído de ASR geram sinal discriminativo relevante para a detecção de intenção implícita, fortalecendo a escolha metodológica de operar no nível textual. Segundo, motiva e fundamenta o terceiro objetivo específico deste TCC, a análise da correlação entre WER e degradação do classificador no contexto do português brasileiro.
+Outro ponto importante é o custo computacional dos modelos utilizados. Em \citeonline{Dighe2024}, os autores empregam um LLM com 7 bilhões de parâmetros, o que exige mais recursos computacionais. Em contrapartida, este trabalho utiliza modelos menores, como o BERTimbau \cite{Souza2020}, pré-treinado para o português brasileiro e adequado à execução local em um computador pessoal. 
 
 % ---------------------------------------------------------------
 
@@ -677,13 +640,14 @@ O trabalho de \citeonline{Dighe2024} cumpre papel duplo e fundamental para esta 
 
 A análise dos três trabalhos relacionados permite delinear o estado da arte em DDSD e identificar as lacunas que este TCC busca preencher. As Tabelas~\ref{tab:comparacao_trabalhos} e~\ref{tab:diferencial_tcc} sintetizam, respectivamente, as características técnicas dos trabalhos e o diferencial introduzido por esta proposta.
 
-A Tabela~\ref{tab:comparacao_trabalhos} revela um padrão comum aos três estudos, foram desenvolvidos exclusivamente para o inglês, com corpora proprietários não disponibilizados publicamente, e nenhum adota \textit{baselines} clássicos como referência. A ausência de \textit{baselines} tradicionais é uma limitação metodológica, pois impede a quantificação do ganho real dos modelos neurais em relação a métodos mais simples e interpretáveis \cite{Manning2008, Weld2022}.
+A Tabela~\ref{tab:comparacao_trabalhos} evidencia três características em comum entre os estudos analisados. Todos utilizam bases de dados internas e proprietárias para a DDSD, foram realizados em inglês ou não especificam o idioma utilizado e não comparam os modelos neurais com métodos clássicos de classificação de texto, como TF-IDF combinado com SVM ou Regressão Logística. A ausência desses \textit{baselines} dificulta avaliar se o ganho de desempenho dos modelos neurais justifica sua maior complexidade ou se métodos nais simples e intercepretáveis poderiam alcançar resultados semelhantes \cite{Manning2008}.
 
 \begin{table}[htb]
     \centering
     \caption{Comparação técnica entre os trabalhos relacionados}
     \label{tab:comparacao_trabalhos}
-    \begin{tabular}{l|c|c|c}
+    \small
+    \begin{tabularx}{\textwidth}{l|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X}
         \toprule
         \textbf{Critério}
             & \textbf{Mallidi (2018)}
@@ -691,41 +655,46 @@ A Tabela~\ref{tab:comparacao_trabalhos} revela um padrão comum aos três estudo
             & \textbf{Dighe (2024)} \\
         \midrule
         Modalidade
-            & Áudio
             & Áudio + Texto + ASR
-            & Texto + ASR \\
+            & Áudio + Texto + ASR
+            & Texto (\textit{n-best} do ASR) \\
         \midrule
         Modelo principal
-            & DNN \textit{Feed-Forward}
-            & LLM + fusão tardia
-            & LLM (\textit{n-best}) \\
+            & LSTM + DNN \textit{feed-forward}
+            & GPT-2 com prefixos multimodais
+            & LLM (Vicuna-7B) \\
         \midrule
         Idioma
             & Inglês
-            & Inglês
+            & Não informado
             & Inglês \\
+        \midrule
+        Domínio
+            & Alto-falantes inteligentes
+            & Assistente virtual
+            & Assistente virtual \\
         \midrule
         Corpus
             & Interno
             & Interno
-            & Interno \\
+            & Interno (DDSD) / Público (GSC) \\
         \midrule
         Métricas reportadas
             & EER
             & EER
-            & F1, Acurácia \\
+            & EER, TPR/FPR, Acurácia \\
         \midrule
-        Baseline clássico
+        \textit{Baseline} linear clássico
             & Não
             & Não
             & Não \\
         \midrule
         Limitação central
-            & Sem análise textual
-            & Alto custo computacional
-            & Apenas inglês \\
+            & Modelo textual sem pré-treinamento
+            & Exige áudio e sinais internos do ASR
+            & LLM de 7B, apenas inglês \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \fonte{Elaborado pelo autor (2026).}
 \end{table}
 
@@ -735,48 +704,54 @@ A Tabela~\ref{tab:comparacao_trabalhos} revela um padrão comum aos três estudo
     \centering
     \caption{Diferencial deste TCC em relação aos trabalhos relacionados}
     \label{tab:diferencial_tcc}
-    \begin{tabular}{l|c|c|c|c|c}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabularx}{\textwidth}{l|>{\centering\arraybackslash\hspace{0pt}}X|>{\centering\arraybackslash\hspace{0pt}}X|>{\centering\arraybackslash\hspace{0pt}}X|>{\centering\arraybackslash\hspace{0pt}}X|>{\centering\arraybackslash\hspace{0pt}}X|>{\centering\arraybackslash\hspace{0pt}}X}
         \toprule
         \textbf{Trabalho}
             & \textbf{Idioma}
+            & \textbf{Domínio}
             & \textbf{Modalidade}
             & \textbf{Corpus público}
-            & \textbf{Baseline}
+            & \textbf{\textit{Baseline} linear}
             & \textbf{Análise WER} \\
         \midrule
         Mallidi (2018)
-            & Inglês & Áudio        & Não & Não & Não \\
+            & Inglês & Alto-falantes & Multimodal & Não & Não & Não \\
         \midrule
         Wagner (2024)
-            & Inglês & Multimodal   & Não & Não & Não \\
+            & Não informado & Assistente virtual & Multimodal & Não & Não & Não \\
         \midrule
         Dighe (2024)
-            & Inglês & Texto + ASR  & Não & Não & Parcial \\
+            & Inglês & Assistente virtual & Texto (\textit{n-best}) & Não & Não & Parcial \\
         \midrule
         \textbf{Este TCC}
             & \textbf{PT-BR}
-            & \textbf{Texto puro}
+            & \textbf{Computador pessoal}
+            & \textbf{Texto}
             & \textbf{Sim}
             & \textbf{Sim}
             & \textbf{Sim} \\
         \bottomrule
-    \end{tabular}
-    \legend{Fonte: Elaborado pelo autor (2026).}
+    \end{tabularx}
+    \fonte{Elaborado pelo autor (2026).}
 \end{table}
 
 \vspace{0.4cm}
 
-A Tabela~\ref{tab:diferencial_tcc} posiciona este TCC como contribuição original em quatro dimensões.
+A Tabela~\ref{tab:diferencial_tcc} resume as cinco dimensões em que este trabalho se diferencia dos estudos relacionados.
 
-O primeiro diferencial é o idioma. Nenhum dos trabalhos aborda o português brasileiro, que permanece sub-representado na literatura de DDSD apesar de ser um dos idiomas mais falados do mundo \cite{CORAA2023}. O português brasileiro apresenta características morfossintáticas específicas, como pronomes clíticos, contrações e variação dialetal, que podem influenciar diretamente o desempenho de classificadores de intenção. A ausência de estudos de DDSD em português constitui barreira prática para o desenvolvimento de assistentes de voz mais naturais para a população brasileira.
+O primeiro diferencial deste trabalho é o foco no português brasileiro. Nenhum dos estudos analisados aborda esse idioma, que ainda é pouco explorado na literatura sobre DDSD, apesar de seu grande número de falantes \cite{CORAA2023}. O português brasileiro apresenta particularidades linguísticas, como o uso de pronomes clíticos, contrações e variações dialetais, que podem afetar o desempenho dos classificadores de texto. Essa falta de pesquisas sobre DDSD em português limita o desenvolvimento de assistentes de voz mais adequados às características linguísticas e às necessidades dos usuários brasileiros.
 
-O segundo diferencial planejado é a construção e disponibilização pública de um corpus textual para DDSD em português brasileiro. Os três trabalhos relacionados utilizam corpora internos e proprietários, o que impede a reprodutibilidade \cite{Wazlawick2020}. O corpus a ser produzido, com volume estimado em aproximadamente 105.000 amostras textuais, combinará transcrições de corpora públicos de fala espontânea \cite{CORAA2023, NURCSP2025, Tagarela2026} com enunciados sintéticos gerados por LLMs \cite{Møller2024}, sendo documentado com protocolo de validação explícito e divisão estratificada.
+O segundo diferencial está no contexto de aplicação. Os estudos relacionados investigam a DDSD em assistentes de voz de uso geral, como alto-falantes inteligentes e assistentes virtuais \cite{Mallidi2018, Wagner2024, Dighe2024}. Este trabalho, por sua vez, concentra-se em comandos direcionados ao computador pessoal. Nesse cenário, nomes de aplicativos e \textit{sites} podem aparecer tanto em comandos destinados ao computador quanto em conversas entre pessoas, o que torna a distinção entre essas situações especialmente relevante, conforme discutido na Seção~\ref{sec:cenario}.
 
-O terceiro diferencial é a inclusão de \textit{baselines} clássicos, TF-IDF combinado com SVM e Regressão Logística \cite{Manning2008}, como referência de comparação. Essa escolha, ausente nos três trabalhos relacionados, permite quantificar objetivamente o ganho obtido pelo BERTimbau, tornando os resultados mais interpretáveis e a análise mais rigorosa \cite{Weld2022}.
+O terceiro diferencial é a construção e a disponibilização pública de um corpus textual para DDSD em português brasileiro, voltado a comandos direcionados ao computador pessoal. Os estudos relacionados utilizam bases de dados internas e proprietárias, o que dificulta a reprodução dos experimentos e a comparação dos resultados \cite{Wazlawick2020}. Para contornar essa limitação, o corpus deste trabalho será formado por enunciados sintéticos gerados por LLMs de diferentes provedores \cite{Møller2024}. Separadamente, as transcrições de corpora públicos de fala espontânea \cite{CORAA2023, NURCSP2025, Tagarela2026} serão utilizadas na etapa de validação externa, permitindo avaliar o comportamento do classificador diante de transcrições de fala real.
 
-O quarto diferencial é a análise sistemática do impacto dos erros de transcrição (WER) sobre o classificador de intenção. Embora \citeonline{Dighe2024} tratem parcialmente dessa questão, nenhum dos trabalhos propõe avaliação direta e quantitativa da correlação entre WER e degradação do classificador no contexto do português brasileiro, idioma que apresenta desafios específicos para ASR, como alta variabilidade fonética regional e reduções vocálicas da fala informal \cite{CORAA2023, Bevilacqua2024}.
+O quarto diferencial é a utilização de métodos clássicos de classificação de texto como referência para comparação, especificamente TF-IDF combinado com SVM e Regressão Logística \cite{Manning2008}. Esses métodos não foram incluídos nos três estudos relacionados analisados. Sua utilização neste trabalho permitirá avaliar o ganho de desempenho dos modelos baseados em Transformer em relação a abordagens mais simples, além de facilitar a interpretação dos resultados e verificar se a maior complexidade desses modelos se traduz em melhorias relevantes para a DDSD.
 
-Em conjunto, esses diferenciais evidenciam que o presente trabalho não é uma replicação dos estudos anteriores em outro idioma, mas uma contribuição com dimensões próprias e complementares ao estado da arte. O objetivo não é superar os resultados de abordagens multimodais como a de \citeonline{Wagner2024}, o que seria improvável dado o escopo e os recursos disponíveis, mas estabelecer um \textit{baseline} textual sólido, reprodutível e documentado para o português brasileiro, que sirva de ponto de partida para investigações futuras na área \cite{Wazlawick2020, Dighe2024}.
+O quinto diferencial deste trabalho é a análise sistemática da relação entre os erros de transcrição e a queda de desempenho do classificador. Embora \citeonline{Dighe2024} investiguem o impacto das incertezas do ASR, os estudos analisados não medem o WER nem avaliam quantitativamente como os erros de transcrição afetam a classificação. Essa análise também não foi realizada para o português brasileiro, que apresenta desafios específicos para o reconhecimento automático de fala, como a variação fonética regional e as reduções comuns na fala informal \cite{CORAA2023}.
+
+Em conjunto, esses diferenciais ampliam o estado da arte ao abordar aspectos ainda pouco explorados pelos estudos anteriores. Este trabalho não busca superar o desempenho de abordagens multimodais, como a de \citeonline{Wagner2024}, pois essa comparação está além do escopo da pesquisa e dos recursos disponíveis. A proposta é desenvolver uma referência textual sólida, reprodutível e bem documentada para a DDSD em português brasileiro, que possa servir de base para novas pesquisas na área \cite{Wazlawick2020, Dighe2024}.
 
 % ---------------------------------------------------------------
 
