@@ -1,0 +1,266 @@
+{
+  "transcricoes_iguais": {
+    "baseline_logreg": {
+      "itens": 600,
+      "segmentacao_identica": 600,
+      "transcricao_identica": 600,
+      "itens_diferentes": []
+    },
+    "baseline_svm": {
+      "itens": 600,
+      "segmentacao_identica": 600,
+      "transcricao_identica": 600,
+      "itens_diferentes": []
+    },
+    "debertinha": {
+      "itens": 600,
+      "segmentacao_identica": 600,
+      "transcricao_identica": 600,
+      "itens_diferentes": []
+    },
+    "albertina": {
+      "itens": 600,
+      "segmentacao_identica": 600,
+      "transcricao_identica": 600,
+      "itens_diferentes": []
+    }
+  },
+  "paridade": {
+    "falas": 691,
+    "identicas": 691,
+    "max_delta_p": 0.0
+  },
+  "inferencia_ms": {
+    "bertimbau": {
+      "n": 689,
+      "p50_ms": 27.74,
+      "p95_ms": 32.312
+    },
+    "baseline_logreg": {
+      "n": 689,
+      "p50_ms": 0.64,
+      "p95_ms": 1.78
+    },
+    "baseline_svm": {
+      "n": 689,
+      "p50_ms": 4.25,
+      "p95_ms": 5.26
+    },
+    "debertinha": {
+      "n": 689,
+      "p50_ms": 31.31,
+      "p95_ms": 34.01
+    },
+    "albertina": {
+      "n": 689,
+      "p50_ms": 44.1,
+      "p95_ms": 53.376
+    }
+  },
+  "unidade_do_bootstrap": "item",
+  "comparacao": {
+    "por_grupo": {
+      "bertimbau": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.07333333333333333,
+            "ativacao_politica_baixa_ndd": 0.043333333333333335
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.056666666666666664,
+            "ativacao_politica_baixa_ndd": 0.04
+          }
+        }
+      },
+      "baseline_logreg": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.09666666666666666,
+            "ativacao_politica_baixa_ndd": 0.08333333333333333
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.07333333333333333,
+            "ativacao_politica_baixa_ndd": 0.06333333333333334
+          }
+        }
+      },
+      "baseline_svm": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.10333333333333333,
+            "ativacao_politica_baixa_ndd": 0.08666666666666667
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.07,
+            "ativacao_politica_baixa_ndd": 0.06333333333333334
+          }
+        }
+      },
+      "debertinha": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.03666666666666667
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.056666666666666664,
+            "ativacao_politica_baixa_ndd": 0.04666666666666667
+          }
+        }
+      },
+      "albertina": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.04666666666666667,
+            "ativacao_politica_baixa_ndd": 0.03333333333333333
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.056666666666666664,
+            "ativacao_politica_baixa_ndd": 0.04
+          }
+        }
+      },
+      "sem_correcao_bertimbau": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.3466666666666667,
+            "ativacao_politica_baixa_ndd": 0.27666666666666667
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.23666666666666666,
+            "ativacao_politica_baixa_ndd": 0.18
+          }
+        }
+      },
+      "sem_correcao_debertinha": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.41,
+            "ativacao_politica_baixa_ndd": 0.3466666666666667
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.23666666666666666,
+            "ativacao_politica_baixa_ndd": 0.17333333333333334
+          }
+        }
+      },
+      "sem_correcao_albertina": {
+        "coraa": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.29333333333333333,
+            "ativacao_politica_baixa_ndd": 0.23333333333333334
+          }
+        },
+        "nurcsp": {
+          "NDD": {
+            "n": 300,
+            "ativacao": 0.18,
+            "ativacao_politica_baixa_ndd": 0.12
+          }
+        }
+      }
+    },
+    "pareado": {
+      "baseline_logreg vs bertimbau": {
+        "NDD": {
+          "fp_a": 0.085,
+          "fp_b": 0.065,
+          "diferenca": 0.020000000000000004,
+          "ic95_inf": -0.0050000000000000044,
+          "ic95_sup": 0.045000000000000005,
+          "p_a_menos_fp": 0.05
+        }
+      },
+      "baseline_svm vs bertimbau": {
+        "NDD": {
+          "fp_a": 0.08666666666666667,
+          "fp_b": 0.065,
+          "diferenca": 0.021666666666666667,
+          "ic95_inf": -0.0033750000000000047,
+          "ic95_sup": 0.04833333333333333,
+          "p_a_menos_fp": 0.0435
+        }
+      },
+      "debertinha vs bertimbau": {
+        "NDD": {
+          "fp_a": 0.05333333333333334,
+          "fp_b": 0.065,
+          "diferenca": -0.011666666666666665,
+          "ic95_inf": -0.03004166666666667,
+          "ic95_sup": 0.006666666666666668,
+          "p_a_menos_fp": 0.863
+        }
+      },
+      "albertina vs bertimbau": {
+        "NDD": {
+          "fp_a": 0.051666666666666666,
+          "fp_b": 0.065,
+          "diferenca": -0.013333333333333336,
+          "ic95_inf": -0.03333333333333333,
+          "ic95_sup": 0.006708333333333114,
+          "p_a_menos_fp": 0.8785
+        }
+      },
+      "sem_correcao_bertimbau vs bertimbau": {
+        "NDD": {
+          "fp_a": 0.2916666666666667,
+          "fp_b": 0.065,
+          "diferenca": 0.22666666666666668,
+          "ic95_inf": 0.1916666666666667,
+          "ic95_sup": 0.26166666666666666,
+          "p_a_menos_fp": 0.0
+        }
+      },
+      "sem_correcao_debertinha vs debertinha": {
+        "NDD": {
+          "fp_a": 0.3233333333333333,
+          "fp_b": 0.05333333333333334,
+          "diferenca": 0.26999999999999996,
+          "ic95_inf": 0.23333333333333334,
+          "ic95_sup": 0.30666666666666664,
+          "p_a_menos_fp": 0.0
+        }
+      },
+      "sem_correcao_albertina vs albertina": {
+        "NDD": {
+          "fp_a": 0.23666666666666666,
+          "fp_b": 0.051666666666666666,
+          "diferenca": 0.185,
+          "ic95_inf": 0.15329166666666666,
+          "ic95_sup": 0.21833333333333335,
+          "p_a_menos_fp": 0.0
+        }
+      }
+    }
+  },
+  "origem_dos_erros": null
+}

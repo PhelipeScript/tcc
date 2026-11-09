@@ -1,0 +1,185 @@
+{
+  "classificador": "bertimbau",
+  "semente_whisper": 0,
+  "resumo": {
+    "conversa_interno": {
+      "n": 24,
+      "NDD": {
+        "n": 24,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0416666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1720529579906724,
+        "p95": 1.2174306578119285,
+        "n": 25
+      }
+    },
+    "distante_interno": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.95,
+        "ativacao_politica_baixa_ndd": 0.95,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.15,
+        "ativacao_politica_baixa_ndd": 0.15,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.15
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 2.0,
+        "falas": 2,
+        "minutos": 0.7233777777777778,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      },
+      "latencia_s": {
+        "p50": 1.1601685420027934,
+        "p95": 1.3442374500096774,
+        "n": 45
+      }
+    },
+    "quieto_interno": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.95,
+        "ativacao_politica_baixa_ndd": 0.95,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.1,
+        "ativacao_politica_baixa_ndd": 0.1,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 3.0,
+        "falas": 3,
+        "minutos": 0.6392888888888889,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      },
+      "latencia_s": {
+        "p50": 1.211856042034924,
+        "p95": 1.361094958288595,
+        "n": 43
+      }
+    },
+    "quieto_iphone": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.95,
+        "ativacao_politica_baixa_ndd": 0.95,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.1,
+        "ativacao_politica_baixa_ndd": 0.1,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 3.0,
+        "falas": 3,
+        "minutos": 1.6728888888888889,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      },
+      "latencia_s": {
+        "p50": 1.1842970839934424,
+        "p95": 1.2837905958062037,
+        "n": 43
+      }
+    },
+    "ruido_interno": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.95,
+        "ativacao_politica_baixa_ndd": 0.95,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.05,
+        "ativacao_politica_baixa_ndd": 0.05,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 2.0,
+        "falas": 2,
+        "minutos": 0.6474666666666666,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      },
+      "latencia_s": {
+        "p50": 1.1680578960222192,
+        "p95": 1.3523123100923837,
+        "n": 42
+      }
+    }
+  }
+}

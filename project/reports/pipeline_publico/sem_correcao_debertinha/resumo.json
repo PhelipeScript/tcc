@@ -1,0 +1,25 @@
+{
+  "classificador": "sem_correcao_debertinha",
+  "resumo": {
+    "coraa": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.41,
+        "ativacao_politica_baixa_ndd": 0.3466666666666667,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1566666666666667
+      }
+    },
+    "nurcsp": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.23666666666666666,
+        "ativacao_politica_baixa_ndd": 0.17333333333333334,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1466666666666667
+      }
+    }
+  }
+}

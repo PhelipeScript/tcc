@@ -1,0 +1,165 @@
+{
+  "matrizes": {
+    "debertinha-s44": {
+      "n": 11616,
+      "DD->DD": 5705,
+      "DD->NDD": 103,
+      "NDD->DD": 164,
+      "NDD->NDD": 5644
+    },
+    "bertimbau-s44": {
+      "n": 11616,
+      "DD->DD": 5719,
+      "DD->NDD": 89,
+      "NDD->DD": 106,
+      "NDD->NDD": 5702
+    },
+    "albertina-s42": {
+      "n": 11616,
+      "DD->DD": 5706,
+      "DD->NDD": 102,
+      "NDD->DD": 130,
+      "NDD->NDD": 5678
+    },
+    "baseline_logreg": {
+      "n": 11616,
+      "DD->DD": 5586,
+      "DD->NDD": 222,
+      "NDD->DD": 232,
+      "NDD->NDD": 5576
+    },
+    "baseline_svm": {
+      "n": 11616,
+      "DD->DD": 5616,
+      "DD->NDD": 192,
+      "NDD->DD": 255,
+      "NDD->NDD": 5553
+    }
+  },
+  "erros": {
+    "falsos_positivos": [
+      {
+        "text": "volta o video quero ver de novo aquela parte engracada",
+        "score_dd": 0.999874,
+        "source": "groq",
+        "bin": "9-10"
+      },
+      {
+        "text": "insere um sumario rapido antes da reuniao comecar",
+        "score_dd": 0.999868,
+        "source": "qwen",
+        "bin": "7-8"
+      },
+      {
+        "text": "compra um mouse com taxa de polling ajustavel por software",
+        "score_dd": 0.999862,
+        "source": "qwen",
+        "bin": "9-10"
+      },
+      {
+        "text": "cria esse atalho aqui na area de trabalho por favor",
+        "score_dd": 0.999775,
+        "source": "qwen",
+        "bin": "9-10"
+      },
+      {
+        "text": "tira print dessa tela antes que a promocao suma amor",
+        "score_dd": 0.999734,
+        "source": "nvidia",
+        "bin": "9-10"
+      },
+      {
+        "text": "meu pc ta estranho mostra os processos em execucao pra eu entender o que ta acontecendo",
+        "score_dd": 0.999649,
+        "source": "qwen",
+        "bin": "14-17"
+      },
+      {
+        "text": "manda essa noticia pro grupo agora e sobre a nova law de cinema",
+        "score_dd": 0.999615,
+        "source": "glm",
+        "bin": "11-13"
+      },
+      {
+        "text": "aplica o formato de porcentagem no relatorio",
+        "score_dd": 0.9995,
+        "source": "qwen",
+        "bin": "7-8"
+      },
+      {
+        "text": "muda a fonte do titulo",
+        "score_dd": 0.999468,
+        "source": "qwen",
+        "bin": "5"
+      },
+      {
+        "text": "cola isso no grupo do trabalho por favor",
+        "score_dd": 0.999267,
+        "source": "openrouter",
+        "bin": "7-8"
+      }
+    ],
+    "falsos_negativos": [
+      {
+        "text": "pesquiso as notas de corte aqui",
+        "score_dd": 6.3e-05,
+        "source": "qwen38",
+        "bin": "6"
+      },
+      {
+        "text": "ta tudo travado porque eu to tentando ditar e o sistema nao responde",
+        "score_dd": 8.4e-05,
+        "source": "qwen",
+        "bin": "11-13"
+      },
+      {
+        "text": "nao quero ver essa bagunca so o drive",
+        "score_dd": 0.000767,
+        "source": "lmstudio",
+        "bin": "7-8"
+      },
+      {
+        "text": "extrai os dados desse slide pra mim",
+        "score_dd": 0.000958,
+        "source": "qwen",
+        "bin": "7-8"
+      },
+      {
+        "text": "vamos mudar o alvo para aquela coordenada por favor",
+        "score_dd": 0.001053,
+        "source": "lmstudio",
+        "bin": "9-10"
+      },
+      {
+        "text": "baixa a mao na reuniao",
+        "score_dd": 0.001089,
+        "source": "opencode",
+        "bin": "5"
+      },
+      {
+        "text": "por que o som sumiu de repente no meio da chamada",
+        "score_dd": 0.001102,
+        "source": "sonnet",
+        "bin": "11-13"
+      },
+      {
+        "text": "olha eu to exausta mas preciso guardar a imagem dessa janela de estudo pra depois",
+        "score_dd": 0.001176,
+        "source": "qwen38",
+        "bin": "14-17"
+      },
+      {
+        "text": "puxa o edge",
+        "score_dd": 0.001277,
+        "source": "qwen38_negdif",
+        "bin": "3"
+      },
+      {
+        "text": "rola pra baixo ai",
+        "score_dd": 0.001435,
+        "source": "claude_negdif",
+        "bin": "4"
+      }
+    ]
+  }
+}

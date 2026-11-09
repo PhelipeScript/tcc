@@ -1,0 +1,36 @@
+{
+  "classificador": "debertinha",
+  "semente_whisper": 0,
+  "resumo": {
+    "coraa": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.05,
+        "ativacao_politica_baixa_ndd": 0.03666666666666667,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1566666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1482645409996621,
+        "p95": 1.9669282498012748,
+        "n": 347
+      }
+    },
+    "nurcsp": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.056666666666666664,
+        "ativacao_politica_baixa_ndd": 0.04666666666666667,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1466666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1797771874989849,
+        "p95": 1.5876495651958926,
+        "n": 344
+      }
+    }
+  }
+}

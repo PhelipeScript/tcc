@@ -1,0 +1,220 @@
+{
+  "particoes_sha256": {
+    "train": "ae3d6a7a6f26ab36a731bba7d87fe4a045585593471bfed46b6e567634a262ea",
+    "val": "318ea9a8c9f1d2c5e560a6c42053f05ed12518756c48ff3c26047ebcf232e9d4",
+    "test": "a3733f96292584e24a28cc47232a6e5420929de9085bef27b87097304259469a"
+  },
+  "total": 116438,
+  "por_origem": {
+    "legacy": {
+      "DD": 47695,
+      "NDD": 47695
+    },
+    "mitigation": {
+      "DD": 10524,
+      "NDD": 10524
+    }
+  },
+  "por_gerador": [
+    {
+      "origem": "legacy",
+      "modelo": "qwen/qwen3.6-35b-a3b",
+      "estrategia": "legado",
+      "DD": 20415,
+      "NDD": 20415,
+      "fracao_do_corpus": 0.35065871966196605
+    },
+    {
+      "origem": "legacy",
+      "modelo": "claude-sonnet (CLI)",
+      "estrategia": "legado",
+      "DD": 10390,
+      "NDD": 10390,
+      "fracao_do_corpus": 0.17846407530187738
+    },
+    {
+      "origem": "legacy",
+      "modelo": "openrouter/free",
+      "estrategia": "legado",
+      "DD": 3369,
+      "NDD": 3369,
+      "fracao_do_corpus": 0.057867706418866696
+    },
+    {
+      "origem": "legacy",
+      "modelo": "qwen/qwen3.8-27b",
+      "estrategia": "legado",
+      "DD": 3088,
+      "NDD": 3088,
+      "fracao_do_corpus": 0.053041103419845755
+    },
+    {
+      "origem": "legacy",
+      "modelo": "zai-org/glm-4.6v-flash",
+      "estrategia": "legado",
+      "DD": 2608,
+      "NDD": 2608,
+      "fracao_do_corpus": 0.044796372318315326
+    },
+    {
+      "origem": "legacy",
+      "modelo": "opencode (CLI)",
+      "estrategia": "legado",
+      "DD": 2342,
+      "NDD": 2342,
+      "fracao_do_corpus": 0.040227417166217215
+    },
+    {
+      "origem": "legacy",
+      "modelo": "google/gemma-4-e4b",
+      "estrategia": "legado",
+      "DD": 1973,
+      "NDD": 1973,
+      "fracao_do_corpus": 0.033889280131915694
+    },
+    {
+      "origem": "legacy",
+      "modelo": "mistral-small-latest",
+      "estrategia": "legado",
+      "DD": 1829,
+      "NDD": 1829,
+      "fracao_do_corpus": 0.03141586080145657
+    },
+    {
+      "origem": "legacy",
+      "modelo": "moonshotai/kimi-k3",
+      "estrategia": "legado",
+      "DD": 1681,
+      "NDD": 1681,
+      "fracao_do_corpus": 0.028873735378484686
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "google/gemma-4-e4b",
+      "estrategia": "comprimento",
+      "DD": 3982,
+      "NDD": 3982,
+      "fracao_do_corpus": 0.06839691509644617
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "google/gemma-4-e4b",
+      "estrategia": "negativos_dificeis",
+      "DD": 1425,
+      "NDD": 1425,
+      "fracao_do_corpus": 0.024476545457668458
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "claude-sonnet-5-5",
+      "estrategia": "negativos_dificeis",
+      "DD": 1211,
+      "NDD": 1211,
+      "fracao_do_corpus": 0.020800769508236144
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "qwen/qwen3.8-27b",
+      "estrategia": "negativos_dificeis",
+      "DD": 985,
+      "NDD": 985,
+      "fracao_do_corpus": 0.016918875281265566
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "openai/gpt-oss-120b",
+      "estrategia": "negativos_dificeis",
+      "DD": 916,
+      "NDD": 916,
+      "fracao_do_corpus": 0.015733695185420567
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "qwen/qwen3.8-27b",
+      "estrategia": "comprimento",
+      "DD": 914,
+      "NDD": 914,
+      "fracao_do_corpus": 0.01569934213916419
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "openai/gpt-oss-120b",
+      "estrategia": "comprimento",
+      "DD": 703,
+      "NDD": 703,
+      "fracao_do_corpus": 0.012075095759116439
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "claude-sonnet-5-5",
+      "estrategia": "comprimento",
+      "DD": 361,
+      "NDD": 361,
+      "fracao_do_corpus": 0.006200724849276009
+    },
+    {
+      "origem": "mitigation",
+      "modelo": "gemini-3.5-flash",
+      "estrategia": "comprimento",
+      "DD": 27,
+      "NDD": 27,
+      "fracao_do_corpus": 0.00046376612446108657
+    }
+  ],
+  "frases_novas_por_modelo": {
+    "google/gemma-4-e4b": {
+      "frases": 10814,
+      "fracao": 0.5137780311668567
+    },
+    "qwen/qwen3.8-27b": {
+      "frases": 3798,
+      "fracao": 0.18044469783352338
+    },
+    "openai/gpt-oss-120b": {
+      "frases": 3238,
+      "fracao": 0.15383884454580007
+    },
+    "claude-sonnet-5-5": {
+      "frases": 3144,
+      "fracao": 0.14937286202964653
+    },
+    "gemini-3.5-flash": {
+      "frases": 54,
+      "fracao": 0.002565564424173318
+    }
+  },
+  "particoes": {
+    "train": {
+      "DD": 46575,
+      "NDD": 46575
+    },
+    "val": {
+      "DD": 5836,
+      "NDD": 5836
+    },
+    "test": {
+      "DD": 5808,
+      "NDD": 5808
+    }
+  },
+  "palavras": {
+    "DD": {
+      "mediana": 9.0,
+      "p10": 5.0,
+      "p90": 13.0,
+      "minimo": 2,
+      "maximo": 24
+    },
+    "NDD": {
+      "mediana": 9.0,
+      "p10": 5.0,
+      "p90": 13.0,
+      "minimo": 2,
+      "maximo": 24
+    }
+  },
+  "auc_comprimento": {
+    "depois_dos_filtros": 0.8175746425937896,
+    "corpus_final": 0.5150445355434261
+  }
+}

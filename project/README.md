@@ -1,253 +1,113 @@
-# Documentação técnica — `project/`
+# DDSD textual em PT-BR
 
-Este documento cobre **como instalar, rodar e entender o código**. Para o andamento do
-trabalho (o que já foi feito, resultados, cronograma), veja o [README raiz](../README.md).
+Um assistente de voz sem palavra de ativação precisa decidir, a cada fala, se ela é dirigida ao computador
+(DD) ou não (NDD). Este projeto toma essa decisão só pelo texto: o Whisper transcreve a fala e um
+classificador decide a partir da transcrição.
 
-## Instalação
+Código do trabalho de conclusão de curso "Detecção de Fala Direcionada ao Computador Pessoal em Português
+Brasileiro: Uma Abordagem Textual para Assistentes de Voz sem Palavra de Ativação", de Phelipe Pereira de
+Souza (SENAC Santo Amaro, 2026).
 
-Gerenciado via [`uv`](https://docs.astral.sh/uv/). Requer Python 3.11+.
+## Conteúdo
+
+| Pasta | O que tem |
+|---|---|
+| `ddsd/` | O pacote, com a CLI `ddsd`: corpus, treino, avaliação e o sistema em tempo real |
+| `config/` | Configuração do corpus (`corpus.toml` e `corpus_controle.toml`) e do sistema (`pipeline.toml`) |
+| `docs/` | Arquitetura do sistema, protocolo experimental, critério de anotação e roteiro da sessão ao vivo |
+| `reports/` | Resultados: relatórios em Markdown e JSON, figuras em `reports/figuras/` e tabelas em `reports/tabelas_tcc.md` |
+| `scripts/` | Figuras, tabelas e relatórios do treino e do corpus; treino completo e sistema com os 5 modelos |
+| `tests/` | Testes unitários e de integração |
+
+`data/` e `models/` ficam fora do git.
+
+## Sistema em tempo real
+
+Feito para macOS com Apple Silicon: o Whisper (large-v3-turbo) roda na GPU pelo mlx. Precisa do
+[uv](https://docs.astral.sh/uv/) e, no terminal, de permissão de microfone.
 
 ```bash
-cd project
 uv sync
+uv run ddsd download-models   # Whisper, Silero VAD e os classificadores do Hugging Face
+uv run ddsd devices           # lista as entradas de áudio
+uv run ddsd run               # microfone, com painel no terminal
 ```
 
-`torch` é resolvido por plataforma (CUDA no Windows/Linux, CPU no macOS) — nenhuma flag
-extra é necessária. Chaves de API para os geradores de dataset vão em `.env`
-(`.env.example` documenta as variáveis esperadas).
+- Os classificadores ficam em `models/` (cerca de 1,1 GB). Se faltar algum, o sistema o baixa do Hugging Face
+  ao carregá-lo.
+- O classificador padrão é o BERTimbau. `--classificador` escolhe outro (`albertina`, `debertinha`,
+  `baseline_logreg` ou `baseline_svm`); no painel, as teclas 1, 2 e 3 trocam entre os Transformers.
+- `--backend faster-whisper` roda o Whisper na CPU; `--no-dashboard` troca o painel por linhas de log.
+- `--gravar` guarda o áudio de cada fala e as evidências de cada decisão em `data/sessoes/` (grava voz).
+- `uv run ddsd replay fala.wav` passa gravações pelo mesmo pipeline.
 
-## Estrutura
+A arquitetura (captura, detector de voz, Whisper, classificador e decisão) está em `docs/arquitetura.md`.
 
-```
-project/
-├── data/                    # gerado por src/data_prep; não versionado
-│   ├── 01_snapshot/ ... 07_splits/   # uma pasta por estágio do pipeline
-│   └── reports/             # pipeline_report.{md,json} — estatísticas de cada execução
-├── outputs/                 # gerado por src/training; não versionado
-│   └── <modelo>/            # checkpoints, métricas, gráficos, manifest por modelo
-└── src/
-    ├── dataset/             # Etapa 1 — geração sintética via LLMs
-    ├── data_prep/           # Etapa 2 — pipeline de preparação (7 estágios)
-    └── training/            # Etapa 3 — fine-tuning e avaliação
-```
+## Modelos e corpus no Hugging Face
 
-## Etapa 1 — Geração do dataset (`src/dataset/`)
-
-Um script por provedor (`{glm,groq,lmstudio,mistral,nvidia,openrouter,qwen}_generate.py`),
-todos seguindo o mesmo contrato: leem a taxonomia compartilhada em
-`src/dataset/prompts/context_schema.yaml` (7 categorias × 8 contextos × 6 tons), geram
-por 3 estratégias de prompt (paráfrase, roleplay com persona, contraste NDD), filtram
-*wake-words* e vocabulário de casa inteligente, e gravam incrementalmente em
-`src/dataset/<fonte>/{dd,ndd}.jsonl` via `tenacity` (retry em falha de API).
-
-```bash
-uv run python -m src.dataset.<fonte>_generate
-```
-
-**Nunca rodar duas instâncias do mesmo script em paralelo** — a escrita incremental no
-mesmo arquivo `.jsonl` corrompe o resultado. `opencode` e `sonnet` não têm script: são
-gerados em sessões interativas de CLI (OpenCode / Claude Sonnet).
-
-## Etapa 2 — Preparação do dataset (`src/data_prep/`)
-
-Pipeline de 7 estágios, cada um um módulo isolado que lê a saída do anterior. As pastas
-de origem (`src/dataset/<fonte>/`) são tratadas como somente-leitura.
-
-```bash
-uv run python -m src.data_prep.run_pipeline
-```
-
-| Estágio | Módulo | Função |
-|---|---|---|
-| 1 | `stage1_snapshot.py` | Copia as fontes, grava manifesto (contagem, mtime, SHA-256) |
-| 2 | `stage2_normalize.py` | NFKD → remove acento → minúsculas → remove pontuação → colapsa espaço |
-| 3 | `stage3_dedup_per_file.py` | Remove duplicatas dentro de cada arquivo |
-| 4 | `stage4_merge.py` | Consolida as fontes em `dd.jsonl`/`ndd.jsonl` |
-| 5 | `stage5_dedup_final.py` | Dedup entre fontes + remove conflitos de rótulo (`conflicts.jsonl`) |
-| 6 | `stage6_balance.py` | Undersample da classe majoritária até 1:1 (`discarded.jsonl`) |
-| 7 | `stage7_split.py` | Split 80/10/10 estratificado por `label + source`, sem overlap de texto |
-
-Configuração central em `config.py` (`PROVIDERS`, `MIN_CHARS`, `SPLIT_RATIOS`, `SEED=8`).
-Cada execução grava `data/reports/pipeline_report.{md,json}` com as contagens de cada
-estágio — é a fonte de verdade para qualquer número citado no texto do TCC sobre o
-dataset.
-
-Schema de saída (`data/07_splits/{train,val,test}.jsonl`):
-
-```json
-{"text": "fecha essa aba por favor", "text_raw": "Fecha essa aba, por favor!", "label": "DD", "source": "glm"}
-```
-
-`text` é a entrada usada no treino (normalizada); `text_raw` existe para permitir a
-ablação com acentuação/pontuação preservadas sem reprocessar nada.
-
-## Etapa 3 — Treinamento (`src/training/`)
-
-```bash
-uv run python -m src.training.train_all              # os 3 modelos em sequência
-uv run python -m src.training.train_bertimbau         # um modelo isolado
-uv run python -m src.training.train_bertimbau --epochs 2 --allow-cpu --max-steps 50  # smoke test
-```
-
-Os três scripts de treino (`train_bertimbau.py`, `train_albertina.py`,
-`train_debertinha.py`) são wrappers finos que chamam `cli.main_for_model(<chave>)`; todas
-as opções vêm de `config.py` (`ModelConfig` por modelo, `TrainingConfig` comum) e podem
-ser sobrescritas via linha de comando (`--help` lista todas).
-
-**Ordem de execução fixa em `engine.py`** (não alterar sem motivo forte — é o que sustenta
-a validade metodológica dos resultados):
-
-```
-hardware → semente → dados → modelo → treino
-→ avalia VALIDAÇÃO → escolhe limiar de decisão na VALIDAÇÃO
-→ avalia TESTE uma única vez, com o limiar congelado
-→ grava artefatos
-```
-
-Cada execução grava em `outputs/<modelo>/`:
-
-| Arquivo | Conteúdo |
+| Repositório | Conteúdo |
 |---|---|
-| `checkpoints/checkpoint-<step>/` | Pesos, otimizador, `trainer_state.json` (histórico de loss/métrica por época) |
-| `metrics_val.json`, `metrics_test.json` | accuracy, precision/recall/F1 (DD e macro), ROC-AUC, PR-AUC, MCC, EER |
-| `metrics_by_source_test.json` | As mesmas métricas, desagregadas por fonte geradora |
-| `confusion_matrix_test.{csv,png}`, `roc_curve_test.png`, `det_curve_test.png` | Gráficos e tabela do conjunto de teste |
-| `predictions_test.jsonl`, `errors_test.json` | Predição por exemplo e os casos errados |
-| `run_manifest.json` | Hiperparâmetros, métricas, hardware, versões, SHA do commit |
+| `phelipescript/ddsd-ptbr-bertimbau` | BERTimbau, o classificador padrão |
+| `phelipescript/ddsd-ptbr-albertina` | Albertina |
+| `phelipescript/ddsd-ptbr-debertinha` | DeBERTinha |
+| `phelipescript/ddsd-ptbr-tfidf` | TF-IDF + Regressão Logística e TF-IDF + SVM |
+| `phelipescript/ddsd-ptbr-<modelo>-sem-correcao` | Os 3 Transformers treinados no corpus sem a correção do viés de comprimento |
+| `phelipescript/ddsd-ptbr-corpus` (dataset) | O corpus, com as partições de treino, validação e teste, e as fontes em `fontes/` |
 
-`train_all.py` roda os três (da menor para a maior arquitetura) e gera
-`outputs/comparison.{md,tex,json}` com a tabela comparativa.
+Cada modelo traz o limiar de decisão escolhido na validação.
 
-`metrics.py` implementa EER por interpolação da curva ROC + `scipy.optimize.brentq`,
-validado contra o caso analítico `d′=2` (EER teórico 0,1587, obtido 0,1590).
-`reporting.py` gera todos os gráficos só com `matplotlib` (sem wandb/tensorboard — o
-`Trainer` roda com `report_to=[]`).
+```python
+from datasets import load_dataset
 
-### Ferramentas de inspeção manual
-
-```bash
-uv run python -m src.training.predict_interactive
+corpus = load_dataset("phelipescript/ddsd-ptbr-corpus")  # com correção (padrão)
+controle = load_dataset("phelipescript/ddsd-ptbr-corpus", "sem_correcao")
 ```
 
-CLI interativo: escolhe um dos 3 modelos, carrega o melhor checkpoint e o limiar de
-decisão congelados a partir do `run_manifest.json`, e permite testar frases digitadas à
-mão, acumulando métricas de sessão (`metricas` no menu).
+## Reproduzir o experimento
+
+O procedimento, com o comando de cada etapa, está em `docs/protocolo_experimental.md`.
+
+1. **Corpus.** As fontes publicadas reconstroem as mesmas partições dos dois corpora:
+   ```bash
+   uv run hf download phelipescript/ddsd-ptbr-corpus --repo-type dataset --include "fontes/*" --local-dir data/corpus/hf
+   mv data/corpus/hf/fontes data/corpus/sources
+   uv run ddsd corpus build
+   uv run ddsd corpus freeze
+   uv run ddsd corpus build --config config/corpus_controle.toml
+   uv run ddsd corpus freeze --config config/corpus_controle.toml
+   ```
+2. **Treino** (MPS): `scripts/treino_completo.sh` treina as duas condições e retoma o que parou. Equivale a
+   `uv run ddsd train all --seeds 42 43 44` e, para os modelos sem correção,
+   `uv run ddsd train all --seeds 42 --data-dir data/corpus/control/frozen/splits --output-dir models/controle`.
+3. **Avaliação:** `uv run ddsd eval <ação>` e `uv run ddsd benchmark`. `scripts/sessao_pipeline.sh` roda o
+   sistema completo com os 5 modelos num conjunto de áudio. A seção 3 do protocolo liga cada experimento ao
+   comando e ao relatório em `reports/`.
+4. **Figuras e tabelas:** `uv run python scripts/figuras.py` regera `reports/figuras/`, e
+   `uv run python scripts/tabelas_tcc.py` regera `reports/tabelas_tcc.md`, a partir dos relatórios.
+
+A geração de frases com LLMs (`ddsd generate`) não é necessária para reproduzir o corpus. Ela usa as chaves do
+`.env` (modelo em `.env.example`).
+
+## Testes
 
 ```bash
-uv run python -m src.training.podcast_eval "<url-do-youtube>" --model debertinha --secs 30
+uv run pytest -m "not models and not audio_hw"   # sem modelos nem hardware de áudio
+uv run pytest                                    # tudo
 ```
 
-Baixa o áudio via `yt-dlp`, transcreve com `faster-whisper` (VAD ligado), agrupa em
-blocos por segundos de fala, roda o classificador em cada bloco e reporta uma "timeline
-de ativações" — quanto do áudio faria o assistente disparar. Salva `transcript.jsonl`,
-`chunks.jsonl` e `summary.json` em `outputs/podcast_analysis/<id>_<slug>/`. É uma
-validação qualitativa em fala real, não um substituto da validação externa formal
-(Seção "Limitação conhecida" do README raiz).
+- Os testes `models` usam o Whisper do cache do Hugging Face (`uv run ddsd download-models`).
+- Os testes `audio_hw` usam o microfone e tocam uma frase no alto-falante.
+- O teste de ponta a ponta do pipeline usa os classificadores do teste de fumaça e é pulado sem eles. Eles são
+  treinados com o corpus já construído (passo 1 acima):
 
-## Baselines clássicos (`src/baseline/`)
+  ```bash
+  uv run ddsd train bertimbau --smoke
+  uv run ddsd train debertinha --smoke
+  uv run ddsd train albertina --smoke --precision fp32
+  ```
 
-```bash
-uv run python -m src.baseline.train_baselines              # SVM + Regressão Logística
-uv run python -m src.baseline.train_baselines --only svm
-uv run python -m src.baseline.build_full_comparison         # tabela com os 3 Transformers + os 2 baselines
-```
+## Limitações
 
-TF-IDF (n-gramas 1-3, vocabulário limitado a `max_features`) + `LinearSVC` calibrado
-(`CalibratedClassifierCV`, já que `LinearSVC` não expõe `predict_proba`) e Regressão
-Logística, ambos com `C` escolhido por `GridSearchCV` (5-fold estratificado) sobre o
-treino. Segue a mesma disciplina do treino dos Transformers: limiar de decisão calibrado
-só na validação (`src.training.metrics.best_threshold`), teste avaliado uma única vez.
-Reaproveita `src.training.metrics` e `src.training.reporting` sem alterá-los — os
-artefatos gravados em `outputs/baseline_svm/` e `outputs/baseline_logreg/` têm o mesmo
-layout dos modelos Transformer.
-
-`build_full_comparison.py` não treina nada: só lê `metrics_test.json` dos 5 modelos já
-treinados e grava `outputs/comparison_full.{md,tex,json}`.
-
-## Análise de overfitting e significância (`src/analysis/`)
-
-```bash
-uv run python -m src.analysis.run_analysis
-```
-
-Não treina nada — lê os artefatos que `src.training` e `src.baseline` já gravaram em
-`outputs/` e gera, em `outputs/analysis/`:
-
-| Subpasta | Conteúdo |
-|---|---|
-| `loss_curves/` | train_loss vs eval_loss por época (extraído do `trainer_state.json` do checkpoint de **maior step**, não o "melhor" — é o único que tem o histórico completo) + overlay dos 3 Transformers |
-| `per_source/` | Gráfico de barras agrupadas de uma métrica por fonte geradora, para todos os modelos treinados |
-| `calibration/` | Diagrama de confiabilidade (reliability diagram) sobre `predictions_test.jsonl`, ilustrando o overfitting de confiança |
-| `bootstrap/` | Bootstrap pareado (2.000 reamostragens) entre todos os pares de modelos, com IC 95% e `prob_a_maior_que_b` por métrica |
-
-O bootstrap pareado (`bootstrap.py`) reamostra o mesmo conjunto de índices do teste para
-os dois modelos comparados a cada iteração — isso só é válido se as duas listas de
-`predictions_test.jsonl` estiverem na mesma ordem de exemplos. `check_alignment()` valida
-isso automaticamente (compara rótulo linha a linha) e aborta com erro claro se detectar
-desalinhamento, em vez de produzir um IC silenciosamente inválido.
-
-## ASR simulado via TTS → Whisper (`src/asr_eval/`)
-
-```bash
-uv run python -m src.asr_eval.run_asr_eval                                  # 750 exemplos, N=1,3,5
-uv run python -m src.asr_eval.run_asr_eval --sample-size 100 --n-values 1 3  # execução menor
-uv run python -m src.asr_eval.wer_impact                                    # acurácia por faixa de WER
-```
-
-Não existe áudio real gravado para as frases sintéticas do corpus (só texto), então os
-objetivos 2 (n-best) e 3 (impacto do WER) do TCC1 são cumpridos com um pipeline
-simulado: sintetiza-se áudio de uma amostra do conjunto de teste via TTS, transcreve-se
-com `faster-whisper` e roda-se os 3 classificadores já treinados sobre 4 condições —
-texto original (upper bound), transcrição 1-best, e concatenações n-best (N=3, N=5).
-
-| Módulo | Função |
-|---|---|
-| `sampling.py` | Amostra estratificada por `label + source` do `test.jsonl` |
-| `synth.py` | TTS via `edge-tts`, com cache em disco (`outputs/asr_eval/audio/`) |
-| `transcribe_nbest.py` | N-best **real** via beam search do `ctranslate2` (não uma aproximação por temperatura) |
-| `wer.py` | WER via `jiwer`, texto normalizado dos dois lados |
-| `classify.py` | Roda os 3 `ModelSession` sobre cada condição, com o separador correto do tokenizador de cada modelo na concatenação n-best |
-| `engine.py` | Orquestra tudo e grava `outputs/asr_eval/{records.jsonl,metrics.json,summary.md}` |
-
-**`transcribe_nbest.py` depende de internals do `faster-whisper`** (`WhisperModel.encode`,
-`WhisperModel.get_prompt`, `Tokenizer`, `get_suppressed_tokens`, `pad_or_trim`), não da
-API pública `WhisperModel.transcribe()` — que só devolve a melhor hipótese por segmento.
-O `ctranslate2.models.Whisper.generate()` interno aceita `num_hypotheses`, confirmado por
-`help(ctranslate2.models.Whisper.generate)`. Validado manualmente: para
-`"Fecha essa aba, por favor!"`, N=3 devolveu três variações plausíveis de pontuação/
-conjugação do beam search real. Se uma versão futura do `faster-whisper` mudar essa API
-interna, o fallback documentado é aproximar n-best por amostragem de temperatura
-(`best_of` na API pública).
-
-## Validação externa (`src/external_eval/`)
-
-```bash
-uv run python -m src.external_eval.run_external_eval                              # os 3 corpora, 1000 exemplos cada
-uv run python -m src.external_eval.run_external_eval --corpora coraa --sample-size 100
-```
-
-Testa os 3 classificadores contra fala real (não sintética) de três corpora públicos no
-Hugging Face Hub — CORAA, NURC-SP, TAGARELA — lendo só a transcrição textual (nenhum
-áudio é decodificado; ver docstring de `fetch.py` para o schema de cada corpus e por que
-TAGARELA é lido via `pyarrow` direto em vez de `datasets`, evitando a dependência de
-decodificação de áudio `torchcodec`). Como nenhum dos três tem anotação DD/NDD, o rótulo
-NDD é assumido por suposição de domínio e a métrica é a taxa de falso positivo.
-
-**Resultado**: 20% a 35% de falso positivo em fala real, concentrado em fragmentos
-curtos de conversa — evidência de que o classificador usa brevidade da frase como atalho
-para DD, um padrão válido no corpus sintético (DD é sempre comando curto) mas que não se
-sustenta em fala real (fragmentos curtos e incompletos são comuns e não indicam intenção
-de comando). Ver Seção 5.8 do README raiz para a análise completa.
-
-## Convenções do código
-
-- Sem loggers externos (wandb/tensorboard/mlflow) — tudo grava em disco via
-  `reporting.py`, sem depender de rede ou conta.
-- Sem arquivo de configuração externo (YAML/JSON) para hiperparâmetros de treino — tudo
-  é `dataclass` Python em `config.py`, sobrescrevível via CLI. O único YAML do projeto é
-  a taxonomia de geração (`src/dataset/prompts/context_schema.yaml`).
-- `DD` é sempre a classe positiva (`LABEL2ID = {"NDD": 0, "DD": 1}`) — não inverter; isso
-  troca o sentido de precision/recall/EER em todos os relatórios.
-- Sem suíte de testes automatizada (`tests/`) — as flags `--allow-cpu`,
-  `--max-train-samples`, `--max-eval-samples`, `--max-steps` dos scripts de treino
-  servem como smoke test manual.
+As limitações conhecidas estão na seção 4 de `docs/protocolo_experimental.md`. Entre elas: o corpus é 100%
+sintético, as gravações feitas para o trabalho têm um único falante (o autor) e o sistema não separa
+falantes.

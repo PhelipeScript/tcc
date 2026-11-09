@@ -1,0 +1,67 @@
+# CONDIÇÃO-CONTROLE: só o corpus inicial, sem a mitigação.
+
+[paths]
+# fontes congeladas: tanto do legacy/<provedor> quanto do mitigation/<provedor>, com os arquivos dd*jsonl e ndd*jsonl
+sources = "data/corpus/sources" 
+# saída de cada `ddsd corpus build` (sobrescrita a cada execução)
+build = "data/corpus/control/build"
+# versão congelada usada no treino (`ddsd corpus freeze`)
+frozen = "data/corpus/control/frozen"
+# taxonomia de categorias, contextos e tons usado na geração
+taxonomy = "config/context_schema.yaml"
+
+[sources]
+include_origins = ["legacy"]
+
+[filters]
+# mais de `min_chars` caracteres E pelo menos `min_words` palavras, medidos sobre o texto normalizado.
+min_chars = 5
+min_words = 2
+# amostras com mais de `max_words` sao descartadas (fogem do padrao de enunciado)
+max_words = 50
+# depois da normalizacao, todo português legitimo é ASCII
+require_ascii = true
+
+[near_dedup]
+enabled = true
+# Pares com similaridade de cossenos TF-IDF estritamente maior que este limiar sao considerados quase-duplicatas e descartados.
+threshold = 0.95
+ngram_min = 1
+ngram_max = 2
+
+[balance]
+# Faixas de comprimento em palavras do texto normalizado ([mín, máx], inclusive).
+length_bins = [[2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 8], [9, 10], [11, 13], [14, 17], [18, 24], [25, 50]]
+# Modos disponíveis:
+#   "global"             - 1:1 no total, sem olhar comprimento nem fonte
+#   "faixa_fonte_origem" - (padrão do principal) 1:1 em cada (faixa, fonte, origem): comprimento, fonte e
+#                          estilo do prompt (corpus inicial × mitigação) deixam de prever a classe;
+#   "faixa_fonte"        - 1:1 em cada (faixa, fonte): controla comprimento e fonte, não a origem;
+#   "faixa"              - 1:1 em cada faixa, imitando na classe majoritária a mistura de fontes da
+#                          minoritária; sobra atalho de fonte onde falta material e descarta menos dados.
+mode = "global"
+seed = 8
+
+[split]
+ratios = [0.8, 0.1, 0.1]
+seed = 8
+# Estratos (classe|fonte|faixa) menores que isso caem para classe|faixa e, depois, para classe.
+min_stratum = 10
+
+[generation]
+# faixas alvo da estrategia `comprimento`
+short_band = [2, 6]
+long_band = [11, 24]
+# A mitigação gera as DUAS classes, em partes iguais, em cada faixa curta e longa ("pares"):
+# assim DD e NDD de uma célula vêm do mesmo modelo e do mesmo prompt.
+batch_size = 10
+temperature = 0.9
+# Autoverificação: o mesmo modelo reclassifica cada frase (temperatura 0) e só fica a que confirma o
+# rótulo pretendido. Remove comandos disfarçados de NDD e "comandos" que viraram conversa.
+verify_labels = true
+# Pausa entre chamadas, para respeitar limites de taxa das APIs gratuitas (segundos).
+sleep_seconds = 6.0
+
+[control]
+exclude_test_of = "data/corpus/frozen/splits"
+match_size_of = "data/corpus/frozen/manifest.json"

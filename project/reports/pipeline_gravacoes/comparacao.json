@@ -1,0 +1,1319 @@
+{
+  "transcricoes_iguais": {
+    "baseline_logreg": {
+      "itens": 192,
+      "segmentacao_identica": 192,
+      "transcricao_identica": 192,
+      "itens_diferentes": []
+    },
+    "baseline_svm": {
+      "itens": 192,
+      "segmentacao_identica": 192,
+      "transcricao_identica": 192,
+      "itens_diferentes": []
+    },
+    "debertinha": {
+      "itens": 192,
+      "segmentacao_identica": 192,
+      "transcricao_identica": 192,
+      "itens_diferentes": []
+    },
+    "albertina": {
+      "itens": 192,
+      "segmentacao_identica": 192,
+      "transcricao_identica": 192,
+      "itens_diferentes": []
+    }
+  },
+  "paridade": {
+    "falas": 198,
+    "identicas": 198,
+    "max_delta_p": 0.0
+  },
+  "inferencia_ms": {
+    "bertimbau": {
+      "n": 198,
+      "p50_ms": 41.075,
+      "p95_ms": 53.12999999999999
+    },
+    "baseline_logreg": {
+      "n": 198,
+      "p50_ms": 1.11,
+      "p95_ms": 1.79
+    },
+    "baseline_svm": {
+      "n": 198,
+      "p50_ms": 4.17,
+      "p95_ms": 5.5515
+    },
+    "debertinha": {
+      "n": 198,
+      "p50_ms": 31.055,
+      "p95_ms": 33.690999999999995
+    },
+    "albertina": {
+      "n": 198,
+      "p50_ms": 43.459999999999994,
+      "p95_ms": 53.020499999999956
+    }
+  },
+  "unidade_do_bootstrap": "frase",
+  "comparacao": {
+    "por_grupo": {
+      "bertimbau": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.15,
+            "ativacao_politica_baixa_ndd": 0.15
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.1,
+            "ativacao_politica_baixa_ndd": 0.1
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.1,
+            "ativacao_politica_baixa_ndd": 0.1
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "baseline_logreg": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.041666666666666664,
+            "ativacao_politica_baixa_ndd": 0.041666666666666664
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.85,
+            "ativacao_politica_baixa_ndd": 0.85
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.15,
+            "ativacao_politica_baixa_ndd": 0.1
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 1.0,
+            "ativacao_politica_baixa_ndd": 1.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.85,
+            "ativacao_politica_baixa_ndd": 0.85
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "baseline_svm": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.041666666666666664,
+            "ativacao_politica_baixa_ndd": 0.041666666666666664
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.85,
+            "ativacao_politica_baixa_ndd": 0.85
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.2,
+            "ativacao_politica_baixa_ndd": 0.15
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 1.0,
+            "ativacao_politica_baixa_ndd": 1.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.1,
+            "ativacao_politica_baixa_ndd": 0.1
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.85,
+            "ativacao_politica_baixa_ndd": 0.85
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.1,
+            "ativacao_politica_baixa_ndd": 0.1
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "debertinha": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.15,
+            "ativacao_politica_baixa_ndd": 0.1
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "albertina": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.15,
+            "ativacao_politica_baixa_ndd": 0.15
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.05,
+            "ativacao_politica_baixa_ndd": 0.05
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "sem_correcao_bertimbau": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.20833333333333334,
+            "ativacao_politica_baixa_ndd": 0.20833333333333334
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.4,
+            "ativacao_politica_baixa_ndd": 0.3
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.25,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 1.0,
+            "ativacao_politica_baixa_ndd": 1.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.2,
+            "ativacao_politica_baixa_ndd": 0.2
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.85
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.25,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "sem_correcao_debertinha": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.20833333333333334,
+            "ativacao_politica_baixa_ndd": 0.20833333333333334
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.35,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.25,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 1.0,
+            "ativacao_politica_baixa_ndd": 1.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.2,
+            "ativacao_politica_baixa_ndd": 0.2
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.85
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.25,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      },
+      "sem_correcao_albertina": {
+        "conversa_interno": {
+          "NDD": {
+            "n": 24,
+            "ativacao": 0.2916666666666667,
+            "ativacao_politica_baixa_ndd": 0.2916666666666667
+          }
+        },
+        "distante_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.9,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.4,
+            "ativacao_politica_baixa_ndd": 0.3
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.25,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 1.0,
+            "ativacao_politica_baixa_ndd": 1.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "quieto_iphone": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.95
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.25,
+            "ativacao_politica_baixa_ndd": 0.25
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        },
+        "ruido_interno": {
+          "DD": {
+            "n": 20,
+            "ativacao": 0.95,
+            "ativacao_politica_baixa_ndd": 0.9
+          },
+          "NDD": {
+            "n": 20,
+            "ativacao": 0.3,
+            "ativacao_politica_baixa_ndd": 0.3
+          },
+          "NDD_LIVRE": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          },
+          "RUIDO": {
+            "n": 1,
+            "ativacao": 0.0,
+            "ativacao_politica_baixa_ndd": 0.0
+          }
+        }
+      }
+    },
+    "pareado": {
+      "baseline_logreg vs bertimbau": {
+        "DD": {
+          "fp_a": 0.875,
+          "fp_b": 0.95,
+          "diferenca": -0.07499999999999996,
+          "ic95_inf": -0.16249999999999998,
+          "ic95_sup": -0.012499999999999956,
+          "p_a_menos_fp": 0.99
+        },
+        "NDD": {
+          "fp_a": 0.057692307692307696,
+          "fp_b": 0.07692307692307693,
+          "diferenca": -0.019230769230769232,
+          "ic95_inf": -0.11224776427424903,
+          "ic95_sup": 0.06316985645933008,
+          "p_a_menos_fp": 0.6185
+        }
+      },
+      "baseline_svm vs bertimbau": {
+        "DD": {
+          "fp_a": 0.875,
+          "fp_b": 0.95,
+          "diferenca": -0.07499999999999996,
+          "ic95_inf": -0.16249999999999998,
+          "ic95_sup": -0.012499999999999956,
+          "p_a_menos_fp": 0.99
+        },
+        "NDD": {
+          "fp_a": 0.08653846153846154,
+          "fp_b": 0.07692307692307693,
+          "diferenca": 0.009615384615384609,
+          "ic95_inf": -0.09618362831858406,
+          "ic95_sup": 0.1150527569775357,
+          "p_a_menos_fp": 0.398
+        }
+      },
+      "debertinha vs bertimbau": {
+        "DD": {
+          "fp_a": 0.925,
+          "fp_b": 0.95,
+          "diferenca": -0.02499999999999991,
+          "ic95_inf": -0.07500000000000007,
+          "ic95_sup": 0.0,
+          "p_a_menos_fp": 0.6175
+        },
+        "NDD": {
+          "fp_a": 0.057692307692307696,
+          "fp_b": 0.07692307692307693,
+          "diferenca": -0.019230769230769232,
+          "ic95_inf": -0.08426043557168784,
+          "ic95_sup": 0.024024999999999862,
+          "p_a_menos_fp": 0.629
+        }
+      },
+      "albertina vs bertimbau": {
+        "DD": {
+          "fp_a": 0.925,
+          "fp_b": 0.95,
+          "diferenca": -0.02499999999999991,
+          "ic95_inf": -0.07500000000000007,
+          "ic95_sup": 0.0,
+          "p_a_menos_fp": 0.6175
+        },
+        "NDD": {
+          "fp_a": 0.057692307692307696,
+          "fp_b": 0.07692307692307693,
+          "diferenca": -0.019230769230769232,
+          "ic95_inf": -0.061224489795918366,
+          "ic95_sup": 0.0,
+          "p_a_menos_fp": 0.655
+        }
+      },
+      "sem_correcao_bertimbau vs bertimbau": {
+        "DD": {
+          "fp_a": 0.925,
+          "fp_b": 0.95,
+          "diferenca": -0.02499999999999991,
+          "ic95_inf": -0.1625000000000001,
+          "ic95_sup": 0.09999999999999998,
+          "p_a_menos_fp": 0.6055
+        },
+        "NDD": {
+          "fp_a": 0.25961538461538464,
+          "fp_b": 0.07692307692307693,
+          "diferenca": 0.1826923076923077,
+          "ic95_inf": 0.009615384615384623,
+          "ic95_sup": 0.34782608695652173,
+          "p_a_menos_fp": 0.0175
+        }
+      },
+      "sem_correcao_debertinha vs debertinha": {
+        "DD": {
+          "fp_a": 0.925,
+          "fp_b": 0.925,
+          "diferenca": 0.0,
+          "ic95_inf": -0.1499999999999999,
+          "ic95_sup": 0.13749999999999996,
+          "p_a_menos_fp": 0.48
+        },
+        "NDD": {
+          "fp_a": 0.25,
+          "fp_b": 0.057692307692307696,
+          "diferenca": 0.1923076923076923,
+          "ic95_inf": 0.04669711129991503,
+          "ic95_sup": 0.3374073883515116,
+          "p_a_menos_fp": 0.005
+        }
+      },
+      "sem_correcao_albertina vs albertina": {
+        "DD": {
+          "fp_a": 0.9375,
+          "fp_b": 0.925,
+          "diferenca": 0.012499999999999956,
+          "ic95_inf": -0.13749999999999996,
+          "ic95_sup": 0.15000000000000002,
+          "p_a_menos_fp": 0.3985
+        },
+        "NDD": {
+          "fp_a": 0.2980769230769231,
+          "fp_b": 0.057692307692307696,
+          "diferenca": 0.24038461538461536,
+          "ic95_inf": 0.07964601769911506,
+          "ic95_sup": 0.40453053732339506,
+          "p_a_menos_fp": 0.0025
+        }
+      }
+    }
+  },
+  "origem_dos_erros": {
+    "bertimbau": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 3,
+          "transcricao": 1
+        },
+        "NDD": {
+          "segmentacao": 1,
+          "classificador": 3,
+          "transcricao": 4
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18"
+        ],
+        "classificador": [
+          "quieto_interno/P11",
+          "quieto_interno/P34",
+          "distante_interno/P11",
+          "distante_interno/P34",
+          "quieto_iphone/P11",
+          "quieto_iphone/P34"
+        ],
+        "transcricao": [
+          "quieto_interno/P18",
+          "ruido_interno/P18",
+          "ruido_interno/P21",
+          "distante_interno/P05",
+          "quieto_iphone/P18"
+        ]
+      }
+    },
+    "baseline_logreg": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 4,
+          "transcricao": 6
+        },
+        "NDD": {
+          "segmentacao": 1,
+          "classificador": 1,
+          "transcricao": 4
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18"
+        ],
+        "classificador": [
+          "quieto_interno/P34",
+          "ruido_interno/P34",
+          "distante_interno/P34",
+          "quieto_iphone/P34",
+          "conversa_interno/C21"
+        ],
+        "transcricao": [
+          "quieto_interno/P12",
+          "ruido_interno/P12",
+          "ruido_interno/P13",
+          "ruido_interno/P21",
+          "distante_interno/P05",
+          "distante_interno/P14",
+          "distante_interno/P16",
+          "distante_interno/P22",
+          "quieto_iphone/P12",
+          "quieto_iphone/P13"
+        ]
+      }
+    },
+    "baseline_svm": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 4,
+          "transcricao": 6
+        },
+        "NDD": {
+          "segmentacao": 1,
+          "classificador": 4,
+          "transcricao": 4
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18"
+        ],
+        "classificador": [
+          "quieto_interno/P34",
+          "ruido_interno/P09",
+          "ruido_interno/P34",
+          "distante_interno/P09",
+          "distante_interno/P34",
+          "quieto_iphone/P09",
+          "quieto_iphone/P34",
+          "conversa_interno/C21"
+        ],
+        "transcricao": [
+          "quieto_interno/P12",
+          "ruido_interno/P12",
+          "ruido_interno/P13",
+          "ruido_interno/P21",
+          "distante_interno/P05",
+          "distante_interno/P14",
+          "distante_interno/P16",
+          "distante_interno/P22",
+          "quieto_iphone/P12",
+          "quieto_iphone/P13"
+        ]
+      }
+    },
+    "debertinha": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 3,
+          "transcricao": 3
+        },
+        "NDD": {
+          "segmentacao": 1,
+          "classificador": 3,
+          "transcricao": 2
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18"
+        ],
+        "classificador": [
+          "quieto_interno/P18",
+          "quieto_interno/P34",
+          "ruido_interno/P18",
+          "distante_interno/P34",
+          "quieto_iphone/P18",
+          "quieto_iphone/P34"
+        ],
+        "transcricao": [
+          "quieto_interno/P06",
+          "ruido_interno/P21",
+          "distante_interno/P05",
+          "distante_interno/P14",
+          "quieto_iphone/P06"
+        ]
+      }
+    },
+    "albertina": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 3,
+          "transcricao": 3
+        },
+        "NDD": {
+          "segmentacao": 1,
+          "classificador": 3,
+          "transcricao": 2
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18"
+        ],
+        "classificador": [
+          "quieto_interno/P18",
+          "quieto_interno/P34",
+          "ruido_interno/P18",
+          "distante_interno/P34",
+          "quieto_iphone/P18",
+          "quieto_iphone/P34"
+        ],
+        "transcricao": [
+          "quieto_interno/P06",
+          "ruido_interno/P21",
+          "distante_interno/P05",
+          "distante_interno/P11",
+          "quieto_iphone/P06"
+        ]
+      }
+    },
+    "sem_correcao_bertimbau": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 6,
+          "transcricao": 0
+        },
+        "NDD": {
+          "segmentacao": 3,
+          "classificador": 20,
+          "transcricao": 4
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18",
+          "distante_interno/P32",
+          "conversa_interno/C24"
+        ],
+        "classificador": [
+          "quieto_interno/P09",
+          "quieto_interno/P14",
+          "quieto_interno/P20",
+          "quieto_interno/P25",
+          "quieto_interno/P36",
+          "quieto_interno/P38",
+          "ruido_interno/P09",
+          "ruido_interno/P14",
+          "ruido_interno/P20",
+          "ruido_interno/P25",
+          "ruido_interno/P36",
+          "ruido_interno/P38",
+          "distante_interno/P09",
+          "distante_interno/P14",
+          "distante_interno/P20",
+          "distante_interno/P25",
+          "distante_interno/P38",
+          "quieto_iphone/P09",
+          "quieto_iphone/P14",
+          "quieto_iphone/P20",
+          "quieto_iphone/P25",
+          "quieto_iphone/P38",
+          "conversa_interno/C01",
+          "conversa_interno/C05",
+          "conversa_interno/C11",
+          "conversa_interno/C21"
+        ],
+        "transcricao": [
+          "quieto_interno/P33",
+          "ruido_interno/P33",
+          "distante_interno/P05",
+          "distante_interno/P33"
+        ]
+      }
+    },
+    "sem_correcao_debertinha": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 6,
+          "transcricao": 0
+        },
+        "NDD": {
+          "segmentacao": 3,
+          "classificador": 20,
+          "transcricao": 3
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18",
+          "distante_interno/P32",
+          "conversa_interno/C24"
+        ],
+        "classificador": [
+          "quieto_interno/P09",
+          "quieto_interno/P14",
+          "quieto_interno/P20",
+          "quieto_interno/P25",
+          "quieto_interno/P36",
+          "quieto_interno/P38",
+          "ruido_interno/P09",
+          "ruido_interno/P14",
+          "ruido_interno/P20",
+          "ruido_interno/P25",
+          "ruido_interno/P36",
+          "ruido_interno/P38",
+          "distante_interno/P09",
+          "distante_interno/P14",
+          "distante_interno/P20",
+          "distante_interno/P25",
+          "distante_interno/P38",
+          "quieto_iphone/P09",
+          "quieto_iphone/P14",
+          "quieto_iphone/P20",
+          "quieto_iphone/P25",
+          "quieto_iphone/P38",
+          "conversa_interno/C05",
+          "conversa_interno/C08",
+          "conversa_interno/C11",
+          "conversa_interno/C21"
+        ],
+        "transcricao": [
+          "quieto_interno/P33",
+          "ruido_interno/P33",
+          "distante_interno/P05"
+        ]
+      }
+    },
+    "sem_correcao_albertina": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 4,
+          "transcricao": 1
+        },
+        "NDD": {
+          "segmentacao": 3,
+          "classificador": 21,
+          "transcricao": 7
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "distante_interno/P18",
+          "distante_interno/P32",
+          "conversa_interno/C24"
+        ],
+        "classificador": [
+          "quieto_interno/P09",
+          "quieto_interno/P14",
+          "quieto_interno/P20",
+          "quieto_interno/P25",
+          "quieto_interno/P38",
+          "ruido_interno/P09",
+          "ruido_interno/P14",
+          "ruido_interno/P20",
+          "ruido_interno/P25",
+          "ruido_interno/P38",
+          "distante_interno/P09",
+          "distante_interno/P14",
+          "distante_interno/P20",
+          "distante_interno/P25",
+          "distante_interno/P38",
+          "quieto_iphone/P09",
+          "quieto_iphone/P14",
+          "quieto_iphone/P20",
+          "quieto_iphone/P25",
+          "quieto_iphone/P38",
+          "conversa_interno/C01",
+          "conversa_interno/C04",
+          "conversa_interno/C05",
+          "conversa_interno/C11",
+          "conversa_interno/C21"
+        ],
+        "transcricao": [
+          "quieto_interno/P33",
+          "ruido_interno/P13",
+          "ruido_interno/P33",
+          "distante_interno/P05",
+          "distante_interno/P16",
+          "distante_interno/P33",
+          "quieto_iphone/P13",
+          "conversa_interno/C08"
+        ]
+      }
+    }
+  }
+}

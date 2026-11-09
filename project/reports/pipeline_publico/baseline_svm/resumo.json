@@ -1,0 +1,36 @@
+{
+  "classificador": "baseline_svm",
+  "semente_whisper": 0,
+  "resumo": {
+    "coraa": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.10333333333333333,
+        "ativacao_politica_baixa_ndd": 0.08666666666666667,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1566666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1166845840052702,
+        "p95": 1.9474488420994014,
+        "n": 347
+      }
+    },
+    "nurcsp": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.07,
+        "ativacao_politica_baixa_ndd": 0.06333333333333334,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1466666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1456582710088696,
+        "p95": 1.5560950704821104,
+        "n": 344
+      }
+    }
+  }
+}

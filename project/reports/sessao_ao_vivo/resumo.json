@@ -1,0 +1,472 @@
+{
+  "sessao": "20261106-101231",
+  "diretorio": "data/sessoes/20261106-101231",
+  "evidencias_sha256": "915a1f363b83e865899b40f247d8c74aaaab5f88431d2b70c4b1a84f06b3f1e9",
+  "roteiro": "docs/roteiro_sessao_ao_vivo.md",
+  "roteiro_sha256": "dac72c56b0daa0ac0e853b336fefb18ef9e9483f904301ddf2dcf7a8f4e772f7",
+  "falantes": [
+    "você"
+  ],
+  "inicio": "2026-11-06T10:12:31-0300",
+  "fim": "2026-11-06T10:22:03-0300",
+  "classificador": {
+    "nome": "bertimbau",
+    "execucao": "bertimbau-s44",
+    "limiar": 0.685
+  },
+  "asr": {
+    "backend": "mlx",
+    "semente": 0,
+    "modelo": "mlx-community/whisper-large-v3-turbo"
+  },
+  "paridade": {
+    "falas": 92,
+    "identicas": 92,
+    "max_delta_p": 0.0
+  },
+  "resumo": {
+    "linhas_do_roteiro": 113,
+    "linhas_lidas": {
+      "n": 88,
+      "DD": 41,
+      "NDD": 47
+    },
+    "linhas_nao_lidas": {
+      "n": 25,
+      "falantes": [
+        "Lucas",
+        "irmão",
+        "mãe"
+      ],
+      "DD": [
+        55
+      ]
+    },
+    "falas_detectadas": 92,
+    "pedidos_atendidos": {
+      "n": 41,
+      "ativados": 36,
+      "taxa": 0.8780487804878049
+    },
+    "falsas_ativacoes": {
+      "n": 45,
+      "ativados": 4,
+      "taxa": 0.08888888888888889
+    },
+    "no_roteiro": {
+      "pedidos_atendidos": {
+        "n": 41,
+        "ativados": 40,
+        "taxa": 0.975609756097561
+      },
+      "falsas_ativacoes": {
+        "n": 45,
+        "ativados": 6,
+        "taxa": 0.13333333333333333
+      },
+      "pedidos_perdidos": [
+        [
+          92
+        ]
+      ],
+      "linhas_ativadas_ndd": [
+        [
+          24
+        ],
+        [
+          50
+        ],
+        [
+          84
+        ],
+        [
+          86
+        ],
+        [
+          97
+        ],
+        [
+          104
+        ]
+      ]
+    },
+    "por_linha": {
+      "linhas_ndd": 47,
+      "linhas_ndd_em_falas_ativadas": [
+        8,
+        50,
+        86,
+        97,
+        104
+      ],
+      "absorvidas_em_pedidos": [
+        8
+      ]
+    },
+    "casamento": {
+      "1:1": 84,
+      "juncao": 2,
+      "divisao": 0,
+      "sem_fala": 0,
+      "fora_do_roteiro": 6,
+      "juncoes": [
+        [
+          8,
+          9
+        ],
+        [
+          108,
+          109
+        ]
+      ],
+      "divisoes": [],
+      "linhas_sem_fala": [],
+      "similaridade_minima": 0.64,
+      "linhas_da_similaridade_minima": [
+        50
+      ]
+    },
+    "erros": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 1,
+          "transcricao": 4
+        },
+        "NDD": {
+          "segmentacao": 0,
+          "classificador": 4,
+          "transcricao": 0
+        }
+      },
+      "itens": [
+        {
+          "linhas": [
+            41
+          ],
+          "falas": [
+            "U0033"
+          ],
+          "label": "DD",
+          "origem": "transcricao"
+        },
+        {
+          "linhas": [
+            50
+          ],
+          "falas": [
+            "U0037"
+          ],
+          "label": "NDD",
+          "origem": "classificador"
+        },
+        {
+          "linhas": [
+            86
+          ],
+          "falas": [
+            "U0067"
+          ],
+          "label": "NDD",
+          "origem": "classificador"
+        },
+        {
+          "linhas": [
+            92
+          ],
+          "falas": [
+            "U0071"
+          ],
+          "label": "DD",
+          "origem": "classificador"
+        },
+        {
+          "linhas": [
+            97
+          ],
+          "falas": [
+            "U0076"
+          ],
+          "label": "NDD",
+          "origem": "classificador"
+        },
+        {
+          "linhas": [
+            103
+          ],
+          "falas": [
+            "U0084"
+          ],
+          "label": "DD",
+          "origem": "transcricao"
+        },
+        {
+          "linhas": [
+            104
+          ],
+          "falas": [
+            "U0085"
+          ],
+          "label": "NDD",
+          "origem": "classificador"
+        },
+        {
+          "linhas": [
+            106
+          ],
+          "falas": [
+            "U0087"
+          ],
+          "label": "DD",
+          "origem": "transcricao"
+        },
+        {
+          "linhas": [
+            113
+          ],
+          "falas": [
+            "U0092"
+          ],
+          "label": "DD",
+          "origem": "transcricao"
+        }
+      ]
+    },
+    "por_destinatario": {
+      "computador": {
+        "n": 41,
+        "ativados": 36,
+        "taxa": 0.8780487804878049
+      },
+      "pensando alto": {
+        "n": 13,
+        "ativados": 0,
+        "taxa": 0.0
+      },
+      "pessoa no quarto": {
+        "n": 14,
+        "ativados": 2,
+        "taxa": 0.14285714285714285
+      },
+      "pessoa na chamada": {
+        "n": 18,
+        "ativados": 2,
+        "taxa": 0.1111111111111111
+      }
+    },
+    "por_cena": {
+      "Cena 1 - Começando o dia": {
+        "DD": {
+          "n": 11,
+          "ativados": 11,
+          "taxa": 1.0
+        },
+        "NDD": {
+          "n": 6,
+          "ativados": 0,
+          "taxa": 0.0
+        }
+      },
+      "Cena 2 - Chamada de vídeo com o Lucas, colega de TCC": {
+        "DD": {
+          "n": 6,
+          "ativados": 5,
+          "taxa": 0.8333333333333334
+        },
+        "NDD": {
+          "n": 9,
+          "ativados": 0,
+          "taxa": 0.0
+        }
+      },
+      "Cena 3 - Sua mãe entra no quarto": {
+        "DD": {
+          "n": 2,
+          "ativados": 2,
+          "taxa": 1.0
+        },
+        "NDD": {
+          "n": 7,
+          "ativados": 1,
+          "taxa": 0.14285714285714285
+        }
+      },
+      "Cena 4 - De volta ao trabalho": {
+        "DD": {
+          "n": 13,
+          "ativados": 13,
+          "taxa": 1.0
+        },
+        "NDD": {
+          "n": 5,
+          "ativados": 0,
+          "taxa": 0.0
+        }
+      },
+      "Cena 5 - Seu irmão entra no quarto": {
+        "DD": {
+          "n": 3,
+          "ativados": 2,
+          "taxa": 0.6666666666666666
+        },
+        "NDD": {
+          "n": 7,
+          "ativados": 1,
+          "taxa": 0.14285714285714285
+        }
+      },
+      "Cena 6 - Ligação no celular": {
+        "DD": {
+          "n": 2,
+          "ativados": 1,
+          "taxa": 0.5
+        },
+        "NDD": {
+          "n": 9,
+          "ativados": 2,
+          "taxa": 0.2222222222222222
+        }
+      },
+      "Cena 7 - Pausa para o almoço": {
+        "DD": {
+          "n": 4,
+          "ativados": 2,
+          "taxa": 0.5
+        },
+        "NDD": {
+          "n": 2,
+          "ativados": 0,
+          "taxa": 0.0
+        }
+      }
+    },
+    "por_caso_dificil": {
+      "pedidos a pessoas com vocabulário de computador": {
+        "DD": {
+          "n": 0,
+          "ativados": 0,
+          "taxa": null
+        },
+        "NDD": {
+          "n": 5,
+          "ativados": 3,
+          "taxa": 0.6
+        },
+        "linhas_do_roteiro": 11,
+        "linhas_lidas": 5,
+        "nao_lidas": [
+          23,
+          28,
+          32,
+          36,
+          49,
+          85
+        ]
+      },
+      "o mesmo pedido feito primeiro a uma pessoa e depois ao computador": {
+        "DD": {
+          "n": 3,
+          "ativados": 2,
+          "taxa": 0.6666666666666666
+        },
+        "NDD": {
+          "n": 0,
+          "ativados": 0,
+          "taxa": null
+        },
+        "linhas_do_roteiro": 6,
+        "linhas_lidas": 3,
+        "nao_lidas": [
+          28,
+          36,
+          53
+        ]
+      },
+      "comentários sobre o computador ou a impressora": {
+        "DD": {
+          "n": 0,
+          "ativados": 0,
+          "taxa": null
+        },
+        "NDD": {
+          "n": 4,
+          "ativados": 0,
+          "taxa": 0.0
+        },
+        "linhas_do_roteiro": 4,
+        "linhas_lidas": 4,
+        "nao_lidas": []
+      },
+      "falas de até 4 palavras nas duas classes": {
+        "DD": {
+          "n": 5,
+          "ativados": 5,
+          "taxa": 1.0
+        },
+        "NDD": {
+          "n": 8,
+          "ativados": 1,
+          "taxa": 0.125
+        },
+        "linhas_do_roteiro": 14,
+        "linhas_lidas": 13,
+        "nao_lidas": [
+          38
+        ]
+      }
+    },
+    "fora_do_roteiro": {
+      "falas": 6,
+      "ativadas": 0
+    },
+    "wer": 0.11271676300578035,
+    "wer_sem_pausas": 0.10549132947976879,
+    "grupos_com_wer": 86
+  },
+  "latencia": {
+    "fim_da_fala_a_decisao_s": {
+      "n": 92,
+      "p50": 1.161,
+      "p95": 1.22695,
+      "max": 1.241
+    },
+    "whisper_s": {
+      "n": 92,
+      "p50": 0.4105,
+      "p95": 0.46795000000000003,
+      "max": 0.501
+    },
+    "classificador_s": {
+      "n": 92,
+      "p50": 0.04595,
+      "p95": 0.053338500000000004,
+      "max": 0.05745
+    }
+  },
+  "verificacoes": {
+    "classificador_ativo": "bertimbau",
+    "classificador_em_todas": true,
+    "motivos": {
+      "classificador": 92
+    },
+    "fechamento": {
+      "fim_da_fala": 92
+    },
+    "prazo_estourado": 0,
+    "confiabilidade": {
+      "alta": 59,
+      "média": 32,
+      "baixa": 1
+    },
+    "audios": 92,
+    "audios_com_duracao_do_trecho": 92,
+    "gravador": {
+      "fim": "2026-11-06T10:22:03-0300",
+      "falas_gravadas": 92,
+      "decisoes_gravadas": 92,
+      "erros": 0,
+      "pendentes_no_fim": 0,
+      "thread_encerrada": true
+    }
+  }
+}

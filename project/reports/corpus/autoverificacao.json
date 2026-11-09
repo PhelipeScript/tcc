@@ -1,0 +1,212 @@
+{
+  "por_log": {
+    "gemini35flash": {
+      "DD": {
+        "lotes": 4,
+        "aceitas": 69,
+        "julgadas": 69,
+        "juiz_discorda": 0,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.0
+      },
+      "NDD": {
+        "lotes": 4,
+        "aceitas": 58,
+        "julgadas": 80,
+        "juiz_discorda": 22,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.275
+      }
+    },
+    "gptoss120b": {
+      "DD": {
+        "lotes": 47,
+        "aceitas": 757,
+        "julgadas": 757,
+        "juiz_discorda": 0,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.0
+      },
+      "NDD": {
+        "lotes": 61,
+        "aceitas": 778,
+        "julgadas": 1092,
+        "juiz_discorda": 294,
+        "juiz_invalido": 20,
+        "taxa_discorda": 0.2692307692307692
+      }
+    },
+    "gptoss120b_negdif": {
+      "DD": {
+        "lotes": 56,
+        "aceitas": 922,
+        "julgadas": 922,
+        "juiz_discorda": 0,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.0
+      },
+      "NDD": {
+        "lotes": 98,
+        "aceitas": 932,
+        "julgadas": 990,
+        "juiz_discorda": 44,
+        "juiz_invalido": 14,
+        "taxa_discorda": 0.044444444444444446
+      }
+    },
+    "lmstudio_500": {
+      "DD": {
+        "lotes": 252,
+        "aceitas": 1793,
+        "julgadas": 1818,
+        "juiz_discorda": 25,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.013751375137513752
+      },
+      "NDD": {
+        "lotes": 284,
+        "aceitas": 1794,
+        "julgadas": 2139,
+        "juiz_discorda": 345,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.16129032258064516
+      }
+    },
+    "lmstudio_piloto": {
+      "DD": {
+        "lotes": 25,
+        "aceitas": 80,
+        "julgadas": 211,
+        "juiz_discorda": 0,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.0
+      },
+      "NDD": {
+        "lotes": 16,
+        "aceitas": 80,
+        "julgadas": 142,
+        "juiz_discorda": 38,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.2676056338028169
+      }
+    },
+    "lmstudio_v2_teste": {
+      "DD": {
+        "lotes": 10,
+        "aceitas": 40,
+        "julgadas": 78,
+        "juiz_discorda": 0,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.0
+      },
+      "NDD": {
+        "lotes": 10,
+        "aceitas": 40,
+        "julgadas": 96,
+        "juiz_discorda": 9,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.09375
+      }
+    },
+    "qwen38": {
+      "DD": {
+        "lotes": 75,
+        "aceitas": 1108,
+        "julgadas": 1113,
+        "juiz_discorda": 5,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.004492362982929021
+      },
+      "NDD": {
+        "lotes": 73,
+        "aceitas": 1120,
+        "julgadas": 1356,
+        "juiz_discorda": 140,
+        "juiz_invalido": 96,
+        "taxa_discorda": 0.10324483775811209
+      }
+    },
+    "qwen38_negdif": {
+      "DD": {
+        "lotes": 78,
+        "aceitas": 1077,
+        "julgadas": 1108,
+        "juiz_discorda": 31,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.027978339350180504
+      },
+      "NDD": {
+        "lotes": 94,
+        "aceitas": 1175,
+        "julgadas": 1259,
+        "juiz_discorda": 37,
+        "juiz_invalido": 47,
+        "taxa_discorda": 0.02938840349483717
+      }
+    }
+  },
+  "por_estrategia": {
+    "comprimento": {
+      "DD": {
+        "lotes": 413,
+        "aceitas": 3847,
+        "julgadas": 4046,
+        "juiz_discorda": 30,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.007414730598121601
+      },
+      "NDD": {
+        "lotes": 448,
+        "aceitas": 3870,
+        "julgadas": 4905,
+        "juiz_discorda": 848,
+        "juiz_invalido": 116,
+        "taxa_discorda": 0.1728848114169215
+      }
+    },
+    "negativos_dificeis": {
+      "DD": {
+        "lotes": 134,
+        "aceitas": 1999,
+        "julgadas": 2030,
+        "juiz_discorda": 31,
+        "juiz_invalido": 0,
+        "taxa_discorda": 0.015270935960591134
+      },
+      "NDD": {
+        "lotes": 192,
+        "aceitas": 2107,
+        "julgadas": 2249,
+        "juiz_discorda": 81,
+        "juiz_invalido": 61,
+        "taxa_discorda": 0.03601600711427301
+      }
+    }
+  },
+  "total": {
+    "DD": {
+      "lotes": 547,
+      "aceitas": 5846,
+      "julgadas": 6076,
+      "juiz_discorda": 61,
+      "juiz_invalido": 0,
+      "taxa_discorda": 0.010039499670836076
+    },
+    "NDD": {
+      "lotes": 640,
+      "aceitas": 5977,
+      "julgadas": 7154,
+      "juiz_discorda": 929,
+      "juiz_invalido": 177,
+      "taxa_discorda": 0.12985742242102322
+    }
+  },
+  "cobertura": {
+    "aceitas_nos_logs": 11823,
+    "verificadas_nas_fontes": 18987,
+    "corpus_final": 116438,
+    "mitigacao_no_corpus": 21048,
+    "mitigacao_verificada_no_corpus": 17904,
+    "claude_sem_verificacao": 3144
+  }
+}

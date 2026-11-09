@@ -1,0 +1,683 @@
+{
+  "built_at": "2026-11-01T22:04:14-0300",
+  "seconds": 11.7,
+  "config_file": "config/corpus_controle.toml",
+  "config_sha256": "536dc6501f7e768230094781b4b3a75650366166b94d5246c223d3fd9a44cfff",
+  "versions": {
+    "python": "3.13.13",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1"
+  },
+  "funnel": [
+    {
+      "etapa": "fontes",
+      "DD": 136153,
+      "NDD": 131213,
+      "total": 267366,
+      "nota": "descartadas na leitura: {'rotulo_divergente': 0, 'texto_ausente': 0}"
+    },
+    {
+      "etapa": "normalização e filtros",
+      "DD": 136077,
+      "NDD": 131130,
+      "total": 267207,
+      "nota": "descartes: {'tamanho': 39, 'nao_ascii': 50, 'lista_serializada': 70}"
+    },
+    {
+      "etapa": "dedup exato + conflitos",
+      "DD": 121654,
+      "NDD": 130750,
+      "total": 252404,
+      "nota": "duplicatas: 14717; conflitos de rótulo: 43 textos"
+    },
+    {
+      "etapa": "dedup aproximado",
+      "DD": 121544,
+      "NDD": 130685,
+      "total": 252229,
+      "nota": "129 quase-duplicatas; 46 itens em conflito entre classes"
+    },
+    {
+      "etapa": "exclusão do teste do corpus principal",
+      "DD": 116774,
+      "NDD": 125928,
+      "total": 242702,
+      "nota": "9527 textos (iguais ou quase iguais)"
+    },
+    {
+      "etapa": "balanceamento (global)",
+      "DD": 58219,
+      "NDD": 58219,
+      "total": 116438,
+      "nota": "descartados: 126264"
+    }
+  ],
+  "rejections": {
+    "tamanho": 39,
+    "nao_ascii": 50,
+    "lista_serializada": 70
+  },
+  "exact_duplicates": {
+    "DD:mesmo_arquivo": 5344,
+    "NDD:mesmo_arquivo": 331,
+    "DD:entre_arquivos": 9036,
+    "NDD:entre_arquivos": 6
+  },
+  "exact_conflicts": 43,
+  "near_dedup": {
+    "habilitado": true,
+    "pares_acima_do_limiar": 153,
+    "pares_entre_classes": 23,
+    "itens_em_conflito": 46,
+    "quase_duplicatas_removidas": 129,
+    "removidas_por_classe_faixa": {
+      "DD|11-13": 4,
+      "DD|14-17": 2,
+      "DD|3": 2,
+      "DD|4": 1,
+      "DD|5": 1,
+      "DD|6": 8,
+      "DD|7-8": 37,
+      "DD|9-10": 32,
+      "NDD|11-13": 7,
+      "NDD|14-17": 5,
+      "NDD|18-24": 16,
+      "NDD|25-50": 5,
+      "NDD|6": 2,
+      "NDD|7-8": 4,
+      "NDD|9-10": 3
+    },
+    "segundos": 3.9
+  },
+  "include_origins": [
+    "legacy"
+  ],
+  "control": {
+    "teste_excluido": "data/corpus/frozen/splits/test.jsonl",
+    "textos_no_teste": 11616,
+    "iguais": 9527,
+    "quase_iguais": 0,
+    "removidos": 9527,
+    "tamanho_casado_por_classe": 58219
+  },
+  "length_histogram_before_balance": [
+    [
+      "2",
+      274,
+      7
+    ],
+    [
+      "3",
+      2857,
+      8
+    ],
+    [
+      "4",
+      8622,
+      189
+    ],
+    [
+      "5",
+      20231,
+      1060
+    ],
+    [
+      "6",
+      21359,
+      3269
+    ],
+    [
+      "7-8",
+      35177,
+      17826
+    ],
+    [
+      "9-10",
+      15470,
+      29188
+    ],
+    [
+      "11-13",
+      10304,
+      47009
+    ],
+    [
+      "14-17",
+      2418,
+      21592
+    ],
+    [
+      "18-24",
+      62,
+      5188
+    ],
+    [
+      "25-50",
+      0,
+      592
+    ]
+  ],
+  "length_histogram_final": [
+    [
+      "2",
+      136,
+      6
+    ],
+    [
+      "3",
+      1405,
+      2
+    ],
+    [
+      "4",
+      4229,
+      94
+    ],
+    [
+      "5",
+      10144,
+      506
+    ],
+    [
+      "6",
+      10693,
+      1501
+    ],
+    [
+      "7-8",
+      17499,
+      8213
+    ],
+    [
+      "9-10",
+      7712,
+      13588
+    ],
+    [
+      "11-13",
+      5155,
+      21597
+    ],
+    [
+      "14-17",
+      1222,
+      10104
+    ],
+    [
+      "18-24",
+      24,
+      2327
+    ],
+    [
+      "25-50",
+      0,
+      281
+    ]
+  ],
+  "balance_mode": "global",
+  "balance_bins": [
+    {
+      "faixa": "todas",
+      "antes": {
+        "DD": 116774,
+        "NDD": 125928
+      },
+      "por_classe": 58219,
+      "quotas_por_fonte": {
+        "DD|glm": 6850,
+        "DD|groq": 6997,
+        "DD|lmstudio": 7027,
+        "DD|mistral": 2224,
+        "DD|nvidia": 4557,
+        "DD|opencode": 2836,
+        "DD|openrouter": 6035,
+        "DD|qwen": 14781,
+        "DD|sonnet": 6912,
+        "NDD|glm": 6760,
+        "NDD|groq": 6766,
+        "NDD|lmstudio": 6846,
+        "NDD|mistral": 2228,
+        "NDD|nvidia": 4110,
+        "NDD|opencode": 2736,
+        "NDD|openrouter": 4825,
+        "NDD|qwen": 17504,
+        "NDD|sonnet": 6444
+      }
+    }
+  ],
+  "diagnostics": {
+    "apos_filtros": {
+      "n": 267207,
+      "auc_comprimento": 0.8622431416777719,
+      "informatividade_comprimento": 0.8622431416777719,
+      "auc_fonte_na_faixa": 0.7704780826136862,
+      "auc_fonte_por_faixa": {
+        "9-10": 0.6987618161407275,
+        "7-8": 0.7729527364442399,
+        "6": 0.8102132464044837,
+        "5": 0.7738700356538698,
+        "4": 0.7994610008054666,
+        "2": 0.883578431372549,
+        "3": 0.7894145868422395,
+        "11-13": 0.7715866674101871,
+        "14-17": 0.847448888675877,
+        "18-24": 0.7027140350097743,
+        "25-50": NaN
+      },
+      "auc_origem_na_faixa": 0.5,
+      "auc_origem_por_faixa": {
+        "9-10": 0.5,
+        "7-8": 0.5,
+        "6": 0.5,
+        "5": 0.5,
+        "4": 0.5,
+        "2": 0.5,
+        "3": 0.5,
+        "11-13": 0.5,
+        "14-17": 0.5,
+        "18-24": 0.5,
+        "25-50": NaN
+      },
+      "mediana_palavras": {
+        "DD": 7.0,
+        "NDD": 11.0
+      }
+    },
+    "antes_balanceamento": {
+      "n": 242702,
+      "auc_comprimento": 0.8600526078519674,
+      "informatividade_comprimento": 0.8600526078519674,
+      "auc_fonte_na_faixa": 0.7861608128886505,
+      "auc_fonte_por_faixa": {
+        "9-10": 0.7134241595774942,
+        "7-8": 0.7934246429448656,
+        "6": 0.8255681175074461,
+        "5": 0.8062742540636777,
+        "4": 0.8401106312263816,
+        "2": 0.9124087591240876,
+        "3": 0.8536926846342318,
+        "11-13": 0.7794938876347056,
+        "14-17": 0.8514019950715441,
+        "18-24": 0.7053731315442585,
+        "25-50": NaN
+      },
+      "auc_origem_na_faixa": 0.5,
+      "auc_origem_por_faixa": {
+        "9-10": 0.5,
+        "7-8": 0.5,
+        "6": 0.5,
+        "5": 0.5,
+        "4": 0.5,
+        "2": 0.5,
+        "3": 0.5,
+        "11-13": 0.5,
+        "14-17": 0.5,
+        "18-24": 0.5,
+        "25-50": NaN
+      },
+      "mediana_palavras": {
+        "DD": 7.0,
+        "NDD": 11.0
+      }
+    },
+    "final": {
+      "n": 116438,
+      "auc_comprimento": 0.8594854709610679,
+      "informatividade_comprimento": 0.8594854709610679,
+      "auc_fonte_na_faixa": 0.7857813187623955,
+      "auc_fonte_por_faixa": {
+        "9-10": 0.7102366073555261,
+        "6": 0.8317373816003334,
+        "5": 0.805827799061109,
+        "4": 0.841346226410348,
+        "2": 0.9264705882352942,
+        "3": 0.8437722419928826,
+        "7-8": 0.7923506397579053,
+        "11-13": 0.7781273236974259,
+        "14-17": 0.8503256800307895,
+        "18-24": 0.6999713508093396,
+        "25-50": NaN
+      },
+      "auc_origem_na_faixa": 0.5,
+      "auc_origem_por_faixa": {
+        "9-10": 0.5,
+        "6": 0.5,
+        "5": 0.5,
+        "4": 0.5,
+        "2": 0.5,
+        "3": 0.5,
+        "7-8": 0.5,
+        "11-13": 0.5,
+        "14-17": 0.5,
+        "18-24": 0.5,
+        "25-50": NaN
+      },
+      "mediana_palavras": {
+        "DD": 7.0,
+        "NDD": 11.0
+      }
+    },
+    "por_particao": {
+      "train": {
+        "n": 93144,
+        "auc_comprimento": 0.8594798899169138,
+        "informatividade_comprimento": 0.8594798899169138,
+        "auc_fonte_na_faixa": 0.7859733888090985,
+        "auc_fonte_por_faixa": {
+          "9-10": 0.71030079172907,
+          "6": 0.8318244691213715,
+          "5": 0.8060397686921761,
+          "4": 0.8401970637501232,
+          "3": 0.8437221727515584,
+          "7-8": 0.7925354369671133,
+          "11-13": 0.7781472298328167,
+          "14-17": 0.850359922754952,
+          "18-24": 0.7074919441460795,
+          "2": 0.9252336448598131,
+          "25-50": NaN
+        },
+        "auc_origem_na_faixa": 0.5,
+        "auc_origem_por_faixa": {
+          "9-10": 0.5,
+          "6": 0.5,
+          "5": 0.5,
+          "4": 0.5,
+          "3": 0.5,
+          "7-8": 0.5,
+          "11-13": 0.5,
+          "14-17": 0.5,
+          "18-24": 0.5,
+          "2": 0.5,
+          "25-50": NaN
+        },
+        "mediana_palavras": {
+          "DD": 7.0,
+          "NDD": 11.0
+        }
+      },
+      "val": {
+        "n": 11664,
+        "auc_comprimento": 0.8598574253732254,
+        "informatividade_comprimento": 0.8598574253732254,
+        "auc_fonte_na_faixa": 0.7838905157628081,
+        "auc_fonte_por_faixa": {
+          "9-10": 0.7103346288982367,
+          "5": 0.8034240611750454,
+          "6": 0.8315838336324812,
+          "14-17": 0.8466772711205373,
+          "11-13": 0.7781209531906346,
+          "3": NaN,
+          "7-8": 0.7907384625615108,
+          "4": 0.8386792452830188,
+          "2": NaN,
+          "18-24": 0.7015669515669516,
+          "25-50": NaN
+        },
+        "auc_origem_na_faixa": 0.5,
+        "auc_origem_por_faixa": {
+          "9-10": 0.5,
+          "5": 0.5,
+          "6": 0.5,
+          "14-17": 0.5,
+          "11-13": 0.5,
+          "3": NaN,
+          "7-8": 0.5,
+          "4": 0.5,
+          "2": NaN,
+          "18-24": 0.5,
+          "25-50": NaN
+        },
+        "mediana_palavras": {
+          "DD": 7.0,
+          "NDD": 11.0
+        }
+      },
+      "test": {
+        "n": 11630,
+        "auc_comprimento": 0.8591577046828907,
+        "informatividade_comprimento": 0.8591577046828907,
+        "auc_fonte_na_faixa": 0.7828653161404265,
+        "auc_fonte_por_faixa": {
+          "9-10": 0.709623672868706,
+          "2": 0.9285714285714286,
+          "5": 0.8073274161735701,
+          "7-8": 0.7924906242613926,
+          "14-17": 0.8537558301284673,
+          "4": 0.8538704581358609,
+          "6": 0.8311953807740324,
+          "11-13": 0.7779744819457066,
+          "3": NaN,
+          "18-24": 0.551948051948052,
+          "25-50": NaN
+        },
+        "auc_origem_na_faixa": 0.5,
+        "auc_origem_por_faixa": {
+          "9-10": 0.5,
+          "2": 0.5,
+          "5": 0.5,
+          "7-8": 0.5,
+          "14-17": 0.5,
+          "4": 0.5,
+          "6": 0.5,
+          "11-13": 0.5,
+          "3": NaN,
+          "18-24": 0.5,
+          "25-50": NaN
+        },
+        "mediana_palavras": {
+          "DD": 7.0,
+          "NDD": 11.0
+        }
+      }
+    }
+  },
+  "split": {
+    "train": 93144,
+    "val": 11664,
+    "test": 11630
+  },
+  "split_source_max_deviation_pp": 0.0352,
+  "final_by_source_label": {
+    "glm|DD": 6850,
+    "glm|NDD": 6760,
+    "groq|DD": 6997,
+    "groq|NDD": 6766,
+    "lmstudio|DD": 7027,
+    "lmstudio|NDD": 6846,
+    "mistral|DD": 2224,
+    "mistral|NDD": 2228,
+    "nvidia|DD": 4557,
+    "nvidia|NDD": 4110,
+    "opencode|DD": 2836,
+    "opencode|NDD": 2736,
+    "openrouter|DD": 6035,
+    "openrouter|NDD": 4825,
+    "qwen|DD": 14781,
+    "qwen|NDD": 17504,
+    "sonnet|DD": 6912,
+    "sonnet|NDD": 6444
+  },
+  "final_by_origin_label": {
+    "legacy|DD": 58219,
+    "legacy|NDD": 58219
+  },
+  "split_files": {
+    "train": {
+      "rows": 93144,
+      "sha256": "77c83ea1d9c27b049de3d5b72bbf83493438a884d91541462f7bf5948f2d82cf"
+    },
+    "val": {
+      "rows": 11664,
+      "sha256": "7d394e4feeb2277acf6bd0b03d6f32566a060056ab78ae400259d6483496fff8"
+    },
+    "test": {
+      "rows": 11630,
+      "sha256": "9658a88f27c477023165a71d2afd67d0d3b5231c04aa03191bcb60d985519f6f"
+    }
+  },
+  "sources": [
+    {
+      "file": "legacy/glm/dd.jsonl",
+      "origin": "legacy",
+      "provider": "glm",
+      "label": "DD",
+      "rows": 15082,
+      "sha256": "e0d4d72f6d4ad93ff3ef34846db370e8d7464396a9986100820eb3fb1985b735",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/glm/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "glm",
+      "label": "NDD",
+      "rows": 15172,
+      "sha256": "eae087b4aede20605f5fa77f6962281f64dba612c9bb834d41d6a75044e61a30",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/groq/dd.jsonl",
+      "origin": "legacy",
+      "provider": "groq",
+      "label": "DD",
+      "rows": 15009,
+      "sha256": "f9add848207cce8fafc4c53f8742da25d2bbc4b7b33948fb999a0eb80cfd17f5",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/groq/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "groq",
+      "label": "NDD",
+      "rows": 15010,
+      "sha256": "e0ee34dcf19de0e734812d90f9f3173335c485f295fe8cf47feb2886f5adfe43",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/lmstudio/dd.jsonl",
+      "origin": "legacy",
+      "provider": "lmstudio",
+      "label": "DD",
+      "rows": 15004,
+      "sha256": "6f2d3151e7110608064fcd1b1948ac151c370f86a584d1bd147cad6fb235507c",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/lmstudio/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "lmstudio",
+      "label": "NDD",
+      "rows": 15003,
+      "sha256": "d005fd8ba3d24322f4d849cddad09b58df3884532d648d172595e93f5406073c",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/mistral/dd.jsonl",
+      "origin": "legacy",
+      "provider": "mistral",
+      "label": "DD",
+      "rows": 4974,
+      "sha256": "49d819f3d711afd99055ce391b2ce784af6b652fef84912808bc8476371ba8bb",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/mistral/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "mistral",
+      "label": "NDD",
+      "rows": 5002,
+      "sha256": "4b0075cb47fada9cd7736888b741b213e0ddc324bb927687d290d27b3b5e54d5",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/nvidia/dd.jsonl",
+      "origin": "legacy",
+      "provider": "nvidia",
+      "label": "DD",
+      "rows": 10002,
+      "sha256": "68ca5ab910d06e8153ac4dbdb96965a8643e7ccdde705867c62580776c1c46f9",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/nvidia/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "nvidia",
+      "label": "NDD",
+      "rows": 9057,
+      "sha256": "295286652d410861cdbd454dbca239567db3c4b684a69eb17296b0a1e2de8f59",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/opencode/dd.jsonl",
+      "origin": "legacy",
+      "provider": "opencode",
+      "label": "DD",
+      "rows": 6067,
+      "sha256": "3b0381a5098bedbff1554abb30437cf5447167add401eb4829f8d1ee07fa8804",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/opencode/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "opencode",
+      "label": "NDD",
+      "rows": 6152,
+      "sha256": "8b0551d68d355e2c1176610bd4322332ab98c716c36e934b342befdf06bf7827",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/openrouter/dd.jsonl",
+      "origin": "legacy",
+      "provider": "openrouter",
+      "label": "DD",
+      "rows": 15001,
+      "sha256": "d1805ff266a4da81bd78ca0c772d5416a14f53807339fd2bc67d130697e551d7",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/openrouter/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "openrouter",
+      "label": "NDD",
+      "rows": 10801,
+      "sha256": "bfb855e78f3b91034d4c69f028bb9b3d69a1869aedbd83b84838cb04b53df267",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/qwen/dd.jsonl",
+      "origin": "legacy",
+      "provider": "qwen",
+      "label": "DD",
+      "rows": 40014,
+      "sha256": "701eab7a283456f0c5ebb2b43bde9fe7a7f4bda0c4b6b95d47ef116f3e743537",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/qwen/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "qwen",
+      "label": "NDD",
+      "rows": 40016,
+      "sha256": "4612cc54f088c8ac61d1166c5c27954d9efd195f6a2d23e81ae0a1434a1d4d05",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/sonnet/dd.jsonl",
+      "origin": "legacy",
+      "provider": "sonnet",
+      "label": "DD",
+      "rows": 15000,
+      "sha256": "ce648ad8946ee07b5d405d313fabc7e6de1c21669347ece71126333efa8b9b8f",
+      "mtime": "2026-11-01T11:55:26"
+    },
+    {
+      "file": "legacy/sonnet/ndd.jsonl",
+      "origin": "legacy",
+      "provider": "sonnet",
+      "label": "NDD",
+      "rows": 15000,
+      "sha256": "c8e8c47d6f91b3f9ccf69bdd20d9797794330952aad3bfa8696378fa4ed74597",
+      "mtime": "2026-11-01T11:55:26"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "models/debertinha-s42": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.166971206667533e-05,
+    "media_delta_p": 2.743931488995665e-07
+  },
+  "models/debertinha-s43": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.31987018585078e-05,
+    "media_delta_p": 2.760761083773615e-07
+  },
+  "models/debertinha-s44": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.5006332397482502e-05,
+    "media_delta_p": 2.748888751647208e-07
+  },
+  "models/bertimbau-s42": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 3.555775070185341e-05,
+    "media_delta_p": 2.7868414452499764e-07
+  },
+  "models/bertimbau-s43": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.6154960632341897e-05,
+    "media_delta_p": 2.7574781941187003e-07
+  },
+  "models/bertimbau-s44": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 2.3151298522927632e-05,
+    "media_delta_p": 2.7915541626419917e-07
+  },
+  "models/albertina-s42": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.645873832703537e-05,
+    "media_delta_p": 2.6799718341297167e-07
+  },
+  "models/albertina-s43": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 3.903705024721482e-05,
+    "media_delta_p": 2.754985715613215e-07
+  },
+  "models/albertina-s44": {
+    "n": 11616,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.2235893249501473e-05,
+    "media_delta_p": 2.74582783458502e-07
+  },
+  "models/controle/debertinha-s42": {
+    "n": 11630,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.582670021055277e-05,
+    "media_delta_p": 2.6844210540100255e-07
+  },
+  "models/controle/bertimbau-s42": {
+    "n": 11630,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.8854608535789907e-05,
+    "media_delta_p": 2.6315553728839925e-07
+  },
+  "models/controle/albertina-s42": {
+    "n": 11630,
+    "decisoes_identicas": 1.0,
+    "max_delta_p": 1.2565258026175918e-05,
+    "media_delta_p": 2.640094736922253e-07
+  }
+}

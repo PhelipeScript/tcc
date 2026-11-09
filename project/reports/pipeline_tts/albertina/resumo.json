@@ -1,0 +1,72 @@
+{
+  "classificador": "albertina",
+  "semente_whisper": 0,
+  "resumo": {
+    "tts:pt-BR-AntonioNeural": {
+      "n": 247,
+      "DD": {
+        "n": 109,
+        "ativacao": 0.9908256880733946,
+        "ativacao_politica_baixa_ndd": 0.981651376146789,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.018348623853211
+      },
+      "NDD": {
+        "n": 138,
+        "ativacao": 0.007246376811594203,
+        "ativacao_politica_baixa_ndd": 0.007246376811594203,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.065217391304348
+      },
+      "latencia_s": {
+        "p50": 1.1583451874903403,
+        "p95": 1.2291257420234614,
+        "n": 258
+      }
+    },
+    "tts:pt-BR-FranciscaNeural": {
+      "n": 247,
+      "DD": {
+        "n": 123,
+        "ativacao": 0.9512195121951219,
+        "ativacao_politica_baixa_ndd": 0.9512195121951219,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 124,
+        "ativacao": 0.016129032258064516,
+        "ativacao_politica_baixa_ndd": 0.016129032258064516,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "latencia_s": {
+        "p50": 1.1634541670209728,
+        "p95": 1.2512117338832467,
+        "n": 247
+      }
+    },
+    "tts:pt-BR-ThalitaMultilingualNeural": {
+      "n": 246,
+      "DD": {
+        "n": 138,
+        "ativacao": 0.9637681159420289,
+        "ativacao_politica_baixa_ndd": 0.9637681159420289,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 108,
+        "ativacao": 0.009259259259259259,
+        "ativacao_politica_baixa_ndd": 0.009259259259259259,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "latencia_s": {
+        "p50": 1.1699289584939834,
+        "p95": 1.2386820517276647,
+        "n": 246
+      }
+    }
+  }
+}

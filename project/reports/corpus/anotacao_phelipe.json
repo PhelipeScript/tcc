@@ -1,0 +1,354 @@
+{
+  "anotador": "phelipe",
+  "anotadas": 300,
+  "amostra": 300,
+  "concordancia": 0.9366666666666666,
+  "kappa": 0.8733333333333333,
+  "matriz": {
+    "DD->DD": 137,
+    "DD->NDD": 13,
+    "NDD->DD": 6,
+    "NDD->NDD": 144
+  },
+  "por_origem": {
+    "legacy": {
+      "n": 182,
+      "concordancia": 0.945054945054945,
+      "kappa": 0.8900966183574879
+    },
+    "mitigation": {
+      "n": 118,
+      "concordancia": 0.923728813559322,
+      "kappa": 0.847720103240608
+    }
+  },
+  "por_fonte": {
+    "claude_negdif": {
+      "n": 10,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "claude_subagentes": {
+      "n": 8,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "gemini35flash": {
+      "n": 6,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "glm": {
+      "n": 17,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "gptoss120b": {
+      "n": 16,
+      "concordancia": 0.9375,
+      "kappa": 0.875
+    },
+    "gptoss120b_negdif": {
+      "n": 10,
+      "concordancia": 0.8,
+      "kappa": 0.6000000000000001
+    },
+    "groq": {
+      "n": 23,
+      "concordancia": 0.9130434782608695,
+      "kappa": 0.8270676691729323
+    },
+    "lmstudio": {
+      "n": 32,
+      "concordancia": 0.90625,
+      "kappa": 0.8125
+    },
+    "lmstudio_negdif": {
+      "n": 12,
+      "concordancia": 0.9166666666666666,
+      "kappa": 0.8333333333333333
+    },
+    "mistral": {
+      "n": 15,
+      "concordancia": 0.9333333333333333,
+      "kappa": 0.8672566371681416
+    },
+    "nvidia": {
+      "n": 9,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "opencode": {
+      "n": 17,
+      "concordancia": 0.9411764705882353,
+      "kappa": 0.8827586206896552
+    },
+    "openrouter": {
+      "n": 20,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "qwen": {
+      "n": 42,
+      "concordancia": 0.9285714285714286,
+      "kappa": 0.8571428571428572
+    },
+    "qwen38": {
+      "n": 16,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "qwen38_negdif": {
+      "n": 13,
+      "concordancia": 0.8461538461538461,
+      "kappa": 0.6829268292682927
+    },
+    "sonnet": {
+      "n": 34,
+      "concordancia": 0.9117647058823529,
+      "kappa": 0.8172043010752688
+    }
+  },
+  "por_estrategia": {
+    "comprimento": {
+      "n": 73,
+      "concordancia": 0.9452054794520548,
+      "kappa": 0.8904726181545386
+    },
+    "legado": {
+      "n": 182,
+      "concordancia": 0.945054945054945,
+      "kappa": 0.8900966183574879
+    },
+    "negativos_dificeis": {
+      "n": 45,
+      "concordancia": 0.8888888888888888,
+      "kappa": 0.7787610619469025
+    }
+  },
+  "por_faixa": {
+    "11-13": {
+      "n": 44,
+      "concordancia": 0.9545454545454546,
+      "kappa": 0.9075630252100841
+    },
+    "14-17": {
+      "n": 26,
+      "concordancia": 0.9615384615384616,
+      "kappa": 0.9230769230769231
+    },
+    "18-24": {
+      "n": 12,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    },
+    "2": {
+      "n": 25,
+      "concordancia": 0.88,
+      "kappa": 0.7491638795986623
+    },
+    "3": {
+      "n": 25,
+      "concordancia": 0.84,
+      "kappa": 0.6774193548387096
+    },
+    "4": {
+      "n": 29,
+      "concordancia": 0.896551724137931,
+      "kappa": 0.7923627684964201
+    },
+    "5": {
+      "n": 30,
+      "concordancia": 0.9333333333333333,
+      "kappa": 0.8666666666666667
+    },
+    "6": {
+      "n": 31,
+      "concordancia": 0.9032258064516129,
+      "kappa": 0.8058455114822547
+    },
+    "7-8": {
+      "n": 39,
+      "concordancia": 0.9743589743589743,
+      "kappa": 0.9475100942126514
+    },
+    "9-10": {
+      "n": 39,
+      "concordancia": 1.0,
+      "kappa": 1.0
+    }
+  },
+  "divergencias": [
+    {
+      "id": "A0021",
+      "texto": "volta rápido",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "qwen38_negdif",
+      "origem": "mitigation",
+      "faixa": "2"
+    },
+    {
+      "id": "A0030",
+      "texto": "manda endereço do blog",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "gptoss120b_negdif",
+      "origem": "mitigation",
+      "faixa": "4"
+    },
+    {
+      "id": "A0041",
+      "texto": "Devagar, deixa eu.",
+      "rotulo_llm": "NDD",
+      "humano": "DD",
+      "fonte": "lmstudio",
+      "origem": "mitigation",
+      "faixa": "3"
+    },
+    {
+      "id": "A0057",
+      "texto": "verificar a assinatura dele deu erro",
+      "rotulo_llm": "NDD",
+      "humano": "DD",
+      "fonte": "opencode",
+      "origem": "legacy",
+      "faixa": "6"
+    },
+    {
+      "id": "A0101",
+      "texto": "Queria pular um trecho.",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "lmstudio",
+      "origem": "mitigation",
+      "faixa": "4"
+    },
+    {
+      "id": "A0108",
+      "texto": "fecha essa janela da reunião que tá atrapalhando",
+      "rotulo_llm": "NDD",
+      "humano": "DD",
+      "fonte": "qwen",
+      "origem": "legacy",
+      "faixa": "7-8"
+    },
+    {
+      "id": "A0121",
+      "texto": "imprime apenas o que eu selecionei",
+      "rotulo_llm": "NDD",
+      "humano": "DD",
+      "fonte": "qwen",
+      "origem": "legacy",
+      "faixa": "6"
+    },
+    {
+      "id": "A0128",
+      "texto": "só mais uma música, ok",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "gptoss120b",
+      "origem": "mitigation",
+      "faixa": "5"
+    },
+    {
+      "id": "A0176",
+      "texto": "Mostra ontem",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "lmstudio",
+      "origem": "mitigation",
+      "faixa": "2"
+    },
+    {
+      "id": "A0180",
+      "texto": "Manda fechar essa porcaria de janela",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "mistral",
+      "origem": "legacy",
+      "faixa": "6"
+    },
+    {
+      "id": "A0185",
+      "texto": "verifica quantas flechas de treino já usei esse mês segundo o registro do aplicativo",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "sonnet",
+      "origem": "legacy",
+      "faixa": "14-17"
+    },
+    {
+      "id": "A0199",
+      "texto": "Minha planilha trava",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "qwen",
+      "origem": "legacy",
+      "faixa": "3"
+    },
+    {
+      "id": "A0201",
+      "texto": "compartilha o parecer da banca com o aluno depois da defesa",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "sonnet",
+      "origem": "legacy",
+      "faixa": "11-13"
+    },
+    {
+      "id": "A0213",
+      "texto": "que horas são já",
+      "rotulo_llm": "NDD",
+      "humano": "DD",
+      "fonte": "groq",
+      "origem": "legacy",
+      "faixa": "4"
+    },
+    {
+      "id": "A0261",
+      "texto": "envia o link",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "qwen38_negdif",
+      "origem": "mitigation",
+      "faixa": "3"
+    },
+    {
+      "id": "A0264",
+      "texto": "Dá toca mais",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "lmstudio_negdif",
+      "origem": "mitigation",
+      "faixa": "3"
+    },
+    {
+      "id": "A0270",
+      "texto": "Tente desmutar o microfone novamente.",
+      "rotulo_llm": "NDD",
+      "humano": "DD",
+      "fonte": "groq",
+      "origem": "legacy",
+      "faixa": "5"
+    },
+    {
+      "id": "A0292",
+      "texto": "dá página",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "gptoss120b_negdif",
+      "origem": "mitigation",
+      "faixa": "2"
+    },
+    {
+      "id": "A0298",
+      "texto": "verifica o saldo devedor atualizado antes de decidir quitar o financiamento antecipado",
+      "rotulo_llm": "DD",
+      "humano": "NDD",
+      "fonte": "sonnet",
+      "origem": "legacy",
+      "faixa": "11-13"
+    }
+  ]
+}

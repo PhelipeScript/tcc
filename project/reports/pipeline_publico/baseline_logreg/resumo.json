@@ -1,0 +1,36 @@
+{
+  "classificador": "baseline_logreg",
+  "semente_whisper": 0,
+  "resumo": {
+    "coraa": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.09666666666666666,
+        "ativacao_politica_baixa_ndd": 0.08333333333333333,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1566666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1094842089805752,
+        "p95": 1.9220205543038893,
+        "n": 347
+      }
+    },
+    "nurcsp": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.07333333333333333,
+        "ativacao_politica_baixa_ndd": 0.06333333333333334,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1466666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1437516459845938,
+        "p95": 1.553835439344396,
+        "n": 344
+      }
+    }
+  }
+}

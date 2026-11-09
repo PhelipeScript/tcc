@@ -1,0 +1,1260 @@
+{
+  "transcricoes_iguais": {
+    "baseline_logreg": {
+      "itens": 740,
+      "segmentacao_identica": 740,
+      "transcricao_identica": 740,
+      "itens_diferentes": []
+    },
+    "baseline_svm": {
+      "itens": 740,
+      "segmentacao_identica": 740,
+      "transcricao_identica": 740,
+      "itens_diferentes": []
+    },
+    "debertinha": {
+      "itens": 740,
+      "segmentacao_identica": 740,
+      "transcricao_identica": 740,
+      "itens_diferentes": []
+    },
+    "albertina": {
+      "itens": 740,
+      "segmentacao_identica": 740,
+      "transcricao_identica": 740,
+      "itens_diferentes": []
+    }
+  },
+  "paridade": {
+    "falas": 751,
+    "identicas": 751,
+    "max_delta_p": 0.0
+  },
+  "inferencia_ms": {
+    "bertimbau": {
+      "n": 751,
+      "p50_ms": 38.23,
+      "p95_ms": 46.375
+    },
+    "baseline_logreg": {
+      "n": 751,
+      "p50_ms": 1.41,
+      "p95_ms": 1.86
+    },
+    "baseline_svm": {
+      "n": 751,
+      "p50_ms": 4.27,
+      "p95_ms": 5.235
+    },
+    "debertinha": {
+      "n": 751,
+      "p50_ms": 31.14,
+      "p95_ms": 33.305
+    },
+    "albertina": {
+      "n": 751,
+      "p50_ms": 43.38,
+      "p95_ms": 51.81
+    }
+  },
+  "unidade_do_bootstrap": "item",
+  "comparacao": {
+    "por_grupo": {
+      "bertimbau": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9724770642201835,
+            "ativacao_politica_baixa_ndd": 0.963302752293578
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.014492753623188406,
+            "ativacao_politica_baixa_ndd": 0.014492753623188406
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.943089430894309,
+            "ativacao_politica_baixa_ndd": 0.943089430894309
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.008064516129032258,
+            "ativacao_politica_baixa_ndd": 0.008064516129032258
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9782608695652174,
+            "ativacao_politica_baixa_ndd": 0.9782608695652174
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.037037037037037035,
+            "ativacao_politica_baixa_ndd": 0.037037037037037035
+          }
+        }
+      },
+      "baseline_logreg": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9357798165137615,
+            "ativacao_politica_baixa_ndd": 0.926605504587156
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.021739130434782608,
+            "ativacao_politica_baixa_ndd": 0.021739130434782608
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.926829268292683,
+            "ativacao_politica_baixa_ndd": 0.926829268292683
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.04838709677419355,
+            "ativacao_politica_baixa_ndd": 0.04838709677419355
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9347826086956522,
+            "ativacao_politica_baixa_ndd": 0.9347826086956522
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.05555555555555555,
+            "ativacao_politica_baixa_ndd": 0.05555555555555555
+          }
+        }
+      },
+      "baseline_svm": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9541284403669725,
+            "ativacao_politica_baixa_ndd": 0.944954128440367
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.036231884057971016,
+            "ativacao_politica_baixa_ndd": 0.036231884057971016
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.926829268292683,
+            "ativacao_politica_baixa_ndd": 0.926829268292683
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.04838709677419355,
+            "ativacao_politica_baixa_ndd": 0.04838709677419355
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9492753623188406,
+            "ativacao_politica_baixa_ndd": 0.9492753623188406
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.07407407407407407,
+            "ativacao_politica_baixa_ndd": 0.07407407407407407
+          }
+        }
+      },
+      "debertinha": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9724770642201835,
+            "ativacao_politica_baixa_ndd": 0.963302752293578
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.014492753623188406,
+            "ativacao_politica_baixa_ndd": 0.014492753623188406
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.926829268292683,
+            "ativacao_politica_baixa_ndd": 0.926829268292683
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.03225806451612903,
+            "ativacao_politica_baixa_ndd": 0.03225806451612903
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9782608695652174,
+            "ativacao_politica_baixa_ndd": 0.9782608695652174
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.009259259259259259,
+            "ativacao_politica_baixa_ndd": 0.009259259259259259
+          }
+        }
+      },
+      "albertina": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9908256880733946,
+            "ativacao_politica_baixa_ndd": 0.981651376146789
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.007246376811594203,
+            "ativacao_politica_baixa_ndd": 0.007246376811594203
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.9512195121951219,
+            "ativacao_politica_baixa_ndd": 0.9512195121951219
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.016129032258064516,
+            "ativacao_politica_baixa_ndd": 0.016129032258064516
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9637681159420289,
+            "ativacao_politica_baixa_ndd": 0.9637681159420289
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.009259259259259259,
+            "ativacao_politica_baixa_ndd": 0.009259259259259259
+          }
+        }
+      },
+      "sem_correcao_bertimbau": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9541284403669725,
+            "ativacao_politica_baixa_ndd": 0.944954128440367
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.36231884057971014,
+            "ativacao_politica_baixa_ndd": 0.36231884057971014
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.9349593495934959,
+            "ativacao_politica_baixa_ndd": 0.9349593495934959
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.3790322580645161,
+            "ativacao_politica_baixa_ndd": 0.3790322580645161
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9347826086956522,
+            "ativacao_politica_baixa_ndd": 0.9347826086956522
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.2777777777777778,
+            "ativacao_politica_baixa_ndd": 0.2777777777777778
+          }
+        }
+      },
+      "sem_correcao_debertinha": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9541284403669725,
+            "ativacao_politica_baixa_ndd": 0.944954128440367
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.391304347826087,
+            "ativacao_politica_baixa_ndd": 0.391304347826087
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.943089430894309,
+            "ativacao_politica_baixa_ndd": 0.943089430894309
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.3870967741935484,
+            "ativacao_politica_baixa_ndd": 0.3870967741935484
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.927536231884058,
+            "ativacao_politica_baixa_ndd": 0.927536231884058
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.2962962962962963,
+            "ativacao_politica_baixa_ndd": 0.2962962962962963
+          }
+        }
+      },
+      "sem_correcao_albertina": {
+        "tts:pt-BR-AntonioNeural": {
+          "DD": {
+            "n": 109,
+            "ativacao": 0.9541284403669725,
+            "ativacao_politica_baixa_ndd": 0.944954128440367
+          },
+          "NDD": {
+            "n": 138,
+            "ativacao": 0.34782608695652173,
+            "ativacao_politica_baixa_ndd": 0.34782608695652173
+          }
+        },
+        "tts:pt-BR-FranciscaNeural": {
+          "DD": {
+            "n": 123,
+            "ativacao": 0.926829268292683,
+            "ativacao_politica_baixa_ndd": 0.926829268292683
+          },
+          "NDD": {
+            "n": 124,
+            "ativacao": 0.3548387096774194,
+            "ativacao_politica_baixa_ndd": 0.3548387096774194
+          }
+        },
+        "tts:pt-BR-ThalitaMultilingualNeural": {
+          "DD": {
+            "n": 138,
+            "ativacao": 0.9420289855072463,
+            "ativacao_politica_baixa_ndd": 0.9420289855072463
+          },
+          "NDD": {
+            "n": 108,
+            "ativacao": 0.26851851851851855,
+            "ativacao_politica_baixa_ndd": 0.26851851851851855
+          }
+        }
+      }
+    },
+    "pareado": {
+      "baseline_logreg vs bertimbau": {
+        "DD": {
+          "fp_a": 0.9324324324324325,
+          "fp_b": 0.9648648648648649,
+          "diferenca": -0.032432432432432434,
+          "ic95_inf": -0.05945945945945941,
+          "ic95_sup": -0.00540540540540535,
+          "p_a_menos_fp": 0.9895
+        },
+        "NDD": {
+          "fp_a": 0.04054054054054054,
+          "fp_b": 0.01891891891891892,
+          "diferenca": 0.021621621621621623,
+          "ic95_inf": 0.0,
+          "ic95_sup": 0.04594594594594595,
+          "p_a_menos_fp": 0.0215
+        }
+      },
+      "baseline_svm vs bertimbau": {
+        "DD": {
+          "fp_a": 0.9432432432432433,
+          "fp_b": 0.9648648648648649,
+          "diferenca": -0.021621621621621623,
+          "ic95_inf": -0.04594594594594592,
+          "ic95_sup": 0.002702702702702786,
+          "p_a_menos_fp": 0.9435
+        },
+        "NDD": {
+          "fp_a": 0.051351351351351354,
+          "fp_b": 0.01891891891891892,
+          "diferenca": 0.032432432432432434,
+          "ic95_inf": 0.008108108108108109,
+          "ic95_sup": 0.05945945945945946,
+          "p_a_menos_fp": 0.003
+        }
+      },
+      "debertinha vs bertimbau": {
+        "DD": {
+          "fp_a": 0.9594594594594594,
+          "fp_b": 0.9648648648648649,
+          "diferenca": -0.005405405405405461,
+          "ic95_inf": -0.021621621621621623,
+          "ic95_sup": 0.008108108108108136,
+          "p_a_menos_fp": 0.695
+        },
+        "NDD": {
+          "fp_a": 0.01891891891891892,
+          "fp_b": 0.01891891891891892,
+          "diferenca": 0.0,
+          "ic95_inf": -0.016216216216216217,
+          "ic95_sup": 0.016216216216216217,
+          "p_a_menos_fp": 0.456
+        }
+      },
+      "albertina vs bertimbau": {
+        "DD": {
+          "fp_a": 0.9675675675675676,
+          "fp_b": 0.9648648648648649,
+          "diferenca": 0.002702702702702675,
+          "ic95_inf": -0.013513513513513487,
+          "ic95_sup": 0.018918918918918948,
+          "p_a_menos_fp": 0.3095
+        },
+        "NDD": {
+          "fp_a": 0.010810810810810811,
+          "fp_b": 0.01891891891891892,
+          "diferenca": -0.008108108108108109,
+          "ic95_inf": -0.021621621621621623,
+          "ic95_sup": 0.002702702702702703,
+          "p_a_menos_fp": 0.8855
+        }
+      },
+      "sem_correcao_bertimbau vs bertimbau": {
+        "DD": {
+          "fp_a": 0.9405405405405406,
+          "fp_b": 0.9648648648648649,
+          "diferenca": -0.024324324324324298,
+          "ic95_inf": -0.05135135135135138,
+          "ic95_sup": 0.00540540540540535,
+          "p_a_menos_fp": 0.9455
+        },
+        "NDD": {
+          "fp_a": 0.34324324324324323,
+          "fp_b": 0.01891891891891892,
+          "diferenca": 0.32432432432432434,
+          "ic95_inf": 0.27567567567567564,
+          "ic95_sup": 0.37297297297297294,
+          "p_a_menos_fp": 0.0
+        }
+      },
+      "sem_correcao_debertinha vs debertinha": {
+        "DD": {
+          "fp_a": 0.9405405405405406,
+          "fp_b": 0.9594594594594594,
+          "diferenca": -0.018918918918918837,
+          "ic95_inf": -0.04864864864864871,
+          "ic95_sup": 0.010810810810810811,
+          "p_a_menos_fp": 0.8745
+        },
+        "NDD": {
+          "fp_a": 0.3621621621621622,
+          "fp_b": 0.01891891891891892,
+          "diferenca": 0.3432432432432433,
+          "ic95_inf": 0.2945945945945946,
+          "ic95_sup": 0.3945945945945946,
+          "p_a_menos_fp": 0.0
+        }
+      },
+      "sem_correcao_albertina vs albertina": {
+        "DD": {
+          "fp_a": 0.9405405405405406,
+          "fp_b": 0.9675675675675676,
+          "diferenca": -0.027027027027026973,
+          "ic95_inf": -0.05405405405405406,
+          "ic95_sup": 0.0,
+          "p_a_menos_fp": 0.9665
+        },
+        "NDD": {
+          "fp_a": 0.327027027027027,
+          "fp_b": 0.010810810810810811,
+          "diferenca": 0.3162162162162162,
+          "ic95_inf": 0.26756756756756755,
+          "ic95_sup": 0.36486486486486486,
+          "p_a_menos_fp": 0.0
+        }
+      }
+    }
+  },
+  "origem_dos_erros": {
+    "bertimbau": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 1,
+          "classificador": 9,
+          "transcricao": 3
+        },
+        "NDD": {
+          "segmentacao": 1,
+          "classificador": 3,
+          "transcricao": 3
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0397",
+          "tts_0604"
+        ],
+        "classificador": [
+          "tts_0067",
+          "tts_0069",
+          "tts_0093",
+          "tts_0140",
+          "tts_0159",
+          "tts_0219",
+          "tts_0259",
+          "tts_0327",
+          "tts_0349",
+          "tts_0386",
+          "tts_0425",
+          "tts_0456"
+        ],
+        "transcricao": [
+          "tts_0338",
+          "tts_0380",
+          "tts_0539",
+          "tts_0615",
+          "tts_0681",
+          "tts_0737"
+        ]
+      }
+    },
+    "baseline_logreg": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 16,
+          "transcricao": 9
+        },
+        "NDD": {
+          "segmentacao": 2,
+          "classificador": 11,
+          "transcricao": 2
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0517",
+          "tts_0553"
+        ],
+        "classificador": [
+          "tts_0006",
+          "tts_0021",
+          "tts_0032",
+          "tts_0075",
+          "tts_0115",
+          "tts_0128",
+          "tts_0192",
+          "tts_0199",
+          "tts_0219",
+          "tts_0243",
+          "tts_0323",
+          "tts_0327",
+          "tts_0329",
+          "tts_0344",
+          "tts_0349",
+          "tts_0369",
+          "tts_0405",
+          "tts_0431",
+          "tts_0438",
+          "tts_0456",
+          "tts_0469",
+          "tts_0476",
+          "tts_0544",
+          "tts_0548",
+          "tts_0608",
+          "tts_0650",
+          "tts_0696"
+        ],
+        "transcricao": [
+          "tts_0259",
+          "tts_0280",
+          "tts_0385",
+          "tts_0401",
+          "tts_0452",
+          "tts_0605",
+          "tts_0615",
+          "tts_0623",
+          "tts_0680",
+          "tts_0681",
+          "tts_0690"
+        ]
+      }
+    },
+    "baseline_svm": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 12,
+          "transcricao": 9
+        },
+        "NDD": {
+          "segmentacao": 2,
+          "classificador": 15,
+          "transcricao": 2
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0517",
+          "tts_0553"
+        ],
+        "classificador": [
+          "tts_0006",
+          "tts_0008",
+          "tts_0021",
+          "tts_0032",
+          "tts_0075",
+          "tts_0128",
+          "tts_0155",
+          "tts_0192",
+          "tts_0199",
+          "tts_0219",
+          "tts_0235",
+          "tts_0243",
+          "tts_0323",
+          "tts_0329",
+          "tts_0344",
+          "tts_0349",
+          "tts_0369",
+          "tts_0405",
+          "tts_0438",
+          "tts_0456",
+          "tts_0469",
+          "tts_0476",
+          "tts_0544",
+          "tts_0548",
+          "tts_0583",
+          "tts_0608",
+          "tts_0696"
+        ],
+        "transcricao": [
+          "tts_0259",
+          "tts_0327",
+          "tts_0385",
+          "tts_0401",
+          "tts_0452",
+          "tts_0605",
+          "tts_0615",
+          "tts_0623",
+          "tts_0680",
+          "tts_0681",
+          "tts_0690"
+        ]
+      }
+    },
+    "debertinha": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 1,
+          "classificador": 11,
+          "transcricao": 3
+        },
+        "NDD": {
+          "segmentacao": 0,
+          "classificador": 6,
+          "transcricao": 1
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0397"
+        ],
+        "classificador": [
+          "tts_0006",
+          "tts_0069",
+          "tts_0093",
+          "tts_0150",
+          "tts_0155",
+          "tts_0159",
+          "tts_0219",
+          "tts_0235",
+          "tts_0259",
+          "tts_0289",
+          "tts_0327",
+          "tts_0329",
+          "tts_0405",
+          "tts_0456",
+          "tts_0552",
+          "tts_0615",
+          "tts_0720"
+        ],
+        "transcricao": [
+          "tts_0067",
+          "tts_0605",
+          "tts_0681",
+          "tts_0737"
+        ]
+      }
+    },
+    "albertina": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 8,
+          "transcricao": 4
+        },
+        "NDD": {
+          "segmentacao": 0,
+          "classificador": 4,
+          "transcricao": 0
+        }
+      },
+      "itens": {
+        "segmentacao": [],
+        "classificador": [
+          "tts_0067",
+          "tts_0069",
+          "tts_0093",
+          "tts_0140",
+          "tts_0150",
+          "tts_0159",
+          "tts_0219",
+          "tts_0259",
+          "tts_0327",
+          "tts_0329",
+          "tts_0386",
+          "tts_0720"
+        ],
+        "transcricao": [
+          "tts_0605",
+          "tts_0615",
+          "tts_0668",
+          "tts_0737"
+        ]
+      }
+    },
+    "sem_correcao_bertimbau": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 21,
+          "transcricao": 1
+        },
+        "NDD": {
+          "segmentacao": 3,
+          "classificador": 123,
+          "transcricao": 1
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0517",
+          "tts_0553",
+          "tts_0604"
+        ],
+        "classificador": [
+          "tts_0000",
+          "tts_0001",
+          "tts_0003",
+          "tts_0005",
+          "tts_0006",
+          "tts_0011",
+          "tts_0013",
+          "tts_0021",
+          "tts_0028",
+          "tts_0032",
+          "tts_0037",
+          "tts_0040",
+          "tts_0041",
+          "tts_0047",
+          "tts_0048",
+          "tts_0049",
+          "tts_0055",
+          "tts_0063",
+          "tts_0067",
+          "tts_0076",
+          "tts_0077",
+          "tts_0078",
+          "tts_0085",
+          "tts_0088",
+          "tts_0093",
+          "tts_0098",
+          "tts_0099",
+          "tts_0101",
+          "tts_0104",
+          "tts_0105",
+          "tts_0114",
+          "tts_0128",
+          "tts_0136",
+          "tts_0144",
+          "tts_0152",
+          "tts_0155",
+          "tts_0159",
+          "tts_0165",
+          "tts_0172",
+          "tts_0178",
+          "tts_0179",
+          "tts_0184",
+          "tts_0188",
+          "tts_0189",
+          "tts_0190",
+          "tts_0196",
+          "tts_0197",
+          "tts_0199",
+          "tts_0204",
+          "tts_0206",
+          "tts_0213",
+          "tts_0219",
+          "tts_0223",
+          "tts_0227",
+          "tts_0229",
+          "tts_0234",
+          "tts_0237",
+          "tts_0239",
+          "tts_0243",
+          "tts_0247",
+          "tts_0249",
+          "tts_0263",
+          "tts_0274",
+          "tts_0277",
+          "tts_0282",
+          "tts_0291",
+          "tts_0298",
+          "tts_0299",
+          "tts_0304",
+          "tts_0307",
+          "tts_0313",
+          "tts_0315",
+          "tts_0322",
+          "tts_0326",
+          "tts_0334",
+          "tts_0336",
+          "tts_0338",
+          "tts_0339",
+          "tts_0340",
+          "tts_0344",
+          "tts_0345",
+          "tts_0348",
+          "tts_0354",
+          "tts_0356",
+          "tts_0369",
+          "tts_0370",
+          "tts_0371",
+          "tts_0378",
+          "tts_0395",
+          "tts_0398",
+          "tts_0408",
+          "tts_0412",
+          "tts_0417",
+          "tts_0426",
+          "tts_0436",
+          "tts_0457",
+          "tts_0461",
+          "tts_0478",
+          "tts_0484",
+          "tts_0519",
+          "tts_0520",
+          "tts_0523",
+          "tts_0525",
+          "tts_0531",
+          "tts_0536",
+          "tts_0540",
+          "tts_0547",
+          "tts_0549",
+          "tts_0555",
+          "tts_0566",
+          "tts_0567",
+          "tts_0576",
+          "tts_0583",
+          "tts_0598",
+          "tts_0599",
+          "tts_0600",
+          "tts_0607",
+          "tts_0618",
+          "tts_0632",
+          "tts_0638",
+          "tts_0643",
+          "tts_0649",
+          "tts_0650",
+          "tts_0652",
+          "tts_0660",
+          "tts_0663",
+          "tts_0666",
+          "tts_0669",
+          "tts_0671",
+          "tts_0675",
+          "tts_0678",
+          "tts_0682",
+          "tts_0688",
+          "tts_0691",
+          "tts_0694",
+          "tts_0695",
+          "tts_0703",
+          "tts_0714",
+          "tts_0715",
+          "tts_0717",
+          "tts_0722",
+          "tts_0735",
+          "tts_0738",
+          "tts_0739"
+        ],
+        "transcricao": [
+          "tts_0539",
+          "tts_0737"
+        ]
+      }
+    },
+    "sem_correcao_debertinha": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 20,
+          "transcricao": 2
+        },
+        "NDD": {
+          "segmentacao": 3,
+          "classificador": 130,
+          "transcricao": 1
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0517",
+          "tts_0553",
+          "tts_0604"
+        ],
+        "classificador": [
+          "tts_0000",
+          "tts_0003",
+          "tts_0005",
+          "tts_0006",
+          "tts_0008",
+          "tts_0011",
+          "tts_0013",
+          "tts_0021",
+          "tts_0028",
+          "tts_0032",
+          "tts_0037",
+          "tts_0040",
+          "tts_0041",
+          "tts_0043",
+          "tts_0047",
+          "tts_0048",
+          "tts_0049",
+          "tts_0055",
+          "tts_0063",
+          "tts_0067",
+          "tts_0076",
+          "tts_0077",
+          "tts_0078",
+          "tts_0085",
+          "tts_0088",
+          "tts_0099",
+          "tts_0101",
+          "tts_0105",
+          "tts_0114",
+          "tts_0124",
+          "tts_0128",
+          "tts_0133",
+          "tts_0136",
+          "tts_0144",
+          "tts_0152",
+          "tts_0155",
+          "tts_0165",
+          "tts_0172",
+          "tts_0178",
+          "tts_0179",
+          "tts_0184",
+          "tts_0188",
+          "tts_0189",
+          "tts_0190",
+          "tts_0196",
+          "tts_0197",
+          "tts_0204",
+          "tts_0206",
+          "tts_0213",
+          "tts_0219",
+          "tts_0227",
+          "tts_0229",
+          "tts_0234",
+          "tts_0237",
+          "tts_0239",
+          "tts_0243",
+          "tts_0247",
+          "tts_0249",
+          "tts_0263",
+          "tts_0274",
+          "tts_0277",
+          "tts_0282",
+          "tts_0288",
+          "tts_0291",
+          "tts_0299",
+          "tts_0304",
+          "tts_0307",
+          "tts_0313",
+          "tts_0315",
+          "tts_0322",
+          "tts_0326",
+          "tts_0334",
+          "tts_0336",
+          "tts_0338",
+          "tts_0339",
+          "tts_0340",
+          "tts_0344",
+          "tts_0345",
+          "tts_0348",
+          "tts_0354",
+          "tts_0356",
+          "tts_0358",
+          "tts_0369",
+          "tts_0370",
+          "tts_0371",
+          "tts_0372",
+          "tts_0378",
+          "tts_0395",
+          "tts_0398",
+          "tts_0403",
+          "tts_0408",
+          "tts_0412",
+          "tts_0417",
+          "tts_0426",
+          "tts_0436",
+          "tts_0457",
+          "tts_0461",
+          "tts_0476",
+          "tts_0478",
+          "tts_0484",
+          "tts_0493",
+          "tts_0500",
+          "tts_0519",
+          "tts_0520",
+          "tts_0523",
+          "tts_0525",
+          "tts_0530",
+          "tts_0539",
+          "tts_0540",
+          "tts_0547",
+          "tts_0549",
+          "tts_0555",
+          "tts_0561",
+          "tts_0563",
+          "tts_0566",
+          "tts_0567",
+          "tts_0576",
+          "tts_0583",
+          "tts_0598",
+          "tts_0599",
+          "tts_0600",
+          "tts_0607",
+          "tts_0615",
+          "tts_0632",
+          "tts_0638",
+          "tts_0643",
+          "tts_0649",
+          "tts_0650",
+          "tts_0652",
+          "tts_0655",
+          "tts_0660",
+          "tts_0663",
+          "tts_0666",
+          "tts_0669",
+          "tts_0671",
+          "tts_0675",
+          "tts_0678",
+          "tts_0682",
+          "tts_0688",
+          "tts_0691",
+          "tts_0694",
+          "tts_0695",
+          "tts_0703",
+          "tts_0714",
+          "tts_0715",
+          "tts_0717",
+          "tts_0722",
+          "tts_0735",
+          "tts_0738",
+          "tts_0739"
+        ],
+        "transcricao": [
+          "tts_0199",
+          "tts_0245",
+          "tts_0737"
+        ]
+      }
+    },
+    "sem_correcao_albertina": {
+      "por_rotulo": {
+        "DD": {
+          "segmentacao": 0,
+          "classificador": 20,
+          "transcricao": 2
+        },
+        "NDD": {
+          "segmentacao": 2,
+          "classificador": 119,
+          "transcricao": 0
+        }
+      },
+      "itens": {
+        "segmentacao": [
+          "tts_0553",
+          "tts_0604"
+        ],
+        "classificador": [
+          "tts_0000",
+          "tts_0001",
+          "tts_0003",
+          "tts_0005",
+          "tts_0006",
+          "tts_0011",
+          "tts_0013",
+          "tts_0021",
+          "tts_0028",
+          "tts_0032",
+          "tts_0037",
+          "tts_0040",
+          "tts_0041",
+          "tts_0047",
+          "tts_0048",
+          "tts_0049",
+          "tts_0055",
+          "tts_0063",
+          "tts_0067",
+          "tts_0076",
+          "tts_0077",
+          "tts_0078",
+          "tts_0085",
+          "tts_0088",
+          "tts_0093",
+          "tts_0099",
+          "tts_0101",
+          "tts_0105",
+          "tts_0114",
+          "tts_0128",
+          "tts_0136",
+          "tts_0144",
+          "tts_0152",
+          "tts_0155",
+          "tts_0165",
+          "tts_0172",
+          "tts_0178",
+          "tts_0179",
+          "tts_0184",
+          "tts_0188",
+          "tts_0189",
+          "tts_0190",
+          "tts_0196",
+          "tts_0197",
+          "tts_0199",
+          "tts_0204",
+          "tts_0206",
+          "tts_0213",
+          "tts_0219",
+          "tts_0227",
+          "tts_0229",
+          "tts_0234",
+          "tts_0239",
+          "tts_0243",
+          "tts_0247",
+          "tts_0249",
+          "tts_0263",
+          "tts_0277",
+          "tts_0282",
+          "tts_0288",
+          "tts_0291",
+          "tts_0298",
+          "tts_0299",
+          "tts_0304",
+          "tts_0307",
+          "tts_0313",
+          "tts_0315",
+          "tts_0322",
+          "tts_0326",
+          "tts_0329",
+          "tts_0334",
+          "tts_0336",
+          "tts_0338",
+          "tts_0339",
+          "tts_0340",
+          "tts_0344",
+          "tts_0345",
+          "tts_0348",
+          "tts_0354",
+          "tts_0356",
+          "tts_0369",
+          "tts_0370",
+          "tts_0371",
+          "tts_0372",
+          "tts_0378",
+          "tts_0395",
+          "tts_0398",
+          "tts_0408",
+          "tts_0412",
+          "tts_0417",
+          "tts_0426",
+          "tts_0436",
+          "tts_0455",
+          "tts_0457",
+          "tts_0461",
+          "tts_0466",
+          "tts_0478",
+          "tts_0484",
+          "tts_0519",
+          "tts_0520",
+          "tts_0523",
+          "tts_0525",
+          "tts_0530",
+          "tts_0531",
+          "tts_0539",
+          "tts_0547",
+          "tts_0549",
+          "tts_0555",
+          "tts_0561",
+          "tts_0566",
+          "tts_0567",
+          "tts_0576",
+          "tts_0583",
+          "tts_0598",
+          "tts_0599",
+          "tts_0600",
+          "tts_0607",
+          "tts_0632",
+          "tts_0643",
+          "tts_0649",
+          "tts_0652",
+          "tts_0660",
+          "tts_0663",
+          "tts_0666",
+          "tts_0671",
+          "tts_0675",
+          "tts_0676",
+          "tts_0682",
+          "tts_0688",
+          "tts_0691",
+          "tts_0694",
+          "tts_0695",
+          "tts_0703",
+          "tts_0711",
+          "tts_0714",
+          "tts_0717",
+          "tts_0722",
+          "tts_0735",
+          "tts_0739"
+        ],
+        "transcricao": [
+          "tts_0615",
+          "tts_0737"
+        ]
+      }
+    }
+  }
+}

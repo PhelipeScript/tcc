@@ -1,0 +1,77 @@
+{
+  "unidade_do_bootstrap": "item",
+  "pares": {
+    "bertimbau-s44 vs albertina-s42": {
+      "n": 600,
+      "queda_a": 0.005,
+      "queda_b": 0.011666666666666667,
+      "diferenca": -0.006666666666666667,
+      "ic95_inf": -0.021666666666666667,
+      "ic95_sup": 0.009999999999999998,
+      "p_a_perde_menos": 0.77
+    },
+    "bertimbau-s44 vs debertinha-s44": {
+      "n": 600,
+      "queda_a": 0.005,
+      "queda_b": 0.006666666666666667,
+      "diferenca": -0.001666666666666667,
+      "ic95_inf": -0.02,
+      "ic95_sup": 0.015000000000000001,
+      "p_a_perde_menos": 0.5385
+    },
+    "bertimbau-s44 vs baseline_logreg": {
+      "n": 600,
+      "queda_a": 0.005,
+      "queda_b": 0.013333333333333334,
+      "diferenca": -0.008333333333333335,
+      "ic95_inf": -0.02666666666666667,
+      "ic95_sup": 0.01,
+      "p_a_perde_menos": 0.787
+    },
+    "bertimbau-s44 vs baseline_svm": {
+      "n": 600,
+      "queda_a": 0.005,
+      "queda_b": 0.013333333333333334,
+      "diferenca": -0.008333333333333335,
+      "ic95_inf": -0.02666666666666667,
+      "ic95_sup": 0.01,
+      "p_a_perde_menos": 0.776
+    },
+    "albertina-s42 vs baseline_logreg": {
+      "n": 600,
+      "queda_a": 0.011666666666666667,
+      "queda_b": 0.013333333333333334,
+      "diferenca": -0.001666666666666667,
+      "ic95_inf": -0.021666666666666667,
+      "ic95_sup": 0.01670833333333311,
+      "p_a_perde_menos": 0.5335
+    },
+    "albertina-s42 vs baseline_svm": {
+      "n": 600,
+      "queda_a": 0.011666666666666667,
+      "queda_b": 0.013333333333333334,
+      "diferenca": -0.001666666666666667,
+      "ic95_inf": -0.021666666666666667,
+      "ic95_sup": 0.018333333333333333,
+      "p_a_perde_menos": 0.5395
+    },
+    "debertinha-s44 vs baseline_logreg": {
+      "n": 600,
+      "queda_a": 0.006666666666666667,
+      "queda_b": 0.013333333333333334,
+      "diferenca": -0.006666666666666667,
+      "ic95_inf": -0.026666666666666665,
+      "ic95_sup": 0.013333333333333332,
+      "p_a_perde_menos": 0.7185
+    },
+    "debertinha-s44 vs baseline_svm": {
+      "n": 600,
+      "queda_a": 0.006666666666666667,
+      "queda_b": 0.013333333333333334,
+      "diferenca": -0.006666666666666667,
+      "ic95_inf": -0.028333333333333332,
+      "ic95_sup": 0.013333333333333334,
+      "p_a_perde_menos": 0.714
+    }
+  }
+}

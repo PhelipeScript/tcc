@@ -1,0 +1,159 @@
+{
+  "classificador": "sem_correcao_bertimbau",
+  "resumo": {
+    "conversa_interno": {
+      "n": 24,
+      "NDD": {
+        "n": 24,
+        "ativacao": 0.20833333333333334,
+        "ativacao_politica_baixa_ndd": 0.20833333333333334,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0416666666666667
+      }
+    },
+    "distante_interno": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.95,
+        "ativacao_politica_baixa_ndd": 0.95,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.4,
+        "ativacao_politica_baixa_ndd": 0.3,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.15
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 2.0,
+        "falas": 2,
+        "minutos": 0.7233777777777778,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      }
+    },
+    "quieto_interno": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.9,
+        "ativacao_politica_baixa_ndd": 0.9,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.25,
+        "ativacao_politica_baixa_ndd": 0.25,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 1.0,
+        "ativacao_politica_baixa_ndd": 1.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 3.0,
+        "falas": 3,
+        "minutos": 0.6392888888888889,
+        "fp_por_fala": 0.3333333333333333,
+        "fp_por_fala_politica_baixa_ndd": 0.3333333333333333,
+        "ativacoes_por_minuto": 1.564238042269188
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      }
+    },
+    "quieto_iphone": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.95,
+        "ativacao_politica_baixa_ndd": 0.95,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.2,
+        "ativacao_politica_baixa_ndd": 0.2,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 3.0,
+        "falas": 3,
+        "minutos": 1.6728888888888889,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      }
+    },
+    "ruido_interno": {
+      "n": 42,
+      "DD": {
+        "n": 20,
+        "ativacao": 0.9,
+        "ativacao_politica_baixa_ndd": 0.85,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD": {
+        "n": 20,
+        "ativacao": 0.25,
+        "ativacao_politica_baixa_ndd": 0.25,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 1.0
+      },
+      "NDD_LIVRE": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 0.0,
+        "falas_por_item": 2.0,
+        "falas": 2,
+        "minutos": 0.6474666666666666,
+        "fp_por_fala": 0.0,
+        "fp_por_fala_politica_baixa_ndd": 0.0,
+        "ativacoes_por_minuto": 0.0
+      },
+      "RUIDO": {
+        "n": 1,
+        "ativacao": 0.0,
+        "ativacao_politica_baixa_ndd": 0.0,
+        "sem_fala_detectada": 1.0,
+        "falas_por_item": 0.0
+      }
+    }
+  }
+}

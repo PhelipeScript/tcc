@@ -1,0 +1,115 @@
+{
+  "transformers": {
+    "bertimbau": {
+      "execucao": "bertimbau-s44",
+      "checkpoint_base": "neuralmind/bert-base-portuguese-cased",
+      "parametros": 108924674,
+      "tamanho_mb": 415.53709411621094,
+      "precisao_treino": "bf16",
+      "sementes": 3,
+      "treino_min": {
+        "media": 55.570996666666666,
+        "desvio": 5.034011853024
+      },
+      "passos_por_s": {
+        "media": 3.5223333333333335,
+        "desvio": 0.31361175573204086
+      },
+      "pico_memoria_gb": {
+        "media": 3.4233333333333333,
+        "desvio": 0.08504900548115386
+      }
+    },
+    "albertina": {
+      "execucao": "albertina-s42",
+      "checkpoint_base": "PORTULAN/albertina-100m-portuguese-ptbr-encoder",
+      "parametros": 139193858,
+      "tamanho_mb": 531.0054397583008,
+      "precisao_treino": "fp32",
+      "sementes": 3,
+      "treino_min": {
+        "media": 147.5550022222222,
+        "desvio": 3.4048015042144657
+      },
+      "passos_por_s": {
+        "media": 1.3253333333333333,
+        "desvio": 0.03098924544633724
+      },
+      "pico_memoria_gb": {
+        "media": 8.773333333333333,
+        "desvio": 0.5928181283777796
+      }
+    },
+    "debertinha": {
+      "execucao": "debertinha-s44",
+      "checkpoint_base": "sagui-nlp/debertinha-ptbr-xsmall",
+      "parametros": 40944002,
+      "tamanho_mb": 156.21226501464844,
+      "precisao_treino": "bf16",
+      "sementes": 3,
+      "treino_min": {
+        "media": 49.666381666666666,
+        "desvio": 3.170533841809348
+      },
+      "passos_por_s": {
+        "media": 4.915,
+        "desvio": 0.3033463367176204
+      },
+      "pico_memoria_gb": {
+        "media": 2.3666666666666667,
+        "desvio": 0.011547005383792526
+      }
+    }
+  },
+  "baselines": {
+    "baseline_logreg": {
+      "execucao": "baseline_logreg",
+      "vocabulario": 50000,
+      "tamanho_mb": 0.9180517196655273,
+      "treino_s": 5.0,
+      "c": 10.0
+    },
+    "baseline_svm": {
+      "execucao": "baseline_svm",
+      "vocabulario": 50000,
+      "tamanho_mb": 2.34560489654541,
+      "treino_s": 3.9,
+      "c": 1.0
+    }
+  },
+  "inferencia": {
+    "bertimbau": {
+      "pipeline_p50_ms": 41.075,
+      "pipeline_p95_ms": 53.12999999999999,
+      "benchmark_cpu-1t_p50_ms": 11.555791483260691,
+      "benchmark_cpu-2t_p50_ms": 11.898583499714732,
+      "benchmark_cpu-4t_p50_ms": 12.075499980710447,
+      "benchmark_mps-2t_p50_ms": 6.846750009572133
+    },
+    "baseline_logreg": {
+      "pipeline_p50_ms": 1.11,
+      "pipeline_p95_ms": 1.79
+    },
+    "baseline_svm": {
+      "pipeline_p50_ms": 4.17,
+      "pipeline_p95_ms": 5.5515
+    },
+    "debertinha": {
+      "pipeline_p50_ms": 31.055,
+      "pipeline_p95_ms": 33.690999999999995,
+      "benchmark_cpu-1t_p50_ms": 8.306833973620087,
+      "benchmark_cpu-2t_p50_ms": 8.976479002740234,
+      "benchmark_cpu-4t_p50_ms": 9.197042003506795,
+      "benchmark_mps-2t_p50_ms": 9.624020487535745
+    },
+    "albertina": {
+      "pipeline_p50_ms": 43.459999999999994,
+      "pipeline_p95_ms": 53.020499999999956,
+      "benchmark_cpu-1t_p50_ms": 15.435208013514057,
+      "benchmark_cpu-2t_p50_ms": 15.876271005254239,
+      "benchmark_cpu-4t_p50_ms": 15.904666477581486,
+      "benchmark_mps-2t_p50_ms": 10.888813034398481
+    }
+  },
+  "benchmark": "benchmark-20261104-0737.json"
+}

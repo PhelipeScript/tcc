@@ -1,0 +1,36 @@
+{
+  "classificador": "bertimbau",
+  "semente_whisper": 0,
+  "resumo": {
+    "coraa": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.07333333333333333,
+        "ativacao_politica_baixa_ndd": 0.043333333333333335,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1566666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1454357909969985,
+        "p95": 2.002021183114265,
+        "n": 347
+      }
+    },
+    "nurcsp": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.056666666666666664,
+        "ativacao_politica_baixa_ndd": 0.04,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1466666666666667
+      },
+      "latencia_s": {
+        "p50": 1.15430683302111,
+        "p95": 1.5338901563169147,
+        "n": 344
+      }
+    }
+  }
+}

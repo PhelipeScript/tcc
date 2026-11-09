@@ -1,0 +1,718 @@
+{
+  "transformers": [
+    {
+      "execucao": "bertimbau-s42",
+      "modelo": "bertimbau",
+      "condicao": "principal",
+      "semente": 42,
+      "hiperparametros": {
+        "checkpoint_base": "neuralmind/bert-base-portuguese-cased",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.97472449917715,
+          "perda_validacao": 0.07826915383338928,
+          "perda_treino_media": 0.15861121884707746
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9799500415967661,
+          "perda_validacao": 0.07408791780471802,
+          "perda_treino_media": 0.059038312846216655
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9824365848119883,
+          "perda_validacao": 0.07274087518453598,
+          "perda_treino_media": 0.03296625005787816
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9831218317659774,
+          "perda_validacao": 0.08686567842960358,
+          "perda_treino_media": 0.01709791275961646
+        }
+      ],
+      "epoca_menor_perda_validacao": 3,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9830361648750277,
+      "limiar_escolhido": 0.42,
+      "no_sistema": false
+    },
+    {
+      "execucao": "bertimbau-s43",
+      "modelo": "bertimbau",
+      "condicao": "principal",
+      "semente": 43,
+      "hiperparametros": {
+        "checkpoint_base": "neuralmind/bert-base-portuguese-cased",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9772092377009315,
+          "perda_validacao": 0.07600931823253632,
+          "perda_treino_media": 0.15457286867602116
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9807230356120373,
+          "perda_validacao": 0.06470008194446564,
+          "perda_treino_media": 0.05922131012225972
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.981321989730565,
+          "perda_validacao": 0.08657520264387131,
+          "perda_treino_media": 0.034360315717499826
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9832930571694857,
+          "perda_validacao": 0.08877695351839066,
+          "perda_treino_media": 0.017224955692373475
+        }
+      ],
+      "epoca_menor_perda_validacao": 2,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9832930571694857,
+      "limiar_escolhido": 0.725,
+      "no_sistema": false
+    },
+    {
+      "execucao": "bertimbau-s44",
+      "modelo": "bertimbau",
+      "condicao": "principal",
+      "semente": 44,
+      "hiperparametros": {
+        "checkpoint_base": "neuralmind/bert-base-portuguese-cased",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 8733,
+        "epoca": 3.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9757538469081984,
+          "perda_validacao": 0.07833097875118256,
+          "perda_treino_media": 0.1536114681178126
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.980722169606986,
+          "perda_validacao": 0.07892543077468872,
+          "perda_treino_media": 0.05830521797311717
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9833784625756142,
+          "perda_validacao": 0.07503542304039001,
+          "perda_treino_media": 0.03192587803150046
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9832932749662295,
+          "perda_validacao": 0.08188044279813766,
+          "perda_treino_media": 0.017115960162261436
+        }
+      ],
+      "epoca_menor_perda_validacao": 3,
+      "menor_perda_antes_do_melhor": false,
+      "f1_macro_validacao_limiar_05": 0.9833784625756142,
+      "limiar_escolhido": 0.685,
+      "no_sistema": true
+    },
+    {
+      "execucao": "albertina-s42",
+      "modelo": "albertina",
+      "condicao": "principal",
+      "semente": 42,
+      "hiperparametros": {
+        "checkpoint_base": "PORTULAN/albertina-100m-portuguese-ptbr-encoder",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "fp32"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9694104738351889,
+          "perda_validacao": 0.09771832823753357,
+          "perda_treino_media": 0.17974471289536048
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9757539195209399,
+          "perda_validacao": 0.08227641880512238,
+          "perda_treino_media": 0.07872543861126077
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9755825762980447,
+          "perda_validacao": 0.0971803069114685,
+          "perda_treino_media": 0.048356246948242185
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9791804138852647,
+          "perda_validacao": 0.10676521062850952,
+          "perda_treino_media": 0.029712687771895837
+        }
+      ],
+      "epoca_menor_perda_validacao": 2,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9791804138852647,
+      "limiar_escolhido": 0.62,
+      "no_sistema": true
+    },
+    {
+      "execucao": "albertina-s43",
+      "modelo": "albertina",
+      "condicao": "principal",
+      "semente": 43,
+      "hiperparametros": {
+        "checkpoint_base": "PORTULAN/albertina-100m-portuguese-ptbr-encoder",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "fp32"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.970264200851279,
+          "perda_validacao": 0.09301251918077469,
+          "perda_treino_media": 0.1715785707276443
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9748114674044019,
+          "perda_validacao": 0.08675903081893921,
+          "perda_treino_media": 0.0772750397386222
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9783223041587703,
+          "perda_validacao": 0.09413813054561615,
+          "perda_treino_media": 0.048423418916504965
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9786654216783228,
+          "perda_validacao": 0.10349173843860626,
+          "perda_treino_media": 0.0278647611470058
+        }
+      ],
+      "epoca_menor_perda_validacao": 2,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9786654216783228,
+      "limiar_escolhido": 0.9400000000000001,
+      "no_sistema": false
+    },
+    {
+      "execucao": "albertina-s44",
+      "modelo": "albertina",
+      "condicao": "principal",
+      "semente": 44,
+      "hiperparametros": {
+        "checkpoint_base": "PORTULAN/albertina-100m-portuguese-ptbr-encoder",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "fp32"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9703537754180476,
+          "perda_validacao": 0.10182703286409378,
+          "perda_treino_media": 0.17435269158461994
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9748937309978948,
+          "perda_validacao": 0.08948308229446411,
+          "perda_treino_media": 0.0783174360209498
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9777215324877042,
+          "perda_validacao": 0.09153470396995544,
+          "perda_treino_media": 0.047443440371546255
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9789231624205895,
+          "perda_validacao": 0.11075659841299057,
+          "perda_treino_media": 0.026878953514427973
+        }
+      ],
+      "epoca_menor_perda_validacao": 2,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9789231624205895,
+      "limiar_escolhido": 0.555,
+      "no_sistema": false
+    },
+    {
+      "execucao": "debertinha-s42",
+      "modelo": "debertinha",
+      "condicao": "principal",
+      "semente": 42,
+      "hiperparametros": {
+        "checkpoint_base": "sagui-nlp/debertinha-ptbr-xsmall",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 5,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 14555,
+        "epoca": 5.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9685544886413784,
+          "perda_validacao": 0.10321812331676483,
+          "perda_treino_media": 0.25353464850063984
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9749813106230243,
+          "perda_validacao": 0.08513084799051285,
+          "perda_treino_media": 0.09630429695392477
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9775530526680979,
+          "perda_validacao": 0.0841573029756546,
+          "perda_treino_media": 0.07148785919978701
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9768651900922547,
+          "perda_validacao": 0.09946142882108688,
+          "perda_treino_media": 0.0562114955639017
+        },
+        {
+          "epoca": 5,
+          "f1_macro_validacao": 0.9787513624234224,
+          "perda_validacao": 0.09100290387868881,
+          "perda_treino_media": 0.04695574645338389
+        }
+      ],
+      "epoca_menor_perda_validacao": 3,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9786657098394922,
+      "limiar_escolhido": 0.8300000000000001,
+      "no_sistema": false
+    },
+    {
+      "execucao": "debertinha-s43",
+      "modelo": "debertinha",
+      "condicao": "principal",
+      "semente": 43,
+      "hiperparametros": {
+        "checkpoint_base": "sagui-nlp/debertinha-ptbr-xsmall",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 5,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 14555,
+        "epoca": 5.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9688105054206749,
+          "perda_validacao": 0.09759894013404846,
+          "perda_treino_media": 0.2556445125053669
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9752397156778567,
+          "perda_validacao": 0.08604799956083298,
+          "perda_treino_media": 0.09456116265264052
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9750646918733554,
+          "perda_validacao": 0.08867516368627548,
+          "perda_treino_media": 0.07057288646697997
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9781512725825183,
+          "perda_validacao": 0.08148980140686035,
+          "perda_treino_media": 0.05570512409867911
+        },
+        {
+          "epoca": 5,
+          "f1_macro_validacao": 0.9790089840746585,
+          "perda_validacao": 0.0843145027756691,
+          "perda_treino_media": 0.04654147756510768
+        }
+      ],
+      "epoca_menor_perda_validacao": 4,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9792660359472762,
+      "limiar_escolhido": 0.8,
+      "no_sistema": false
+    },
+    {
+      "execucao": "debertinha-s44",
+      "modelo": "debertinha",
+      "condicao": "principal",
+      "semente": 44,
+      "hiperparametros": {
+        "checkpoint_base": "sagui-nlp/debertinha-ptbr-xsmall",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 5,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 14555,
+        "epoca": 5.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9694957559256416,
+          "perda_validacao": 0.10245748609304428,
+          "perda_treino_media": 0.25410979270935063
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9752389217798939,
+          "perda_validacao": 0.09778085350990295,
+          "perda_treino_media": 0.09290721334260085
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9748936292577635,
+          "perda_validacao": 0.08383863419294357,
+          "perda_treino_media": 0.0687869484671231
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9780671634983258,
+          "perda_validacao": 0.08805099129676819,
+          "perda_treino_media": 0.05397486925125122
+        },
+        {
+          "epoca": 5,
+          "f1_macro_validacao": 0.9796945123197074,
+          "perda_validacao": 0.08631617575883865,
+          "perda_treino_media": 0.04446461455575351
+        }
+      ],
+      "epoca_menor_perda_validacao": 3,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9797801724144259,
+      "limiar_escolhido": 0.395,
+      "no_sistema": true
+    },
+    {
+      "execucao": "controle/bertimbau-s42",
+      "modelo": "bertimbau",
+      "condicao": "controle",
+      "semente": 42,
+      "hiperparametros": {
+        "checkpoint_base": "neuralmind/bert-base-portuguese-cased",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9853382723361458,
+          "perda_validacao": 0.049157362431287766,
+          "perda_treino_media": 0.11988024711608886
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9879112133253444,
+          "perda_validacao": 0.04493223503232002,
+          "perda_treino_media": 0.03983519562359514
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9885973493529694,
+          "perda_validacao": 0.0518830381333828,
+          "perda_treino_media": 0.020519285325346318
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9886831155937396,
+          "perda_validacao": 0.05900706723332405,
+          "perda_treino_media": 0.010621112153447906
+        }
+      ],
+      "epoca_menor_perda_validacao": 2,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9886831112682444,
+      "limiar_escolhido": 0.07,
+      "no_sistema": false
+    },
+    {
+      "execucao": "controle/albertina-s42",
+      "modelo": "albertina",
+      "condicao": "controle",
+      "semente": 42,
+      "hiperparametros": {
+        "checkpoint_base": "PORTULAN/albertina-100m-portuguese-ptbr-encoder",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 4,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "fp32"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 11644,
+        "epoca": 4.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.9823383529556216,
+          "perda_validacao": 0.05282266065478325,
+          "perda_treino_media": 0.13806325452081086
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9843953319016097,
+          "perda_validacao": 0.0577300526201725,
+          "perda_treino_media": 0.052590710459084346
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9858536173848205,
+          "perda_validacao": 0.05903790891170502,
+          "perda_treino_media": 0.03258582657781141
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9879115154365732,
+          "perda_validacao": 0.05900232493877411,
+          "perda_treino_media": 0.019353249689628337
+        }
+      ],
+      "epoca_menor_perda_validacao": 1,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9879115154365732,
+      "limiar_escolhido": 0.49,
+      "no_sistema": false
+    },
+    {
+      "execucao": "controle/debertinha-s42",
+      "modelo": "debertinha",
+      "condicao": "controle",
+      "semente": 42,
+      "hiperparametros": {
+        "checkpoint_base": "sagui-nlp/debertinha-ptbr-xsmall",
+        "taxa_aprendizado": 2e-05,
+        "lote": 32,
+        "epocas": 5,
+        "max_tokens": 128,
+        "aquecimento": 0.1,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "paciencia": 2,
+        "metrica_do_checkpoint": "f1_macro",
+        "agendador": "linear",
+        "precisao": "bf16"
+      },
+      "passos_por_epoca": 2911,
+      "melhor_checkpoint": {
+        "passo": 14555,
+        "epoca": 5.0
+      },
+      "por_epoca": [
+        {
+          "epoca": 1,
+          "f1_macro_validacao": 0.980624096517529,
+          "perda_validacao": 0.0629076436161995,
+          "perda_treino_media": 0.19440873820206211
+        },
+        {
+          "epoca": 2,
+          "f1_macro_validacao": 0.9860249161143391,
+          "perda_validacao": 0.04815283045172691,
+          "perda_treino_media": 0.06587782777588944
+        },
+        {
+          "epoca": 3,
+          "f1_macro_validacao": 0.9870541418496814,
+          "perda_validacao": 0.04927869886159897,
+          "perda_treino_media": 0.0460587373273126
+        },
+        {
+          "epoca": 4,
+          "f1_macro_validacao": 0.9866254007600568,
+          "perda_validacao": 0.0543692372739315,
+          "perda_treino_media": 0.036770228353039974
+        },
+        {
+          "epoca": 5,
+          "f1_macro_validacao": 0.9873971185078493,
+          "perda_validacao": 0.05312036722898483,
+          "perda_treino_media": 0.029283254064362618
+        }
+      ],
+      "epoca_menor_perda_validacao": 2,
+      "menor_perda_antes_do_melhor": true,
+      "f1_macro_validacao_limiar_05": 0.9873971185078493,
+      "limiar_escolhido": 0.03,
+      "no_sistema": false
+    }
+  ],
+  "tfidf": [
+    {
+      "execucao": "baseline_logreg",
+      "c": 10.0,
+      "f1_macro_validacao_cruzada": 0.9584967498081882,
+      "f1_macro_validacao": 0.9605037346259836,
+      "limiar_escolhido": 0.48,
+      "vocabulario": 50000
+    },
+    {
+      "execucao": "baseline_svm",
+      "c": 1.0,
+      "f1_macro_validacao_cruzada": 0.9607834667015904,
+      "f1_macro_validacao": 0.9611030832653255,
+      "limiar_escolhido": 0.46,
+      "vocabulario": 50000
+    }
+  ]
+}

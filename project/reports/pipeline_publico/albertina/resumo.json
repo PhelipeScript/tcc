@@ -1,0 +1,36 @@
+{
+  "classificador": "albertina",
+  "semente_whisper": 0,
+  "resumo": {
+    "coraa": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.04666666666666667,
+        "ativacao_politica_baixa_ndd": 0.03333333333333333,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1566666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1660940839792602,
+        "p95": 1.9835479208442834,
+        "n": 347
+      }
+    },
+    "nurcsp": {
+      "n": 300,
+      "NDD": {
+        "n": 300,
+        "ativacao": 0.056666666666666664,
+        "ativacao_politica_baixa_ndd": 0.04,
+        "sem_fala_detectada": 0.006666666666666667,
+        "falas_por_item": 1.1466666666666667
+      },
+      "latencia_s": {
+        "p50": 1.1875515629944857,
+        "p95": 1.5969769188115586,
+        "n": 344
+      }
+    }
+  }
+}

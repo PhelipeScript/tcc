@@ -1,0 +1,86 @@
+# Configuração central do pipeline DDSD em tempo real
+
+[audio]
+# Dispositivo de entrada: índice, parte do nome (ex.: "Mac") ou "" para o padrão do sistema.
+device = ""
+# Taxa pedida ao dispositivo; 0 = taxa nativa do dispositivo (reamostrada para 16 kHz no frontend).
+samplerate = 0
+# Latência do PortAudio: "high" dá folga contra disputa de GIL e picos de CPU, sem afetar o VAD.
+latency = "high"
+# Tamanho do bloco do callback (0 = o PortAudio escolhe; é o mais robusto).
+blocksize = 0
+# Capacidade do buffer circular de captura, em segundos.
+ring_buffer_s = 10.0
+# Entrada abaixo deste nível (dBFS) por `silent_input_s` segundos gera aviso (permissão/dispositivo mudo).
+silent_input_dbfs = -90.0
+silent_input_s = 2.0
+
+
+[vad]
+# Silero VAD (ONNX), blocos de 512 amostras a 16 kHz (32 ms).
+threshold_on = 0.5
+threshold_off = 0.35
+min_speech_ms = 250
+min_silence_ms = 700
+pre_roll_ms = 300
+post_roll_ms = 300
+
+[segmentation]
+# Fala acima deste limite é fechada e continua na fala seguinte, a partir da próxima amostra.
+max_utterance_s = 30.0
+
+[asr]
+# "mlx" (GPU Apple) ou "faster-whisper" (CPU). 
+backend = "mlx"
+mlx_model = "mlx-community/whisper-large-v3-turbo"
+faster_whisper_model = "mobiuslabsgmbh/faster-whisper-large-v3-turbo"
+# "float32" ou "int8"; o mlx continua o padrão.
+faster_whisper_compute_type = "float32"
+language = "pt"
+# Decodificação gulosa com fallback de temperatura, idêntica nos dois backends.
+temperatures = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+compression_ratio_threshold = 2.4
+logprob_threshold = -1.0
+# Limite do cache de buffers da GPU no MLX (GiB); 0 = padrão do MLX.
+mlx_cache_limit_gb = 2.0
+# Semente do sorteio da nova tentativa do Whisper (fallback de temperatura).
+seed = 0
+
+[classifiers]
+# Classificador do pipeline: um por vez (bertimbau, albertina, debertinha, baseline_logreg ou baseline_svm).
+active = "bertimbau"
+# Modelos publicados no Hugging Face ([hub]), na cópia local em models/<nome do repositório>.
+# Uma execução de treino (models/<execução>/) também serve.
+bertimbau = "models/ddsd-ptbr-bertimbau"
+albertina = "models/ddsd-ptbr-albertina"
+debertinha = "models/ddsd-ptbr-debertinha"
+# Baselines TF-IDF: os dois ficam no mesmo repositório.
+baseline_logreg = "models/ddsd-ptbr-tfidf/regressao_logistica.joblib"
+baseline_svm = "models/ddsd-ptbr-tfidf/svm.joblib"
+device = "cpu"
+torch_threads = 2
+
+[hub]
+# Repositórios do Hugging Face com os classificadores. `ddsd download-models` baixa todos;
+# o pipeline baixa sozinho o que faltar quando for usar.
+repos = ["phelipescript/ddsd-ptbr-bertimbau", "phelipescript/ddsd-ptbr-albertina",
+         "phelipescript/ddsd-ptbr-debertinha", "phelipescript/ddsd-ptbr-tfidf"]
+
+[fuzzy]
+# rotulo linguistico da confiabilidade r em [0, 1]
+low_below = 0.4
+high_from = 0.7
+
+[decision]
+# Prazo das análises (fuzzy + classificadores) contado do FIM da transcrição final (segundos).
+evidence_timeout_s = 5.0
+# Prazo de segurança contra travamento do ASR, contado do enfileiramento da final (segundos).
+asr_timeout_s = 60.0
+
+[dashboard]
+enabled = true
+refresh_per_second = 4
+log_lines = 200
+
+[logging]
+level = "info"

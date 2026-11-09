@@ -1,59 +1,72 @@
 [project]
-name = "tcc"
+name = "ddsd"
 version = "0.1.0"
-description = "Detecção de Intenção Implícita para Ativação de Assistentes de Voz em Ambientes Controlados"
+description = "DDSD textual em PT-BR: corpus sintético, treino dos classificadores e pipeline em tempo real no macOS"
 readme = "README.md"
-authors = [
-    { name = "Phelipe Pereira", email = "phelipe.psouza@senacsp.edu.br" }
-]
-requires-python = ">=3.11"
+authors = [{ name = "Phelipe Pereira de Souza" }]
+requires-python = ">=3.13,<3.14"
 dependencies = [
-    "datasets>=3.0.0",
-    "huggingface-hub>=0.25.0",
-    "pandas>=2.2.0",
-    "scikit-learn>=1.5.0",
-    "python-dotenv>=1.0.0",
-    "requests>=2.32.0",
-    "tqdm>=4.66.0",
-    "pyyaml>=6.0.0",
-    "google-genai>=0.3.0",
-    "mistralai>=1.2.0",
-    "tenacity>=9.0.0",
-    "ollama>=0.6.2",
-    "groq>=1.7.0",
-    "cerebras>=0.0.1",
-    "nlpaug>=1.1.11",
-    "nltk>=3.10.3",
-    # --- fine-tuning dos encoders (BERTimbau, Albertina, DeBERTinha) ---
-    "torch>=2.8,<3",
+    # --- núcleo ---
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "pandas>=2.2",
+    "pyarrow>=17",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "tenacity>=9.0",
+    "requests>=2.32",
+    "rich>=15.0",
+    "psutil>=7.0",
+    # --- treino e avaliação dos classificadores ---
+    "torch>=2.14,<2.15",
     "transformers>=5.17,<6",
     "accelerate>=1.10,<2",
+    "datasets>=4.0",
     "safetensors>=0.6",
+    "scikit-learn>=1.7",
     "matplotlib>=3.9",
-    # --- validação real: transcrição de áudio do YouTube (Análise de Podcast) ---
-    "yt-dlp>=2024.0",
-    "faster-whisper>=1.0",
-    "jiwer>=4.0.0",
-    "edge-tts>=7.2.8",
+    "huggingface-hub>=1.0",
+    # --- ASR ---
+    "mlx>=0.32; sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "mlx-whisper==0.4.3; sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "faster-whisper==1.2.1",
+    # --- áudio em tempo real ---
+    "sounddevice==0.5.6",
+    "soxr>=1.0",
+    "soundfile>=0.12",
+    "silero-vad[onnx-cpu]==6.2.3",
+    # --- avaliação de ASR ---
+    "jiwer>=4.0",
+    "edge-tts>=7.2",
 ]
 
+[project.scripts]
+ddsd = "ddsd.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.12"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+# Pacote `ddsd/` na raiz do projeto, sem `__init__.py` (pacote de namespace).
+module-root = ""
+namespace = true
+
 [tool.uv]
-package = false
+# Política de versões: só entram versões publicadas há pelo menos
+# duas semanas na data em que o ambiente foi montado (01/11/2026). O lock fica
+# reprodutível e evita versões recém-lançadas, ainda sem correções.
+exclude-newer = "2026-10-18T00:00:00Z"
 
-# O PyPI publica apenas wheels CPU do torch para Windows; as builds com CUDA
-# ficam no indice do proprio PyTorch. `explicit = true` registra o indice mas
-# proibe o uv de usa-lo para qualquer pacote que nao esteja em [tool.uv.sources],
-# evitando que outra dependencia resolva por ali sem intencao.
-#
-# CUDA 12.6 e o alvo: tem wheels cp313/win_amd64 ate o torch 2.14 e a menor
-# exigencia de driver entre cu126/cu128/cu130. A RTX A2000 e Ampere (sm_86),
-# suportada por todos eles.
-[[tool.uv.index]]
-name = "pytorch-cu126"
-url = "https://download.pytorch.org/whl/cu126"
-explicit = true
-
-[tool.uv.sources]
-torch = [
-    { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "models: exige modelos baixados ou treinados (Whisper, classificadores)",
+    "audio_hw: exige dispositivo de áudio real",
+    "slow: execução longa (soak, benchmarks)",
+    "network: exige acesso à internet",
 ]
