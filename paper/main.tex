@@ -1,10 +1,8 @@
 ﻿% ---------------------------------------------------------------
-% TEMPLATE TCC1 - SENAC SANTO AMARO
+% TRABALHO DE CONCLUSÃO DE CURSO - SENAC SANTO AMARO
 % ---------------------------------------------------------------
-% Trabalho de Conclusão de Curso 1
-% Elaborado para apresentação da proposta inicial do TCC
-% Estrutura: 4 capítulos (Introdução, Revisão Bibliográfica,
-%            Desenvolvimento, Referências Bibliográficas)
+% Estrutura: Introdução, Revisão Bibliográfica, Desenvolvimento,
+%            Resultados e Discussão, Conclusão e Referências
 % ---------------------------------------------------------------
 
 \documentclass[
@@ -29,12 +27,13 @@
 \usepackage{microtype}              % Melhorias de justificação
 \graphicspath{{assets/}{figuras/}}   % Diretórios de figuras
 \usepackage{float}                  % Para posicionamento de figuras
-\usepackage{tabularx}  
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}   % coluna X alinhada à direita
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X}  % coluna X alinhada à esquerda 
 \usepackage{booktabs}               % Tabelas profissionais
 \usepackage{multirow}               % Células mescladas em tabelas
 \usepackage{longtable}              % Tabelas longas
 \usepackage{amsmath,amssymb}        % Símbolos matemáticos
-\usepackage{pgfgantt}               % Diagramas de Gantt
 \usepackage[brazilian,hyperpageref]{backref}  % Páginas com citações
 \usepackage[alf]{abntex2cite}       % Citações ABNT
 
@@ -45,9 +44,9 @@
 \hypersetup{
     pdftitle={\@title},
     pdfauthor={\@author},
-    pdfsubject={TCC1 - SENAC Santo Amaro},
+    pdfsubject={Trabalho de Conclusão de Curso - SENAC Santo Amaro},
     pdfcreator={LaTeX with abnTeX2},
-    pdfkeywords={tcc}{senac}{santo amaro}{trabalho de conclusão},
+    pdfkeywords={detecção de fala direcionada ao dispositivo, assistentes de voz, reconhecimento automático de fala, modelos de linguagem pré-treinados, português brasileiro},
     colorlinks=true,        % false: links em caixas; true: links coloridos
     linkcolor=blue,         % cor dos links internos
     citecolor=blue,         % cor dos links para bibliografia
@@ -80,9 +79,9 @@
   Bacharelado em Ciência da Computação
 }
 
-\tipotrabalho{Trabalho de Conclusão de Curso I}
+\tipotrabalho{Trabalho de Conclusão de Curso}
 
-\preambulo{Proposta de Trabalho de Conclusão de Curso apresentado ao SENAC Santo Amaro como requisito parcial para aprovação na disciplina de TCC2 do Bacharelado em Ciência da Computação.}
+\preambulo{Trabalho de Conclusão de Curso apresentado ao SENAC Santo Amaro como requisito parcial para obtenção do título de Bacharel em Ciência da Computação.}
 
 % ---------------------------------------------------------------
 % COMPILA O ÍNDICE
@@ -116,16 +115,59 @@
 \imprimirfolhaderosto
 
 % ---------------------------------------------------------------
+% AGRADECIMENTOS
+% ---------------------------------------------------------------
+\begin{agradecimentos}
+
+Agradeço a Thyago Conchado Quintas pela orientação deste trabalho.
+
+Ao SENAC Santo Amaro e aos professores do Bacharelado em Ciência da Computação, pelos conhecimentos compartilhados e pela formação recebida durante o curso.
+
+À minha família e aos meus amigos, pelo apoio, incentivo e compreensão, especialmente nos momentos de maior dedicação à realização deste trabalho.
+
+Aos autores e às instituições que disponibilizaram publicamente os corpora e os modelos usados nesta pesquisa, sem os quais ela não teria sido possível.
+
+A mim mesmo, pelo empenho, pela dedicação e pela perseverança diante dos desafios.
+
+\end{agradecimentos}
+
+% ---------------------------------------------------------------
+% EPÍGRAFE
+% ---------------------------------------------------------------
+\begin{epigrafe}
+    \vspace*{\fill}
+    \begin{flushright}
+        \texttt{while (conscious) \{}\\
+        \hspace*{1em}\texttt{learn();}\\
+        \texttt{\}}
+    \end{flushright}
+\end{epigrafe}
+
+% ---------------------------------------------------------------
 % RESUMO
 % ---------------------------------------------------------------
-% \begin{resumo}
+\begin{resumo}
+A detecção de fala direcionada ao dispositivo decide se uma fala é um pedido ao computador ou uma conversa entre pessoas, sem depender de palavra de ativação. Sem essa decisão, conversas no ambiente podem acionar o assistente por engano, o que gera falsas ativações. Este trabalho avaliou se modelos de linguagem pré-treinados para o português brasileiro, aplicados às transcrições do reconhecimento automático de fala, superam classificadores lineares baseados em TF-IDF, com máquinas de vetores de suporte (SVM) ou regressão logística. O trabalho construiu um corpus sintético de 116.438 frases, balanceado entre as classes, e ajustou três Transformers sobre ele: BERTimbau, Albertina e DeBERTinha. A avaliação usou seis conjuntos, do texto do corpus ao sistema em tempo real. No teste interno, o BERTimbau alcançou F1 macro de 0,9822 e taxa de erro igual de 1,78\%, ambos na média de três sementes. Os dois TF-IDF ficaram em 0,9609 e 0,9615 de F1 e em 3,93\% e 4,01\% de taxa de erro igual. Nas transcrições automáticas, a vantagem dos Transformers foi significativa na voz sintética, mas não na voz de um único falante. Nas transcrições dos corpora públicos, com a semente escolhida, as falsas ativações ficaram entre 5,4\% e 6,6\%, e só um dos seis pares entre Transformers e TF-IDF teve diferença significativa. Os modelos treinados no corpus sem correção ativaram em 22,0\% a 32,3\% das falas não dirigidas nos três conjuntos de fala real, e a correção do viés de comprimento reduziu essas taxas para 5,2\% a 7,7\%. No sistema completo com o BERTimbau, a latência mediana do fim da fala à decisão, com a espera de 0,7 s do detector de voz incluída, ficou entre 1,15 s e 1,18 s. Na transcrição da sessão ao vivo, 87,8\% dos pedidos foram atendidos e 8,9\% das falas não dirigidas ativaram o sistema. Os resultados sustentaram a hipótese nos testes internos e com voz sintética. Entre os Transformers, a correção do viés de comprimento foi o que mais contribuiu para reduzir as falsas ativações.
 
-    
-% \vspace{\onelineskip}
+\vspace{\onelineskip}
 
-% \noindent
-% % \textbf{Palavras-chave}: palavra1. palavra2. palavra3. palavra4. palavra5.
-% \end{resumo}
+\noindent
+\textbf{Palavras-chave}: detecção de fala direcionada ao dispositivo; assistentes de voz; reconhecimento automático de fala; modelos de linguagem pré-treinados; português brasileiro.
+\end{resumo}
+
+% ---------------------------------------------------------------
+% ABSTRACT
+% ---------------------------------------------------------------
+\begin{resumo}[Abstract]
+\begin{otherlanguage*}{english}
+Device-directed speech detection (DDSD) decides whether an utterance is addressed to a computer or to people nearby, without relying on a wake word. Without this decision, conversations in the room can trigger the assistant by mistake, producing false activations. This work asked whether pre-trained language models for Brazilian Portuguese, applied to transcripts from automatic speech recognition (ASR), outperform linear classifiers built on term frequency-inverse document frequency (TF-IDF) with support vector machines (SVM) or logistic regression. The study built a synthetic corpus of 116,438 utterances, balanced between classes, and fine-tuned three Transformers on it: BERTimbau, Albertina, and DeBERTinha. The models were evaluated on six sets, from the corpus text to a real-time system. On the internal test set, BERTimbau reached a macro F1 of 0.9822 and an equal error rate (EER) of 1.78\%, both averaged over three seeds. The TF-IDF baselines reached 0.9609 and 0.9615 in F1 and 3.93\% and 4.01\% in EER. On ASR transcripts, the advantage of the Transformers was significant for synthetic speech but not for the voice of a single speaker. On the transcripts of public corpora, with the selected seed, false activations ranged from 5.4\% to 6.6\%, and only one of the six Transformer-versus-TF-IDF pairs differed significantly. Models trained on the corpus without correction produced 22.0\% to 32.3\% false activations across three real-speech sets, and correcting the length bias reduced these rates to 5.2\% to 7.7\%. In the complete system with BERTimbau, median latency from the end of speech to the decision, including the 0.7 s of silence that the voice activity detector waits for, ranged from 1.15 s to 1.18 s. In the transcript of the live session, 87.8\% of the requests were handled and 8.9\% of the non-directed utterances caused false activations. The results confirm the hypothesis on the internal test set and on synthetic speech, and, for the Transformers, correcting the length bias was the factor that most reduced false activations.
+
+\vspace{\onelineskip}
+
+\noindent
+\textbf{Keywords}: device-directed speech detection; voice assistants; automatic speech recognition; pre-trained language models; Brazilian Portuguese.
+\end{otherlanguage*}
+\end{resumo}
 
 % ---------------------------------------------------------------
 % LISTA DE ILUSTRAÇÕES
@@ -145,18 +187,49 @@
 % LISTA DE ABREVIATURAS E SIGLAS
 % ---------------------------------------------------------------
 \begin{siglas}
+  \item[ASCII] \textit{American Standard Code for Information Interchange} (Código Padrão Americano para o Intercâmbio de Informação)
   \item[ASR] \textit{Automatic Speech Recognition} (Reconhecimento Automático de Fala)
+  \item[AUC] \textit{Area Under the Curve} (Área sob a Curva)
+  \item[BERT] \textit{Bidirectional Encoder Representations from Transformers}
+  \item[BPE] \textit{Byte-Pair Encoding} (Codificação por Pares de Bytes)
+  \item[CLAP] \textit{Contrastive Language-Audio Pretraining} (Pré-treinamento Contrastivo de Linguagem e Áudio)
+  \item[CLI] \textit{Command-Line Interface} (Interface de Linha de Comando)
+  \item[CPU] \textit{Central Processing Unit} (Unidade Central de Processamento)
+  \item[DD] \textit{Device-Directed} (Direcionada ao Dispositivo)
   \item[DDSD] \textit{Device-Directed Speech Detection} (Detecção de Fala Direcionada ao Dispositivo)
+  \item[DNN] \textit{Deep Neural Network} (Rede Neural Profunda)
   \item[EER] \textit{Equal Error Rate} (Taxa de Erro Igual)
+  \item[FIFO] \textit{First In, First Out} (Primeiro a Entrar, Primeiro a Sair)
+  \item[FPR] \textit{False Positive Rate} (Taxa de Falsos Positivos)
+  \item[FTM] \textit{False Trigger Mitigation} (Mitigação de Falsos Acionamentos)
+  \item[GPT] \textit{Generative Pre-trained Transformer}
+  \item[GPU] \textit{Graphics Processing Unit} (Unidade de Processamento Gráfico)
+  \item[GRU] \textit{Gated Recurrent Unit} (Unidade Recorrente com Portão)
+  \item[GSC] \textit{Google Speech Commands}
   \item[HCI] \textit{Human-Computer Interaction} (Interação Humano-Computador)
   \item[HMM] \textit{Hidden Markov Model} (Modelo Oculto de Markov)
+  \item[IC] Intervalo de Confiança
   \item[LLM] \textit{Large Language Model} (Modelo de Linguagem de Grande Porte)
+  \item[LoRA] \textit{Low-Rank Adaptation} (Adaptação de Baixo Posto)
   \item[LR] \textit{Logistic Regression} (Regressão Logística)
+  \item[LSTM] \textit{Long Short-Term Memory} (Memória de Longo e Curto Prazo)
   \item[ML] \textit{Machine Learning} (Aprendizado de Máquina)
+  \item[MLM] \textit{Masked Language Modeling} (Modelagem de Linguagem Mascarada)
+  \item[MPS] \textit{Metal Performance Shaders}
+  \item[NDD] \textit{Non-Device-Directed} (Não Direcionada ao Dispositivo)
+  \item[NFKD] \textit{Normalization Form Compatibility Decomposition} (Forma de Normalização por Decomposição de Compatibilidade)
   \item[NLP] \textit{Natural Language Processing} (Processamento de Linguagem Natural)
   \item[NLU] \textit{Natural Language Understanding} (Compreensão de Linguagem Natural)
+  \item[NSP] \textit{Next Sentence Prediction} (Predição da Próxima Sentença)
+  \item[ONNX] \textit{Open Neural Network Exchange}
+  \item[PT-BR] Português do Brasil
+  \item[PT-PT] Português Europeu
+  \item[RNN] \textit{Recurrent Neural Network} (Rede Neural Recorrente)
+  \item[ROC] \textit{Receiver Operating Characteristic} (Característica de Operação do Receptor)
+  \item[RTF] \textit{Real-Time Factor} (Taxa de Tempo Real)
   \item[SVM] \textit{Support Vector Machines} (Máquinas de Vetores de Suporte)
   \item[TF-IDF] \textit{Term Frequency-Inverse Document Frequency} (Frequência do Termo - Inverso da Frequência nos Documentos)
+  \item[TPR] \textit{True Positive Rate} (Taxa de Verdadeiros Positivos)
   \item[TTS] \textit{Text-to-Speech} (Síntese de Fala)
   \item[VAD] \textit{Voice Activity Detection} (Detecção de Atividade de Voz)
   \item[WER] \textit{Word Error Rate} (Taxa de Erro de Palavras)
@@ -199,7 +272,7 @@ Nesse cenário, surge a área de pesquisa denominada \textit{Device-Directed Spe
 
 Entre os diferentes usos do assistente de voz, o computador pessoal merece destaque por fazer parte de muitas atividades do dia a dia, como estudar, trabalhar e se divertir. Nesses dispositivos, o usuário pode abrir programas, fazer pesquisas na \textit{web}, reproduzir conteúdos e realizar outras tarefas por meio de comandos de voz, sem precisar usar o teclado ou o \textit{mouse}. No entanto, esse tipo de uso traz um desafio específico para a DDSD: computadores costumam ser utilizados em ambientes compartilhados, como escritórios, laboratórios e residências. Nesses locais, é comum que o usuário converse com outras pessoas, enquanto utiliza o computador. Durante essas conversas, nomes de aplicativos e \textit{sites} populares podem ser mencionados sem que haja qualquer intenção de interagir com o assistente de voz.
 
-Este trabalho investiga a viabilidade da DDSD em português brasileiro, no contexto de assistentes de voz para computadores pessoais, por meio de uma abordagem baseada exclusivamente no nível textual. O sistema opera com transcrições de fala obtidas via Reconhecimento Automático de Fala (do inglês \textit{Automatic Speech Recognition}, referido pela sigla ASR), e aplica técnicas de Processamento de Linguagem Natural (do inglês \textit{Natural Language Processing}, referido pela sigla NLP) e Aprendizado de Máquina (do inglês \textit{Machine Learning}, referido pela sigla ML) para classificar automaticamente se uma fala é um comando direcionado ao computador ou faz parte de uma conversa incidental entre humanos. O foco deste trabalho reside na etapa de decisão de direcionamento, tratando o ASR como um módulo de pré-processamento encarregado de gerar as transcrições textuais que servirão de entrada para o classificador. A interpretação do comando e a execução da ação correspondente não fazem parte do escopo.
+Este trabalho investiga a viabilidade da DDSD em português brasileiro, no contexto de assistentes de voz para computadores pessoais, por meio de uma abordagem baseada exclusivamente no nível textual. O sistema opera com transcrições de fala obtidas via Reconhecimento Automático de Fala (do inglês \textit{Automatic Speech Recognition}, referido pela sigla ASR), e aplica técnicas de Processamento de Linguagem Natural (do inglês \textit{Natural Language Processing}, referido pela sigla NLP) e Aprendizado de Máquina (do inglês \textit{Machine Learning}, referido pela sigla ML) para classificar automaticamente se uma fala é um comando direcionado ao computador ou faz parte de uma conversa incidental entre humanos. O foco deste trabalho reside na etapa de decisão de direcionamento, tratando o ASR como um módulo de pré-processamento encarregado de gerar as transcrições textuais que servem de entrada para o classificador. A interpretação do comando e a execução da ação correspondente não fazem parte do escopo.
 
 % ---------------------------------------------------------------
 
@@ -216,7 +289,7 @@ Para entender melhor o problema e sua importância, considere o cenário apresen
     \label{fig:cenario}
 \end{figure}
 
-A comparação entre os dois enunciados mostra que a presença de palavras-chave, como o nome de um aplicativo ou site, não é suficiente para determinar se uma fala é direcionada ao assistente. É necessário considerar o conteúdo do enunciado e a inteção por trás dele. Nesse contexto, o sistema precisa distinguir duas categorias de fala: (i) comandos direcionados ao dispositivo (DD, do inglês \textit{Device-Directed}), como ``abre o YouTube e pesquisa receitas de bolo''; e (ii) comentários e conversas que não são direcionadas ao dispositivo (NDD, do inglês \textit{Non-Device-Directed}), como ``você viu aquele vídeo novo no YouTube?''. A DDSD tem como objetivo realizar essa distinção automaticamente, sem depender de \textit{wake-words} explícitas \cite{Mallidi2018, Wagner2024}. Neste trabalho, essa classificação é feita apenas com base no conteúdo textual do enunciado transcrito, sem utilizar informações visuais, como a direção do olhar, ou acústicas, como a entoação da voz.
+A comparação entre os dois enunciados mostra que a presença de palavras-chave, como o nome de um aplicativo ou site, não é suficiente para determinar se uma fala é direcionada ao assistente. É necessário considerar o conteúdo do enunciado e a intenção por trás dele. Nesse contexto, o sistema precisa distinguir duas categorias de fala: (i) comandos direcionados ao dispositivo (DD, do inglês \textit{Device-Directed}), como ``abre o YouTube e pesquisa receitas de bolo''; e (ii) comentários e conversas que não são direcionadas ao dispositivo (NDD, do inglês \textit{Non-Device-Directed}), como ``você viu aquele vídeo novo no YouTube?''. A DDSD tem como objetivo realizar essa distinção automaticamente, sem depender de \textit{wake-words} explícitas \cite{Mallidi2018, Wagner2024}. Neste trabalho, essa classificação é feita apenas com base no conteúdo textual do enunciado transcrito, sem utilizar informações visuais, como a direção do olhar, ou acústicas, como a entoação da voz.
 
 % ---------------------------------------------------------------
 \section{Contexto}
@@ -224,28 +297,33 @@ A comparação entre os dois enunciados mostra que a presença de palavras-chave
 
 Os avanços em ASR e NLP têm contribuído para o desenvolvimento de assistentes de voz mais eficientes. Entre os modelos disponíveis, o Whisper \cite{Radford2023} se destaca pela capacidade de transcrever áudios com boa precisão em diferentes idiomas. A \citeonline{OpenAI2024Turbo} lançou o Whisper Large V3 Turbo, uma versão otimizada que reduz o número de camadas do decodificador de 32 para 4, tornando a transcrição mais rápida e mantendo um desempenho próximo ao do modelo original. Neste trabalho, essa versão é utilizada como módulo principal de ASR por combinar precisão e velocidade, permitindo sua execução local em um computador pessoal sem exigir tantos recursos computacionais quanto o modelo completo. Outras alternativas também foram propostas na literatura, como o Whispy \cite{Bevilacqua2024}, que adapta o Whisper para o processamento contínuo de áudio (\textit{streaming}), e o Moonshine \cite{Jeffries2024}, um modelo mais compacto desenvolvido para funcionar em dispositivos com recursos computacionais limitados.
 
-A arquitetura Transformer \cite{Vaswani2017} também teve um papel importante no avanço do NLP e serviu de base para o desenvolvimento dos atuais modelos de linguagem de grande porte (LLMs, do inglês \textit{Large Language Models}). Para o português brasileiro, o BERTimbau \cite{Souza2020} se tornou uma alternativa importante para tarefas de compreensão de texto e é utilizado neste trabalho como classificador principal de direcionamento. Outros modelos também ampliaram as opções disponíveis para o idioma, como o Albertina \cite{Rodrigues2023} e o DeBERTinha \cite{Abonizio2023}, sendo este último desenvolvido a partir do DeBERTaV3 XSmall, com foco em reduzir a quantidade de parâmetros. Além disso, a disponibilidade de LLMs generativos capazes de trabalhar com diferentes idiomas permite gerar grandes volumes de textos sintéticos em português. Neste trabalho, esse recurso é utilizado para construir o corpus de dados.
+A arquitetura Transformer \cite{Vaswani2017} também teve um papel importante no avanço do NLP e serviu de base para o desenvolvimento dos atuais modelos de linguagem de grande porte (LLMs, do inglês \textit{Large Language Models}). Para o português brasileiro, o BERTimbau \cite{Souza2020} se tornou uma alternativa importante para tarefas de compreensão de texto e é utilizado neste trabalho como classificador principal de direcionamento. Outros modelos também ampliaram as opções disponíveis para o idioma, como o Albertina \cite{Rodrigues2023, Santos2024} e o DeBERTinha \cite{Abonizio2023}, sendo este último desenvolvido a partir do DeBERTaV3 XSmall, com foco em reduzir a quantidade de parâmetros. Além disso, a disponibilidade de LLMs generativos capazes de trabalhar com diferentes idiomas permite gerar grandes volumes de textos sintéticos em português. Neste trabalho, esse recurso é utilizado para construir o corpus de dados.
 
-Para esclarecer a função de cada família de modelos neste projeto, a Tabela~\ref{tab:tecnologias} apresenta como as responsabilidades são distribuídas entre elas.
-
-\begin{table}[H]
+\begin{table}[htb]
+\centering
 \caption{Tecnologias utilizadas e seus papéis no trabalho}
 \label{tab:tecnologias}
-\begin{tabular}{lll}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm}Zl}
 \toprule
 \textbf{Tecnologia} & \textbf{Papel no trabalho} & \textbf{Implementada?} \\
 \midrule
-Whisper Large V3 Turbo & ASR: transcrição de áudio & Sim (principal) \\
+Silero VAD & Detecção de atividade de voz: delimitação das falas & Sim \\
+Whisper Large V3 Turbo & ASR: transcrição de áudio, via mlx-whisper ou faster-whisper & Sim (principal) \\
 Moonshine/Whispy & ASR: alternativa discutida na literatura & Não \\
 BERTimbau & Classificação de direcionamento (DDSD) & Sim (principal) \\
 DeBERTinha & Classificação de direcionamento (DDSD) & Sim (alternativo) \\
 Albertina & Classificação de direcionamento (DDSD) & Sim (alternativo) \\
-TF-IDF + SVM/LR & Classificação: baseline clássico & Sim \\
+TF-IDF + SVM/LR & Classificação: \textit{baseline} clássico & Sim \\
+Lógica \textit{fuzzy} & Índice de confiabilidade da transcrição, usado só como alerta & Sim \\
 LLMs generativos & Geração de dados sintéticos & Sim \\
+Síntese de fala (TTS) & Geração de áudio para a avaliação & Sim \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \fonte{Elaborado pelo autor (2026).}
 \end{table}
+
+Para esclarecer a função de cada família de modelos neste projeto, a Tabela~\ref{tab:tecnologias} apresenta como as responsabilidades são distribuídas entre elas.
 
 Pesquisas recentes sobre DDSD têm explorado o uso do texto como alternativa para reduzir as limitações de abordagens baseadas apenas em características acústicas. Estudos como os de \citeonline{Wagner2024, Dighe2024} mostram que classificadores baseados em Transformers podem analisar transcrições geradas por sistemas de ASR para identificar se um enunciado é direcionado ao dispositivo. De forma semelhante, \citeonline{Rudovic2024} investigaram como o significado das palavras pode ajudar a identificar intenções implícitas em diálogos contínuos. Esses trabalhos reforçam a possibilidade de utilizar apenas o conteúdo textual das transcrições para realizar a classificação de direcionamento.
 
@@ -255,13 +333,13 @@ Pesquisas recentes sobre DDSD têm explorado o uso do texto como alternativa par
 
 O uso cada vez mais comum de assistentes de voz em diferentes dispositivos reforça a importância de pesquisas voltadas à melhoria da Interação Humano-Computador (HCI, do inglês \textit{Human-Computer Interaction}). Embora tenham ocorrido avanços em ASR e NLP, muitos sistemas ainda exigem o uso de palavras de ativação para iniciar uma interação, o que pode tornar a comunicação menos natural \cite{Mallidi2018}. Quando um usuário precisa interagir com o dispositivo várias vezes ao longo do dia, a repetição desse processo pode causar cansaço e prejudicar a experiência de uso \cite{Nie2021}. Nesse contexto, a DDSD surge como uma alternativa para reduzir a dependência dessas palavras de ativação e tornar a interação com assistentes de voz mais simples e fluida \cite{Wagner2024}.
 
-No caso dos computadores pessoais, dispensar o uso de uma \textit{wake-word} pode trazer benefícios importantes. Como o computador costuma ser utilizado por longos períodos, o usuário pode precisar dar vários comandos de voz durante uma mesma sessão, seja para abrir programas, alternar entre janelas ou realizar pesquisas. Nesse contexto, ter que repetir uma palavra de ativação a cada interação pode tornar o uso menos prático. A interação por voz sem esse requisito também pode facilitar o uso do computador por pessoas com limitações motoras que dificultam o uso do teclado e do \textit{mouse}, além de ser útil quando as mão estão ocupadas. No entanto, como os computadores também são utilizados em ambientes compartilhados, o microfone pode captar conversas que não são direcionadas ao assistente. Por isso, é importante que o sistema consiga diferenciar os comandos destinados ao computador das falas que fazem parte de conversas comuns.
+No caso dos computadores pessoais, dispensar o uso de uma \textit{wake-word} pode trazer benefícios importantes. Como o computador costuma ser utilizado por longos períodos, o usuário pode precisar dar vários comandos de voz durante uma mesma sessão, seja para abrir programas, alternar entre janelas ou realizar pesquisas. Nesse contexto, ter que repetir uma palavra de ativação a cada interação pode tornar o uso menos prático. A interação por voz sem esse requisito também pode facilitar o uso do computador por pessoas com limitações motoras que dificultam o uso do teclado e do \textit{mouse}, além de ser útil quando as mãos estão ocupadas. No entanto, como os computadores também são utilizados em ambientes compartilhados, o microfone pode captar conversas que não são direcionadas ao assistente. Por isso, é importante que o sistema consiga diferenciar os comandos destinados ao computador das falas que fazem parte de conversas comuns.
 
 Do ponto de vista acadêmico, o estudo de alternativas para ativar assistentes de voz com base no direcionamento da fala envolve três áreas: processamento de áudio, NLP e HCI. Embora estudos indiquem que a combinação de informações acústicas e textuais pode reduzir os erros de ativação \cite{Wagner2024}, essa abordagem também apresenta desafios. Sistemas multimodais exigem mais recursos computacionais, precisam sincronizar diferentes tipos de sinais e dependem de grandes volumes de dados rotulados, tanto de áudio quanto de texto. Esses requisitos podem dificultar sua implementação em dispositivos com recursos limitados \cite{Xu2024}. Em contrapartida, uma abordagem baseada apenas no texto transcrito exige menos recursos computacionais e pode ser executada no próprio computador do usuário, sem depender de serviços em nuvem.
 
 Adicionalmente, identifica-se uma lacuna geográfica e linguística na literatura: os principais estudos sobre DDSD concentram-se quase exclusivamente no idioma inglês, com forte dependência de características acústicas e prosódicas nativas daquela língua \cite{Norouzian2019, Krishna2023}. O português brasileiro, apesar de ser um dos idiomas mais falados do mundo, apresenta-se sub-representado nesse campo de pesquisa, carecendo de estudos focados na decodificação de padrões de direcionamento de fala adaptados à sua realidade gramatical e cultural.
 
-Embora o ecossistema nacional tenha presenciado o surgimento de recursos linguísticos robustos, como o BERTimbau \cite{Souza2020} e corpora públicos de fala (ex.: CORAA ASR \cite{CORAA2023}, NURC-SP \cite{NURCSP2025}, TAGARELA \cite{Tagarela2026}), tais bases destinam-se prioritariamente a tarefas de transcrição ortográficas e reconhecimento automático de fala. Verifica-se, portanto, uma escassez de corpora especificamente anotados com fins de detecção de direcionamento de voz (DD vs NDD) em português brasileiro, constituindo um gargalo para a pesquisa científica e o desenvolvimento de soluções práticas para DDSD nesse idioma.
+Embora o ecossistema nacional tenha presenciado o surgimento de recursos linguísticos robustos, como o BERTimbau \cite{Souza2020} e corpora públicos de fala (ex.: CORAA ASR \cite{CORAA2023}, NURC-SP \cite{NURCSP2025}, TAGARELA \cite{Tagarela2026}), tais bases destinam-se prioritariamente a tarefas de transcrição ortográfica e reconhecimento automático de fala. Verifica-se, portanto, uma escassez de corpora especificamente anotados com fins de detecção de direcionamento de voz (DD vs NDD) em português brasileiro, constituindo um gargalo para a pesquisa científica e o desenvolvimento de soluções práticas para DDSD nesse idioma.
 
 Diante dessa lacuna, este trabalho investiga a viabilidade de uma abordagem de DDSD baseada apenas em texto, voltada à identificação de comandos de voz em computadores pessoais. Para isso, são utilizadas transcrições geradas por sistemas de ASR e modelos baseados em Transformer pré-treinados para o português brasileiro. A escolha por uma abordagem textual considera três aspectos principais: (i) a capacidade dos modelos baseados em atenção de identificar relações semânticas e intenções implícitas em enunciados curtos \cite{Weld2022}; (ii) as evidências de que o conteúdo linguístico das transcrições automáticas pode ajudar a distinguir comandos de conversas comuns \cite{Wagner2024, Dighe2024}; e (iii) a possibilidade de manter a classificação textual separada do módulo de transcrição, facilitando a comparação com métodos tradicionais de classificação e a análise dos efeitos de ruídos e erros de transcrição sobre os resultados \cite{Dighe2024}.
 
@@ -274,7 +352,7 @@ Diante dessa lacuna, este trabalho investiga a viabilidade de uma abordagem de D
 
 Essa conjectura encontra sustentação nos fundamentos apresentados na Seção~\ref{sec:fundamentos}: a viabilidade da classificação puramente textual sobre as transcrições de ASR \cite{Wagner2024}, a superioridade de arquiteturas Transformer em tarefas de classificação de intenção \cite{Weld2022} e o desempenho comprovado de modelos especializados no português brasileiro, como o BERTimbau \cite{Souza2020} e o DeBERTinha \cite{Abonizio2023}. 
 
-A validação dessa hipótese será realizada por meio de experimentos controlados, utilizando um corpus anotado especificamente para a tarefa de DDSD em português brasileiro, com comparação rigorosa entre o modelo baseado em Transformer e os \textit{baselines} lineares definidos nos Objetivos Específicos.
+A validação dessa hipótese foi realizada por meio de experimentos controlados, utilizando um corpus anotado especificamente para a tarefa de DDSD em português brasileiro, com comparação rigorosa entre o modelo baseado em Transformer e os \textit{baselines} lineares definidos nos Objetivos Específicos. A regra de aceitação, aplicada separadamente a cada conjunto de avaliação, está descrita na Seção~\ref{sec:avaliacao}.
 
 % ---------------------------------------------------------------
 \section{Objetivos}
@@ -291,11 +369,13 @@ Para que o objetivo principal seja alcançado, foram definidos os seguintes obje
 \begin{enumerate}
     \item Construir e validar um corpus balanceado de enunciados em português brasileiro no domínio de interação com o computador pessoal, anotados com base no direcionamento de fala (DD e NDD) sob critérios explícitos de anotação e de exclusão, a partir de enunciados sintéticos controlados gerados por LLMs de múltiplos provedores.
 
-    \item Implementar, ajustar (\textit{fine-tuning}) e avaliar os modelos BERTimbau \cite{Souza2020}, DeBERTinha \cite{Abonizio2023} e Albertina \cite{Rodrigues2023} na tarefa de classificação binária de DDSD, confrontando empiricamente seus resultados com um \textit{baseline} composto pela representação vetorial TF-IDF aliada a SVM ou LR, utilizando transcrições geradas por ASR.
+    \item Implementar, ajustar (\textit{fine-tuning}) e avaliar os modelos BERTimbau \cite{Souza2020}, DeBERTinha \cite{Abonizio2023} e Albertina \cite{Santos2024} na tarefa de classificação binária de DDSD, confrontando empiricamente seus resultados com um \textit{baseline} composto pela representação vetorial TF-IDF aliada a SVM ou LR, utilizando transcrições geradas por ASR.
 
     \item Analisar o impacto gerado por erros e ruídos de transcrição automática no classificador de direcionamento, mapeando o desempenho comparativo entre o texto de referência e as transcrições automáticas e estabelecendo a correlação estatística entre a \textit{Word Error Rate} (traduzida como Taxa de Erro de Palavras, referenciada pela sigla WER) das saídas do ASR e o decaimento de desempenho do classificador textual \cite{Dighe2024}.
 
-    \item Avaliar se os classificadores treinados conseguem generalizar para situações de fala real, utilizando transcrições de corpora públicos de português brasileiro, como CORAA \cite{CORAA2023}, NURC-SP \cite{NURCSP2025} e TAGARELA \cite{Tagarela2026}. Como esses corpora contêm conversas, entrevistas e diálogos entre pessoas, seus enunciados serão utilizados para avaliar a capacidade dos modelos de reconhecer falas não direcionadas ao dispositivo (NDD) e medir a taxa de falsas ativações.
+    \item Avaliar se os classificadores treinados conseguem generalizar para situações de fala real, utilizando transcrições de corpora públicos de português brasileiro, como CORAA \cite{CORAA2023}, NURC-SP \cite{NURCSP2025} e TAGARELA \cite{Tagarela2026}. Como esses corpora contêm conversas, entrevistas e diálogos entre pessoas, seus enunciados foram utilizados para avaliar a capacidade dos modelos de reconhecer falas não direcionadas ao dispositivo (NDD) e medir a taxa de falsas ativações.
+
+    \item Integrar os classificadores a um sistema em tempo real executado localmente no computador pessoal, que capta o áudio do microfone, delimita as falas, transcreve-as com o ASR e decide o direcionamento de cada uma, e medir o acerto e a latência desse sistema de ponta a ponta, do fim da fala até a decisão.
 \end{enumerate}
 
 % ---------------------------------------------------------------
@@ -307,13 +387,15 @@ Este trabalho apresenta algumas limitações relacionadas ao seu escopo e à met
 
 A primeira limitação está relacionada ao uso exclusivo de informações textuais. O classificador analisa apenas as transcrições dos enunciados, sem considerar características acústicas e prosódicas da fala, como entonação, velocidade e pausas, que também podem ajudar a identificar se uma fala é direcionada ao dispositivo \cite{Norouzian2019, Krishna2023}. Essa escolha permite avaliar a capacidade do texto de distinguir comandos de conversas comuns, mas também limita as informações disponíveis para a classificação. Por isso, o desempenho do sistema pode ser afetado por erros de transcrição e por situações em que as características da voz seriam úteis para identificar a intenção do falante.
 
-A segunda limitação está relacionada aos erros de transcrição do ASR e às condições do áudio utilizado na avaliação. Como o classificador recebe o texto gerado pelo Whisper, erros de reconhecimento ou omissões podem alterar o significado dos enunciados e prejudicar a classificação feita pelo Transformer. Esse problema pode ser mais frequente em falas com sotaques, ruídos de fundo ou palavras pouco comuns \cite{Bevilacqua2024}
+A segunda limitação está relacionada aos erros de transcrição do ASR e às condições do áudio utilizado na avaliação. Como o classificador recebe o texto gerado pelo Whisper, erros de reconhecimento ou omissões podem alterar o significado dos enunciados e prejudicar a classificação feita pelo Transformer. Esse problema pode ser mais frequente em falas com sotaques, ruídos de fundo ou palavras pouco comuns \cite{Bevilacqua2024}.
 
 A terceira limitação diz respeito à construção do corpus experimental e à sua capacidade de representar a diversidade da fala real. Como há poucos conjuntos de dados específicos para DDSD em português brasileiro, este trabalho utiliza um corpus próprio, construído com o auxílio de LLMs para gerar enunciados sintéticos. Embora essa estratégia permita criar dados voltados ao problema estudado, ela apresenta limitações quanto à espontaneidade das conversas, à diversidade regional e sociolinguística e às variações de sotaque e de uso da língua. Dessa forma, o corpus não representa toda a variedade encontrada em situações reais de comunicação, o que pode limitar a generalização dos resultados \cite{CORAA2023}.
 
 A quarta limitação está relacionada à classificação binária dos enunciados e à análise de cada fala de forma isolada. O sistema classifica cada enunciado sem considerar o histórico da conversa ou informações externas ao texto.
 
-Por fim, este trabalho não avalia os aspectos necessários para a implantação do sistema em um ambiente de produção, como a latência de todo o processo, o armazenamento de áudio, a segurança dos dados e a privacidade dos usuários. A pesquisa se concentra na avaliação experimental e estatística da classificação textual em um ambiente controlado. Questões relacionadas à arquitetura do sistema, às exigências regulatórias, à proteção da privacidade e ao consentimento dos usuários ficam fora do escopo deste estudo e deverão ser consideradas em trabalhos futuros \cite{Chen2021}.
+A quinta limitação diz respeito às condições do sistema em tempo real. O acerto e a latência de ponta a ponta foram medidos em um único computador, e as gravações de voz real com comandos dirigidos ao computador são de um único falante, o autor. Além disso, o sistema não separa falantes: falas sobrepostas de duas pessoas chegam ao classificador como uma única fala.
+
+Por fim, este trabalho não avalia os aspectos necessários para a implantação do sistema em um ambiente de produção, como o armazenamento de áudio, a segurança dos dados e a privacidade dos usuários. A pesquisa se concentra na avaliação experimental e estatística da classificação textual em um ambiente controlado. Questões relacionadas às exigências regulatórias, à proteção da privacidade e ao consentimento dos usuários ficam fora do escopo deste estudo e são deixadas para trabalhos futuros \cite{Chen2021}.
 
 % ===============================================================
 % CAPÍTULO 2 - REVISÃO BIBLIOGRÁFICA
@@ -321,7 +403,7 @@ Por fim, este trabalho não avalia os aspectos necessários para a implantação
 \chapter{Revisão Bibliográfica}
 \label{cap:revisao}
 
-Este capítulo estabelece o embasamento teórico e tecnológico da pesquisa proposta. Inicialmente, descreve-se a metodologia de seleção dos trabalhos consultados. O referencial teórico, na sequência, percorre os paradigmas de interação por voz, desde os mecanismos tradicionais de ativação baseados em \textit{wake-words} até as abordagens emergentes de Detecção de Fala Direcionada ao Dispositivo (do inglês \textit{Device-Directed Speech Detection}, referida pela sigla DDSD). Os fundamentos técnicos são então aprofundados, com ênfase na arquitetura Transformer, nos modelos de linguagem pré-treinados para o português brasileiro e nas métricas de avaliação. Por fim, analisam-se os trabalhos mais diretamente relacionados ao tema, identificando lacunas que esta pesquisa busca preencher.
+Este capítulo estabelece o embasamento teórico e tecnológico da pesquisa. Inicialmente, descreve-se a metodologia de seleção dos trabalhos consultados. O referencial teórico, na sequência, percorre os paradigmas de interação por voz, desde os mecanismos tradicionais de ativação baseados em \textit{wake-words} até as abordagens emergentes de Detecção de Fala Direcionada ao Dispositivo (do inglês \textit{Device-Directed Speech Detection}, referida pela sigla DDSD). Os fundamentos técnicos são então aprofundados, com ênfase na arquitetura Transformer, nos modelos de linguagem pré-treinados para o português brasileiro e nas métricas de avaliação. Por fim, analisam-se os trabalhos mais diretamente relacionados ao tema, identificando lacunas que esta pesquisa busca preencher.
 
 \section{Metodologia da pesquisa bibliográfica}
 \label{sec:metodologia_pesquisa}
@@ -344,7 +426,7 @@ Como critérios de inclusão, foram considerados: (a) trabalhos publicados entre
 
 Como critérios de exclusão, foram desconsiderados: (a) trabalhos publicados antes de 2021, exceto os seminais; (b) artigos sem relação direta com detecção de intenção, DDSD ou classificação de comandos de voz; (c) trabalhos duplicados entre as bases consultadas.
 
-O processo de seleção ocorreu em duas etapas, conforme ilustrado na Figura~\ref{fig:funil}. Na triagem inicial, foram identificados 118 artigos potencialmente relevantes com base na leitura de título e resumo. Na etapa de afunilamento, a análise em maior profundidade resultou na seleção de 26 trabalhos para compor a fundamentação teórica, os trabalhos relacionados e as referências deste estudo. Adicionalmente, foram incluídos 7 artigos seminais anteriores a 2021, entre os quais se destacam os trabalhos sobre a arquitetura Transformer \cite{Vaswani2017}, o BERT \cite{Devlin2019}, o BERTimbau \cite{Souza2020} e os primeiros estudos de DDSD \cite{Mallidi2018, Norouzian2019}. Dessa forma, o conjunto final de referências selecionadas para este trabalho foi composto por 33 artigos.
+O processo de seleção ocorreu em duas etapas, conforme ilustrado na Figura~\ref{fig:funil}. Na triagem inicial, foram identificados 118 estudos potencialmente relevantes com base na leitura de título e resumo. Na etapa de afunilamento, a leitura analítica do resumo, da introdução e da conclusão resultou na seleção de 31 trabalhos publicados entre 2021 e 2026, entre artigos, livros, relatórios técnicos e a documentação das ferramentas usadas na implementação, para compor a fundamentação teórica, os trabalhos relacionados e as referências deste estudo. Adicionalmente, foram incluídos 23 trabalhos seminais ou de referência anteriores a 2021, entre os quais se destacam os trabalhos sobre a arquitetura Transformer \cite{Vaswani2017}, o BERT \cite{Devlin2019}, o BERTimbau \cite{Souza2020}, os primeiros estudos de DDSD \cite{Mallidi2018, Norouzian2019} e os métodos clássicos de estatística e lógica \textit{fuzzy} \cite{Spearman1904, Cohen1960, Efron1979, Zadeh1965, Mamdani1975}. Dessa forma, o conjunto final de referências deste trabalho foi composto por 54 estudos.
 
 % ---------------------------------------------------------------
 \section{Referencial teórico}
