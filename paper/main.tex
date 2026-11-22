@@ -426,7 +426,7 @@ Como critérios de inclusão, foram considerados: (a) trabalhos publicados entre
 
 Como critérios de exclusão, foram desconsiderados: (a) trabalhos publicados antes de 2021, exceto os seminais; (b) artigos sem relação direta com detecção de intenção, DDSD ou classificação de comandos de voz; (c) trabalhos duplicados entre as bases consultadas.
 
-O processo de seleção ocorreu em duas etapas, conforme ilustrado na Figura~\ref{fig:funil}. Na triagem inicial, foram identificados 118 estudos potencialmente relevantes com base na leitura de título e resumo. Na etapa de afunilamento, a leitura analítica do resumo, da introdução e da conclusão resultou na seleção dle 31 trabalhos publicados entre 2021 e 2026, entre artigos, livros, relatórios técnicos e a documentação das ferramentas usadas na implementação, para compor a fundamentação teórica, os trabalhos relacionados e as referências deste estudo. Adicionalmente, foram incluídos 23 trabalhos seminais ou de referência anteriores a 2021, entre os quais se destacam os trabalhos sobre a arquitetura Transformer \cite{Vaswani2017}, o BERT \cite{Devlin2019}, o BERTimbau \cite{Souza2020}, os primeiros estudos de DDSD \cite{Mallidi2018, Norouzian2019} e os métodos clássicos de estatística e de lógica \textit{fuzzy} \cite{Spearman1904, Cohen1960, Efron1979, Zadeh1965, Mamdani1975}. Dessa forma, o conjunto final de referências deste trabalho foi composto por 54 estudos.
+O processo de seleção ocorreu em duas etapas, conforme ilustrado na Figura~\ref{fig:funil}. Na triagem inicial, foram identificados 118 estudos potencialmente relevantes com base na leitura de título e resumo. Na etapa de afunilamento, a leitura analítica do resumo, da introdução e da conclusão resultou na seleção de 31 trabalhos publicados entre 2021 e 2026, entre artigos, livros, relatórios técnicos e a documentação das ferramentas usadas na implementação, para compor a fundamentação teórica, os trabalhos relacionados e as referências deste estudo. Adicionalmente, foram incluídos 23 trabalhos seminais ou de referência anteriores a 2021, entre os quais se destacam os trabalhos sobre a arquitetura Transformer \cite{Vaswani2017}, o BERT \cite{Devlin2019}, o BERTimbau \cite{Souza2020}, os primeiros estudos de DDSD \cite{Mallidi2018, Norouzian2019} e os métodos clássicos de estatística e de lógica \textit{fuzzy} \cite{Spearman1904, Cohen1960, Efron1979, Zadeh1965, Mamdani1975}. Dessa forma, o conjunto final de referências deste trabalho foi composto por 54 estudos.
 
 % ---------------------------------------------------------------
 \section{Referencial teórico}
@@ -903,557 +903,421 @@ Em conjunto, esses diferenciais ampliam o estado da arte ao abordar aspectos ain
 \chapter{Desenvolvimento}
 \label{cap:desenvolvimento}
 
-Este capítulo detalha a proposta de desenvolvimento deste trabalho, a arquitetura do sistema, as decisões metodológicas, o planejamento experimental e o cronograma de execução previstos para o TCC2. O foco reside na especificação precisa do que será implementado e avaliado, com cada escolha técnica fundamentada na literatura revisada no Capítulo~\ref{cap:revisao}.
+Este capítulo descreve o sistema implementado, a construção do corpus, o treino dos classificadores e o protocolo de avaliação. Os resultados estão no Capítulo~\ref{cap:resultados}, e aqui aparecem só os números que justificam uma escolha de método.
 
 % ---------------------------------------------------------------
-
-\section{Visão geral da solução proposta}
+\section{Visão geral}
 \label{sec:visao_geral}
 
-A solução proposta consiste em um sistema de Detecção de Fala Direcionada ao Dispositivo (do inglês \textit{Device-Directed Speech Detection}, referida pela sigla DDSD) para o português brasileiro, operando exclusivamente sobre o nível textual. O sistema recebe um segmento de fala capturado em ambiente controlado, processa esse sinal por meio de um módulo \textit{Automatic Speech Recognition} (traduzido como Reconhecimento Automático de Fala, referenciado pela sigla ASR) e classifica o enunciado resultante como dirigido ao dispositivo ou como conversa incidental, utilizando um classificador baseado em modelos de linguagem pré-treinados \cite{Dighe2024, Wagner2024}.
+Um assistente de voz sem palavra de ativação precisa decidir, a cada fala captada pelo microfone, se ela é dirigida ao computador (DD) ou se faz parte de uma conversa entre pessoas (NDD). Em um escritório, numa sala de aula ou em casa, essa decisão é difícil, porque nomes de aplicativos e de sites aparecem com frequência em conversas comuns. Por isso a classificação não pode depender de palavras-chave isoladas, e precisa considerar o que a frase pede.
 
-A arquitetura é deliberadamente modular, os módulos de ASR e de classificação são componentes independentes, com interfaces bem definidas entre si. Essa separação traz duas vantagens concretas. Primeiro, permite a substituição de qualquer componente sem alteração do restante do sistema, o que viabiliza a comparação controlada entre diferentes modelos \cite{Wazlawick2020}. Segundo, favorece a reprodutibilidade e a extensibilidade, pesquisadores futuros poderão reutilizar o módulo de classificação com outros sistemas de ASR, ou vice-versa, sem necessidade de reestruturação.
+A solução usa apenas o texto da fala. O Whisper large-v3-turbo transcreve a fala completa, e um de cinco classificadores de texto decide o rótulo a partir da transcrição. Três deles são Transformers pré-treinados para o português (BERTimbau, Albertina e DeBERTinha), ajustados por \textit{fine-tuning}. Os outros dois são \textit{baselines} lineares com TF-IDF. Apenas um classificador fica ativo por vez, e o painel troca entre os três Transformers.
 
-% ---------------------------------------------------------------
+Junto com cada decisão, o sistema registra um índice de confiabilidade calculado a partir dos metadados do próprio Whisper. Esse índice só gera alerta e não altera o rótulo. O sistema classifica a fala e não executa o pedido, de modo que nenhuma ação é disparada no computador. A Figura~\ref{fig:sistema} mostra o caminho de uma fala, do microfone até a decisão.
 
-\subsection{Arquitetura do pipeline}
-\label{sec:pipeline}
-
-O \textit{pipeline} completo do sistema é composto por quatro etapas sequenciais, ilustradas na Figura~\ref{fig:pipeline}:
-
-\begin{enumerate}
-    \item \textbf{Captura de áudio}: o sinal de fala é capturado em ambiente controlado e segmentado em enunciados individuais por um módulo de Detecção de Atividade de Voz (VAD, do inglês \textit{Voice Activity Detection}), que delimita os trechos contendo fala \cite{Li2021};
-
-    \item \textbf{Transcrição ASR}: o enunciado segmentado é processado pelo Whisper \cite{Radford2023}, que gera as $N$ hipóteses textuais mais prováveis (\textit{n-best list}) via \textit{beam search}, ordenadas por probabilidade;
-
-    \item \textbf{Classificação de intenção}: as hipóteses textuais são processadas pelo classificador binário, que produz uma pontuação de probabilidade para cada classe (dirigida ao dispositivo \textit{versus} conversa incidental);
-
-    \item \textbf{Decisão}: com base na pontuação do classificador, o sistema emite uma decisão binária que aciona ou não o \textit{pipeline} completo do assistente virtual.
-\end{enumerate}
-
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \caption{Arquitetura do pipeline proposto para DDSD textual}
-    \label{fig:pipeline}
-    \begin{tabular}{ccccccccc}
-        \toprule
-        \textbf{Áudio} &
-        $\rightarrow$ &
-        \textbf{VAD} &
-        $\rightarrow$ &
-        \textbf{ASR (Whisper)} &
-        $\rightarrow$ &
-        \textbf{Classificador} &
-        $\rightarrow$ &
-        \textbf{Decisão} \\
-        \midrule
-        Sinal bruto &&
-        Segmento &&
-        \textit{n-best} textual &&
-        BERTimbau &&
-        DD / NDD \\
-        \bottomrule
-    \end{tabular}
+    \caption{Caminho de uma fala no sistema em tempo real, do microfone à decisão}
+    \includegraphics[width=\textwidth]{figuras/m1_sistema.pdf}
     \fonte{Elaborado pelo autor (2026).}
+    \label{fig:sistema}
 \end{figure}
 
-Um aspecto central distingue este sistema das abordagens de \citeonline{Wagner2024} e \citeonline{Dighe2024}: o classificador opera em modalidade textual pura. Isso significa que ele não tem acesso ao sinal de áudio bruto, às representações acústicas internas do Whisper, nem a probabilidades ou escores de confiança do decodificador. As hipóteses geradas pelo \textit{beam search} são tratadas estritamente como sequências de texto. Essa fronteira conceitual é mantida por design ao longo de todo o trabalho.
+O detector de voz fecha a fala depois de 0,7 s de silêncio, e o Whisper transcreve a fala completa na GPU. Na figura, o índice de confiabilidade aparece tracejado, porque é registrado junto com a decisão sem participar dela.
+
+A arquitetura separa o reconhecimento da classificação, e cada parte tem interface própria. Essa separação permite trocar o classificador ativo sem alterar o restante. O mesmo texto normalizado alimenta o corpus, o treino e a inferência. O classificador não recebe o áudio, as representações internas do Whisper nem os escores do decodificador, e esses sinais alimentam apenas o índice de confiabilidade.
+
+Todas as medidas de tempo, de memória e de desempenho foram feitas em um MacBook Air com chip Apple M5, 16 GB de memória unificada e macOS 27.0.1. O treino usa o MPS (do inglês \textit{Metal Performance Shaders}), o \textit{backend} de GPU do PyTorch para Apple Silicon, e a transcrição usa a GPU do mesmo chip pelo MLX.
+
+A hipótese (Seção~\ref{sec:hipotese}) menciona ambiente controlado, e este trabalho dá ao termo um sentido operacional. A sala quieta, a voz sintética e a sessão ao vivo com roteiro formam o caso controlado. O ruído de fundo, o microfone de um iPhone, a distância de cerca de 2 metros e o áudio de conversas públicas são cenários de estresse, avaliados para medir os limites do sistema. O veredito de cada conjunto é reportado separadamente.
 
 % ---------------------------------------------------------------
-\subsection{Definição de ambiente controlado}
-\label{sec:ambiente}
 
-Para os fins deste trabalho, um ambiente controlado é definido como um cenário de coleta e avaliação com as seguintes características:
-
-\begin{itemize}
-    \item \textbf{Ruído ambiental reduzido}: gravações em ambientes com baixo nível de ruído de fundo, sem sobreposição de múltiplos falantes simultâneos e sem música ou televisão ligada durante a captura;
-
-    \item \textbf{Proximidade ao microfone}: enunciados produzidos a distância padronizada do dispositivo de captura, garantindo qualidade acústica consistente entre as amostras;
-
-    \item \textbf{Variedade linguística preservada}: os enunciados cobrem as três classes definidas no cenário motivador (Seção~\ref{sec:cenario}), comandos diretos ao dispositivo, comentários incidentais e casos ambíguos, sem restrição de sotaque ou variação regional;
-
-    \item \textbf{Ausência de wake-word}: nenhum enunciado do corpus utiliza palavras de ativação explícitas, garantindo que o classificador opere exclusivamente sobre o conteúdo linguístico.
-\end{itemize}
-
-Essa delimitação é uma escolha estratégica de escopo, conforme discutido na Seção~\ref{sec:limitacoes}. Cenários com ruído elevado, múltiplos falantes ou condições acústicas adversas representam extensões naturais para trabalhos futuros \cite{CORAA2023}.
-
-% ---------------------------------------------------------------
-\section{Módulo ASR: transcrição e geração do \textit{n-best}}
-\label{sec:modulo_asr}
-
-% ---------------------------------------------------------------
-\subsection{Escolha e configuração do Whisper}
-\label{sec:whisper_config}
-
-O módulo ASR será implementado com o Whisper, desenvolvido pela OpenAI \cite{Radford2023}. Três razões sustentam essa escolha: (i) desempenho competitivo em português brasileiro sem adaptação específica ao idioma, graças à arquitetura treinada em 680 mil horas de dados multilíngues sob supervisão fraca; (ii) disponibilidade de múltiplos tamanhos de modelo, permitindo comparações entre precisão e custo computacional; e (iii) suporte nativo a \textit{beam search} com geração de múltiplas hipóteses, essencial para a estratégia de \textit{n-best} adotada neste trabalho.
-
-Serão avaliadas três variantes, selecionadas para cobrir diferentes pontos do \textit{trade-off} entre precisão e eficiência, conforme a Tabela~\ref{tab:whisper_modelos}.
-
-\begin{table}[htb]
-    \centering
-    \caption{Variantes do Whisper avaliadas no módulo ASR}
-    \label{tab:whisper_modelos}
-    \begin{tabular}{lccc}
-        \toprule
-        \textbf{Modelo}
-            & \textbf{Parâmetros}
-            & \textbf{Camadas decoder}
-            & \textbf{Uso previsto} \\
-        \midrule
-        Whisper Medium
-            & 307M & 24 & Referência intermediária \\
-        Whisper Large V3
-            & 1,5B & 32 & Maior precisão \\
-        Whisper Large V3 Turbo
-            & $\sim$809M & 4  & Maior velocidade \\
-        \bottomrule
-    \end{tabular}
-    \legend{Fonte: Elaborado pelo autor com base em \citeonline{Radford2023,
-    Jeffries2024, Bevilacqua2024}.}
-\end{table}
-
-O Whisper Large V3 Turbo merece destaque, ao reduzir o número de camadas do decodificador de 32 para 4, mantém desempenho próximo ao modelo completo com ganho de velocidade de aproximadamente 6 vezes \cite{Jeffries2024, Bevilacqua2024}, tornando-o particularmente adequado para cenários com restrições de latência. A comparação entre as três variantes permitirá analisar a relação entre o WER de cada modelo e o desempenho final do classificador, conforme previsto no terceiro objetivo específico (Seção~\ref{sec:objetivos}).
-
-% ---------------------------------------------------------------
-\subsection{Estratégia de uso do \textit{n-best}}
-\label{sec:nbest}
-
-Em vez de utilizar apenas a transcrição mais provável (1-best), este trabalho adotará a estratégia de \textit{n-best}, na qual as $N$ hipóteses textuais mais prováveis geradas pelo \textit{beam search} do Whisper são fornecidas ao classificador. \citeonline{Dighe2024} demonstraram que hipóteses alternativas contêm informações complementares à transcrição principal e contribuem para melhorar o entendimento semântico, especialmente quando a 1-best apresenta erros.
-
-As $N$ hipóteses são tratadas exclusivamente como texto, o classificador recebe apenas as transcrições, sem acesso a probabilidades acústicas ou escores de confiança do decodificador. A representação como entrada para o classificador será implementada por concatenação das $N$ transcrições, separadas pelo token especial \texttt{[SEP]} do BERTimbau \cite{Devlin2019, Souza2020}.
-
-O valor de $N$ será definido empiricamente durante os experimentos do TCC2, com valores iniciais de $N \in \{1, 3, 5\}$. Essa faixa foi escolhida com base em duas considerações práticas, o valor $N = 1$ serve como referência (equivale ao uso convencional da transcrição 1-best), enquanto $N = 3$ e $N = 5$ exploram o ganho incremental de hipóteses adicionais sem ultrapassar o limite de 128 tokens do BERTimbau, enunciados típicos de assistentes de voz raramente excedem 15 palavras, de modo que 5 hipóteses concatenadas permanecem dentro da capacidade do modelo na maioria dos casos.
-
-% ---------------------------------------------------------------
-\subsection{Impacto esperado dos erros de transcrição (WER)}
-\label{sec:wer_impacto}
-
-A qualidade das transcrições é fator crítico para o desempenho do classificador. Erros de transcrição podem corromper palavras semanticamente relevantes e degradar a capacidade discriminativa do modelo \cite{Dighe2024}. A título de exemplo, o enunciado ``acende a luz da sala'' transcrito erroneamente como ``acendes a luz da sela'' pode confundir o classificador, especialmente em casos ambíguos.
-
-Para quantificar esse impacto, o experimento \textit{upper-bound} detalhado na Seção~\ref{sec:upper_bound} avaliará o classificador sobre transcrições manuais (sem erros de ASR) e sobre transcrições automáticas (com erros reais do Whisper), permitindo isolar a degradação atribuível ao módulo ASR. Espera-se que a estratégia de \textit{n-best} contribua para reduzir parcialmente essa degradação ao oferecer hipóteses alternativas que contenham a palavra correta quando a 1-best apresentar erro \cite{Dighe2024}.
-
-% ---------------------------------------------------------------
-\section{Módulo de classificação de intenção}
-\label{sec:modulo_classificador}
-
-% ---------------------------------------------------------------
-\subsection{Modelo principal: BERTimbau com \textit{fine-tuning}}
-\label{sec:bertimbau_finetune}
-
-O classificador principal será o BERTimbau \cite{Souza2020}. A escolha justifica-se por três fatores: (i) superioridade consistente sobre modelos multilíngues em tarefas de classificação textual em português, demonstrada em múltiplos \textit{benchmarks} \cite{Souza2020}; (ii) capacidade de \textit{fine-tuning} eficiente com quantidades moderadas de dados rotulados, característica crítica dado o tamanho do corpus de DDSD em português; e (iii) ampla adoção na literatura de NLP em português, o que facilita a reprodutibilidade e a comparação com estudos futuros.
-
-O processo de \textit{fine-tuning} seguirá a metodologia padrão de \citeonline{Devlin2019}, uma camada de classificação linear com ativação \textit{softmax} será adicionada sobre a representação do token \texttt{[CLS]}, e o modelo completo será treinado para minimizar a entropia cruzada binária. Os hiperparâmetros iniciais estão descritos na Tabela~\ref{tab:hiperparametros}.
-
-\begin{table}[htb]
-    \centering
-    \caption{Hiperparâmetros iniciais para o \textit{fine-tuning} do BERTimbau}
-    \label{tab:hiperparametros}
-    \begin{tabular}{lcl}
-        \toprule
-        \textbf{Hiperparâmetro}
-            & \textbf{Valor inicial}
-            & \textbf{Justificativa} \\
-        \midrule
-        Taxa de aprendizado
-            & $2 \times 10^{-5}$
-            & Padrão BERT \cite{Devlin2019} \\
-        Tamanho do batch
-            & 16 ou 32
-            & Limitação de memória GPU \\
-        Épocas de treinamento
-            & 3--5
-            & Padrão \textit{fine-tuning} \cite{Devlin2019} \\
-        Comprimento máx. de sequência
-            & 128 tokens
-            & Adequado a enunciados curtos \\
-        \textit{Warmup steps}
-            & 10\% do total
-            & Estabilidade no início \\
-        \textit{Dropout}
-            & 0,1
-            & Regularização padrão BERT \\
-        \bottomrule
-    \end{tabular}
-    \legend{Fonte: Elaborado pelo autor com base em \citeonline{Devlin2019,
-    Souza2020}.}
-\end{table}
-
-Serão avaliadas as duas variantes disponíveis: BERTimbau Base (12 camadas, 110M de parâmetros) e BERTimbau Large (24 camadas, 335M de parâmetros) \cite{Souza2020}. A versão Base será o padrão principal; a versão Large será avaliada como alternativa de maior capacidade representacional, condicionada aos recursos computacionais disponíveis no TCC2.
-
-% ---------------------------------------------------------------
-\subsection{Modelos alternativos: DeBERTinha e Albertina}
-\label{sec:modelos_alternativos}
-
-Além do BERTimbau, dois modelos alternativos serão avaliados caso os recursos computacionais e o cronograma permitam, a DeBERTinha \cite{Abonizio2023} e a Albertina PT-BR \cite{Rodrigues2023}.
-
-A DeBERTinha é uma versão compacta do DeBERTaV3, adaptada para o português brasileiro por \citeonline{Abonizio2023}, com aproximadamente 70 milhões de parâmetros. Apesar de seu tamanho reduzido, demonstrou desempenho competitivo ou superior ao BERTimbau Large em diversas tarefas de NLP para o português, com vantagem em eficiência computacional. Sua avaliação é motivada pela possibilidade de que um modelo mais eficiente alcance desempenho comparável ao BERTimbau em DDSD, o que teria implicações práticas para cenários com recursos limitados.
-
-A Albertina PT-BR \cite{Rodrigues2023}, construída sobre a arquitetura DeBERTaV2, foi pré-treinada do zero em português, com ênfase na qualidade dos dados de pré-treinamento. Está disponível em variantes de diferentes escalas, desde versões compactas de aproximadamente 100 milhões até versões maiores de cerca de 900 milhões de parâmetros, o que permite selecionar o modelo mais adequado aos recursos disponíveis. Sua avaliação permitirá comparar abordagens de adaptação contínua (\textit{continual pre-training}, como na DeBERTinha) com pré-treinamento do zero em português.
-
-% ---------------------------------------------------------------
-\subsection{Baselines clássicos: TF-IDF + SVM e Regressão Logística}
-\label{sec:baselines}
-
-Para quantificar objetivamente o ganho dos modelos baseados em Transformers, serão implementados dois \textit{baselines} clássicos, TF-IDF combinada com SVM e TF-IDF combinada com Regressão Logística \cite{Manning2008}.
-
-As configurações previstas são: (i) TF-IDF com $n$-gramas de 1 a 3 palavras, para capturar padrões lexicais e sintagmáticos relevantes; (ii) SVM com \textit{kernel} linear e regularização $C$ ajustada por validação cruzada; e (iii) Regressão Logística com regularização L2 e otimizador LBFGS. Ambos receberão como entrada a transcrição 1-best gerada pelo Whisper, representada como vetor TF-IDF esparso.
-
-A inclusão de \textit{baselines} clássicos constitui uma contribuição metodológica deste trabalho, nenhum dos três estudos relacionados analisados no Capítulo~\ref{cap:revisao} inclui esse tipo de referência \cite{Mallidi2018, Wagner2024, Dighe2024}. Ela permite verificar se a complexidade adicional dos Transformers é de fato justificada pelo ganho de desempenho em uma tarefa com corpus de tamanho moderado, tornando os resultados mais interpretáveis \cite{Weld2022, Manning2008}.
-
-% ---------------------------------------------------------------
-\section{Construção do corpus}
+\section{Corpus}
 \label{sec:corpus}
 
-A construção de um corpus textual em português brasileiro para DDSD é um dos objetivos específicos centrais deste trabalho e, ao mesmo tempo, uma de suas contribuições mais relevantes. A ausência de corpora públicos para essa tarefa em português, identificada na Seção~\ref{sec:sintese_comparativa}, impõe a necessidade de um recurso próprio, com protocolo de qualidade documentado \cite{Wazlawick2020}.
-
-Uma característica central distingue este corpus dos corpora de DDSD típicos da literatura \cite{Mallidi2018, Wagner2024}, ele é \textbf{exclusivamente textual}, sem gravações de áudio nem anotações acústicas. Isso decorre da modalidade de entrada do classificador proposto, que opera sobre transcrições textuais. Além de coerente com a abordagem técnica, essa decisão remove as restrições de escala que corpora de fala impõem, a coleta e anotação de texto é significativamente mais rápida e barata do que a gravação e transcrição de áudio \cite{Møller2024}. Estima-se um corpus de grande escala, com volume superior a 100.000 amostras textuais, o que representa uma ordem de grandeza acima dos corpora de DDSD reportados na literatura.
-
-Para garantir a viabilidade dos experimentos mesmo em caso de dificuldades na construção do corpus completo, define-se um volume mínimo viável de 40.000 amostras (aproximadamente 20.000 por classe principal). Abaixo desse limiar, a capacidade de \textit{fine-tuning} do BERTimbau e a representatividade estatística dos resultados seriam comprometidas, exigindo reavaliação do escopo experimental.
+O corpus é inteiramente sintético e binário. Ele foi construído em etapas: um corpus inicial gerado por modelos de linguagem, uma correção do viés de comprimento com frases novas, filtros determinísticos, deduplicação, balanceamento, divisão e congelamento. Ao todo, são 116.438 frases, com 58.219 de cada classe. A Figura~\ref{fig:funil_corpus} resume o funil, das frases das fontes ao corpus final.
 
 % ---------------------------------------------------------------
-\subsection{Esquema de rotulação}
+
+\subsection{Critério de rotulação}
 \label{sec:rotulacao}
 
-Cada enunciado do corpus receberá um rótulo dentre três categorias:
+Cada frase recebe um rótulo binário, segundo uma única pergunta: esta frase é dirigida ao computador (DD) ou não (NDD)? A frase é julgada sozinha, sem o histórico da conversa, como se o assistente ouvisse tudo o que é dito na sala sem palavra de ativação. Esse critério vale para toda a construção do corpus e também para a revisão humana.
 
-\begin{itemize}
-    \item \texttt{DD} (\textit{Device-Directed}): enunciado claramente dirigido ao assistente virtual, comando, pergunta ou solicitação. Exemplos: ``liga o ventilador'', ``qual a previsão do tempo para amanhã?'', ``toca uma música relaxante'';
+Uma frase é DD quando pede ao computador uma ação de software que ele executa, ou quando faz uma pergunta que o assistente responderia. As ações se distribuem em sete categorias do esquema de contexto: controle de aplicativos, captura de tela, mídia, sistema, navegador, web, produtividade, arquivos, ditado e texto. São exemplos ``abre o navegador'', ``pausa o vídeo'' e ``me lembra de enviar o relatório às três''. A forma não importa, e ``dá pra pausar o vídeo?'' também é DD, apesar de ser um pedido indireto.
 
-    \item \texttt{NDD} (\textit{Non-Device-Directed}): enunciado claramente não dirigido ao dispositivo, sendo parte de conversa entre humanos ou comentário incidental. Exemplos: ``nossa, está quente hoje'', ``você foi ao mercado ontem?'', ``preciso terminar esse relatório'';
+Uma frase é NDD quando não pede nada ao computador. Entram aqui a conversa com outra pessoa (``você vai almoçar em casa?''), o comentário (``nossa, que frio hoje''), a fala sobre o computador sem pedido a ele (``esse computador tá muito lento hoje'') e o pedido feito a uma pessoa de uma ação física ou pessoal, como ``me passa o carregador'', mesmo quando está no imperativo.
 
-    \item \texttt{AMB} (\textit{Ambiguous}): enunciado cuja interpretação como DD ou NDD depende de contexto não disponível no texto. Exemplos: ``apaga a luz, por favor'', ``pode colocar mais baixo?'', ``me lembra disso amanhã''.
-\end{itemize}
-
-Para a classificação binária, os enunciados \texttt{AMB} serão tratados como \texttt{NDD}, seguindo a lógica conservadora de que, na ausência de contexto suficiente para confirmar a intenção, o sistema não deve acionar o assistente. Essa convenção alinha-se com a definição do problema como classificação binária \cite{Mallidi2018} e com o princípio de minimização de ativações indevidas. Os enunciados \texttt{AMB} serão mantidos como subconjunto identificado por uma \textit{flag}, permitindo análises de desempenho segmentadas.
-
-É necessário reconhecer que a fusão de AMB com NDD introduz um viés conservador mensurável, casos genuinamente ambíguos tendem a ser mais fáceis de classificar como NDD, o que pode inflacionar artificialmente as métricas no subconjunto AMB. Para controlar esse efeito, os resultados serão reportados em duas perspectivas, desempenho sobre o corpus completo e desempenho sobre amostras inequívocas (apenas DD e NDD puros). Essa análise segmentada tornará as conclusões metodologicamente mais robustas.
+Ficam fora do corpus as frases com palavra de ativação (``alexa'', ``siri'', ``ok google'', ``hey google'' e ``assistente''), porque o sistema estudado funciona sem elas. Também saem as frases de casa inteligente, como as que falam de luz, ar-condicionado, cafeteira ou ventilador, já que o domínio é o computador pessoal. Saem ainda as frases com até 5 caracteres, com menos de 2 palavras ou com mais de 50 palavras, as que têm caracteres fora do ASCII (do inglês \textit{American Standard Code for Information Interchange}), as duplicatas, as quase-duplicatas e os textos que aparecem nas duas classes.
 
 % ---------------------------------------------------------------
-\subsection{Fontes de dados e estratégias de construção}
-\label{sec:fontes_dados}
 
-O corpus será construído a partir de duas fontes complementares, dados públicos existentes para a classe \texttt{NDD} e dados gerados sinteticamente com auxílio de LLMs para as classes \texttt{DD} e \texttt{AMB}.
+\subsection{Corpus inicial}
+\label{sec:corpus_inicial}
 
-\subsubsection{Classe NDD: datasets públicos de fala espontânea}
+No corpus final, 95.390 frases (81,9\%) vêm do corpus inicial, 47.695 de cada classe. Nove conjuntos o compõem, gerados por modelos de linguagem por meio de provedores de serviço e de interfaces de linha de comando. A maior parte vem do qwen3.6-35b-a3b, com 35,1\% do corpus final, e do Claude Sonnet, com 17,8\%. As outras sete fontes ficam entre 2,9\% e 5,8\% cada uma.
 
-A classe \texttt{NDD} será composta por transcrições de corpora públicos de fala espontânea, selecionados por sua diversidade dialetal, de registro e de contexto. Três corpora serão utilizados como fontes primárias:
+Sete desses conjuntos foram gerados por \textit{scripts} de um mesmo desenho, com três estratégias. A primeira produz DD por paráfrase de um comando-base, com exemplos de uma das sete categorias. A segunda produz DD por \textit{role-play} contextual, em que o modelo assume personas como um idoso formal ou um jovem \textit{gamer}. A terceira produz NDD como conversa de fundo, com o vocabulário do comando e de 5 a 25 palavras. Esses \textit{scripts} não geram diálogos completos.
 
-O \textbf{CORAA ASR} \cite{CORAA2023} é um dos maiores corpora de fala espontânea validados manualmente para o português brasileiro, com transcrições de entrevistas, apresentações e conversas informais em diferentes variedades regionais. Suas transcrições são ricas em vocabulário cotidiano e padrões conversacionais naturais, tornando-o adequado para representar enunciados incidentais.
+Para as fontes do Claude Sonnet e do OpenCode, optou-se pela utilização de interfaces de linha de comando para acessar os modelos em nuvem diretamente pelo ambiente de desenvolvimento e integrá-los ao fluxo de geração do corpus. Essa decisão foi motivada pelas restrições de prazo, uma vez que modelos como o Big Pickle, disponibilizado pelo OpenCode, e o Claude Sonnet apresentaram maior velocidade de execução e se mostraram alternativas mais adequadas para concluir a geração dentro do período disponível. Para essas fontes, o registro disponível é apenas a proveniência, e suas estratégias não podem ser descritas com a mesma precisão. O corpus inicial não passou pela autoverificação descrita adiante, de modo que seus rótulos são os que os geradores produziram.
 
-O \textbf{NURC-SP} \cite{NURCSP2025} contém gravações de fala espontânea paulistana em contextos formais e informais. Sua inclusão contribui para a representatividade do português falado em São Paulo, variedade amplamente presente nos contextos de uso de assistentes de voz.
+% ---------------------------------------------------------------
 
-O \textbf{TAGARELA} \cite{Tagarela2026} é um corpus de fala extraído de \textit{podcasts} em português brasileiro, caracterizado por fala semi-espontânea em formato conversacional. Sua inclusão adiciona diversidade temática e de estilo ao subconjunto \texttt{NDD}.
+\subsection{Viés de comprimento}
+\label{sec:vies_comprimento}
 
-As transcrições desses corpora não requerem nova anotação para a classe \texttt{NDD}, pois por definição representam fala espontânea em contextos sem assistentes de voz. Uma amostragem aleatória estratificada por corpus e por tipo de contexto será aplicada para garantir diversidade.
+No corpus inicial, o tamanho da frase revelava a classe. Medido pela AUC (Seção~\ref{sec:atalho}), o número de palavras sozinho previa a classe com valor de 0,86, em que 0,5 indica ausência de informação. A mediana era de 7 palavras para DD e de 11 para NDD. Um classificador treinado nesse corpus podia, portanto, decidir pelo tamanho da frase.
 
-\subsubsection{Classes DD e AMB: geração sintética assistida por LLM}
+A causa está no desenho da geração: as frases de conversa de fundo eram mais longas que os comandos. Esse é um caso do que \citeonline{Geirhos2020} chamam de \textit{shortcut learning}, em que o modelo aprende um atalho correlacionado com o rótulo em vez da tarefa pedida.
 
-A classe \texttt{DD} não possui representação natural em corpora de fala espontânea, pois enunciados dirigidos a assistentes raramente ocorrem em gravações de conversação cotidiana. Para suprir essa lacuna em escala, será adotada uma abordagem de geração sintética assistida por LLMs, estratégia com respaldo crescente na literatura de NLP para criação de dados em domínios com poucos recursos \cite{Møller2024}.
+No corpus final, 21.048 frases (18,1\%, 10.524 de cada classe) são novas e foram geradas pela correção. Na primeira estratégia, chamada de comprimento, o mesmo modelo e a mesma versão de \textit{prompt} geram as duas classes em quantidades iguais, para cada fonte e cada faixa. As faixas curtas vão de 2 a 6 palavras e as longas de 11 a 24. Os lotes têm 10 frases, a temperatura é 0,9 e há uma pausa de 6 segundos entre as chamadas. Cada classe tem seu próprio \textit{prompt}, e cada lote gera uma classe só.
 
-A geração será estruturada em três estratégias complementares:
+A segunda estratégia, de negativos difíceis, existe porque a autoverificação da primeira descartou 17,3\% das NDD julgadas, contra 0,7\% das DD. Nela, cada par tem a mesma forma, um imperativo curto de 2 a 6 palavras, e a diferença está na ação: a NDD pede a uma pessoa uma ação física ou pessoal, e a DD pede uma ação de software.
 
-\textbf{Estratégia 1: Expansão por paráfrase de templates.}
-Serão elaborados manualmente entre 200 e 300 templates de enunciados imperativos e interrogativos típicos de assistentes de voz, cobrindo domínios como controle de dispositivos domésticos, consulta de informações, entretenimento, produtividade e comunicação. Cada template será fornecido a um LLM com a instrução de gerar múltiplas paráfrases naturais em português brasileiro, variando formalidade, grau de implicitação e estrutura sintática \cite{Møller2024}.
+A autoverificação dessa estratégia classifica pela ação, e não pela forma, para que uma NDD curta não seja descartada só por parecer um comando. Cada execução grava a própria fonte, o que mantém as duas classes do par na mesma célula de balanceamento. Assim, a fonte também não prevê a classe dentro do par.
 
-\textbf{Estratégia 2: Geração por \textit{role-playing} contextual.}
-O LLM será instruído a adotar o papel de um usuário em diferentes contextos domésticos (cozinha, sala, quarto, escritório, carro) e a gerar enunciados que esse usuário diria ao assistente sem \textit{wake-words}. O tom e o estado emocional também serão variados (casual, apressado, educado, irritado, sussurrando) para capturar a diversidade de registros em uso real. Essa estratégia produz enunciados mais contextualizados e naturais que a expansão por templates.
+Entre as 21.048 frases novas, o gemma-4-e4b gerou 51,4\%, o qwen3.8-27b, 18,0\%, o gpt-oss-120b, 15,4\%, o Claude, 14,9\%, e o Gemini 3.5 Flash, 0,3\%. Depois dos filtros, com as frases novas incluídas, a AUC do tamanho ainda era de 0,818. A deduplicação pouco a alterou (0,807), e foi o balanceamento por faixa que a levou a 0,515 no corpus final, em que a mediana é de 9 palavras nas duas classes.
 
-\textbf{Estratégia 3: Geração de diálogos sintéticos completos.}
-O LLM gerará diálogos completos simulando uma pessoa em ambiente doméstico alternando entre conversas com outros humanos e enunciados ao assistente. Cada turno será rotulado como \texttt{DD}, \texttt{NDD} ou \texttt{AMB} pelo próprio LLM, sendo o rótulo posteriormente validado por revisão humana. Essa estratégia é especialmente útil para a classe \texttt{AMB}, pois a ambiguidade surge naturalmente em diálogos mistos. O Quadro~\ref{quad:dialogo_sintetico} apresenta um exemplo de saída esperada.
+% ---------------------------------------------------------------
 
-\begin{table}[htb]
+\subsection{Filtros, normalização e deduplicação}
+\label{sec:filtros}
+
+Todo texto passa por uma normalização única, usada igualmente no corpus, no treino e no sistema em tempo real. Ela aplica a forma NFKD do Unicode (do inglês \textit{Normalization Form Compatibility Decomposition}), remove os acentos, põe o texto em minúsculas, troca a pontuação e os símbolos por espaços e colapsa os espaços repetidos. Assim, uma frase tem a mesma forma em todas as etapas.
+
+Depois da normalização, o filtro mantém só as frases com mais de 5 caracteres e de 2 a 50 palavras, com caracteres ASCII e sem listas serializadas. Esse último critério existe porque o corpus inicial trazia 70 registros desse defeito de gerador. Na geração, os filtros determinísticos também descartam as frases com palavra de ativação, com termos de casa inteligente, fora da faixa de comprimento pedida, duplicadas ou em conflito com a outra classe.
+
+As fontes trouxeram 289.920 frases. Os filtros descartaram 187, sendo 63 por tamanho, 54 por caracteres não ASCII e 70 por listas serializadas. A deduplicação exata removeu 15.007 repetições e retirou de ambas as classes os 44 textos que apareciam nas duas, o que deixou 274.638 frases. A deduplicação aproximada removeu 139 quase-duplicatas e 46 itens em conflito entre as classes, e deixou 274.453.
+
+Parte das frases geradas com rótulo pretendido passou por uma autoverificação. O mesmo modelo recebe um lote de até 10 frases em uma chamada nova, de um turno, em temperatura 0. Ele reclassifica cada frase sem ver o rótulo pretendido, e só ficam as que ele confirma. Se a resposta vier em formato inválido, o lote inteiro é descartado. A autoverificação alcança 17.904 das 116.438 frases do corpus final, cerca de 15\%. Nos lotes com registro, com 6.076 DD e 7.154 NDD julgadas, a taxa de discordância foi de 1,0\% nas DD e de 13,0\% nas NDD.
+
+A autoverificação tem um limite: o avaliador é o próprio gerador, e não há um juiz independente. Ela remove os rótulos que o modelo contradiz, mas não garante que ele acerte os que confirma. A revisão humana, descrita adiante, é a única verificação feita por uma pessoa.
+
+% ---------------------------------------------------------------
+
+\subsection{Balanceamento e divisão}
+\label{sec:balanceamento}
+
+O balanceamento é 1:1 dentro de cada célula formada pela faixa de comprimento, pela fonte e pela origem, que indica se a frase veio do corpus inicial ou das frases novas. Por construção, dentro de cada faixa, nem o modelo gerador nem a origem da frase preveem a classe. São 11 faixas: as de 2, 3, 4, 5 e 6 palavras, e as de 7 e 8, 9 e 10, 11 a 13, 14 a 17, 18 a 24 e 25 a 50 palavras. Essa etapa descartou 158.015 frases, cerca de 58\% das que restavam.
+
+\begin{figure}[htb]
     \centering
-    \caption{Exemplo de diálogo sintético gerado por LLM com rótulos de classe}
-    \label{quad:dialogo_sintetico}
-    \begin{tabular}{p{8cm}c}
-        \toprule
-        \textbf{Enunciado} & \textbf{Rótulo} \\
-        \midrule
-        ``Nossa, está muito quente aqui hoje.''
-            & NDD \\
-        ``Tem como liga o ventilador, por favor.''
-            & AMB \\
-        ``Coloca o ventilador no máximo.''
-            & DD \\
-        ``Você foi ao mercado ontem?''
-            & NDD \\
-        ``Qual a previsão do tempo para amanhã?''
-            & DD \\
-        ``Me lembra de ligar para o médico às três.''
-            & DD \\
-        ``Preciso terminar esse relatório hoje.''
-            & NDD \\
-        \bottomrule
-    \end{tabular}
-    \legend{Fonte: Elaborado pelo autor (2026).}
-\end{table}
-
-Os LLMs utilizados incluirão modelos de alta capacidade disponíveis via API (GPT-4o, Claude, Gemini) e modelos com foco em português brasileiro, como o Sabiá \cite{Pires2023}, priorizando a naturalidade e a correção gramatical dos enunciados gerados.
-
-Um risco inerente à geração sintética é o viés de artefato linguístico, amostras geradas por LLMs tendem a apresentar linguagem mais formal, sintaticamente regular e semanticamente explícita do que a fala espontânea real, que é marcada por disfluências, reduções fonéticas e construções coloquiais \cite{Møller2024}. Para mitigar esse viés, serão adotadas três medidas: (i) instrução explícita dos LLMs para emular registros coloquiais, incluindo marcadores de disfluência típicos do português falado (``né'', ``tipo'', ``então'', hesitações); (ii) variação sistemática de parâmetros de temperatura e de estilo nos \textit{prompts}; (iii) comparação da distribuição de características lexicais (comprimento médio de sentença, riqueza vocabular, frequência de marcadores informais) entre as amostras sintéticas e as transcrições dos corpora públicos. Caso disparidades significativas sejam detectadas, os \textit{prompts} serão refinados e as amostras problemáticas re-geradas.
-
-A Tabela~\ref{tab:corpus_fontes} resume as fontes, estratégias e volumes estimados do corpus.
-
-\begin{table}[htb]
-    \centering
-    \caption{Fontes, estratégias e volumes estimados do corpus de DDSD em PT-BR}
-    \label{tab:corpus_fontes}
-    \begin{tabular}{llcc}
-        \toprule
-        \textbf{Fonte / Estratégia}
-            & \textbf{Classe}
-            & \textbf{Método}
-            & \textbf{Volume estimado} \\
-        \midrule
-        CORAA ASR
-            & NDD & Extração de transcrições & $\sim$25.000 \\
-        NURC-SP 
-            & NDD & Extração de transcrições & $\sim$15.000 \\
-        TAGARELA 
-            & NDD & Extração de transcrições & $\sim$15.000 \\
-        \textit{Template-based paraphrasing}
-            & DD & LLM (geração sintética) & $\sim$20.000 \\
-        \textit{Role-playing} contextual
-            & DD & LLM (geração sintética) & $\sim$15.000 \\
-        Diálogos sintéticos
-            & DD / AMB & LLM (geração sintética) & $\sim$15.000 \\
-        \midrule
-        \textbf{Total estimado}
-            & ---
-            & ---
-            & \textbf{$\sim$105.000 amostras} \\
-        \bottomrule
-    \end{tabular}
-    \legend{Fonte: Elaborado pelo autor (2026).}
-\end{table}
-
-Os volumes são estimativas iniciais sujeitas a ajuste durante o TCC2, em função da disponibilidade dos corpora e da capacidade de geração dos LLMs. O critério de balanceamento entre \texttt{DD} e \texttt{NDD} será monitorado, caso a razão entre classes supere 3:1, serão adotadas técnicas como ponderação de classes (\textit{class weighting}) ou \textit{oversampling} da classe minoritária.
-
-% ---------------------------------------------------------------
-\subsection{Protocolo de validação e controle de qualidade}
-\label{sec:protocolo_anotacao}
-
-A qualidade do corpus será assegurada por um protocolo em duas etapas complementares.
-
-\textbf{Etapa 1: Revisão humana por amostragem.}
-Uma amostra aleatória estratificada de cada subconjunto (NDD extraído, DD sintético e AMB sintético) será revisada. Para cada amostra, será confirmado ou corrigido o rótulo atribuído, sem acesso ao rótulo original. Um nível satisfatório de concordância será considerado indicativo de qualidade aceitável para o corpus; caso a concordância seja insuficiente, o protocolo de geração sintética será revisado antes de prosseguir.
-
-\textbf{Etapa 2: Filtragem automática.}
-Amostras com comprimento inferior a 3 tokens ou superior a 50 tokens serão descartadas, por fugirem do padrão típico de enunciados de assistentes de voz. Duplicatas exatas e duplicatas aproximadas (similaridade cossenoidal TF-IDF superior a 0,95) também serão removidas para evitar contaminação entre os conjuntos de treino e teste \cite{Manning2008}.
-
-% ---------------------------------------------------------------
-\subsection{Divisão treino / validação / teste}
-\label{sec:divisao}
-
-O corpus será dividido nas proporções 70\% treino, 15\% validação e 15\% teste \cite{Manning2008}, com estratificação por classe e por fonte de dados. A estratificação por fonte garante que cada subconjunto contenha amostras de todas as origens (corpora públicos e geração sintética), evitando que o conjunto de teste seja composto exclusivamente por um único tipo de dado.
-
-O conjunto de teste será mantido reservado durante todo o processo de desenvolvimento e ajuste de hiperparâmetros, sendo utilizado exclusivamente na avaliação final \cite{Wazlawick2020}. Os enunciados \texttt{AMB} serão identificados por \textit{flag}, permitindo reportar desempenho geral, desempenho em amostras inequívocas (\texttt{DD} e \texttt{NDD} puros) e desempenho nos casos ambíguos.
-
-Uma versão reduzida do conjunto de teste, composta por amostras com transcrições manuais produzidas durante a validação humana, será utilizada no experimento \textit{upper-bound} da Seção~\ref{sec:upper_bound}, permitindo estimar o desempenho do classificador sobre texto sem ruído de ASR.
-
-% ---------------------------------------------------------------
-\section{Planejamento experimental}
-\label{sec:planejamento}
-
-O planejamento experimental define os experimentos que serão conduzidos no TCC2 para testar a hipótese formulada na Seção~\ref{sec:hipotese}. Os experimentos estão organizados em três grupos, detalhados nas subseções a seguir.
-
-% ---------------------------------------------------------------
-\subsection{Configuração dos experimentos e hiperparâmetros}
-\label{sec:experimentos_config}
-
-\textbf{Experimento 1: Baselines clássicos.}
-Os modelos TF-IDF + SVM e TF-IDF + Regressão Logística serão treinados e avaliados com hiperparâmetros ajustados por validação cruzada de 5 \textit{folds} sobre o conjunto de treino. A entrada será a transcrição 1-best gerada pelo Whisper Large V3 Turbo.
-
-\textbf{Experimento 2: BERTimbau com \textit{fine-tuning}.}
-O BERTimbau Base e o BERTimbau Large serão submetidos ao \textit{fine-tuning} descrito na Seção~\ref{sec:bertimbau_finetune}, com diferentes configurações de entrada: (a) transcrição 1-best; e (b) \textit{n-best} com $N \in \{3, 5\}$ hipóteses concatenadas. Os hiperparâmetros iniciais são os da Tabela~\ref{tab:hiperparametros}, com ajuste por validação no conjunto de validação.
-
-\textbf{Experimento 3: Modelos alternativos (condicionais).}
-Caso os recursos computacionais permitam, DeBERTinha \cite{Abonizio2023} e Albertina \cite{Rodrigues2023} serão avaliados com as mesmas configurações do Experimento~2, permitindo comparação direta entre as diferentes famílias de modelos.
-
-Todos os experimentos serão avaliados sobre o conjunto de teste com as métricas descritas na Seção~\ref{sec:metricas}: F1-score, acurácia, precisão, sensibilidade, EER e ROC-AUC. Os resultados serão reportados com média e desvio padrão sobre 5 execuções com diferentes sementes aleatórias, garantindo robustez estatística \cite{Wazlawick2020}.
-
-% ---------------------------------------------------------------
-\subsection{Experimento \textit{upper-bound}: transcrição manual
-\textit{versus} automática}
-\label{sec:upper_bound}
-
-O terceiro objetivo específico deste trabalho prevê a análise do impacto dos erros de transcrição no desempenho do classificador \cite{Dighe2024}. Para isso, será conduzido o experimento \textit{upper-bound}:
-
-\begin{enumerate}
-    \item O classificador BERTimbau (melhor configuração dos Experimentos 1 e 2) será avaliado sobre o conjunto de teste com transcrições \textbf{manuais} (sem erros de ASR), produzindo o desempenho \textit{upper-bound}, o teto teórico da abordagem textual;
-
-    \item O mesmo classificador será avaliado sobre transcrições automáticas geradas pelas três variantes do Whisper (Medium, Large V3 e Large V3 Turbo), produzindo os desempenhos reais do sistema completo;
-
-    \item A diferença entre os desempenhos será analisada em função do WER de cada variante, verificando se existe correlação entre a taxa de erro de transcrição e a degradação do classificador.
-\end{enumerate}
-
-Esse experimento é particularmente relevante para o português brasileiro, idioma com desafios específicos para ASR, alta variabilidade fonética regional, reduções vocálicas e contrações da fala informal \cite{CORAA2023, Bevilacqua2024}.
-
-% ---------------------------------------------------------------
-\section{Critérios de validação e aceitação da hipótese}
-\label{sec:criterios_validacao}
-
-A hipótese de pesquisa formulada na Seção~\ref{sec:hipotese} será considerada confirmada se, e somente se, os seguintes critérios forem simultaneamente satisfeitos sobre o conjunto de teste:
-
-\begin{enumerate}
-    \item \textbf{Superioridade sobre os baselines clássicos}: o BERTimbau com \textit{fine-tuning} deve alcançar F1-score superior ao melhor \textit{baseline} (TF-IDF + SVM ou Regressão Logística).
-
-    \item \textbf{Viabilidade técnica da abordagem textual}: o sistema proposto deve alcançar EER inferior a 30\% sobre o conjunto de teste. Esse limiar foi definido com base na premissa de que um classificador sem capacidade discriminativa convergiria para EER próximo a 50\% (equivalente à classificação aleatória); o valor de 30\% representa redução de 40\% em relação à chance e constitui evidência substancial de viabilidade. A título de referência, os melhores sistemas unimodais textuais de \citeonline{Wagner2024} alcançaram EER na faixa de 15--20\% em inglês; considerando que o português brasileiro dispõe de menos recursos e que o corpus é parcialmente sintético, o limiar de 30\% é conservador e realista para um primeiro estudo no idioma.
-
-    \item \textbf{Contribuição do \textit{n-best}}: a avaliação da estratégia \textit{n-best} será reportada em dois níveis. O critério mínimo é a não degradação: a configuração com $N > 1$ deve apresentar F1-score igual ou superior à configuração 1-best, indicando que hipóteses adicionais não prejudicam o classificador. Como critério complementar, será analisado se a utilização de múltiplas hipóteses produz ganhos consistentes de desempenho em relação à configuração 1-best.
-\end{enumerate}
-
-Caso a hipótese não seja confirmada, os resultados serão igualmente reportados e analisados. Resultados negativos também contribuem para o avanço do conhecimento \cite{Wazlawick2020}.
-
-% ---------------------------------------------------------------
-\section{Tecnologias e ferramentas}
-\label{sec:tecnologias}
-
-A implementação utilizará o ecossistema Python de aprendizado de máquina e NLP, consolidado como padrão na área \cite{Weld2022}. A Tabela~\ref{tab:ferramentas} lista as principais bibliotecas e ferramentas previstas.
-
-\begin{table}[htb]
-    \centering
-    \caption{Tecnologias e ferramentas previstas para o desenvolvimento}
-    \label{tab:ferramentas}
-    \begin{tabular}{lll}
-        \toprule
-        \textbf{Ferramenta}
-            & \textbf{Versão prevista}
-            & \textbf{Finalidade} \\
-        \midrule
-        Python          & 3.11+     & Linguagem principal \\
-        PyTorch         & 2.x       & Framework de deep learning \\
-        HuggingFace Transformers & 4.x & Fine-tuning BERTimbau \\
-        HuggingFace Datasets & 2.x & Gerenciamento do corpus \\
-        OpenAI Whisper  & Medium / Large V3 / Turbo & Módulo ASR \\
-        scikit-learn    & 1.x       & Baselines TF-IDF + SVM/LR \\
-        NumPy / Pandas  & ---       & Manipulação de dados \\
-        Matplotlib / Seaborn & --- & Visualização de resultados \\
-        SHAP            & ---       & Análise de interpretabilidade \\
-        Git / GitHub    & ---       & Controle de versão \\
-        \bottomrule
-    \end{tabular}
-    \legend{Fonte: Elaborado pelo autor (2026).}
-\end{table}
-
-Os experimentos serão executados em ambiente com suporte a GPU, dado o custo computacional do \textit{fine-tuning} de modelos Transformer \cite{Souza2020}.
-
-% ---------------------------------------------------------------
-\section{Resultados esperados}
-\label{sec:resultados_esperados}
-
-Com base na literatura revisada no Capítulo~\ref{cap:revisao} e nas escolhas metodológicas deste capítulo, são esperados os seguintes resultados ao final do TCC2:
-
-\textbf{(i) Corpus textual de DDSD em português brasileiro.} Espera-se produzir um corpus com aproximadamente 105.000 amostras textuais anotadas, distribuídas entre as classes \texttt{DD}, \texttt{NDD} e \texttt{AMB}, a partir de corpora públicos e de geração sintética \cite{Møller2024}. O corpus, o código de treinamento e os modelos ajustados serão disponibilizados publicamente para garantir a reprodutibilidade dos resultados.
-
-\textbf{(ii) Superioridade do BERTimbau sobre os baselines clássicos.} \citeonline{Weld2022} demonstram que modelos Transformer superam consistentemente abordagens tradicionais em classificação de intenção. Espera-se, portanto, que o BERTimbau com \textit{fine-tuning} alcance F1-score superior ao TF-IDF + SVM e à Regressão Logística. A magnitude dessa superioridade dependerá do tamanho final do corpus, em corpora menores, a diferença tende a ser menos expressiva \cite{Weld2022}.
-
-\textbf{(iii) Ganho parcial da estratégia \textit{n-best}.} Com base nos achados de \citeonline{Dighe2024}, espera-se que o \textit{n-best} reduza parcialmente o impacto dos erros de transcrição, especialmente em enunciados com WER elevado. O ganho pode ser marginal quando a transcrição 1-best já é de alta qualidade.
-
-\textbf{(iv) Degradação mensurável do desempenho com erros de ASR.} O experimento \textit{upper-bound} deverá evidenciar degradação estatisticamente significativa entre o desempenho com transcrições manuais e automáticas, com magnitude proporcional ao WER de cada variante do Whisper. Essa análise fornecerá evidências empíricas sobre o papel do ASR como gargalo do sistema.
-
-\textbf{(v) Baseline textual para DDSD em PT-BR.} O conjunto de resultados produzidos: corpus, modelos, código e métricas, constituirá um \textit{baseline} documentado e reprodutível para DDSD em português brasileiro, servindo como ponto de referência para estudos futuros \cite{Wazlawick2020, Dighe2024}.
-
-% ---------------------------------------------------------------
-\section{Considerações éticas}
-\label{sec:eticas}
-
-Embora este trabalho não envolva coleta direta de dados de participantes humanos, os corpora utilizados são públicos e os dados sintéticos são gerados por LLMs, algumas considerações éticas merecem registro.
-
-Em relação aos dados públicos, os corpora CORAA ASR, NURC-SP e TAGARELA serão utilizados estritamente em conformidade com suas respectivas licenças de uso. As transcrições extraídas serão anonimizadas quando necessário, preservando apenas o conteúdo linguístico relevante para a tarefa.
-
-No que se refere aos dados sintéticos, a geração por LLMs pode introduzir vieses socioculturais presentes nos dados de pré-treinamento desses modelos. A mitigação desse risco será realizada por meio da diversificação de contextos e registros nos \textit{prompts} de geração, conforme descrito na Seção~\ref{sec:fontes_dados}, e pela revisão humana de uma amostra representativa.
-
-Por fim, cabe observar que a tecnologia de DDSD, por operar sobre fala captada continuamente, levanta questões relevantes de privacidade em cenários de implantação real. Embora esse aspecto esteja fora do escopo experimental deste trabalho (conforme delimitado na Seção~\ref{sec:limitacoes}), reconhece-se que qualquer aplicação futura da abordagem proposta deverá incorporar mecanismos de consentimento, processamento local e minimização de dados, em conformidade com a legislação vigente.
-
-% ---------------------------------------------------------------
-\section{Cronograma de trabalho}
-\label{sec:cronograma}
-
-O cronograma de execução do TCC2 está organizado em seis fases sequenciais, distribuídas ao longo de aproximadamente 16 semanas, conforme a Figura~\ref{fig:gantt}.
-
-\begin{figure}[H]
-    \centering
-    \caption{Cronograma de execução previsto para o TCC2}
-    \label{fig:gantt}
-    \begin{ganttchart}[
-        hgrid,
-        vgrid,
-        x unit=0.65cm,
-        y unit title=0.6cm,
-        y unit chart=0.55cm,
-        bar/.style={fill=blue!40},
-        title label font=\scriptsize,
-        bar label font=\scriptsize,
-        group label font=\scriptsize\bfseries,
-        milestone label font=\scriptsize,
-    ]{1}{16}
-        \gantttitle{Semanas do TCC2}{16} \\
-        \gantttitlelist{1,...,16}{1} \\
-
-        \ganttgroup{F1: Corpus}{1}{5} \\
-        \ganttbar{Coleta e seleção de dados}{1}{2} \\
-        \ganttbar{Anotação e validação}{2}{5} \\
-
-        \ganttgroup{F2: Implementação}{4}{9} \\
-        \ganttbar{Módulo ASR (Whisper)}{4}{6} \\
-        \ganttbar{Baselines clássicos}{5}{7} \\
-        \ganttbar{Fine-tuning BERTimbau}{6}{9} \\
-
-        \ganttgroup{F3: Experimentos}{8}{13} \\
-        \ganttbar{Experimentos principais}{8}{11} \\
-        \ganttbar{Experimento upper-bound}{10}{12} \\
-        \ganttbar{Modelos alternativos}{11}{13} \\
-
-        \ganttgroup{F4: Análise}{12}{14} \\
-        \ganttbar{Análise de resultados}{12}{14} \\
-        \ganttbar{Interpretabilidade}{13}{14} \\
-
-        \ganttgroup{F5: Escrita e documentação}{1}{15} \\
-        \ganttbar{Redação contínua do TCC2}{1}{15} \\
-
-        \ganttgroup{F6: Entrega}{15}{16} \\
-        \ganttbar{Revisão final e submissão}{15}{16} \\
-    \end{ganttchart}
+    \caption{Funil do corpus, das 289.920 frases das fontes às 116.438 do corpus final}
+    \includegraphics[width=\textwidth]{figuras/m2_funil_corpus.pdf}
     \fonte{Elaborado pelo autor (2026).}
+    \label{fig:funil_corpus}
 \end{figure}
 
-A Tabela~\ref{tab:cronograma} descreve os marcos e entregáveis ao final de cada fase.
+O corpus final tem 58.219 frases por classe, e a faixa de 25 a 50 palavras ficou vazia. Nenhuma fonte tinha DD nessa faixa, e a geração não cobriu esse tamanho. Por isso o corpus vai de 2 a 24 palavras, com mediana de 9 nas duas classes.
+
+A divisão é 80/10/10, com 93.150 frases de treino, 11.672 de validação e 11.616 de teste. Ela é estratificada por classe, fonte e faixa, com semente 8. Estratos com menos de 10 itens passam para classe e faixa e, se ainda forem pequenos, para a classe. Nenhum texto aparece em duas partições, e a participação de cada fonte em cada partição difere no máximo 0,068 p.p. da participação no corpus inteiro.
+
+% ---------------------------------------------------------------
+
+\subsection{Condição sem correção}
+\label{sec:corpus_controle}
+
+A condição sem correção (controle) usa só o corpus inicial e um balanceamento global 1:1, sem olhar a faixa, a fonte ou a origem. Ela tem o mesmo tamanho do corpus com correção, 116.438 frases, para que só a composição mude. Assim, os dois conjuntos são comparados no mesmo teste: o corpus sem correção exclui 9.527 textos iguais ou quase iguais aos do teste do corpus com correção. Essa comparação mede a correção como um todo, já que as frases novas e o balanceamento entram juntos, e o experimento não separa o efeito de cada uma.
+
+% ---------------------------------------------------------------
+
+\subsection{Revisão humana}
+\label{sec:revisao_humana}
+
+Uma amostra estratificada de 300 frases foi revisada pelo autor, que é o único anotador. A revisão usou a mesma pergunta da rotulação e apresentou as frases em ordem aleatória, sem o rótulo nem a fonte à vista. 
+
+A concordância entre o anotador e os rótulos de origem foi medida pelo coeficiente kappa de Cohen \cite{Cohen1960}, no total e por origem, fonte e faixa. Como há um único anotador, o coeficiente mede a concordância com os rótulos gerados, e não a concordância entre dois anotadores humanos. O resultado está na Tabela~\ref{tab:anotacao}.
+
+% ---------------------------------------------------------------
+
+\section{Classificadores}
+\label{sec:classificadores}
+
+Três Transformers foram ajustados por \textit{fine-tuning} sobre o corpus com correção, e dois \textit{baselines} lineares foram treinados sobre o mesmo texto. Os modelos usam as partições de treino e de validação para o ajuste e a escolha dos limiares, e o teste fica reservado para a avaliação final.
+
+% ---------------------------------------------------------------
+
+\subsection{Transformers}
+\label{sec:transformers}
+
+O BERTimbau é o classificador padrão do sistema. Usa-se a versão Base, \texttt{neuralmind/\allowbreak bert-base-\allowbreak portuguese-cased}, com 108,9 milhões de parâmetros. Ela segue a arquitetura BERT \cite{Devlin2019} e foi pré-treinada para o português \cite{Souza2020}. Apenas a versão Base foi treinada neste trabalho. O Albertina 100M PT-BR \cite{Santos2024}, \texttt{PORTULAN/\allowbreak albertina-100m-\allowbreak portuguese-ptbr-encoder}, tem 139,2 milhões de parâmetros contados nos pesos. Sua arquitetura é a do DeBERTa V1 \cite{He2021}, com vocabulário BPE em nível de byte (do inglês \textit{byte-pair encoding}) herdado do DeBERTa-base em inglês. O DeBERTinha, \texttt{sagui-nlp/\allowbreak debertinha-ptbr-\allowbreak xsmall}, tem 40,9 milhões de parâmetros e é uma adaptação do DeBERTaV3 XSmall \cite{He2023} para o português brasileiro \cite{Abonizio2023}.
+
+A precisão de treino é escolhida por modelo. BERTimbau e DeBERTinha treinam em bf16 misto, desde que um teste de \textit{autocast} no MPS, feito na própria máquina antes do treino, passe. O Albertina treina em fp32, porque no MPS o mascaramento da atenção do DeBERTa V1 estoura em bf16. O motivo fica registrado no manifesto de cada execução.
+
+O treino usa a biblioteca Transformers \cite{Wolf2020} sobre o PyTorch \cite{Paszke2019}, com o MPS como dispositivo. O otimizador é o AdamW \cite{Loshchilov2019}, que é o padrão do \textit{Trainer} dessa biblioteca. A cabeça de classificação tem duas saídas, com DD como classe positiva, e a perda é a entropia cruzada. A Tabela~\ref{tab:hiperparametros} resume os hiperparâmetros, que são os mesmos em todas as execuções de um modelo.
 
 \begin{table}[htb]
     \centering
-    \caption{Marcos e entregáveis por fase do TCC2}
-    \label{tab:cronograma}
-    \begin{tabular}{lcc}
+    \caption{Hiperparâmetros do \textit{fine-tuning} dos três Transformers}
+    \label{tab:hiperparametros}
+    \begin{tabular}{lccc}
         \toprule
-        \textbf{Fase}
-            & \textbf{Semanas}
-            & \textbf{Entregável principal} \\
+        \textbf{Parâmetro} & \textbf{BERTimbau} & \textbf{Albertina} & \textbf{DeBERTinha} \\
         \midrule
-        F1 -- Corpus
-            & 1--5
-            & Corpus anotado e validado \\
-        F2 -- Implementação
-            & 4--9
-            & Pipeline ASR + baselines + BERTimbau \\
-        F3 -- Experimentos
-            & 8--13
-            & Resultados completos \\
-        F4 -- Análise
-            & 12--14
-            & Análise quantitativa e qualitativa \\
-        F5 -- Escrita e documentação
-            & 1--15
-            & Capítulos produzidos e atualizados continuamente \\
-        F6 -- Entrega
-            & 15--16
-            & TCC2 revisado, submetido e apresentado \\
+        Taxa de aprendizado & $2 \times 10^{-5}$ & $2 \times 10^{-5}$ & $2 \times 10^{-5}$ \\
+        Tamanho do lote & 32 & 32 & 32 \\
+        Épocas (máximo) & 4 & 4 & 5 \\
+        Tokens por frase (máximo) & 128 & 128 & 128 \\
+        \textit{Warmup} (fração dos passos) & 10\% & 10\% & 10\% \\
+        Agendador da taxa & linear & linear & linear \\
+        \textit{Dropout} & 0,1 & 0,1 & 0,1 \\
+        \textit{Weight decay} & 0,01 & 0,01 & 0,01 \\
+        Parada antecipada & paciência 2 & paciência 2 & paciência 2 \\
+        Precisão de treino & bf16 misto & fp32 & bf16 misto \\
         \bottomrule
     \end{tabular}
     \fonte{Elaborado pelo autor (2026).}
+    \nota{A parada antecipada e a escolha do melhor checkpoint usam a F1 macro de validação, avaliada ao fim de cada época.}
 \end{table}
 
-A execução das atividades prevê sobreposição entre as fases técnicas e a redação do TCC2. A escrita será realizada de forma contínua ao longo de todo o semestre, acompanhando a evolução do corpus, da implementação, dos experimentos e das análises. Essa estratégia reduz o acúmulo de atividades ao final do cronograma e permite que os resultados obtidos sejam documentados à medida que são produzidos.
+Cada modelo com correção do corpus foi treinado com três sementes, 42, 43 e 44, e o modelo sem correção de cada família, com a semente 42. A semente usada no sistema é a de maior F1 macro de validação com limiar 0,5. Esse critério foi fixado no código antes do treino, e por ele foram escolhidas as sementes 44 do BERTimbau, 42 do Albertina e 44 do DeBERTinha. No teste interno, os resultados são reportados como média e desvio entre as sementes.
+
+Dentro de cada execução, o melhor \textit{checkpoint} é o de maior F1 macro de validação. O limiar de decisão é o valor, entre 0,005 e 0,995 em passos de 0,005, que maximiza a F1 macro na validação. Os limiares das três execuções do sistema são 0,685 para o BERTimbau, 0,620 para o Albertina e 0,395 para o DeBERTinha.
+
+A Figura~\ref{fig:treino} mostra a evolução da validação por época. Em oito das nove execuções com correção, a menor perda de validação vem antes do melhor \textit{checkpoint}. Por isso o \textit{checkpoint} é escolhido pela F1 macro, já que a perda também pesa a confiança das probabilidades, enquanto a F1 conta só acertos e erros. No BERTimbau com semente 44, o melhor \textit{checkpoint} foi o da época 3 de 4. Nas demais execuções com correção, foi o da última época.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Evolução da validação por época nas nove execuções com correção}
+    \includegraphics[width=\textwidth]{figuras/m3_treino.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:treino}
+\end{figure}
+
+O teste é avaliado uma única vez, com o melhor \textit{checkpoint} lido do disco e em fp32, sem \textit{autocast}. Avaliar o modelo em memória, herdando o \textit{autocast} do treino, deslocaria as probabilidades em até cerca de 0,01. A paridade entre essa avaliação e a inferência do sistema foi verificada, e as decisões coincidiram em pelo menos 99,9\% dos casos.
+
+% ---------------------------------------------------------------
+
+\subsection{Baselines lineares}
+\label{sec:baselines}
+
+Os \textit{baselines} usam TF-IDF com 1 a 3 gramas, 50.000 termos, frequência mínima de 2 documentos e termo de frequência com escala sublinear \cite{Manning2008}. O primeiro é uma regressão logística com regularização L2 e otimização LBFGS. O segundo é um SVM linear \cite{Cortes1995}, calibrado por Platt \cite{Platt1999} com validação cruzada de 5 partes, para que também produza probabilidades. Ambos usam o scikit-learn \cite{Pedregosa2011}.
+
+O parâmetro de regularização $C$ é escolhido entre 0,1, 1 e 10, por busca em grade com validação cruzada estratificada de 5 partes, usando a F1 macro como critério e só o treino. Os valores escolhidos são $C = 10$ para a regressão logística e $C = 1$ para o SVM, com limiares de 0,480 e 0,460 na validação. Os dois são treinados sobre o texto normalizado do corpus, e no sistema recebem a transcrição do Whisper. Eles mostram se o ganho dos Transformers justifica sua complexidade. No sistema, têm a mesma interface dos Transformers e entram pela linha de comando.
+
+% ---------------------------------------------------------------
+
+\section{Reconhecimento de fala}
+\label{sec:asr}
+
+O reconhecimento usa o Whisper large-v3-turbo \cite{Radford2023, OpenAI2024Turbo}, cujo decodificador tem 4 camadas, em vez das 32 do modelo large-v3. Este trabalho usa só essa variante, em dois \textit{backends} que carregam conversões do mesmo modelo. O mlx-whisper 0.4.3 \cite{MLX2023} roda na GPU, com \texttt{mlx-community/\allowbreak{}whisper-\allowbreak{}large-\allowbreak{}v3-\allowbreak{}turbo}. O faster-whisper 1.2.1 \cite{FasterWhisper} roda na CPU, sobre o motor CTranslate2 \cite{CTranslate2}, com \texttt{mobiuslabsgmbh/\allowbreak{}faster-\allowbreak{}whisper-\allowbreak{}large-\allowbreak{}v3-\allowbreak{}turbo}.
+
+Ter o mesmo modelo nos dois \textit{backends} faz com que a diferença entre eles seja de implementação e de precisão, e não de pesos. Essa variante roda localmente com latência compatível com a fala ao vivo. A justificativa de desempenho está no benchmark da Figura~\ref{fig:whisper}.
+
+A decodificação é a mesma nos dois \textit{backends}. Ela é gulosa, com um único caminho, e usa \textit{fallback} de temperatura nos valores 0,0; 0,2; 0,4; 0,6; 0,8 e 1,0. A transcrição é refeita com amostragem quando a razão de compressão passa de 2,4 ou quando a log-probabilidade média fica abaixo de $-1{,}0$. O idioma é fixado em português, o contexto anterior não condiciona a decodificação, e o limiar de silêncio do Whisper fica desligado. O filtro de voz interno do faster-whisper também fica desligado, porque a detecção de voz é a do próprio sistema.
+
+Os \textit{backends} diferem em precisão numérica. O mlx roda em fp16, e o faster-whisper, em fp32. No mlx, a semente é fixada em 0 na abertura do modelo. O sorteio da nova tentativa é compilado e guarda a chave aleatória da primeira chamada, de modo que a semente fixa torna o sorteio igual entre execuções. Com isso, execuções repetidas do mesmo conjunto produziram transcrições idênticas, conferidas item a item.
+
+O benchmark foi medido com o computador ligado na tomada, com fala sintetizada pelo macOS e a mediana de cinco repetições (duas nas falas de 20 s). No mlx, uma fala de 1 a 20 s leva de 0,39 a 0,66 s na GPU. No faster-whisper, leva de 2,8 a 3,5 s em fp32 e de 4,9 a 6,7 s em int8. Em uma fala de 5 s, os tempos são 0,45 s, 2,93 s e 5,23 s, e por isso o mlx é o \textit{backend} do sistema. O benchmark mede só o tempo; a qualidade fica para o Capítulo~\ref{cap:resultados}.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Tempo de transcrição em função da duração da fala, no mlx e no faster-whisper}
+    \includegraphics[width=0.9\textwidth]{figuras/m4_whisper.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:whisper}
+\end{figure}
+
+O mlx fica abaixo da diagonal, que marca o tempo igual ao da fala, em toda a faixa medida. O faster-whisper em fp32 fica acima dela até cerca de 3 s de fala, e o int8, até cerca de 5 s. Neste Mac, o int8 foi mais lento que o fp32, e por isso o fp32 é o padrão do faster-whisper.
+
+% ---------------------------------------------------------------
+
+\section{Confiabilidade da transcrição}
+\label{sec:fuzzy}
+
+Além da decisão, o sistema calcula um índice de confiabilidade $r$, um número entre 0 e 1 que estima quanto a transcrição merece confiança. As entradas são metadados que o próprio Whisper devolve por segmento: a log-probabilidade média dos \textit{tokens} (\textit{avg\_logprob}), a probabilidade de não haver fala (\textit{no\_speech\_prob}), a razão de compressão e a temperatura usada. Cada entrada é a média dos segmentos ponderada pela duração. O índice não lê o áudio nem o texto.
+
+A inferência é do tipo Mamdani \cite{Mamdani1975}, com conjunção pelo mínimo, agregação pelo máximo e defuzzificação pelo centroide. A teoria dos conjuntos \textit{fuzzy} está na Seção~\ref{sec:fuzzy_teoria}. Cada entrada tem termos linguísticos com funções de pertinência trapezoidais, ancoradas nos limiares documentados do Whisper. Os termos permitem combinar os sinais de forma graduada, em vez de usar um limiar rígido para cada um.
+
+A log-probabilidade tem os termos baixo, médio e alto, com transições entre $-1{,}0$ e $-0{,}15$. A probabilidade de silêncio tem os termos fala, incerto e silêncio, com o silêncio valendo a partir de 0,5. A razão de compressão tem os termos normal e repetitivo, com transição entre 1,8 e 2,4. A temperatura tem os termos nenhum e \textit{fallback}, que separa a decodificação sem nova tentativa da refeita por amostragem. O limiar de silêncio do Whisper, de 0,6, serve só de referência para a pertinência, porque o sistema desliga esse critério na decodificação.
+
+Há oito regras. Quatro levam a confiabilidade a baixa: silêncio provável, texto repetitivo, log-probabilidade baixa e log-probabilidade média com silêncio incerto. Três levam a média: fala com log-probabilidade média e compressão normal, log-probabilidade alta com silêncio incerto e uso de temperatura de \textit{fallback}. Uma leva a alta: log-probabilidade alta, fala provável, compressão normal e nenhuma temperatura de \textit{fallback}.
+
+A saída é o centroide da região agregada. Abaixo de 0,4, a confiabilidade é baixa, a partir de 0,7 é alta, e no meio é média. Uma transcrição sem segmentos recebe $r = 0$ e rótulo baixa. A confiabilidade baixa gera um alerta, sem mudar o rótulo da fala. A regra que trataria essas transcrições como NDD foi avaliada offline e não está ativa no sistema. A relação entre $r$ e o WER é medida no Capítulo~\ref{cap:resultados}.
+
+% ---------------------------------------------------------------
+
+\section{Sistema em tempo real}
+\label{sec:sistema_tempo_real}
+
+O sistema em tempo real liga o microfone do computador à decisão, em um processo contínuo que roda localmente em macOS com Apple Silicon, com um classificador carregado por vez. As medidas de latência e o sistema completo usam esse mesmo caminho, com o mesmo código em todas as execuções comparadas.
+
+% ---------------------------------------------------------------
+
+\subsection{Captura e detecção de fala}
+\label{sec:captura}
+
+A captura usa a biblioteca sounddevice, sobre o PortAudio, em fluxo mono na taxa nativa do dispositivo. O \textit{callback} só copia os blocos para um \textit{buffer} circular de 10 s e conta as perdas. A \textit{thread} de frontend reamostra o sinal para 16 kHz com a biblioteca \textit{soxr} e envia blocos de 512 amostras, ou 32 ms, ao Silero VAD \cite{Silero2024}, que roda na CPU com o ONNX Runtime, que executa modelos no formato ONNX.
+
+O segmentador é uma máquina de estados com histerese. Uma fala abre quando a probabilidade do VAD atinge 0,5 e fecha quando cai abaixo de 0,35. Um trecho só vira fala se durar pelo menos 250 ms, e a fala fecha depois de 700 ms de silêncio. Um \textit{pre-roll} de 300 ms, mantido no \textit{buffer}, evita cortar o início da fala. No fim, dos 700 ms de silêncio, só os primeiros 300 ms (\textit{post-roll}) ficam no áudio enviado ao Whisper.
+
+Uma fala com mais de 30 s é fechada no limite e continua na fala seguinte, a partir da próxima amostra. Se a entrada fica silenciosa por mais de 2 s, o sistema emite um aviso, que pode indicar falta de permissão do microfone ou dispositivo mudo. Se a captura fica sem dados por 2 s, ela é reaberta com o PortAudio recarregado.
+
+% ---------------------------------------------------------------
+
+\subsection{Transcrição, classificação e decisão}
+\label{sec:decisao}
+
+Cada componente roda em uma \textit{thread} própria, e as \textit{threads} se comunicam por filas FIFO (do inglês \textit{first in, first out}), sem limite e sem descarte. Só a \textit{thread} de ASR usa a GPU. O classificador ativo roda na CPU, em fp32, com duas \textit{threads}. Uma \textit{thread} de monitoramento verifica os prazos e a saúde da captura, e o painel é redesenhado quatro vezes por segundo.
+
+Cada fala gera uma única tarefa, a da fala completa, que começa quando o VAD a fecha. A transcrição passa pela normalização e segue para o índice de confiabilidade e para o classificador ativo. A decisão é o rótulo desse classificador sobre a transcrição, com o limiar congelado na validação. O classificador fica fixado na abertura da fala, de modo que uma fala nunca mistura modelos.
+
+Os cinco classificadores são alternativas, e só o ativo é carregado. O BERTimbau é o padrão, e as teclas de 1 a 3 trocam entre os três Transformers durante a execução. Os dois \textit{baselines} TF-IDF só entram pela linha de comando. Uma troca vale a partir da fala seguinte, e o modelo novo é carregado em segundo plano, enquanto as falas seguem com o anterior.
+
+Falhas nunca geram DD. Uma fala sem texto, uma falha do ASR e um classificador que não responde no prazo viram NDD, com o motivo registrado. Os prazos são de 5 s para as análises, contados a partir do fim da transcrição, e de 60 s contra travamentos do ASR.
+
+% ---------------------------------------------------------------
+
+\subsection{Painel, gravação e publicação}
+\label{sec:painel_publicacao}
+
+O painel do terminal mostra o estado das filas, as decisões e os alertas, e é atualizado quatro vezes por segundo. A tecla M ou a barra de espaço pausam o microfone. Nesse caso, a fala aberta é fechada e decidida normalmente. A tecla Q encerra o sistema, que para a captura, drena as falas pendentes dentro de um prazo e fecha as filas antes de sair.
+
+Com a opção de gravação da linha de comando, o sistema guarda, em uma pasta por sessão, o áudio de cada fala e as evidências de cada decisão, incluindo o classificador usado e o índice de confiabilidade. Sem essa opção, nada é gravado. A gravação tem fila própria e nunca derruba o sistema: uma falha de escrita é contada e registrada como erro.
+
+Os modelos e o corpus estão publicados no Hugging Face, na conta \texttt{phelipescript}, em \texttt{https://huggingface.co/phelipescript}. São sete repositórios de modelos: o BERTimbau, o Albertina, o DeBERTinha, o TF-IDF com regressão logística e SVM, e os três Transformers treinados sem correção. O corpus está no dataset \texttt{ddsd-ptbr-corpus}, com as partições e as fontes. Cada modelo traz o limiar escolhido na validação, e o sistema baixa os modelos que faltam quando precisa deles.
+
+% ---------------------------------------------------------------
+
+\section{Protocolo de avaliação}
+\label{sec:avaliacao}
+
+A hipótese é avaliada conjunto por conjunto. Ela é confirmada em um conjunto quando dois critérios são atendidos. O critério C1 exige que os Transformers superem o melhor \textit{baseline} em F1 macro, e também em acurácia e em EER, com intervalo de confiança de 95\% do \textit{bootstrap} pareado, com 2.000 reamostras, que não cruza o zero. O critério C2 exige EER abaixo de 30\%, com limiar pré-registrado e mantido.
+
+As métricas estão definidas na Seção~\ref{sec:metricas}. O \textit{bootstrap} pareado \cite{Efron1979} sorteia 2.000 reamostras dos itens e recalcula a diferença entre dois modelos em cada uma, de modo que a comparação usa sempre os mesmos itens. Na voz do autor, o sorteio é das frases, e não das leituras, porque a mesma frase foi lida em quatro cenários e os erros de um modelo se repetem nela. Entre sementes, reporta-se média e desvio, porque a semente escolhida pela validação não representa sozinha o modelo.
+
+A Tabela~\ref{tab:conjuntos_avaliacao} resume os seis conjuntos, que cobrem o texto do corpus, a fala sintetizada, a voz de um falante, as transcrições e o áudio de conversas públicas e uma sessão com roteiro. A última linha da tabela traz o sistema completo, que recebe o áudio de três desses conjuntos. Cada conjunto mede uma condição diferente, e o veredito de cada um aparece separadamente no Capítulo~\ref{cap:resultados}.
+
+\begin{table}[htb]
+    \centering
+    \caption{Conjuntos de avaliação e medidas usadas em cada um}
+    \label{tab:conjuntos_avaliacao}
+    \small
+    \begin{tabularx}{\textwidth}{lZZZ}
+        \toprule
+        \textbf{Conjunto} & \textbf{Entrada} & \textbf{Itens} & \textbf{Medidas} \\
+        \midrule
+        Teste interno & texto do corpus, sem ASR & 11.616 frases & acurácia, F1 macro e EER \\
+        Transcrições públicas & texto de CORAA, NURC-SP e TAGARELA, só NDD & 2.912 frases & taxa de falsas ativações \\
+        Voz sintética & transcrição do Whisper de fala sintetizada & 740 frases & acurácia, F1 macro e EER, no texto e na transcrição \\
+        Voz do autor & transcrição do Whisper de leituras de um falante & 184 leituras de 64 frases & acurácia, F1 macro e EER, no texto e na transcrição, e falsas ativações \\
+        Áudio público & transcrição do Whisper de trechos de CORAA e NURC-SP & 600 trechos, só NDD & taxa de falsas ativações \\
+        Sessão ao vivo & fala pelo microfone, com roteiro & 88 linhas (41 DD e 47 NDD) & pedidos atendidos e falsas ativações \\
+        Sistema completo & áudio dos três conjuntos tocado no \textit{buffer} do microfone & 751, 198 e 691 decisões & pedidos atendidos, falsas ativações e latência \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Os critérios C1 e C2 se aplicam aos conjuntos com as duas classes, porque o EER exige ambas. Nos conjuntos só com NDD, a medida é a taxa de falsas ativações. O sistema completo é comparado pelo \textit{bootstrap} pareado nos pedidos atendidos e nas falsas ativações, cada modelo contra o BERTimbau e cada Transformer contra a própria versão sem correção.
+
+O teste interno é o conjunto de referência para comparar os modelos sem o efeito do ASR. Nele são avaliados os três Transformers com correção, nas três sementes, os três modelos sem correção e os dois \textit{baselines} TF-IDF, com as mesmas 11.616 frases. Os demais conjuntos medem o efeito da transcrição e da fala real.
+
+Para as transcrições públicas, foram sorteadas 2.912 frases de conversa real, sem as que são iguais ou quase iguais às do corpus. Do CORAA e do NURC-SP entram até 1.000 frases de cada um, sorteadas com semente 42 nas partições de teste. Do TAGARELA entram as 912 frases elegíveis. Como toda frase desse conjunto é NDD por suposição de domínio, a medida é a taxa de falsas ativações, isto é, de falas não dirigidas decididas como DD, que a literatura chama de falsos positivos.
+
+A voz sintética usa 740 frases do teste interno, 370 DD e 370 NDD, estratificadas por classe e faixa de tamanho. Elas foram sintetizadas com três vozes em português brasileiro do edge-tts \cite{EdgeTTS}. Cada frase aparece uma vez. Nos três conjuntos de áudio, o Whisper transcreve cada áudio inteiro, sem o detector de voz, com a configuração do sistema. A queda do acerto é a diferença entre o resultado no texto lido e o resultado na transcrição, nos mesmos itens.
+
+A voz do autor é a de um único falante, gravado a 48 kHz. Foram lidas as mesmas 40 frases do teste, 20 DD e 20 NDD, em quatro cenários: sala quieta, ruído de fundo, microfone de um iPhone (Continuity) e cerca de 2 m do computador. Também foram lidas 24 falas de um roteiro de conversa, todas NDD e nenhuma igual ou quase igual a uma frase do corpus. 
+
+O áudio público tem 600 trechos de conversa espontânea, de 1,5 a 15 s, sorteados com semente 42 nas partições de teste, sendo 300 do CORAA e 300 do NURC-SP. Todos são NDD. A referência de cada trecho é a transcrição do próprio corpus.
+
+A sessão ao vivo segue um roteiro de 113 falas, 42 DD e 71 NDD, em sete cenas. Ela foi realizada com duração de 9,5 min, usando o BERTimbau de semente 44 com limiar 0,685 e o Whisper mlx de semente 0. Cada fala detectada foi casada com as linhas lidas, em ordem e por similaridade de caracteres acima de 0,5, com junções e divisões de até três linhas.
+
+A latência é medida em cada fala, do fim da fala até a decisão, e inclui os 0,7 s de espera do VAD. Como as falas são as mesmas em todas as execuções, a diferença entre os modelos vem só do classificador. O tempo do Whisper, fala a fala, mostra também a variação entre execuções. O custo é descrito pela contagem de parâmetros nos pesos do melhor \textit{checkpoint}, pelo tamanho do arquivo, pelo tempo e pela memória de treino registrados nos manifestos, e pelo tempo de inferência por fala na CPU. Os valores estão no Capítulo~\ref{cap:resultados}.
+
+% ---------------------------------------------------------------
+
+\section{Tecnologias utilizadas}
+\label{sec:tecnologias}
+
+As versões das bibliotecas são as travadas no arquivo de dependências, gerenciado pelo uv. A Tabela~\ref{tab:ferramentas} lista as ferramentas principais e o papel de cada uma.
+
+\begin{table}[htb]
+    \centering
+    \caption{Ferramentas principais, versões travadas e papel no trabalho}
+    \label{tab:ferramentas}
+    \small
+    \begin{tabularx}{\textwidth}{lcZ}
+        \toprule
+        \textbf{Ferramenta} & \textbf{Versão} & \textbf{Papel no trabalho} \\
+        \midrule
+        Python & 3.13 & linguagem do projeto \\
+        PyTorch & 2.14.1 & treino e inferência dos Transformers \\
+        Transformers & 5.20.1 & modelos, tokenizadores e \textit{Trainer} do \textit{fine-tuning} \\
+        Datasets & 5.1.0 & carregamento do corpus publicado \\
+        Accelerate & 1.15.0 & execução do \textit{Trainer} e autocast \\
+        scikit-learn & 1.9.1 & baselines, regressão logística e SVM calibrado \\
+        MLX & 0.32.4 & base do mlx-whisper na GPU \\
+        mlx-whisper & 0.4.3 & Whisper na GPU \\
+        faster-whisper & 1.2.1 & Whisper na CPU \\
+        CTranslate2 & 4.8.3 & motor de inferência do faster-whisper \\
+        silero-vad & 6.2.3 & detecção de voz \\
+        sounddevice & 0.5.6 & captura de áudio \\
+        soxr & 1.1.0 & reamostragem para 16 kHz \\
+        jiwer & 4.0.0 & cálculo do WER \\
+        edge-tts & 7.3.1 & síntese das vozes do teste \\
+        Rich & 15.0.0 & painel no terminal \\
+        huggingface-hub & 2.2.0 & download dos modelos \\
+        matplotlib & 3.11.2 & figuras \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
 
 % ---------------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
