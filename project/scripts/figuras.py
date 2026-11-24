@@ -390,9 +390,9 @@ def r3_correcao() -> None:
             ax.plot([com, sem], [yy, yy], color=GRID, linewidth=2.5, zorder=1)
             dot(ax, [sem], [yy], "sem", label="Sem correção" if ax is axes[0] and yy == y[0] else None)
             dot(ax, [com], [yy], "com", label="Com correção" if ax is axes[0] and yy == y[0] else None)
-            ax.annotate(pct_text(sem, 0), (sem, yy), xytext=(0, 7), textcoords="offset points", ha="center",
+            ax.annotate(pct_text(sem), (sem, yy), xytext=(0, 7), textcoords="offset points", ha="center",
                         fontsize=8)
-            ax.annotate(pct_text(com, 0), (com, yy), xytext=(0, 7), textcoords="offset points", ha="center",
+            ax.annotate(pct_text(com), (com, yy), xytext=(0, 7), textcoords="offset points", ha="center",
                         fontsize=8)
         ax.set_title(title, fontsize=8.5, loc="left")
         ax.set_xlim(0, 45)
@@ -432,7 +432,7 @@ def r4_falsas_ativacoes_por_tamanho() -> None:
         ax.plot(x, values, color=color, linewidth=2, marker=marker, markersize=6.5, markeredgecolor="white",
                 markeredgewidth=1.0, label=label, zorder=3)
     for i, values, dy in ((0, sem, 8), (0, com, 8), (last, com, 8)):  # os pontos citados no texto
-        ax.annotate(pct_text(values[i], 0), (x[i], values[i]), xytext=(0, dy), textcoords="offset points",
+        ax.annotate(pct_text(values[i]), (x[i], values[i]), xytext=(0, dy), textcoords="offset points",
                     ha="center", fontsize=8)
     ax.set_xticks(x, bins)
     ax.set_xlabel("Tamanho da frase (palavras)")

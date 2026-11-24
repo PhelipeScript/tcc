@@ -93,7 +93,7 @@ conjuntos, de 22-32% para 5-8%.
 - Fontes: `reports/externa_texto/resultado.json` e `reports/pipeline_{gravacoes,publico}/comparacao.json`.
 
 **R4 · `r4_falsas_ativacoes_por_tamanho`.** Com a correção, as falsas ativações caem sobretudo nas frases curtas:
-nas de 2 palavras, de 90% para 9%.
+nas de 2 palavras, de 89,8% para 8,6%.
 - Nas frases longas acontece o contrário: a partir de 11 palavras, com a correção há mais falsas ativações que
   sem ela, e a diferença cresce com o tamanho, de 4,7% contra 1,9% (14-17 palavras) e 7,3% contra 1,9%
   (18-24) até 10,6% contra 0,5% (25-50).
