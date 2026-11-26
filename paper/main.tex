@@ -1068,7 +1068,6 @@ O treino usa a biblioteca Transformers \cite{Wolf2020} sobre o PyTorch \cite{Pas
         \bottomrule
     \end{tabular}
     \fonte{Elaborado pelo autor (2026).}
-    \nota{A parada antecipada e a escolha do melhor checkpoint usam a F1 macro de validação, avaliada ao fim de cada época.}
 \end{table}
 
 Cada modelo com correção do corpus foi treinado com três sementes, 42, 43 e 44, e o modelo sem correção de cada família, com a semente 42. A semente usada no sistema é a de maior F1 macro de validação com limiar 0,5. Esse critério foi fixado no código antes do treino, e por ele foram escolhidas as sementes 44 do BERTimbau, 42 do Albertina e 44 do DeBERTinha. No teste interno, os resultados são reportados como média e desvio entre as sementes.
@@ -1267,23 +1266,675 @@ As versões das bibliotecas são as travadas no arquivo de dependências, gerenc
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+% ===============================================================
+% CAPÍTULO 4 - RESULTADOS E DISCUSSÃO
+% ===============================================================
+\chapter{Resultados e discussão}
+\label{cap:resultados}
+
+Os resultados vêm de seis conjuntos de avaliação, que medem etapas diferentes. O teste interno usa o texto do corpus, sem reconhecimento de fala. A voz sintética e a voz de um único falante passam pelo Whisper antes do classificador. As transcrições e o áudio dos corpora públicos contêm só fala não dirigida ao computador, de modo que medem falsas ativações. A sessão ao vivo testa o sistema completo com um roteiro. Cada conjunto responde a uma pergunta diferente, e por isso os resultados são lidos por conjunto antes da discussão final.
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+\section{Corpus final}
+\label{sec:res_corpus}
+
+O corpus final tem 116.438 frases, com 58.219 de cada classe. Ele sai de 289.920 frases das fontes e passa pela normalização, pelos filtros, pela deduplicação e pelo balanceamento por faixa de tamanho (Figura~\ref{fig:funil_corpus}). Do corpus final, 81,9\% vêm do corpus inicial, gerado antes da correção, e 18,1\% são frases novas, geradas por faixa de tamanho e como negativos difíceis. A Tabela~\ref{tab:corpus_final} discrimina origens, geradores e estratégias. A mediana é de 9 palavras nas duas classes, com extremos de 2 e 24 palavras.
+
+\begin{table}[htb]
+\centering
+\caption{Corpus final}
+\label{tab:corpus_final}
+\footnotesize
+\begin{tabularx}{\textwidth}{lZZZZ}
+\toprule
+Origem & Modelo gerador & Estratégia & Frases por classe & Parte do corpus \\
+\midrule
+Corpus inicial & qwen/\allowbreak{}qwen3.6-\allowbreak{}35b-\allowbreak{}a3b & - & 20.415 & 35,1\% \\
+Corpus inicial & claude-\allowbreak{}sonnet (CLI) & - & 10.390 & 17,8\% \\
+Corpus inicial & openrouter/\allowbreak{}free & - & 3.369 & 5,8\% \\
+Corpus inicial & qwen/\allowbreak{}qwen3.8-\allowbreak{}27b & - & 3.088 & 5,3\% \\
+Corpus inicial & zai-\allowbreak{}org/\allowbreak{}glm-\allowbreak{}4.6v-\allowbreak{}flash & - & 2.608 & 4,5\% \\
+Corpus inicial & opencode (CLI) & - & 2.342 & 4,0\% \\
+Corpus inicial & google/\allowbreak{}gemma-\allowbreak{}4-\allowbreak{}e4b & - & 1.973 & 3,4\% \\
+Corpus inicial & mistral-\allowbreak{}small-\allowbreak{}latest & - & 1.829 & 3,1\% \\
+Corpus inicial & moonshotai/\allowbreak{}kimi-\allowbreak{}k3 & - & 1.681 & 2,9\% \\
+Frases novas da correção & google/\allowbreak{}gemma-\allowbreak{}4-\allowbreak{}e4b & por tamanho & 3.982 & 6,8\% \\
+Frases novas da correção & google/\allowbreak{}gemma-\allowbreak{}4-\allowbreak{}e4b & negativos difíceis & 1.425 & 2,4\% \\
+Frases novas da correção & claude-\allowbreak{}sonnet-\allowbreak{}5-\allowbreak{}5 & negativos difíceis & 1.211 & 2,1\% \\
+Frases novas da correção & qwen/\allowbreak{}qwen3.8-\allowbreak{}27b & negativos difíceis & 985 & 1,7\% \\
+Frases novas da correção & openai/\allowbreak{}gpt-\allowbreak{}oss-\allowbreak{}120b & negativos difíceis & 916 & 1,6\% \\
+Frases novas da correção & qwen/\allowbreak{}qwen3.8-\allowbreak{}27b & por tamanho & 914 & 1,6\% \\
+Frases novas da correção & openai/\allowbreak{}gpt-\allowbreak{}oss-\allowbreak{}120b & por tamanho & 703 & 1,2\% \\
+Frases novas da correção & claude-\allowbreak{}sonnet-\allowbreak{}5-\allowbreak{}5 & por tamanho & 361 & 0,6\% \\
+Frases novas da correção & gemini-\allowbreak{}3.5-\allowbreak{}flash & por tamanho & 27 & $<$ 0,1\% \\
+\textbf{Corpus inicial} &  &  & \textbf{47.695} & \textbf{81,9\%} \\
+\textbf{Frases novas da correção} &  &  & \textbf{10.524} & \textbf{18,1\%} \\
+\bottomrule
+\end{tabularx}
+\par\vspace{8pt}
+\begin{tabular}{lrr}
+\toprule
+Partição & Frases por classe & Total \\
+\midrule
+Treino & 46.575 & 93.150 \\
+Validação & 5.836 & 11.672 \\
+Teste & 5.808 & 11.616 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Sem correção, o tamanho da frase revela boa parte da classe. No corpus final sem correção, a ROC-AUC do tamanho é de 0,86, e frases de 3 palavras são 99,9\% DD, enquanto frases de 18 a 24 palavras são 1,0\% DD (Figura~\ref{fig:vies_comprimento}). Esse atalho, que associa a classe ao comprimento, é o viés de comprimento que a correção procura remover.
+
+Com as frases novas, após os filtros e antes da deduplicação e do balanceamento, a ROC-AUC ainda é de 0,818. No corpus final com correção, ela cai para 0,515, valor próximo ao da ausência de informação. Em todas as faixas até 24 palavras, a proporção de DD fica em 50\%. Dentro de cada faixa, a fonte e a origem da frase também prediziam a classe após os filtros, com ROC-AUC de 0,7755 e 0,5947, e deixam de predizer no corpus final.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Fração de frases dirigidas ao computador (DD) por faixa de tamanho, sem e com correção do viés}
+    \includegraphics[width=\textwidth]{figuras/r1_vies_comprimento.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:vies_comprimento}
+\end{figure}
+
+A faixa de 25 a 50 palavras é a única que o corpus com correção não cobre. O corpus sem correção tem 281 frases NDD nessa faixa, mas o modelo com correção não viu nenhuma delas no treino, e a avaliação dela deve ser lida com cautela. Esse ponto volta na Seção~\ref{sec:res_correcao}, quando se analisam as falsas ativações por tamanho.
+
+O autor anotou às cegas uma amostra estratificada de 300 frases, sem conhecer o rótulo nem a fonte de cada uma. A concordância com o rótulo do LLM foi de 93,7\%, e o kappa de Cohen \cite{Cohen1960} foi de 0,873, que a escala de \citeonline{Landis1977} classifica como quase perfeita. A Tabela~\ref{tab:anotacao} mostra que a concordância cai nas frases novas (92,4\%, com kappa de 0,848) e nos negativos difíceis (88,9\%, com kappa de 0,779).
+
+\begin{table}[htb]
+\centering
+\caption{Revisão humana cega (300 frases, um anotador)}
+\label{tab:anotacao}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Recorte & Frases & Concordância & Kappa de Cohen \\
+\midrule
+Geral & 300 & 93,7\% & 0,873 \\
+Corpus inicial & 182 & 94,5\% & 0,890 \\
+Frases novas da correção & 118 & 92,4\% & 0,848 \\
+Geração por tamanho & 73 & 94,5\% & 0,890 \\
+Negativos difíceis & 45 & 88,9\% & 0,779 \\
+\bottomrule
+\end{tabular}
+\par\vspace{8pt}
+\begin{tabular}{lrr}
+\toprule
+Rótulo do LLM & Autor: DD & Autor: NDD \\
+\midrule
+DD & 137 & 13 \\
+NDD & 6 & 144 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+A concordância também é menor nas frases de 3 palavras, com kappa de 0,677, o menor valor entre as faixas de tamanho analisadas. Esse número indica que o rótulo de frases muito curtas é o mais ambíguo, o que se soma à dificuldade do modelo nessas frases, como se verá adiante.
+
+O kappa mede a concordância entre o autor e o rótulo do gerador, e não entre duas pessoas, porque há um só anotador. Uma concordância alta indica que o rótulo é plausível para o autor. Nenhum outro anotador foi medido, e isso limita o que a revisão prova sobre a qualidade dos rótulos.
+
+Além da revisão, 17.904 frases do corpus final (15\%) passaram pela autoverificação. O próprio gerador reclassificou cada uma em temperatura zero, sem ver o rótulo pretendido, e só ficaram as frases que ele confirmou. Nos lotes com registro, a discordância foi de 1,0\% nas frases DD e de 13,0\% nas NDD. Esses registros cobrem 62\% das 18.987 frases verificadas nas fontes.
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+\section{Treino e custo}
+\label{sec:res_treino}
+
+Os três Transformers foram ajustados (\textit{fine-tuning}) com as configurações da Tabela~\ref{tab:hiperparametros}. Cada um teve três sementes com correção e uma semente sem correção, e a Tabela~\ref{tab:treino} traz, para cada execução, a melhor época, a F1 macro de validação e o limiar escolhido. A semente usada no sistema é a de maior F1 macro de validação: a 44 do BERTimbau, a 42 do Albertina e a 44 do DeBERTinha.
+
+\begin{table}[htb]
+\centering
+\caption{Treino dos classificadores}
+\label{tab:treino}
+\small
+\begin{tabularx}{\textwidth}{lYYYYZ}
+\toprule
+Modelo & Semente & Melhor \textit{checkpoint} (época) & F1 macro de validação & Limiar escolhido & No sistema \\
+\midrule
+BERTimbau & 42 & 4 de 4 & 0,9830 & 0,420 &  \\
+BERTimbau & 43 & 4 de 4 & 0,9833 & 0,725 &  \\
+BERTimbau & 44 & 3 de 4 & 0,9834 & 0,685 & sim \\
+Albertina & 42 & 4 de 4 & 0,9792 & 0,620 & sim \\
+Albertina & 43 & 4 de 4 & 0,9787 & 0,940 &  \\
+Albertina & 44 & 4 de 4 & 0,9789 & 0,555 &  \\
+DeBERTinha & 42 & 5 de 5 & 0,9787 & 0,830 &  \\
+DeBERTinha & 43 & 5 de 5 & 0,9793 & 0,800 &  \\
+DeBERTinha & 44 & 5 de 5 & 0,9798 & 0,395 & sim \\
+BERTimbau sem correção & 42 & 4 de 4 & 0,9887 & 0,070 &  \\
+Albertina sem correção & 42 & 4 de 4 & 0,9879 & 0,490 &  \\
+DeBERTinha sem correção & 42 & 5 de 5 & 0,9874 & 0,030 &  \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Em 11 das 12 execuções, o melhor \textit{checkpoint} foi o da última época. A exceção é o BERTimbau com a semente 44, cujo melhor \textit{checkpoint} foi o da época 3 de 4. Nas mesmas 11 execuções, a menor perda de validação aparece antes do melhor \textit{checkpoint}. Depois dela, a perda sobe, mas a F1 continua a subir, e por isso o \textit{checkpoint} foi escolhido pela F1, que conta acertos e erros, e não pela perda, que pesa a confiança das probabilidades.
+
+A Figura~\ref{fig:treino}, no Capítulo~\ref{cap:desenvolvimento}, mostra essas curvas para as nove execuções com correção. Na primeira época, a F1 de validação vai de 0,9686 a 0,9772 e, com pequenas oscilações, sobe nas épocas seguintes. No melhor \textit{checkpoint}, a F1 fica entre 0,9787 e 0,9834, com variação de no máximo 0,0011 entre as sementes de um mesmo modelo.
+
+O limiar de decisão é o valor que maximiza a F1 macro na validação, e é o parâmetro mais instável do treino. Com correção, ele vai de 0,395 a 0,940 entre as nove execuções, e no Albertina, por exemplo, de 0,555 a 0,940 entre sementes, enquanto a F1 varia no máximo 0,0011 dentro de cada modelo. Sem correção, o limiar vai de 0,030 a 0,490. No SVM, a probabilidade vem da calibração de Platt \cite{Platt1999}, e o limiar é aplicado sobre ela.
+
+Os dois \textit{baselines} escolheram o parâmetro C por validação cruzada de cinco partes. A regressão logística usou C igual a 10, com F1 macro de validação de 0,9605 e limiar de 0,48, e o SVM usou C igual a 1, com F1 de 0,9611 e limiar de 0,46. Os dois treinam em poucos segundos, e a diferença de F1 entre eles é de 0,0006.
+
+O custo está na Tabela~\ref{tab:custo}. O BERTimbau tem 108,9 milhões de parâmetros, ocupa 416 MB e leva 56 $\pm$ 5 min por semente, com pico de 3,4 GB de memória. O Albertina é o maior, com 139,2 milhões de parâmetros, e o mais lento de treinar, com 148 $\pm$ 3 min e pico de 8,8 GB. Ele foi treinado em fp32, porque o bf16 falha no MPS com esse modelo.
+
+\begin{table}[htb]
+\centering
+\caption{Custo dos classificadores}
+\label{tab:custo}
+\footnotesize
+\begin{tabularx}{\textwidth}{lYYZZY}
+\toprule
+Modelo & Parâmetros & Tamanho & Treino por semente & Pico de memória & Inferência ao vivo (CPU) \\
+\midrule
+BERTimbau & 108,9 mi & 416 MB & 56 $\pm$ 5 min & 3,4 GB & 27,7-41,1 ms \\
+Albertina & 139,2 mi & 531 MB & 148 $\pm$ 3 min & 8,8 GB & 43,4-44,1 ms \\
+DeBERTinha & 40,9 mi & 156 MB & 50 $\pm$ 3 min & 2,4 GB & 31,1-31,3 ms \\
+TF-IDF + Regressão Logística & 50.000 termos & 0,9 MB & $\sim$5 s & - & 0,64-1,41 ms \\
+TF-IDF + SVM & 50.000 termos & 2,3 MB & $\sim$4 s & - & 4,17-4,27 ms \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+O DeBERTinha, com 40,9 milhões de parâmetros, é o menor: ocupa 156 MB e leva 50 $\pm$ 3 min por semente, com pico de 2,4 GB. Os dois TF-IDF têm 50.000 termos e ocupam entre 0,9 MB e 2,3 MB. Com pouco mais de um terço dos parâmetros do BERTimbau, o DeBERTinha fica a 0,5 p.p. de F1 do melhor Transformer no teste interno, na média das três sementes, o que coloca o custo ao lado do acerto na escolha do modelo.
+
+Na inferência, medida na CPU durante o funcionamento do sistema, cada fala leva entre 27,7 ms e 41,1 ms com o BERTimbau, entre 43,4 ms e 44,1 ms com o Albertina e entre 31,1 ms e 31,3 ms com o DeBERTinha, conforme o conjunto. Os TF-IDF levam de 0,64 ms a 1,41 ms com a regressão logística e de 4,17 ms a 4,27 ms com o SVM. Diante da transcrição, que leva cerca de 0,42 s, o classificador pesa pouco, como mostra a Seção~\ref{sec:res_latencia}.
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+\section{Teste interno}
+\label{sec:res_teste_interno}
+
+No teste interno, com 11.616 frases separadas do treino e da validação, os três Transformers com correção alcançam F1 macro de 0,9770 a 0,9822, e os dois TF-IDF, de 0,9609 a 0,9615 (Tabela~\ref{tab:teste_interno}). O BERTimbau é o melhor, com 0,9822 $\pm$ 0,0010 em média nas três sementes, seguido pelo Albertina, com 0,9788 $\pm$ 0,0012, e pelo DeBERTinha, com 0,9770. O EER do BERTimbau é de 1,78\% $\pm$ 0,06 p.p., contra 3,93\% e 4,01\% dos dois TF-IDF.
+
+\begin{table}[htb]
+\centering
+\caption{Teste interno (11.616 frases)}
+\label{tab:teste_interno}
+\small
+\begin{tabularx}{\textwidth}{lYYY}
+\toprule
+Modelo & Acurácia & F1 macro & EER \\
+\midrule
+BERTimbau & 0,9822 $\pm$ 0,0010 & 0,9822 $\pm$ 0,0010 & 0,0178 $\pm$ 0,0006 \\
+Albertina & 0,9788 $\pm$ 0,0012 & 0,9788 $\pm$ 0,0012 & 0,0219 $\pm$ 0,0009 \\
+DeBERTinha & 0,9770 $\pm$ 0,0000 & 0,9770 $\pm$ 0,0000 & 0,0226 $\pm$ 0,0004 \\
+TF-IDF + Regressão Logística & 0,9609 & 0,9609 & 0,0393 \\
+TF-IDF + SVM & 0,9615 & 0,9615 & 0,0401 \\
+BERTimbau sem correção & 0,9221 & 0,9218 & 0,0832 \\
+Albertina sem correção & 0,9201 & 0,9199 & 0,0878 \\
+DeBERTinha sem correção & 0,9155 & 0,9152 & 0,0882 \\
+\bottomrule
+\end{tabularx}
+\par\vspace{8pt}
+\textbf{Modelos sem correção nos dois testes}\\[2pt]
+\par\vspace{8pt}
+\begin{tabularx}{\textwidth}{lYYYY}
+\toprule
+Modelo sem correção & Acurácia no teste do próprio corpus & Acurácia no teste com correção & EER no próprio teste & EER no teste com correção \\
+\midrule
+BERTimbau sem correção & 0,9887 & 0,9221 & 0,0114 & 0,0832 \\
+Albertina sem correção & 0,9865 & 0,9201 & 0,0138 & 0,0878 \\
+DeBERTinha sem correção & 0,9855 & 0,9155 & 0,0138 & 0,0882 \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+A diferença entre os Transformers e os TF-IDF é significativa nos seis pares, em acurácia, F1 e EER. O intervalo de confiança (IC) de 95\% vem de um \textit{bootstrap} pareado com 2.000 reamostras \cite{Efron1979}. A diferença de F1 vai de +1,5 a +2,2 p.p., e a de EER, de $-$1,7 a $-$2,3 p.p. O BERTimbau supera o SVM em +2,2 p.p. de F1, com IC de [+1,9; +2,5] (Tabela~\ref{tab:bootstrap}). Esses valores usam a semente escolhida pela validação de cada modelo, e não a média das três.
+
+\begin{table}[htb]
+\centering
+\caption{Transformers $\times$ TF-IDF: \textit{bootstrap} pareado no teste interno}
+\label{tab:bootstrap}
+\small
+\begin{tabularx}{\textwidth}{ZZZZZ}
+\toprule
+Comparação & Acurácia (p.p.) & F1 macro (p.p.) & EER (p.p.) & F1 significativo? \\
+\midrule
+BERTimbau $-$ TF-IDF + Regressão Logística & +2,2 [+1,9; +2,6] & +2,2 [+1,9; +2,6] & $-$2,2 [$-$2,6; $-$1,9] & sim \\
+BERTimbau $-$ TF-IDF + SVM & +2,2 [+1,9; +2,5] & +2,2 [+1,9; +2,5] & $-$2,3 [$-$2,6; $-$1,9] & sim \\
+Albertina $-$ TF-IDF + Regressão Logística & +1,9 [+1,6; +2,3] & +1,9 [+1,6; +2,3] & $-$1,9 [$-$2,2; $-$1,5] & sim \\
+Albertina $-$ TF-IDF + SVM & +1,8 [+1,5; +2,2] & +1,8 [+1,5; +2,2] & $-$1,9 [$-$2,3; $-$1,6] & sim \\
+DeBERTinha $-$ TF-IDF + Regressão Logística & +1,6 [+1,3; +2,0] & +1,6 [+1,3; +2,0] & $-$1,7 [$-$2,1; $-$1,4] & sim \\
+DeBERTinha $-$ TF-IDF + SVM & +1,5 [+1,2; +1,9] & +1,5 [+1,2; +1,9] & $-$1,8 [$-$2,1; $-$1,4] & sim \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Com esses resultados, o critério C1 da regra de aceitação (Seção~\ref{sec:avaliacao}) é atendido, pois os Transformers superam o melhor TF-IDF em F1, acurácia e EER, com intervalos que não cruzam zero. O critério C2, de EER abaixo de 30\%, também é atendido com grande margem, já que o pior dos Transformers, o DeBERTinha, tem EER de 2,26\% na média das três sementes.
+
+A Tabela~\ref{tab:confusao} mostra os erros da semente escolhida. O BERTimbau perde 89 pedidos e aceita 106 falsas ativações, com precisão de 98,18\% e sensibilidade de 98,47\%. O SVM perde 192 pedidos e aceita 255 falsas ativações. Nos dois tipos de erro, o SVM fica bem atrás: perde mais que o dobro de pedidos e aceita mais que o dobro de falsas ativações.
+
+\begin{table}[htb]
+\centering
+\caption{Matriz de confusão no teste interno}
+\label{tab:confusao}
+\footnotesize
+\begin{tabularx}{\textwidth}{lYYYYYY}
+\toprule
+Modelo & DD aceito & DD perdido & NDD aceito (falsa ativação) & NDD ignorado & Precisão (DD) & Sensi\-bilidade (DD) \\
+\midrule
+BERTimbau & 5.719 & 89 & 106 & 5.702 & 98,18\% & 98,47\% \\
+Albertina & 5.706 & 102 & 130 & 5.678 & 97,77\% & 98,24\% \\
+DeBERTinha & 5.705 & 103 & 164 & 5.644 & 97,21\% & 98,23\% \\
+TF-IDF + Regressão Logística & 5.586 & 222 & 232 & 5.576 & 96,01\% & 96,18\% \\
+TF-IDF + SVM & 5.616 & 192 & 255 & 5.553 & 95,66\% & 96,69\% \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+A Figura~\ref{fig:teste_interno} põe lado a lado o erro e o EER dos oito modelos. Os três modelos sem correção acertam entre 0,9155 e 0,9221 neste teste, abaixo dos Transformers com correção. No teste do próprio corpus, porém, os mesmos modelos chegam a 0,9855 e 0,9887 (Tabela~\ref{tab:teste_interno}, segundo bloco). A queda de 6,6 a 7,0 p.p. mostra quanto do acerto desses modelos dependia do atalho do tamanho, e não da tarefa.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Erro e EER no teste interno dos oito modelos}
+    \includegraphics[width=\textwidth]{figuras/r2_teste_interno.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:teste_interno}
+\end{figure}
+
+Com a semente escolhida, os três Transformers com correção têm a menor acurácia nas frases de 2 palavras. No BERTimbau, ela é de 0,9663 nessa faixa e chega a 0,9941 nas de 14 a 17 palavras. Esse padrão é coerente com a dificuldade de decidir a classe de frases como ``volta rápido''.
+
+O teste interno separa os Transformers dos TF-IDF com significância estatística, mas está perto do teto, com F1 entre 0,977 e 0,982 nos Transformers com correção, na média das três sementes. Com a semente escolhida, as diferenças entre os três Transformers também são significativas pelo \textit{bootstrap} pareado, porém pequenas, de 0,3 a 0,6 p.p. de F1. Por isso, o teste aponta a superioridade dos Transformers sobre o TF-IDF, mas pouco diz sobre qual Transformer é o melhor em situações reais.
 
 % ---------------------------------------------------------------
 
+\section{Efeito da correção do viés de comprimento}
+\label{sec:res_correcao}
+
+Nos três conjuntos de fala real da Figura~\ref{fig:correcao}, as falsas ativações dos modelos sem correção ficam entre 22,0\% e 32,3\%, e as dos modelos com correção, entre 5,2\% e 7,7\%. Nas transcrições públicas, a taxa cai de 22,0\% a 30,8\% para 5,4\% a 6,3\%. Na voz do autor, cai de 25,0\% a 29,8\% para 5,8\% a 7,7\%, e no áudio público, de 23,7\% a 32,3\% para 5,2\% a 6,5\%.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Falsas ativações sem e com correção do viés de comprimento, em três conjuntos de fala real}
+    \includegraphics[width=\textwidth]{figuras/r3_correcao.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:correcao}
+\end{figure}
+
+Nas transcrições públicas, a redução vai de 16,7 p.p. no Albertina a 25,1 p.p. no DeBERTinha, e os nove pares dos três conjuntos da figura são significativos pelo \textit{bootstrap} pareado. No sistema completo, a redução vai de 18,3 p.p. a 24,0 p.p. na voz do autor e de 18,5 p.p. a 27,0 p.p. no áudio público.
+
+Na voz do autor, 80 das 104 falas não dirigidas são frases do teste lidas em voz alta. As outras 24 são as do roteiro de conversa, que simula conversas reais. Nessas 24 falas, os três Transformers com correção não ativam nenhuma vez, enquanto os modelos sem correção ativam entre 5 e 7 vezes.
+
+O efeito da correção é bem maior que o da escolha entre modelos. Nas transcrições públicas, as diferenças entre os modelos com correção e os TF-IDF, chegam a 1,2 p.p., e apenas duas delas são significativas (Seção~\ref{sec:res_externa}). Neste experimento, portanto, o corpus de treino pesa mais na taxa de falsas ativações do que a arquitetura escolhida.
+
+A Figura~\ref{fig:falsas_ativacoes_tamanho} mostra que o efeito não é uniforme no tamanho da frase. Nas frases de 2 palavras, a média dos três Transformers cai de 89,8\% para 8,6\% com a correção. A partir de 11 palavras, porém, a correção aumenta as falsas ativações: são 4,7\% contra 1,9\% nas frases de 14 a 17 palavras, 7,3\% contra 1,9\% nas de 18 a 24 e 10,6\% contra 0,5\% nas de 25 a 50.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Falsas ativações por tamanho da frase nas transcrições públicas, sem e com correção}
+    \includegraphics[width=\textwidth]{figuras/r4_falsas_ativacoes_por_tamanho.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:falsas_ativacoes_tamanho}
+\end{figure}
+
+A explicação está no corpus sem correção. Nele, as frases longas são quase todas NDD: 89\% das de 14 a 17 palavras e 99\% das de 18 a 24. Com a correção, o tamanho deixa de indicar a classe, e o modelo passa a decidir essas frases pelo conteúdo. A subida das falsas ativações longas é compatível com a retirada desse atalho.
+
 % ---------------------------------------------------------------
+
+\section{Falsas ativações em transcrições de fala real}
+\label{sec:res_externa}
+
+Esse conjunto mede o classificador sobre fala real, com o texto original dos corpora, sem passar pelo reconhecimento de fala. São 2.912 transcrições do CORAA (1.000), do NURC-SP (1.000) e do TAGARELA (912), todas de fala não dirigida ao computador, de modo que toda ativação é uma falsa ativação \cite{CORAA2023, NURCSP2025, Tagarela2026}. A Tabela~\ref{tab:externa} traz as taxas por corpus, com a semente escolhida de cada Transformer, e as taxas das três sementes, com a média.
+
+\begin{table}[htb]
+\centering
+\caption{Falsas ativações nas transcrições públicas (texto dos corpora)}
+\label{tab:externa}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Modelo & CORAA & NURC-SP & TAGARELA & Geral \\
+\midrule
+BERTimbau & 4,7\% & 6,6\% & 7,8\% & 6,3\% \\
+Albertina & 3,5\% & 5,3\% & 7,5\% & 5,4\% \\
+DeBERTinha & 5,1\% & 5,9\% & 6,0\% & 5,7\% \\
+TF-IDF + Regressão Logística & 6,3\% & 6,3\% & 5,6\% & 6,1\% \\
+TF-IDF + SVM & 6,8\% & 6,6\% & 6,4\% & 6,6\% \\
+BERTimbau sem correção & 34,9\% & 20,5\% & 26,1\% & 27,2\% \\
+Albertina sem correção & 28,1\% & 16,2\% & 21,7\% & 22,0\% \\
+DeBERTinha sem correção & 41,4\% & 23,9\% & 26,8\% & 30,8\% \\
+\bottomrule
+\end{tabular}
+\par\vspace{8pt}
+\begin{tabular}{lrrrr}
+\toprule
+Modelo & s42 & s43 & s44 & Média $\pm$ desvio \\
+\midrule
+BERTimbau & 5,0\% & 5,7\% & 6,3\% & 5,7\% $\pm$ 0,7 p.p. \\
+Albertina & 5,4\% & 4,9\% & 6,2\% & 5,5\% $\pm$ 0,7 p.p. \\
+DeBERTinha & 4,3\% & 4,1\% & 5,7\% & 4,7\% $\pm$ 0,9 p.p. \\
+\bottomrule
+\end{tabular}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Com a semente escolhida, os Transformers ficam entre 5,4\% e 6,3\%, e os TF-IDF, em 6,1\% com regressão logística e 6,6\% com SVM. Nas médias de três sementes, os Transformers vão de 4,7\% a 5,7\%, e o desvio entre sementes, de 0,7 a 0,9 p.p., é da mesma ordem das diferenças entre os modelos. A escolha da semente pesa, por isso, quase tanto quanto a escolha do modelo.
+
+A comparação pareada mostra que a diferença entre os Transformers e os TF-IDF não é significativa, com uma exceção. O Albertina, com a semente escolhida, ativa 1,24 p.p. menos que o SVM, com IC de [$-$2,27; $-$0,10]. Entre os próprios Transformers, o BERTimbau ativa 0,96 p.p. a mais que o Albertina, com IC de [+0,14; +1,82], enquanto as médias das três sementes diferem em cerca de 0,2 p.p.
+
+Sem correção, esse mesmo conjunto dá entre 22,0\% e 30,8\% de falsas ativações. A correção reduz as taxas em 16,7 p.p. no Albertina, em 20,9 p.p. no BERTimbau e em 25,1 p.p. no DeBERTinha, e os três intervalos de confiança ficam longe de zero. É o mesmo efeito observado no sistema completo, agora em fala real e sem passar pelo Whisper.
+
+Uma taxa de 5\% por fala não dirigida significa uma ativação indevida a cada vinte falas de conversa. Para um sistema que deve ficar em silêncio durante conversas, esse valor é alto, e o TF-IDF tem taxa semelhante. Nesse conjunto, os Transformers não reduzem as falsas ativações em relação ao \textit{baseline} linear, e o ganho esperado não aparece.
+
+As transcrições são as originais dos corpora, sem o Whisper. Por isso, medem a generalização do classificador, e não a do sistema completo, cujo resultado aparece na Seção~\ref{sec:res_sistema}.
+
+% ---------------------------------------------------------------
+
+\section{Impacto do reconhecimento de fala}
+\label{sec:res_asr}
+
+A Tabela~\ref{tab:asr} traz a taxa de erro de palavras (WER) de cada condição de áudio e a queda de acerto entre o texto lido e a transcrição do Whisper, nos mesmos itens. A voz sintética, gerada com o edge-tts \cite{EdgeTTS}, tem o menor WER, de 0,049 nas 740 frases. A voz do autor tem 0,170 em média nos 184 itens, com as falas do roteiro de conversa incluídas. Nas frases do teste, o WER vai de 0,137 na sala quieta a 0,220 com ruído de fundo, e no roteiro é de 0,031. O áudio público tem entre 0,271 e 0,274 sem as pausas preenchidas.
+
+\begin{table}[htb]
+\centering
+\caption{Impacto do reconhecimento de fala (ASR)}
+\label{tab:asr}
+\small
+\begin{tabular}{lrr}
+\toprule
+Condição & Itens & WER médio \\
+\midrule
+Voz sintética & 740 & 0,049 \\
+Sala quieta & 40 & 0,137 \\
+Ruído de fundo & 40 & 0,220 \\
+iPhone & 40 & 0,205 \\
+$\sim$2 m & 40 & 0,201 \\
+Roteiro de conversa & 24 & 0,031 \\
+Áudio público (CORAA + NURC-SP) & 600 & 0,274 \\
+\bottomrule
+\end{tabular}
+\par\vspace{8pt}
+\textbf{Voz sintética} (740 itens)\\[2pt]
+\par\vspace{8pt}
+\begin{tabularx}{\textwidth}{lYYYY}
+\toprule
+Modelo & Acerto no texto lido & Acerto na transcrição & Queda & Spearman (WER $\times$ queda) \\
+\midrule
+BERTimbau & 97,8\% & 97,4\% & 0,4 p.p. & 0,09 \\
+Albertina & 98,4\% & 98,2\% & 0,1 p.p. & 0,04 \\
+DeBERTinha & 97,6\% & 97,4\% & 0,1 p.p. & 0,04 \\
+TF-IDF + Regressão Logística & 96,2\% & 94,9\% & 1,4 p.p. & 0,20 \\
+TF-IDF + SVM & 96,2\% & 94,9\% & 1,4 p.p. & 0,22 \\
+\bottomrule
+\end{tabularx}
+\par\vspace{8pt}
+\textbf{Voz do autor} (184 itens)\\[2pt]
+\par\vspace{8pt}
+\begin{tabularx}{\textwidth}{lYYYY}
+\toprule
+Modelo & Acerto no texto lido & Acerto na transcrição & Queda & Spearman (WER $\times$ queda) \\
+\midrule
+BERTimbau & 95,7\% & 93,5\% & 2,2 p.p. & 0,06 \\
+Albertina & 95,7\% & 94,0\% & 1,6 p.p. & 0,15 \\
+DeBERTinha & 95,7\% & 93,5\% & 2,2 p.p. & 0,18 \\
+TF-IDF + Regressão Logística & 97,3\% & 92,4\% & 4,9 p.p. & 0,27 \\
+TF-IDF + SVM & 95,1\% & 90,2\% & 4,9 p.p. & 0,27 \\
+\bottomrule
+\end{tabularx}
+\par\vspace{8pt}
+\textbf{Áudio público (CORAA + NURC-SP)} (600 trechos, todos não dirigidos)\\[2pt]
+\par\vspace{8pt}
+\begin{tabularx}{\textwidth}{lYYYY}
+\toprule
+Modelo & Falsas ativações na transcrição do corpus & Falsas ativações na transcrição do Whisper & Diferença & Spearman (WER $\times$ queda) \\
+\midrule
+BERTimbau & 5,3\% & 5,8\% & +0,5 p.p. & 0,05 \\
+Albertina & 3,8\% & 5,0\% & +1,2 p.p. & 0,08 \\
+DeBERTinha & 4,7\% & 5,3\% & +0,7 p.p. & 0,02 \\
+TF-IDF + Regressão Logística & 5,7\% & 7,0\% & +1,3 p.p. & 0,05 \\
+TF-IDF + SVM & 5,8\% & 7,2\% & +1,3 p.p. & 0,06 \\
+BERTimbau sem correção & 21,0\% & 22,3\% & +1,3 p.p. & 0,03 \\
+Albertina sem correção & 15,2\% & 17,3\% & +2,2 p.p. & 0,07 \\
+DeBERTinha sem correção & 22,8\% & 25,2\% & +2,3 p.p. & 0,07 \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+O WER penaliza mais as frases curtas, porque um erro numa frase de duas palavras já vale 50\% de WER. Variações de grafia, repetições e números escritos em algarismos também contam como erro. Por isso, a média deve ser lida junto com a distribuição do tamanho das frases, e não isoladamente.
+
+A queda de acerto é pequena na voz sintética: de 0,1 a 0,4 p.p. nos Transformers e de 1,4 p.p. nos TF-IDF. Na voz do autor, ela vai de 1,6 a 2,2 p.p. nos Transformers e chega a 4,9 p.p. nos TF-IDF. Os acertos no texto lido e na transcrição de cada modelo estão na Tabela~\ref{tab:asr}.
+
+Na voz sintética, a comparação pareada das transcrições do Whisper mostra seis pares significativos em acurácia, F1 e EER. A F1 fica de +2,5 a +3,4 p.p., e o EER, de $-$2,4 a $-$3,1 p.p. A Tabela~\ref{tab:bootstrap_asr} traz os valores, que sustentam a hipótese para essa condição controlada.
+
+Na voz do autor, nenhum par é significativo. A F1 vai de +1,1 a +3,8 p.p., com intervalos largos, e o EER vai de $-$3,0 a $-$5,2 p.p. A única métrica com diferença significativa é a ROC-AUC do BERTimbau, de +4,0 p.p. [+0,7; +8,7] contra a regressão logística e de +3,6 p.p. [+0,2; +8,5] contra o SVM.
+
+\begin{table}[htb]
+\centering
+\caption{Transformers $\times$ TF-IDF: \textit{bootstrap} pareado nas transcrições do Whisper}
+\label{tab:bootstrap_asr}
+\small
+\textbf{Voz sintética} (740 itens)\\[2pt]
+\par\vspace{8pt}
+\begin{tabularx}{\textwidth}{ZZZZZ}
+\toprule
+Comparação & Acurácia (p.p.) & F1 macro (p.p.) & EER (p.p.) & F1 significativo? \\
+\midrule
+BERTimbau $-$ TF-IDF + Regressão Logística & +2,6 [+0,8; +4,3] & +2,6 [+0,8; +4,3] & $-$2,4 [$-$4,1; $-$0,8] & sim \\
+BERTimbau $-$ TF-IDF + SVM & +2,5 [+0,8; +4,2] & +2,5 [+0,8; +4,2] & $-$2,7 [$-$4,4; $-$1,0] & sim \\
+Albertina $-$ TF-IDF + Regressão Logística & +3,4 [+1,8; +5,1] & +3,4 [+1,8; +5,2] & $-$2,8 [$-$4,5; $-$1,1] & sim \\
+Albertina $-$ TF-IDF + SVM & +3,4 [+1,8; +5,1] & +3,4 [+1,8; +5,1] & $-$3,1 [$-$4,8; $-$1,4] & sim \\
+DeBERTinha $-$ TF-IDF + Regressão Logística & +2,6 [+1,1; +4,3] & +2,6 [+1,1; +4,3] & $-$2,5 [$-$4,2; $-$1,0] & sim \\
+DeBERTinha $-$ TF-IDF + SVM & +2,6 [+1,1; +4,2] & +2,6 [+1,1; +4,2] & $-$2,8 [$-$4,5; $-$1,3] & sim \\
+\bottomrule
+\end{tabularx}
+\par\vspace{8pt}
+\textbf{Voz do autor} (184 itens)\\[2pt]
+\par\vspace{8pt}
+\begin{tabularx}{\textwidth}{ZZZZZ}
+\toprule
+Comparação & Acurácia (p.p.) & F1 macro (p.p.) & EER (p.p.) & F1 significativo? \\
+\midrule
+BERTimbau $-$ TF-IDF + Regressão Logística & +1,0 [$-$6,1; +7,4] & +1,2 [$-$6,0; +8,0] & $-$5,2 [$-$14,1; +2,8] & não \\
+BERTimbau $-$ TF-IDF + SVM & +3,1 [$-$4,7; +10,7] & +3,3 [$-$4,8; +11,2] & $-$3,7 [$-$12,9; +4,6] & não \\
+Albertina $-$ TF-IDF + Regressão Logística & +1,5 [$-$5,3; +8,0] & +1,7 [$-$5,6; +8,6] & $-$4,5 [$-$14,0; +4,1] & não \\
+Albertina $-$ TF-IDF + SVM & +3,6 [$-$3,9; +11,2] & +3,8 [$-$4,1; +12,0] & $-$3,0 [$-$11,8; +5,9] & não \\
+DeBERTinha $-$ TF-IDF + Regressão Logística & +1,0 [$-$5,9; +7,4] & +1,1 [$-$6,1; +7,9] & $-$4,9 [$-$14,3; +4,7] & não \\
+DeBERTinha $-$ TF-IDF + SVM & +3,1 [$-$4,6; +10,7] & +3,3 [$-$4,6; +11,3] & $-$3,3 [$-$13,0; +6,2] & não \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Os intervalos de robustez, que comparam a queda de acerto entre modelos por \textit{bootstrap}, mostram o mesmo padrão. Na voz sintética, o Albertina e o DeBERTinha perdem 1,2 p.p. a menos que os dois TF-IDF, com IC de 95\% entre $-$2,3 e $-$0,3 p.p. O IC do BERTimbau encosta em zero. Na voz do autor e no áudio público, nenhuma diferença de robustez é significativa.
+
+A Figura~\ref{fig:asr} agrupa a voz sintética e a voz do autor, 924 itens, por faixa de WER. Acima de 0,3 há 69 itens, sendo 33 sintéticos e 36 da voz do autor. Nesse grupo, a queda média é de 12,3 p.p. nos dois TF-IDF e de 6,8 p.p. nos três Transformers. Esses valores são descritivos e não têm intervalo de confiança.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Taxa de erro de palavras e queda de acerto por faixa de WER, nas vozes sintética e do autor}
+    \includegraphics[width=\textwidth]{figuras/r5_asr.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:asr}
+\end{figure}
+
+Na faixa de 0,1 a 0,3, com 126 itens (78 sintéticos e 48 da voz do autor), o TF-IDF já perde acerto. Na voz sintética, a regressão logística perde 9,0 p.p. e o SVM, 10,3 p.p., contra 1,3 p.p. do BERTimbau. O DeBERTinha e o Albertina não perdem, e cada um ganha um item. Na voz do autor, nessa faixa, o TF-IDF e o BERTimbau perdem 4,2 p.p., ou dois itens, enquanto o DeBERTinha e o Albertina não perdem nenhum.
+
+No áudio público, a transcrição do Whisper aumenta pouco as falsas ativações: de 5,3\% para 5,8\% no BERTimbau, de 3,8\% para 5,0\% no Albertina e de 4,7\% para 5,3\% no DeBERTinha. Nos TF-IDF, o acréscimo é de 1,3 p.p. Como todos os trechos são não dirigidos, a queda de acerto é o próprio acréscimo de falsas ativações.
+
+Em conjunto, o reconhecimento de fala reduz o acerto de todos os modelos, e os Transformers resistem melhor na voz sintética e, em média, nas faixas de WER mais altas. Na voz de um falante, essa vantagem não é significativa. Por isso, a conclusão sobre o reconhecimento de fala deve ser lida como indicação.
+
+% ---------------------------------------------------------------
+
+\section{Sistema completo e sessão ao vivo}
+\label{sec:res_sistema}
+
+O sistema completo reúne captura, detecção de voz, transcrição e classificação em execução contínua no computador pessoal (Figura~\ref{fig:sistema}). A Tabela~\ref{tab:sistema_completo} traz, para cada modelo, os pedidos atendidos (fala dirigida decidida como DD) e as falsas ativações (fala não dirigida decidida como DD) nos três conjuntos de áudio. Os modelos com correção rodaram ao vivo, cada um na sua execução, com a mesma semente do Whisper. Os modelos sem correção julgaram as transcrições da execução do BERTimbau.
+
+\begin{table}[htb]
+\centering
+\caption{Sistema completo em tempo real: pedidos atendidos e falsas ativações}
+\label{tab:sistema_completo}
+\small
+\begin{tabularx}{\textwidth}{lYYYYY}
+\toprule
+ & \multicolumn{2}{c}{Voz do autor} & \multicolumn{2}{c}{Voz sintética} & Áudio público \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Modelo & Pedidos atendidos & Falsas ativações & Pedidos atendidos & Falsas ativações & Falsas ativações \\
+\midrule
+BERTimbau & 95,0\% & 7,7\% & 96,5\% & 1,9\% & 6,5\% \\
+TF-IDF + Regressão Logística & 87,5\% & 5,8\% & 93,2\% & 4,1\% & 8,5\% \\
+TF-IDF + SVM & 87,5\% & 8,7\% & 94,3\% & 5,1\% & 8,7\% \\
+DeBERTinha & 92,5\% & 5,8\% & 95,9\% & 1,9\% & 5,3\% \\
+Albertina & 92,5\% & 5,8\% & 96,8\% & 1,1\% & 5,2\% \\
+BERTimbau sem correção & 92,5\% & 26,0\% & 94,1\% & 34,3\% & 29,2\% \\
+Albertina sem correção & 93,8\% & 29,8\% & 94,1\% & 32,7\% & 23,7\% \\
+DeBERTinha sem correção & 92,5\% & 25,0\% & 94,1\% & 36,2\% & 32,3\% \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Nenhum modelo supera o BERTimbau de forma significativa, e o DeBERTinha e o Albertina não diferem dele (Figura~\ref{fig:sistema_completo}). As diferenças significativas são todas com os TF-IDF. Na voz do autor, os dois TF-IDF perdem 10 dos 80 pedidos, contra 4 do BERTimbau, uma diferença de $-$7,5 p.p. [$-$16,3; $-$1,3]. Na voz sintética, a regressão logística perde 3,2 p.p. a mais de pedidos [$-$5,9; $-$0,5], e o SVM aceita 3,2 p.p. a mais de falsas ativações [+0,8; +5,9].
+
+\begin{figure}[htb]
+    \centering
+    \caption{Diferença para o BERTimbau no sistema completo, em pontos percentuais, com IC de 95\%}
+    \includegraphics[width=\textwidth]{figuras/r6_sistema_completo.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:sistema_completo}
+\end{figure}
+
+Não contam como diferença os intervalos que tocam zero: o do DeBERTinha e o do Albertina contra o BERTimbau nos pedidos da voz do autor, e o da regressão logística contra o BERTimbau nas falsas ativações da voz sintética. O SVM também perde mais pedidos na voz sintética, 2,2 p.p. a mais, com IC de [$-$4,6; +0,3], sem significância. No áudio público, nenhum modelo com correção difere do BERTimbau de forma significativa.
+
+Parte dos erros do TF-IDF aparece já no texto lido, sem reconhecimento de fala. Na voz sintética, a regressão logística perde 25 pedidos: 16 por erro do classificador no texto lido e 9 por erro da transcrição. O BERTimbau perde 13, sendo 9 do classificador, 3 da transcrição e 1 do detector de voz. Na voz do autor, o BERTimbau perde 4 pedidos, 3 por erro do classificador e 1 por erro da transcrição.
+
+Todos os modelos receberam o mesmo áudio e a mesma transcrição, de modo que as diferenças entre eles vêm de como cada um lida com o mesmo texto. Os dados mostram que o TF-IDF perde mais pedidos tanto no texto lido quanto na transcrição, e que o BERTimbau perde menos em ambos os casos.
+
+Uma sessão ao vivo complementa essas medidas. O sistema final rodou por 9,5 minutos, com o classificador BERTimbau na semente 44 e limiar de 0,685. O autor leu 88 frases do roteiro, com 41 pedidos ao computador e 47 falas não dirigidas. A Tabela~\ref{tab:sessao} compara o texto do roteiro com a transcrição da sessão.
+
+\begin{table}[htb]
+\centering
+\caption{Sessão ao vivo: texto do roteiro e transcrição da sessão}
+\label{tab:sessao}
+\small
+\begin{tabularx}{\textwidth}{ZYY}
+\toprule
+Medida & No texto do roteiro & Na transcrição da sessão \\
+\midrule
+Pedidos atendidos (DD) & 40 de 41 (97,6\%) & 36 de 41 (87,8\%) \\
+Falsas ativações (NDD) & 6 de 45 (13,3\%) & 4 de 45 (8,9\%) \\
+Falsas ativações: pensando alto (13 grupos) & - & 0 de 13 (0,0\%) \\
+Falsas ativações: pessoa no quarto (14 grupos) & - & 2 de 14 (14,3\%) \\
+Falsas ativações: pessoa na chamada (18 grupos) & - & 2 de 18 (11,1\%) \\
+WER contra o roteiro & - & 11,3\% (10,5\% sem pausas preenchidas) \\
+Fim da fala à decisão, mediana & - & 1,161 s \\
+Fim da fala à decisão, percentil 95 & - & 1,227 s \\
+Fim da fala à decisão, máximo & - & 1,241 s \\
+Whisper, mediana & - & 0,410 s \\
+Classificador, mediana & - & 0,046 s \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Por destinatário, o sistema atende 36 dos 41 pedidos ao computador. Nas falas não dirigidas, ativa em 2 de 14 falas a uma pessoa no quarto (14,3\%) e em 2 de 18 a uma pessoa na chamada (11,1\%), e não ativa em nenhuma das 13 falas em voz alta. Todas as quatro falsas ativações ocorreram em falas dirigidas a pessoas.
+
+Das cinco perdas de pedido, quatro vêm da transcrição e uma do classificador. Por exemplo, o Whisper transcreveu ``bloqueia a tela'' como ``bloqueei a tela'', e o classificador deu probabilidade de DD praticamente nula. 
+
+A transcrição da sessão tem WER de 11,3\% contra o roteiro. Do fim da fala à decisão, a mediana foi de 1,161 s, o percentil 95 de 1,227 s e o máximo de 1,241 s, resultados consistentes com as medições realizadas nos conjuntos de áudio.
+
+% ---------------------------------------------------------------
+
+\section{Latência}
+\label{sec:res_latencia}
+
+A Tabela~\ref{tab:latencia} mede o tempo do fim da fala até a decisão nas execuções do sistema completo com o BERTimbau. A mediana fica entre 1,15 s e 1,18 s nos três conjuntos, e o percentil 95, entre 1,27 s e 1,91 s. O percentil 95 mais alto é o do áudio público, em que 39 falas tiveram uma nova tentativa do Whisper. Sem elas, ele cai para 1,25 s.
+
+\begin{table}[htb]
+\centering
+\caption{Tempo de resposta do sistema completo}
+\label{tab:latencia}
+\footnotesize
+\begin{tabularx}{\textwidth}{ZYYYYYYY}
+\toprule
+Conjunto & Falas & Mediana & Percentil 95 & Com nova tentativa do Whisper & Percentil 95 sem elas & Whisper (mediana) & Classi\-ficador (mediana) \\
+\midrule
+Voz do autor & 198 & 1,18 s & 1,36 s & 3 & 1,31 s & 0,43 s & 41 ms \\
+Voz sintética & 751 & 1,17 s & 1,27 s & 0 & 1,27 s & 0,42 s & 38 ms \\
+Áudio público (CORAA + NURC-SP) & 691 & 1,15 s & 1,91 s & 39 & 1,25 s & 0,42 s & 28 ms \\
+\bottomrule
+\end{tabularx}
+\par\vspace{8pt}
+\textbf{Whisper na GPU $\times$ na CPU}\\[2pt]
+\par\vspace{8pt}
+\begin{tabular}{lrr}
+\toprule
+Whisper large-v3-turbo & Latência (mediana) & RTF \\
+\midrule
+mlx-whisper fp16, GPU (o do sistema) & 0,45 s & 0,090 \\
+faster-whisper fp32, CPU, 4 \textit{threads} & 2,93 s & 0,586 \\
+faster-whisper int8, CPU, 4 \textit{threads} & 5,23 s & 1,045 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+A Figura~\ref{fig:latencia} separa essas medianas por etapa. A maior parte do tempo é a espera de 0,7 s de silêncio que o detector de voz Silero \cite{Silero2024} exige antes de fechar a fala. O Whisper leva de 0,42 s a 0,43 s, e o classificador, menos de 50 ms. Filas e processamento do detector somam, no percentil 95, de 14 a 16 ms.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Latência do fim da fala até a decisão, por etapa, com o BERTimbau}
+    \includegraphics[width=\textwidth]{figuras/r7_latencia.pdf}
+    \fonte{Elaborado pelo autor (2026).}
+    \label{fig:latencia}
+\end{figure}
+
+O reconhecimento de fala é o gargalo, e o classificador responde por uma parcela pequena do tempo. Esse resultado depende do hardware. Na GPU, com o MLX \cite{MLX2023}, o Whisper transcreve 5 s de fala em 0,45 s, com Taxa de Tempo Real (RTF, do inglês \textit{Real-Time Factor}) de 0,090. Na CPU, com faster-whisper \cite{FasterWhisper}, o mesmo trecho leva de 2,93 s a 5,23 s, com RTF de 0,586 a 1,045 (Figura~\ref{fig:whisper}).
+
+Medido isoladamente, o BERTimbau leva de 11,6 ms a 12,1 ms por frase na CPU, conforme o número de \textit{threads}, e o DeBERTinha, de 8,3 ms a 9,2 ms. Esses tempos são menores que os medidos ao vivo, de 27,7 ms a 41,1 ms. Os relatórios não explicam a diferença, e o tempo do BERTimbau variou entre sessões sem causa conhecida. A diferença não muda a conclusão, porque o classificador segue pequeno diante da transcrição.
+
+O silêncio de 0,7 s é um parâmetro de projeto. Um silêncio mais curto fecharia a fala mais cedo, mas poderia cortar frases com pausas. Esse compromisso não foi medido neste trabalho. Ainda assim, a espera é a parcela que mais pesa na mediana, e por isso é o caminho mais direto para reduzir a latência.
+
+As 39 falas com nova tentativa do Whisper tendem a sair degradadas e com confiança baixa, e são elas que formam a cauda da latência. O \textit{fallback} de temperatura do Whisper refaz a transcrição quando a primeira não é confiável. A voz do autor teve três casos, e a voz sintética, nenhum.
+
+% ---------------------------------------------------------------
+
+\section{Discussão}
+\label{sec:discussao}
+
+A Tabela~\ref{tab:veredito} reúne o veredito por conjunto. A hipótese se confirma no teste interno e na voz sintética, onde os Transformers superam os TF-IDF em acurácia, F1 e EER, com intervalos que não cruzam zero, e o EER fica bem abaixo do limite de 30\%. Na voz de um único falante, a diferença não é significativa, embora o EER do BERTimbau, de 6,25\%, atenda ao critério C2.
+
+\begin{table}[htb]
+\centering
+\caption{Veredito da hipótese por conjunto de avaliação}
+\label{tab:veredito}
+\small
+\begin{tabularx}{\textwidth}{ZZZll}
+\toprule
+Conjunto & O que mede & Resultado (efeito e IC 95\%) & C1 & C2 \\
+\midrule
+Teste interno (11.616 frases) & Concordância com o rótulo do corpus, sem reconhecimento de fala & Seis pares significativos em acurácia, F1 e EER; F1 de +1,5 a +2,2 p.p. & atendido & atendido \\
+Voz sintética (740 transcrições) & Transcrições do Whisper de voz sintética & Seis pares significativos; F1 de +2,5 a +3,4 p.p. & atendido & atendido \\
+Voz do autor (184 leituras de 64 frases) & Transcrições do Whisper de um falante & Nenhum par significativo em acurácia, F1 ou EER; só a ROC-AUC do BERTimbau & não atendido & atendido \\
+Transcrições públicas (2.912 frases) & Falsas ativações em fala real & Sem diferença, exceto Albertina contra SVM, com $-$1,24 p.p. & não se aplica & não se aplica \\
+Áudio público (600 trechos) & Falsas ativações com o Whisper & Acréscimo de +0,5 a +1,3 p.p. com a transcrição, sem diferença significativa nos pares testados & não se aplica & não se aplica \\
+Sistema completo (ao vivo) & Pedidos atendidos e falsas ativações no sistema & Nenhum modelo supera o BERTimbau; TF-IDF perde pedidos na voz do autor ($-$7,5 p.p.) e na voz sintética ($-$3,2 p.p., regressão logística); SVM aceita mais falsas ativações na voz sintética (+3,2 p.p.) & não se aplica & não se aplica \\
+\bottomrule
+\end{tabularx}
+\fonte{Elaborado pelo autor (2026).}
+\end{table}
+
+Nas falsas ativações sobre as transcrições públicas, Transformers e TF-IDF ficam equivalentes, com uma exceção. No sistema completo, nenhum modelo supera o BERTimbau, e os TF-IDF perdem pedidos de forma significativa na voz do autor, enquanto na voz sintética só a regressão logística perde. O fator que mais reduziu as falsas ativações foi a correção do viés de comprimento, com redução de 16,7 p.p. a 25,1 p.p. nas transcrições públicas. Essa conclusão vale para os Transformers, porque os TF-IDF não têm versão sem correção.
+
+Como referência aproximada, \citeonline{Wagner2024} relatam EER de 12,15\% para um modelo somente textual. Esse número não é comparável diretamente ao deste trabalho, porque a base de dados e a tarefa são outras e o artigo não informa o idioma, mas mostra que os valores de EER dependem muito da base. O EER de 1,78\% do BERTimbau, na média das três sementes, vale para o conjunto de teste construído aqui.
+
+A validade desses resultados tem limites. A primeira ameaça é a natureza do corpus. Ele é 100\% sintético e tem diferenças de estilo em relação à fala transcrita. O teste também está perto do teto, com F1 entre 0,977 e 0,982 nos Transformers com correção, na média das três sementes, e as diferenças entre Transformers são pequenas. 
+
+A segunda ameaça é a amostra de falantes e de anotadores. A voz do autor vem de um único falante, com as mesmas 40 frases lidas em quatro cenários, e cada erro vale 2,5 p.p. nessa amostra. A revisão humana foi feita por um único anotador, o próprio autor, e o kappa de 0,873 mede a concordância com o rótulo do LLM, e não entre duas pessoas. O sistema também não separa falantes, e falas sobrepostas viram uma única fala.
+
+A terceira ameaça é a correção. O efeito não foi decomposto entre frases novas e balanceamento, e os modelos sem correção têm uma só semente, contra três com correção. As sementes também pesam: o limiar escolhido vai de 0,395 a 0,940 entre as nove execuções com correção, e o BERTimbau com a semente 44 ativa 0,96 p.p. a mais que o Albertina com a semente 42 nas transcrições públicas.
+
+Os resultados de reconhecimento de fala valem para o Whisper large-v3-turbo com decodificação gulosa, e não se estendem a outras variantes do modelo. Esse recorte é uma condição do método, e as conclusões sobre o efeito do reconhecimento de fala dependem dele. Uma mudança de modelo ou de decodificação exigiria medir essas conclusões de novo.
+
+As frases longas formam outra ameaça. As faixas de 14 a 17 e de 18 a 24 palavras estão no corpus com correção, com 3.378 e 760 frases por classe, contra mais de 15 mil na faixa de 7 a 8 palavras, e as de 25 a 50 palavras não aparecem nele. O mesmo vale para as falas acima de 30 s, que são cortadas em continuações.
+
+A hipótese foi formulada para ambiente controlado, e este trabalho também mediu ruído de fundo, iPhone e distância de dois metros. Nesses cenários, o WER sobe de 0,137 na sala quieta para 0,220 com ruído de fundo, e a conclusão sobre a voz do autor não é significativa. Os resultados valem para o português falado pelo autor e para os corpora públicos usados, e não se estendem a outros falantes sem novas medições.
 
 % ---------------------------------------------------------------
 
