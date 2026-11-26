@@ -1938,37 +1938,61 @@ A hipótese foi formulada para ambiente controlado, e este trabalho também medi
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+% ===============================================================
+% CAPÍTULO 5 - CONCLUSÃO
+% ===============================================================
+\chapter{Conclusão}
+\label{cap:conclusao}
+
+Assistentes de voz costumam exigir uma palavra de ativação antes de cada comando, e isso torna a interação menos natural. Em um computador pessoal, a falta dessa palavra traz outro risco: conversas entre pessoas no mesmo ambiente podem ser captadas e tomadas como comandos. Este trabalho tratou o problema como uma tarefa de DDSD textual, em que o classificador decide sobre a transcrição da fala.
+
+O objetivo geral, retomado da Seção~\ref{sec:objetivos}, foi verificar se modelos de linguagem pré-treinados para o português brasileiro, aplicados a transcrições de reconhecimento automático de fala, superam classificadores lineares baseados em TF-IDF com SVM ou regressão logística. Para isso, o trabalho construiu um corpus, ajustou três Transformers e mediu o desempenho em seis conjuntos de avaliação, cada um com uma pergunta própria.
+
+O primeiro objetivo era construir um corpus balanceado, com critérios explícitos de rotulação. O corpus final tem 116.438 frases, com 58.219 de cada classe, e a revisão humana concordou com o rótulo do LLM em 93,7\% dos casos, com kappa de Cohen de 0,873 (Seção~\ref{sec:res_corpus}). A medição do viés de comprimento revelou um atalho: no corpus sem correção, a ROC-AUC do tamanho era de 0,86, e, no corpus final com correção, caiu para 0,515. A revisão cobriu 300 frases e teve um único anotador, o que limita o que ela prova sobre a qualidade dos rótulos.
+
+O segundo objetivo era ajustar (\textit{fine-tuning}) o BERTimbau, o DeBERTinha e o Albertina e compará-los a dois \textit{baselines} de TF-IDF. No teste interno, o BERTimbau teve F1 macro de 0,9822 e EER de 1,78\%, na média de três sementes. Os dois TF-IDF, com uma execução cada, ficaram em 0,9609 e 0,9615 de F1 e em 3,93\% e 4,01\% de EER (Tabela~\ref{tab:teste_interno}). Os seis pares entre Transformers e TF-IDF são significativos. Entre os Transformers, as diferenças são pequenas.
+
+O terceiro objetivo mediu o efeito dos erros de transcrição. Na voz sintética, com WER de 0,049, a queda de acerto foi de 0,4 p.p. no BERTimbau e de 1,4 p.p. nos TF-IDF (Seção~\ref{sec:res_asr}). A diferença para os TF-IDF só é significativa no Albertina e no DeBERTinha, que perdem 1,2 p.p. a menos, com IC de 95\% entre $-$2,3 e $-$0,3 p.p. Na voz do autor, com WER de 0,170, as quedas foram de 2,2 p.p. no BERTimbau e de 4,9 p.p. nos TF-IDF, sem diferença significativa. A correlação entre WER e queda é baixa em todos os modelos.
+
+O quarto objetivo testou a fala real com 2.912 transcrições do CORAA, do NURC-SP e do TAGARELA, todas de fala não dirigida ao computador. Nelas, com a semente escolhida, os Transformers ficam entre 5,4\% e 6,3\% de falsas ativações, e os TF-IDF, entre 6,1\% e 6,6\%. Transformers e TF-IDF empatam, com uma única exceção: o Albertina ativa 1,24 p.p. menos que o SVM (Seção~\ref{sec:res_externa}). 
+
+O quinto objetivo integrou os classificadores a um sistema em tempo real, que roda no computador pessoal. Com o BERTimbau, a mediana do fim da fala à decisão ficou entre 1,15 s e 1,18 s nos três conjuntos de áudio, com a espera de 0,7 s do detector de voz incluída, e o classificador respondeu em menos de 50 ms (Seção~\ref{sec:res_latencia}). Na sessão ao vivo de 9,5 minutos, 87,8\% dos pedidos foram atendidos e 8,9\% das falas não dirigidas ativaram o sistema. 
+
+A hipótese foi avaliada por conjunto (Tabela~\ref{tab:veredito}). No teste interno e na voz sintética, os três Transformers superam os TF-IDF em acurácia, F1 e EER, com intervalos que não cruzam zero, e o EER fica abaixo de 30\%. Nesses dois, C1 e C2 são atendidos, e a hipótese se confirma. Na voz do autor, o EER do BERTimbau, de 6,25\%, atende o C2, mas nenhum par é significativo em acurácia, F1 ou EER, e o C1 não é atendido. Nas transcrições públicas, Transformers e TF-IDF empatam, exceto o Albertina contra o SVM. No áudio público, o acréscimo de falsas ativações causado pela transcrição não difere de forma significativa entre os modelos.
+
+No sistema completo, nenhum modelo supera o BERTimbau de forma significativa, e as diferenças significativas contra o BERTimbau envolvem sempre os TF-IDF, que perdem 10 de 80 pedidos cada um na voz do autor, contra 4 do BERTimbau. O fator que mais reduziu as falsas ativações foi a correção do viés de comprimento, com redução de 16,7 p.p. a 25,1 p.p. nas transcrições públicas. Essa conclusão vale para os Transformers, porque os TF-IDF não têm versão sem correção, e o experimento não separou o efeito das frases novas do efeito do balanceamento.
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+\section{Contribuições}
+
+A primeira contribuição é um corpus sintético público de 116.438 frases em português brasileiro, rotuladas como DD ou NDD e balanceadas entre as classes. Ele foi publicado no Hugging Face, no conjunto \texttt{ddsd-ptbr-corpus}, com as partições e as fontes. Os corpora públicos de fala entram só na avaliação e não fazem parte dessa publicação (Seções~\ref{sec:painel_publicacao} e~\ref{sec:eticas}).
+
+A segunda contribuição é a publicação de sete repositórios de modelos no Hugging Face: BERTimbau, Albertina e DeBERTinha, o TF-IDF com regressão logística e com SVM, e os três Transformers treinados sem correção. Cada modelo traz o limiar escolhido na validação, e o sistema baixa os modelos que faltam quando precisa deles (Seção~\ref{sec:painel_publicacao}).
+
+A terceira contribuição é um sistema em tempo real que roda localmente no computador pessoal, do microfone à decisão. Ele combina o detector de voz Silero \cite{Silero2024}, o Whisper large-v3-turbo \cite{Radford2023, OpenAI2024Turbo} e um classificador ativo por vez entre os cinco disponíveis. O índice de confiabilidade acompanha cada decisão, mas só gera alerta e não altera o rótulo (Seção~\ref{sec:sistema_tempo_real}).
+
+A quarta contribuição é o diagnóstico e a correção do viés de comprimento. No corpus sem correção, a ROC-AUC do tamanho chegava a 0,86, e as falsas ativações dos Transformers treinados sem correção ficavam entre 22,0\% e 32,3\% nos três conjuntos de fala real. Com a correção, a ROC-AUC caiu para 0,515, e as falsas ativações ficaram entre 5,2\% e 7,7\%. A correção reúne as frases novas e o balanceamento por faixa, e por isso o efeito medido é o dos dois juntos (Seção~\ref{sec:res_correcao}).
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+\section{Limitações}
+
+A primeira limitação está na natureza do corpus. Ele é inteiramente sintético, com estilo diferente da fala transcrita, e 81,9\% das frases vêm do corpus inicial, que não passou pela autoverificação. Por isso, os rótulos podem conter erros que o teste interno não detecta, e esse teste já está perto do teto. Além disso, a correção não foi decomposta entre frases novas e balanceamento, e os modelos sem correção têm uma só semente.
+
+A segunda limitação está na amostra de vozes e de anotadores. A voz real vem de um único falante, com as mesmas 40 frases lidas em quatro cenários, e a revisão humana foi feita por um único anotador. O sistema não separa falantes, de modo que falas sobrepostas chegam como uma única fala. As medidas de tempo real foram feitas em um único computador, em execuções de até cerca de 1 h com arquivos de áudio, e só a sessão ao vivo, de 9,5 minutos, usou microfone e falante real. Nenhuma delas teve várias pessoas falando ao mesmo tempo.
+
+Por último, as conclusões valem para as condições medidas. O Whisper foi avaliado só na variante large-v3-turbo, com decodificação gulosa, e a faixa de 25 a 50 palavras ficou fora do treino com correção. 
 
 % ---------------------------------------------------------------
 
-% ---------------------------------------------------------------
+\section{Trabalhos futuros}
 
-% ---------------------------------------------------------------
+Os resultados sobre a voz real pedem mais falantes e um segundo anotador. Com um único falante, nenhum par entre Transformers e TF-IDF é significativo na voz do autor. O kappa, por sua vez, mede a concordância do autor com o rótulo do gerador, e não a concordância entre duas pessoas. Fica para trabalhos futuros ampliar essas duas frentes e separar o efeito das frases novas do efeito do balanceamento por faixa de tamanho.
 
-% ---------------------------------------------------------------
+A latência também pede estudo. A maior parte do tempo é a espera de 0,7 s que o detector de voz exige antes de fechar a fala. Um silêncio mais curto fecha a fala mais cedo, mas pode cortar frases com pausas, e esse compromisso não foi medido. Uma extensão possível é medir esse compromisso e testar o sistema em várias horas de uso real, com mais de uma pessoa falando ao mesmo tempo. A separação de falantes e de falas sobrepostas, que o sistema ainda não faz, é outro passo possível.
 
-% ---------------------------------------------------------------
-
-% ---------------------------------------------------------------
-
-% ---------------------------------------------------------------
-
-% ---------------------------------------------------------------
-
-% ---------------------------------------------------------------
-
-% ---------------------------------------------------------------
-
-% ---------------------------------------------------------------
+O índice de confiabilidade acompanha o WER na fala real, com $\rho = -0{,}515$ no áudio público. Uma extensão possível é usar o índice na decisão, além de exibi-lo como alerta. Outra é combinar o texto com sinais acústicos, como nos trabalhos multimodais \cite{Mallidi2018, Wagner2024}, que exigem mais recursos computacionais \cite{Xu2024}, ou com características prosódicas \cite{Norouzian2019, Krishna2023}.
 
 % ---------------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
