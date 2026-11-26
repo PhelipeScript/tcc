@@ -6,33 +6,44 @@
 % FUNDAMENTOS DE NLP E APRENDIZADO DE MÁQUINA
 % ---------------------------------------------------------------
 
-@article{Vaswani2017,
+@inproceedings{Vaswani2017,
   author    = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and {\L}ukasz Kaiser and Illia Polosukhin},
   title     = {Attention Is All You Need},
-  journal   = {Advances in Neural Information Processing Systems},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NeurIPS 2017)},
+  editor    = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
   volume    = {30},
-  year      = {2017},
-  pages     = {5998--6008}
+  publisher = {Curran Associates, Inc.},
+  address   = {Red Hook, NY},
+  year      = {2017}
 }
 
-@article{Devlin2019,
+@inproceedings{Devlin2019,
   author    = {Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
   title     = {{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding},
-  journal   = {Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
-  year      = {2019}, 
+  booktitle = {Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)},
   pages     = {4171--4186},
-  publisher = {Association for Computational Linguistics}
+  publisher = {Association for Computational Linguistics},
+  address   = {Minneapolis, Minnesota},
+  year      = {2019},
+  doi       = {10.18653/v1/N19-1423}
 }
 
 @inproceedings{He2021,
   author    = {Pengcheng He and Xiaodong Liu and Jianfeng Gao and Weizhu Chen},
   title     = {{DeBERTa}: Decoding-enhanced {BERT} with Disentangled Attention},
-  booktitle = {Proceedings of the 9th International Conference on Learning Representations (ICLR)},
+  booktitle = {Proceedings of the 9th International Conference on Learning Representations (ICLR 2021)},
   year      = {2021}
 }
 
+@inproceedings{He2023,
+  author    = {Pengcheng He and Jianfeng Gao and Weizhu Chen},
+  title     = {{DeBERTaV3}: Improving {DeBERTa} using {ELECTRA}-Style Pre-Training with Gradient-Disentangled Embedding Sharing},
+  booktitle = {Proceedings of the 11th International Conference on Learning Representations (ICLR 2023)},
+  year      = {2023}
+}
+
 @article{Cortes1995,
-  author    = {Cortes, Corinna and Vapnik, Vladimir},
+  author    = {Corinna Cortes and Vladimir Vapnik},
   title     = {Support-Vector Networks},
   journal   = {Machine Learning},
   volume    = {20},
@@ -46,9 +57,32 @@
   author    = {Christopher D. Manning and Prabhakar Raghavan and Hinrich Sch{\"u}tze},
   title     = {Introduction to Information Retrieval},
   publisher = {Cambridge University Press},
-  year      = {2008},
   address   = {Cambridge, UK},
+  year      = {2008},
   doi       = {10.1017/CBO9780511809071}
+}
+
+@incollection{Platt2000,
+  author    = {John C. Platt},
+  title     = {Probabilities for {SV} Machines},
+  booktitle = {Advances in Large-Margin Classifiers},
+  editor    = {Alexander J. Smola and Peter Bartlett and Bernhard Sch{\"o}lkopf and Dale Schuurmans},
+  pages     = {61--74},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {2000},
+  doi       = {10.7551/mitpress/1113.003.0008}
+}
+
+@article{Geirhos2020,
+  author    = {Robert Geirhos and J{\"o}rn-Henrik Jacobsen and Claudio Michaelis and Richard Zemel and Wieland Brendel and Matthias Bethge and Felix A. Wichmann},
+  title     = {Shortcut learning in deep neural networks},
+  journal   = {Nature Machine Intelligence},
+  volume    = {2},
+  number    = {11},
+  pages     = {665--673},
+  year      = {2020},
+  doi       = {10.1038/s42256-020-00257-z}
 }
 
 % ---------------------------------------------------------------
@@ -58,37 +92,48 @@
 @inproceedings{Souza2020,
   author    = {F{\'a}bio Souza and Rodrigo Nogueira and Roberto Lotufo},
   title     = {{BERTimbau}: Pretrained {BERT} Models for {Brazilian} {Portuguese}},
-  booktitle = {Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS)},
-  year      = {2020},
+  booktitle = {Intelligent Systems: BRACIS 2020, Rio Grande, Brazil, October 20--23, 2020, Proceedings, Part I},
+  editor    = {Ricardo Cerri and Ronaldo C. Prati},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {12319},
   pages     = {403--417},
   publisher = {Springer},
+  address   = {Cham},
+  year      = {2020},
   doi       = {10.1007/978-3-030-61377-8_28}
 }
 
-@article{Rodrigues2023,
-  author    = {Jo{\~a}o Rodrigues and Lu{\'i}s Gomes and Jo{\~a}o Silva and Ant{\'o}nio Branco and Rodrigo Santos and Henrique Gomes and Elisa Schmitt Uebchen},
+@inproceedings{Rodrigues2023,
+  author    = {Jo{\~a}o Rodrigues and Lu{\'i}s Gomes and Jo{\~a}o Silva and Ant{\'o}nio Branco and Rodrigo Santos and {\relax Lopes Cardoso}, Henrique and Tom{\'a}s Os{\'o}rio},
   title     = {Advancing Neural Encoding of {Portuguese} with Transformer {Albertina} {PT-*}},
-  journal   = {arXiv preprint arXiv:2305.06721},
-  year      = {2023},
-  doi       = {10.48550/arXiv.2305.06721}
-}
-
-@article{Abonizio2023,
-  author    = {Hugo Abonizio and Ig Ibert Bittencourt and Seiji Isotani and Denilson Barbosa and Adriano Veloso and Rodrigo Nogueira},
-  title     = {{DeBERTinha}: A Multistep Approach to Adapt {DeBERTaV3} {XSmall} for {Brazilian} {Portuguese} Natural Language Processing Tasks},
-  journal   = {arXiv preprint arXiv:2309.16844},
-  year      = {2023},
-  doi       = {10.48550/arXiv.2309.16844}
-}
-
-@inproceedings{Pires2023,
-  author    = {Ramon Pires and Hugo Abonizio and Thales Sales Almeida and Rodrigo Nogueira},
-  title     = {Sabi{\'a}: Portuguese Large Language Models},
-  booktitle = {Brazilian Conference on Intelligent Systems (BRACIS)},
-  year      = {2023},
-  pages     = {226--240},
+  booktitle = {Progress in Artificial Intelligence: EPIA 2023, Faial Island, Azores, September 5--8, 2023, Proceedings, Part I},
+  editor    = {Nuno Moniz and Zita Vale and Jos{\'e} Cascalho and Catarina Silva and Raquel Sebasti{\~a}o},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {14115},
+  pages     = {441--453},
   publisher = {Springer},
-  doi       = {10.1007/978-3-031-45392-2_15}
+  address   = {Cham},
+  year      = {2023},
+  doi       = {10.1007/978-3-031-49008-8_35}
+}
+
+@misc{Campiotti2023,
+  author       = {Israel Campiotti and Matheus Rodrigues and Yuri Albuquerque and Rafael Azevedo and Alyson Andrade},
+  title        = {{DeBERTinha}: A Multistep Approach to Adapt {DebertaV3} {XSmall} for {Brazilian} {Portuguese} Natural Language Processing Tasks},
+  howpublished = {Preprint arXiv:2309.16844},
+  year         = {2023},
+  doi          = {10.48550/arXiv.2309.16844}
+}
+
+@inproceedings{Santos2024,
+  author    = {Rodrigo Santos and Jo{\~a}o Rodrigues and Lu{\'i}s Gomes and Jo{\~a}o Ricardo Silva and Ant{\'o}nio Branco and {\relax Lopes Cardoso}, Henrique and Tom{\'a}s Freitas Os{\'o}rio and Bernardo Leite},
+  title     = {Fostering the Ecosystem of Open Neural Encoders for {Portuguese} with {Albertina} {PT*} Family},
+  booktitle = {Proceedings of the 3rd Annual Meeting of the Special Interest Group on Under-resourced Languages @ {LREC-COLING} 2024},
+  editor    = {Maite Melero and Sakriani Sakti and Claudia Soria},
+  pages     = {105--114},
+  publisher = {ELRA and ICCL},
+  address   = {Torino, Italia},
+  year      = {2024}
 }
 
 % ---------------------------------------------------------------
@@ -96,155 +141,154 @@
 % ---------------------------------------------------------------
 
 @inproceedings{Mallidi2018,
-  author    = {Sri Harsha Mallidi and Roland Maas and Ariya Rastrow and Bj{\"o}rn Hoffmeister},
+  author    = {Sri Harish Mallidi and Roland Maas and Kyle Goehner and Ariya Rastrow and Spyros Matsoukas and Bj{\"o}rn Hoffmeister},
   title     = {Device-directed Utterance Detection},
   booktitle = {Proceedings of Interspeech 2018},
+  pages     = {1225--1228},
+  publisher = {ISCA},
   year      = {2018},
-  pages     = {3629--3633},
   doi       = {10.21437/Interspeech.2018-1531}
 }
 
 @inproceedings{Norouzian2019,
   author    = {Atta Norouzian and Bogdan Mazoure and Dermot Connolly and Daniel Willett},
   title     = {Exploring Attention Mechanism for Acoustic-Based Classification of Speech Utterances into System-Directed and Non-System-Directed},
-  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
-  year      = {2019},
+  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2019)},
   pages     = {7310--7314},
-  doi       = {10.1109/ICASSP.2019.8683528}
+  publisher = {IEEE},
+  address   = {Brighton, United Kingdom},
+  year      = {2019},
+  doi       = {10.1109/ICASSP.2019.8683565}
 }
 
 @inproceedings{Nie2021,
-  author    = {Liqiang Nie and Mengzhao Jia and Xuemeng Song and Ganglu Wu and Harry H. Cheng and Jian Gu},
+  author    = {Liqiang Nie and Mengzhao Jia and Xuemeng Song and Ganglu Wu and Harry Cheng and Jian Gu},
   title     = {Multimodal Activation: Awakening Dialog Robots without Wake Words},
   booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  year      = {2021},
   pages     = {491--500},
   publisher = {ACM},
+  address   = {New York},
+  year      = {2021},
   doi       = {10.1145/3404835.3462964}
 }
 
-@article{Krishna2023,
-  author    = {Gautam Krishna and Sameer Dharur and Oggi Rudovic and Pranay Dighe and Saurabh Adya and Ahmed Hussen Abdelaziz and Anthony H. Tewfik},
-  title     = {Modality Dropout for Multimodal Device Directed Speech Detection using Verbal and Non-Verbal Features},
-  journal   = {arXiv preprint arXiv:2310.15261},
-  year      = {2023},
-  doi       = {10.48550/arXiv.2310.15261}
+@inproceedings{Krishna2024,
+  author    = {Gautam Krishna and Sameer Dharur and Oggi Rudovic and Pranay Dighe and Saurabh Adya and Ahmed Hussen Abdelaziz and Ahmed H. Tewfik},
+  title     = {Modality Drop-Out for Multimodal Device Directed Speech Detection Using Verbal and Non-Verbal Features},
+  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)},
+  pages     = {8240--8244},
+  publisher = {IEEE},
+  address   = {Seoul, Korea},
+  year      = {2024},
+  doi       = {10.1109/ICASSP48485.2024.10446421}
 }
 
 @inproceedings{Wagner2024,
   author    = {Dominik Wagner and Alexander Churchill and Siddharth Sigtia and Panayiotis Georgiou and Matt Mirsamadi and Aarshee Mishra and Erik Marchi},
   title     = {A Multimodal Approach to Device-Directed Speech Detection with Large Language Models},
-  booktitle = {IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)},
+  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)},
+  pages     = {10451--10455},
+  publisher = {IEEE},
+  address   = {Seoul, Korea},
   year      = {2024},
   doi       = {10.1109/ICASSP48485.2024.10446224}
 }
 
 @inproceedings{Dighe2024,
   author    = {Pranay Dighe and Yi Su and Shangshang Zheng and Yunshu Liu and Vineet Garg and Xiaochuan Niu and Ahmed Tewfik},
-  title     = {Leveraging Large Language Models for Exploiting ASR Uncertainty},
-  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  title     = {Leveraging Large Language Models for Exploiting {ASR} Uncertainty},
+  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)},
+  pages     = {12231--12235},
+  publisher = {IEEE},
+  address   = {Seoul, Korea},
   year      = {2024},
   doi       = {10.1109/ICASSP48485.2024.10446132}
-}
-
-@inproceedings{Rudovic2024,
-  author    = {Ognjen Rudovic and Pranay Dighe and Yi Su and others},
-  title     = {Device-Directed Speech Detection for Follow-up Conversations Using Large Language Models},
-  booktitle = {NeurIPS 2024 Workshop on Adaptive Foundation Models},
-  year      = {2024}
 }
 
 % ---------------------------------------------------------------
 % WAKE-WORDS E FALSE TRIGGERS
 % ---------------------------------------------------------------
 
-@article{Garg2021,
+@inproceedings{Garg2021,
   author    = {Vineet Garg and Wonil Chang and Siddharth Sigtia and Saurabh Adya and Pramod Simha and Pranay Dighe and Chandra Dhir},
   title     = {Streaming Transformer for Hardware Efficient Voice Trigger Detection and False Trigger Mitigation},
-  journal   = {Proceedings of Interspeech 2021},
+  booktitle = {Proceedings of Interspeech 2021},
+  pages     = {4209--4213},
+  publisher = {ISCA},
   year      = {2021},
-  doi       = {10.21437/INTERSPEECH.2021-1428}
+  doi       = {10.21437/Interspeech.2021-1428}
 }
 
 @inproceedings{Chen2021,
   author    = {Yanjiao Chen and Yijie Bai and Richard Mitev and Kaibo Wang and Ahmad-Reza Sadeghi and Wenyuan Xu},
   title     = {{FakeWake}: Understanding and Mitigating Fake Wake-up Words of Voice Assistants},
   booktitle = {Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security},
-  year      = {2021},
   pages     = {1861--1883},
   publisher = {ACM},
+  address   = {New York},
+  year      = {2021},
   doi       = {10.1145/3460120.3485365}
-}
-
-@techreport{Shin2023,
-  author    = {Shin, D.},
-  title     = {Low Latency and Energy-efficient Hotword Detection Based on Mouth Movement},
-  institution = {Technical Disclosure Commons},
-  year      = {2023},
-  month     = {July},
-  url       = {https://www.tdcommons.org/dpubs_series/6034/}
 }
 
 % ---------------------------------------------------------------
 % ASR E VAD (TRANSCRIÇÃO E SINAL DE FALA)
 % ---------------------------------------------------------------
 
-@book{Jurafsky2024,
-  author    = {Daniel Jurafsky and James H. Martin},
-  title     = {Speech and Language Processing},
-  publisher = {Pearson},
-  year      = {2024},
-  edition   = {3},
-  note      = {Rascunho online dispon{\'i}vel em https://web.stanford.edu/\~{}jurafsky/slp3/}
+@misc{Jurafsky2026,
+  author        = {Daniel Jurafsky and James H. Martin},
+  title         = {Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition with Language Models},
+  year          = {2026},
+  note          = {3. ed. Manuscrito online, vers{\~a}o de 19 ago. 2026},
+  url           = {https://web.stanford.edu/~jurafsky/slp3/},
+  urlaccessdate = {26 nov. 2026}
 }
 
-@article{Radford2023,
+@inproceedings{Radford2023,
   author    = {Alec Radford and Jong Wook Kim and Tao Xu and Greg Brockman and Christine McLeavey and Ilya Sutskever},
   title     = {Robust Speech Recognition via Large-Scale Weak Supervision},
-  journal   = {Proceedings of the 40th International Conference on Machine Learning},
-  year      = {2023},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning},
+  editor    = {Andreas Krause and Emma Brunskill and Kyunghyun Cho and Barbara Engelhardt and Sivan Sabato and Jonathan Scarlett},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {202},
   pages     = {28492--28518},
-  publisher = {PMLR}
+  publisher = {PMLR},
+  year      = {2023}
 }
 
-@article{Bevilacqua2024,
-  author    = {Antonio Bevilacqua and Paolo Saviano and Alessandro Amirante and Simon Pietro Romano},
-  title     = {Whispy: Adapting {STT} Whisper Models to Real-Time Environments},
-  journal   = {arXiv preprint arXiv:2405.03484},
-  year      = {2024},
-  doi       = {10.48550/arXiv.2405.03484}
+@misc{Bevilacqua2024,
+  author       = {Antonio Bevilacqua and Paolo Saviano and Alessandro Amirante and Simon Pietro Romano},
+  title        = {Whispy: Adapting {STT} {Whisper} Models to Real-Time Environments},
+  howpublished = {Preprint arXiv:2405.03484},
+  year         = {2024},
+  doi          = {10.48550/arXiv.2405.03484}
 }
 
-@article{Jeffries2024,
-  author    = {Nat Jeffries and Evan King and Manjunath Kudlur and Guy Nicholson and James Wang and Peter Warden},
-  title     = {Moonshine: Speech Recognition for Live Transcription and Voice Commands},
-  journal   = {arXiv preprint arXiv:2410.15608},
-  year      = {2024},
-  doi       = {10.48550/arXiv.2410.15608}
-}
-
-@inproceedings{Grosman2021,
-  author    = {Jonatas Grosman and Rodrigo Nogueira},
-  title     = {Wav2vec 2.0 for {Brazilian} {Portuguese}},
-  booktitle = {Anais do Encontro Nacional de Intelig{\^e}ncia Artificial e Computacional (ENIAC)},
-  year      = {2021},
-  publisher = {SBC}
+@misc{Jeffries2024,
+  author       = {Nat Jeffries and Evan King and Manjunath Kudlur and Guy Nicholson and James Wang and Pete Warden},
+  title        = {Moonshine: Speech Recognition for Live Transcription and Voice Commands},
+  howpublished = {Preprint arXiv:2410.15608},
+  year         = {2024},
+  doi          = {10.48550/arXiv.2410.15608}
 }
 
 @inproceedings{Xu2024,
-  author    = {Mingbin Xu and Alex Jin and Sicheng Wang and Mu Su and Tim Ng and H. Benjamin Mason and Shiyi Han and Yaqiao Deng and Zhen Huang and Mahesh Krishnamoorthy},
+  author    = {Mingbin Xu and Alex Jin and Sicheng Wang and Mu Su and Tim Ng and Henry Mason and Shiyi Han and Zhihong Lei and Yaqiao Deng and Zhen Huang and Mahesh Krishnamoorthy},
   title     = {Conformer-Based Speech Recognition On Extreme Edge-Computing Devices},
-  booktitle = {Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Industry Track)},
-  year      = {2024},
+  booktitle = {Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 6: Industry Track)},
   pages     = {131--139},
   publisher = {Association for Computational Linguistics},
+  address   = {Mexico City, Mexico},
+  year      = {2024},
   doi       = {10.18653/v1/2024.naacl-industry.12}
 }
 
 @inproceedings{Li2021,
   author    = {Nan Li and Longbiao Wang and Masashi Unoki and Sheng Li and Rui Wang and Meng Ge and Jianwu Dang},
   title     = {Robust Voice Activity Detection Using a Masked Auditory Encoder Based Convolutional Neural Network},
-  booktitle = {IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)},
+  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2021)},
+  pages     = {6828--6832},
+  publisher = {IEEE},
+  address   = {Toronto, Canada},
   year      = {2021},
   doi       = {10.1109/ICASSP39728.2021.9415045}
 }
@@ -254,32 +298,39 @@
 % ---------------------------------------------------------------
 
 @article{CORAA2023,
-  author    = {Arnaldo Candido Junior and Edresson Casanova and Anderson Soares and Frederico Santos de Oliveira and Lucas Oliveira and Ricardo Corso Fernandes Junior and Daniel Peixoto Pinto da Silva and Fernando Gorgulho Fayet and Bruno Baldissera Carlotto and Lucas Rafael Stefanel Gris and Sandra Maria Alu{\'i}sio},
-  title     = {CORAA ASR: A Large Corpus of Spontaneous and Prepared Speech Manually Validated for Speech Recognition in Brazilian Portuguese},
+  author    = {{\relax Candido Junior}, Arnaldo and Casanova, Edresson and Soares, Anderson and de Oliveira, Frederico Santos and Oliveira, Lucas and {\relax Fernandes Junior}, Ricardo Corso and da Silva, Daniel Peixoto Pinto and Fayet, Fernando Gorgulho and Carlotto, Bruno Baldissera and Gris, Lucas Rafael Stefanel and Alu{\'i}sio, Sandra Maria},
+  title     = {{CORAA ASR}: A Large Corpus of Spontaneous and Prepared Speech Manually Validated for Speech Recognition in {Brazilian} {Portuguese}},
   journal   = {Language Resources and Evaluation},
   volume    = {57},
+  number    = {3},
   pages     = {1139--1171},
   year      = {2023},
-  doi       = {10.1007/s10579-022-09621-4},
-  publisher = {Springer}
+  doi       = {10.1007/s10579-022-09621-4}
 }
 
 @inproceedings{NURCSP2025,
-  author    = {Rodrigo Lima and Sidney Evaldo Leal and Arnaldo Candido Junior and Sandra Maria Alu{\'i}sio},
-  title     = {A Large Dataset of Spontaneous Speech with the Accent Spoken in S{\~a}o Paulo for Automatic Speech Recognition Evaluation},
-  booktitle = {Intelligent Systems},
+  author    = {Lima, Rodrigo and Leal, Sidney Evaldo and {\relax Candido Junior}, Arnaldo and Alu{\'i}sio, Sandra Maria},
+  title     = {A Large Dataset of Spontaneous Speech with the Accent Spoken in {S{\~a}o} {Paulo} for Automatic Speech Recognition Evaluation},
+  booktitle = {Intelligent Systems: BRACIS 2024, Proceedings, Part I},
+  editor    = {Paes, Aline and Verri, Filipe A. N.},
   series    = {Lecture Notes in Computer Science},
-  year      = {2025},
+  volume    = {15412},
+  pages     = {33--47},
   publisher = {Springer},
+  address   = {Cham},
+  year      = {2025},
   doi       = {10.1007/978-3-031-79029-4_3}
 }
 
-@article{Tagarela2026,
-  author    = {Frederico Santos de Oliveira and Lucas Rafael Stefanel Gris and Alef Iury Siqueira Ferreira and Augusto Seben da Rosa and Alexandre Costa Ferro Filho and Edresson Casanova and Christopher Dane Shulby and Rafael Teixeira Sousa and Diogo Fernandes Costa Silva and Anderson da Silva Soares and Arlindo Rodrigues Galv{\~a}o Filho},
-  title     = {TAGARELA: A Portuguese Speech Dataset from Podcasts},
-  journal   = {arXiv preprint arXiv:2603.15326},
+@inproceedings{Tagarela2026,
+  author    = {de Oliveira, Frederico Santos and Gris, Lucas Rafael Stefanel and Ferreira, Alef Iury Siqueira and da Rosa, Augusto Seben and {\relax Ferro Filho}, Alexandre Costa and Casanova, Edresson and Shulby, Christopher Dane and Sousa, Rafael Teixeira and Silva, Diogo Fernandes Costa and Soares, Anderson da Silva and {\relax Galv{\~a}o Filho}, Arlindo Rodrigues},
+  title     = {{TAGARELA} -- A {Portuguese} Speech Dataset from Podcasts},
+  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2026)},
+  pages     = {15517--15521},
+  publisher = {IEEE},
+  address   = {Barcelona, Spain},
   year      = {2026},
-  doi       = {10.48550/arXiv.2603.15326}
+  doi       = {10.1109/ICASSP55912.2026.11462137}
 }
 
 % ---------------------------------------------------------------
@@ -289,31 +340,33 @@
 @book{Wazlawick2020,
   author    = {Raul Sidnei Wazlawick},
   title     = {Metodologia de Pesquisa para Ci{\^e}ncia da Computa{\c c}{\~a}o},
-  publisher = {Elsevier},
-  year      = {2020},
   edition   = {3},
-  address   = {Rio de Janeiro}
+  publisher = {LTC},
+  address   = {Rio de Janeiro},
+  year      = {2020},
+  isbn      = {978-85-951-5109-3}
 }
 
-@article{Weld2022,
+@article{Weld2023,
   author    = {Henry Weld and Xiaoqi Huang and Siqu Long and Josiah Poon and Soyeon Caren Han},
   title     = {A Survey of Joint Intent Detection and Slot Filling Models in Natural Language Understanding},
   journal   = {ACM Computing Surveys},
   volume    = {55},
   number    = {8},
-  pages     = {156},
-  year      = {2022},
-  doi       = {10.1145/3547138},
-  note      = {Levantamento amplo sobre m\'{e}todos de detec\c{c}\~{a}o de inten\c{c}\~{a}o. Demonstra que modelos baseados em {Transformers} pr\'{e}-treinados como o {BERT} atingem estado da arte em classifica\c{c}\~{a}o de inten\c{c}\~{a}o textual, superando abordagens tradicionais de {ML}}
+  pages     = {1--38},
+  year      = {2023},
+  doi       = {10.1145/3547138}
 }
 
-@inproceedings{Møller2024,
-  author    = {Anders Giovanni M{\o}ller and Luca Maria Aiello and Isabelle Augenstein},
-  title     = {Is a prompt and a few samples all you need? Using {GPT}-4 for data augmentation in low-resource classification tasks},
-  booktitle = {Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)},
+@inproceedings{Moller2024,
+  author    = {Anders Giovanni M{\o}ller and Arianna Pera and Jacob Dalsgaard and Luca Aiello},
+  title     = {The Parrot Dilemma: Human-Labeled vs. {LLM}-augmented Data in Classification Tasks},
+  booktitle = {Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics (Volume 2: Short Papers)},
+  pages     = {179--192},
+  publisher = {Association for Computational Linguistics},
+  address   = {St. Julian's, Malta},
   year      = {2024},
-  pages     = {12764--12779},
-  publisher = {ELRA and ICCL}
+  doi       = {10.18653/v1/2024.eacl-short.17}
 }
 
 % ---------------------------------------------------------------
@@ -321,27 +374,158 @@
 % ---------------------------------------------------------------
 
 @misc{NMSC2025,
-  author       = {{Next Move Strategy Consulting}},
-  title        = {Voice Assistant Market Size and Share | Statistics 2025-2030},
-  year         = {2025},
-  url          = {https://www.nextmsc.com/report/voice-assistant-market},
-  note         = {Acesso em: 09 abr. 2026}
+  author        = {{NEXT MOVE STRATEGY CONSULTING}},
+  title         = {Voice Assistant Market Size and Share | Statistics 2025--2030},
+  year          = {2025},
+  url           = {https://www.nextmsc.com/report/voice-assistant-market},
+  urlaccessdate = {9 abr. 2026}
 }
 
 @misc{OpenAI2024Turbo,
-  author       = {{OpenAI}},
-  title        = {Whisper Large V3 Turbo},
-  year         = {2024},
-  url          = {https://huggingface.co/openai/whisper-large-v3-turbo},
-  note         = {Acesso em: 14 out. 2026}
+  author        = {{OPENAI}},
+  title         = {Whisper Large V3 Turbo},
+  year          = {2024},
+  url           = {https://huggingface.co/openai/whisper-large-v3-turbo},
+  urlaccessdate = {14 out. 2026}
 }
 
-@inproceedings{Santos2024,
-  author    = {Rodrigo Santos and Jo{\~a}o Rodrigues and Lu{\'i}s Gomes and Jo{\~a}o Silva and Ant{\'o}nio Branco and Henrique Lopes Cardoso and Tom{\'a}s Freitas Os{\'o}rio and Bernardo Leite},
-  title     = {Fostering the Ecosystem of Open Neural Encoders for {Portuguese} with {Albertina} {PT-*} Family},
-  booktitle = {Proceedings of the SIGUL 2024 Workshop at LREC-COLING 2024},
-  year      = {2024},
-  pages     = {105--114},
-  address   = {Torino, Italy},
-  doi       = {10.48550/arXiv.2403.01897}
+% ---------------------------------------------------------------
+% MÉTODO E FERRAMENTAS
+% ---------------------------------------------------------------
+
+@misc{CTranslate2,
+  author        = {{OPENNMT}},
+  title         = {{CTranslate2}: fast inference engine for Transformer models},
+  year          = {2026},
+  note          = {Vers{\~a}o 4.8.3},
+  url           = {https://github.com/OpenNMT/CTranslate2},
+  urlaccessdate = {9 nov. 2026}
+}
+
+@misc{EdgeTTS,
+  author        = {{RANY}},
+  title         = {edge-tts},
+  year          = {2026},
+  note          = {Vers{\~a}o 7.3.1},
+  url           = {https://github.com/rany2/edge-tts},
+  urlaccessdate = {9 nov. 2026}
+}
+
+@misc{FasterWhisper,
+  author        = {Guillaume Klein},
+  title         = {faster-whisper},
+  year          = {2025},
+  note          = {Vers{\~a}o 1.2.1},
+  url           = {https://github.com/SYSTRAN/faster-whisper},
+  urlaccessdate = {9 nov. 2026}
+}
+
+@misc{MLX2023,
+  author        = {Awni Hannun and Jagrit Digani and Angelos Katharopoulos and Ronan Collobert},
+  title         = {{MLX}: Efficient and flexible machine learning on {Apple} silicon},
+  year          = {2023},
+  note          = {Vers{\~a}o 0.32.4},
+  url           = {https://github.com/ml-explore},
+  urlaccessdate = {9 nov. 2026}
+}
+
+@misc{Silero2026,
+  author        = {{SILERO TEAM}},
+  title         = {Silero {VAD}: pre-trained enterprise-grade Voice Activity Detector ({VAD}), Number Detector and Language Classifier},
+  year          = {2026},
+  note          = {Vers{\~a}o 6.2.3},
+  url           = {https://github.com/snakers4/silero-vad},
+  urlaccessdate = {9 nov. 2026}
+}
+
+% ---------------------------------------------------------------
+% ESTATÍSTICA E LÓGICA FUZZY (TRABALHOS CLÁSSICOS)
+% ---------------------------------------------------------------
+
+@article{Cohen1960,
+  author    = {Jacob Cohen},
+  title     = {A Coefficient of Agreement for Nominal Scales},
+  journal   = {Educational and Psychological Measurement},
+  volume    = {20},
+  number    = {1},
+  pages     = {37--46},
+  year      = {1960},
+  doi       = {10.1177/001316446002000104}
+}
+
+@article{Efron1979,
+  author    = {Bradley Efron},
+  title     = {Bootstrap Methods: Another Look at the Jackknife},
+  journal   = {The Annals of Statistics},
+  volume    = {7},
+  number    = {1},
+  pages     = {1--26},
+  year      = {1979},
+  doi       = {10.1214/aos/1176344552}
+}
+
+@article{Landis1977,
+  author    = {J. Richard Landis and Gary G. Koch},
+  title     = {The Measurement of Observer Agreement for Categorical Data},
+  journal   = {Biometrics},
+  volume    = {33},
+  number    = {1},
+  pages     = {159--174},
+  year      = {1977},
+  doi       = {10.2307/2529310}
+}
+
+@article{Lee1990,
+  author    = {Chuen-Chien Lee},
+  title     = {Fuzzy logic in control systems: fuzzy logic controller. {II}},
+  journal   = {IEEE Transactions on Systems, Man, and Cybernetics},
+  volume    = {20},
+  number    = {2},
+  pages     = {419--435},
+  year      = {1990},
+  doi       = {10.1109/21.52552}
+}
+
+@article{Mamdani1975,
+  author    = {E. H. Mamdani and S. Assilian},
+  title     = {An experiment in linguistic synthesis with a fuzzy logic controller},
+  journal   = {International Journal of Man-Machine Studies},
+  volume    = {7},
+  number    = {1},
+  pages     = {1--13},
+  year      = {1975},
+  doi       = {10.1016/S0020-7373(75)80002-2}
+}
+
+@article{Spearman1904,
+  author    = {C. Spearman},
+  title     = {The Proof and Measurement of Association between Two Things},
+  journal   = {The American Journal of Psychology},
+  volume    = {15},
+  number    = {1},
+  pages     = {72--101},
+  year      = {1904},
+  doi       = {10.2307/1412159}
+}
+
+@article{Zadeh1965,
+  author    = {Lotfi A. Zadeh},
+  title     = {Fuzzy sets},
+  journal   = {Information and Control},
+  volume    = {8},
+  number    = {3},
+  pages     = {338--353},
+  year      = {1965},
+  doi       = {10.1016/S0019-9958(65)90241-X}
+}
+
+@article{Zadeh1975,
+  author    = {Lotfi A. Zadeh},
+  title     = {The concept of a linguistic variable and its application to approximate reasoning---{I}},
+  journal   = {Information Sciences},
+  volume    = {8},
+  number    = {3},
+  pages     = {199--249},
+  year      = {1975},
+  doi       = {10.1016/0020-0255(75)90036-5}
 }
